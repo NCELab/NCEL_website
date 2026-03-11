@@ -5,6 +5,6 @@
 
   # NCELab's Website
 
-  Visit **[website url](#)** 🚀
+  Visit **[ncelab.github.io/NCEL_website](https://ncelab.github.io/NCEL_website)** 🚀
 
   _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
