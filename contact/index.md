@@ -7,27 +7,27 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+The Neuro-Cognition and Emotion Lab (NCEL) is based at Columbia University and the New York State Psychiatric Institute in New York City. 
+
+For general inquiries, research opportunities, or collaborations, please feel free to reach out.
 
 {%
   include button.html
   type="email"
-  text="jane@smith.com"
-  link="jane@smith.com"
+  text="NCEL@nyspi.columbia.edu"
+  link="NCEL@nyspi.columbia.edu"
 %}
 {%
   include button.html
   type="phone"
-  text="(555) 867-5309"
-  link="+1-555-867-5309"
+  text="(646) 774-5243"
+  link="+1-646-774-5243"
 %}
 {%
   include button.html
   type="address"
   tooltip="Our location on Google Maps for easy navigation"
-  link="https://www.google.com/maps"
+  link="[https://www.google.com/maps](https://maps.app.goo.gl/ot9vEXhxaj5dYCRR6)"
 %}
 
 {% include section.html %}
