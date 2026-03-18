@@ -3,7 +3,7 @@
 
 # NCELab's Website
 
-An engaging 1-3 sentence description of your lab.
+Welcome to the Neuro-Cognition and Emotion Lab (NCEL), where we explore how cognition and emotion interact to shape behavior and mental health across development.
 
 {% include section.html %}
 
