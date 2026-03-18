@@ -27,7 +27,7 @@ For general inquiries, research opportunities, or collaborations, please feel fr
   include button.html
   type="address"
   tooltip="Our location on Google Maps for easy navigation"
-  link="[https://www.google.com/maps](https://maps.app.goo.gl/ot9vEXhxaj5dYCRR6)"
+  link="https://maps.app.goo.gl/bR8fo5qcdAr8dL8y6"
 %}
 
 {% include section.html %}
