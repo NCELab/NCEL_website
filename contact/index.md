@@ -30,48 +30,18 @@ For general inquiries, research opportunities, or collaborations, please feel fr
   link="https://maps.app.goo.gl/bR8fo5qcdAr8dL8y6"
 %}
 
-{% include section.html %}
+---
 
-{% capture col1 %}
+### Join the Lab
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+We welcome students and researchers interested in cognitive neuroscience, emotion, and neuroimaging methods (e.g., EEG, fMRI).
 
-{% endcapture %}
+If you are interested in joining the lab, please email us with:
+- A brief description of your interests  
+- Your CV or resume  
 
-{% capture col2 %}
+---
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+### Collaborations
 
-{% endcapture %}
-
-{% include cols.html col1=col1 col2=col2 %}
-
-{% include section.html dark=true %}
-
-{% capture col1 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
-{% endcapture %}
-
-{% capture col2 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
-{% endcapture %}
-
-{% capture col3 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
-{% endcapture %}
-
-{% include cols.html col1=col1 col2=col2 col3=col3 %}
+We are open to collaborations across cognitive neuroscience, clinical science, and computational approaches. Please reach out via email to discuss potential projects.
