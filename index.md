@@ -1,7 +1,7 @@
 ---
 ---
 
-# NCELab's Website
+# NCEL's Website
 
 Welcome to the Neuro-Cognition and Emotion Lab (NCEL), where we explore how cognition and emotion interact to shape behavior and mental health across development.
 
