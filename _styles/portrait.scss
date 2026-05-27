@@ -2,7 +2,10 @@
 ---
 
 .portrait-wrapper {
-  display: contents;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center;
 }
 
 .portrait {
@@ -12,7 +15,7 @@
   align-items: center;
   flex-direction: column;
   margin: 20px;
-  width: 175px;
+  width: 220px;
   max-width: calc(100% - 20px - 20px);
   text-decoration: none;
 }
