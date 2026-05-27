@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   --repeat: 3;
-  grid-template-columns: repeat(var(--repeat), 1fr);
+  grid-template-columns: repeat(var(--repeat), minmax(0, 300px));
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
