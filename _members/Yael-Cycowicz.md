@@ -2,6 +2,7 @@
 name: Yael M. Cycowicz
 image: images/photo.jpg
 role: pi
+order: 1
 description: principal-investigator
 affiliation: Columbia University / New York State Psychiatric Institute
 aliases:
