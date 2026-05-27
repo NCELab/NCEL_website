@@ -1,7 +1,7 @@
 ---
 name: Jumi Park
 image: images/photo.jpg
-role: student
+role: intern
 order: 2
 description: intern
 affiliation: Columbia University / New York State Psychiatric Institute
