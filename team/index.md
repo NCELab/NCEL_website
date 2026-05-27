@@ -12,16 +12,17 @@ Meet our team.
 {% include section.html %}
 
 ## PI
-<div class="pi-grid">
+<div class="grid" style="--repeat: 2;">
 {% include list.html data="members" component="portrait" filter="role == 'pi'" sort="order" %}
 </div>
 
 ## Interns
 
-<div class="intern-grid">
+<div class="grid" style="--repeat: 2;">
 {% include list.html data="members" component="portrait" filter="role == 'intern'" sort="order" %}
 </div>
 
 ## Alumni
-
+<div class="grid" style="--repeat: 2;">
 {% include list.html data="members" component="portrait" filter="role == 'alumni'" sort="order" %}
+</div>
