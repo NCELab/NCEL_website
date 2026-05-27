@@ -1,6 +1,6 @@
 ---
 name: Kelly Wang
-image: images/photo.jpg
+image: images/Kelly_headshot.jpg
 role: student
 order: 1
 description: research intern
