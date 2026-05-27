@@ -1,7 +1,7 @@
 ---
 name: Kelly Wang
 image: images/Kelly_headshot.jpg
-role: student
+role: intern
 order: 1
 description: intern
 affiliation: Columbia University / New York State Psychiatric Institute
