@@ -1,6 +1,6 @@
 ---
 name: Sydney Lee
-image: images/photo.jpg
+image: images/Sydney_Headshot.jpg
 role: Alumni
 order: 1
 description: Alumni
