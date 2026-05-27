@@ -1,3 +1,4 @@
+---
 name: Ruixuan Zhao
 image: images/photo.jpg
 role: pi
