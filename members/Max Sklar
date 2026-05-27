@@ -510,7 +510,7 @@
       
         <a
           href="/NCEL_website/projects/"
-          data-tooltip="Software, datasets, and more"
+          data-tooltip="Research projects"
         >
           Projects
         </a>
