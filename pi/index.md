@@ -1,11 +1,12 @@
 ---
-title: RA
+title: PI
 ---
-# Research Assistants
+
+# Principal Investigator
 
 {% include list.html
    data="members"
    component="portrait"
-   filter="role == 'ra'"
+   filter="role == 'pi'"
    sort="order"
 %}
