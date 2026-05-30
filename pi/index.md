@@ -1,10 +1,11 @@
 ---
-title: PI
-nav:
-  order: 3
-  tooltip: Principal Investigator
+title: RA
 ---
+# Research Assistants
 
-# Principal Investigator
-
-{% include list.html data="members" component="portrait" filter="role == 'pi'" sort="order" %}
+{% include list.html
+   data="members"
+   component="portrait"
+   filter="role == 'ra'"
+   sort="order"
+%}
