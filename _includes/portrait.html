@@ -47,5 +47,10 @@
         {{ member.affiliation }}
       </span>
     {% endif %}
+    {% if member.content %}
+      <div class="portrait-bio">
+        {{ member.content }}
+      </div>
+{% endif %}
   </a>
 </div>
