@@ -1,11 +1,11 @@
 ---
 title: Research Assistants
 ---
-# Research Assistants
+# Research Interns
 
 {% include list.html
    data="members"
    component="portrait"
-   filter="role == 'ra'"
+   filter="role == 'intern'"
    sort="order"
 %}
