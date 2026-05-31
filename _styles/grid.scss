@@ -18,21 +18,8 @@ $one: 500px;
   min-width: 0;
   min-height: 0;
   width: 100%;
-  // max-height: 50vh;
   margin: 0 !important;
 }
-
-// @media (max-width: $two) {
-//   .grid {
-//     --repeat: 2;
-//   }
-// }
-
-// /@media (max-width: $one) {
-//   .grid {
-//     --repeat: 1;
-//   }
-// }
 
 .grid[data-style="square"] {
   align-items: center;
@@ -51,8 +38,4 @@ $one: 500px;
 
 .grid > :where(h1, h2, h3, h4, h5, h6) {
   display: none;
-.grid:has(.portrait) {
-  --repeat: 1;
-  grid-template-columns: minmax(0, 900px);
-  }
 }
