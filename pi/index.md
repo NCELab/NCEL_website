@@ -1,5 +1,5 @@
 ---
-title: PI
+title: Principal Investigator
 ---
 
 # Principal Investigator
