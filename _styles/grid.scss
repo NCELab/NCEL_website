@@ -6,8 +6,8 @@ $one: 500px;
 
 .grid {
   display: grid;
-  --repeat: 3;
-  grid-template-columns: repeat(var(--repeat), minmax(0, 300px));
+  --repeat: 1;
+  grid-template-columns: minmax(0, 900px);
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
@@ -22,16 +22,16 @@ $one: 500px;
   margin: 0 !important;
 }
 
-@media (max-width: $two) {
-  .grid {
-    --repeat: 2;
-  }
+// @media (max-width: $two) {
+//   .grid {
+//     --repeat: 2;
+//   }
 }
 
-@media (max-width: $one) {
-  .grid {
-    --repeat: 1;
-  }
+// /@media (max-width: $one) {
+//   .grid {
+//     --repeat: 1;
+//   }
 }
 
 .grid[data-style="square"] {
@@ -51,4 +51,8 @@ $one: 500px;
 
 .grid > :where(h1, h2, h3, h4, h5, h6) {
   display: none;
+.grid:has(.portrait) {
+  --repeat: 1;
+  grid-template-columns: minmax(0, 900px);
+  }
 }
