@@ -7,24 +7,21 @@
 
 .portrait {
   position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 20px;
-  width: 175px;
-  max-width: calc(100% - 20px - 20px);
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+  margin: 24px 0;
+  text-align: left;
   text-decoration: none;
 }
 
-.portrait[data-style="small"] {
-  width: 100px;
+.portrait-left {
+  flex: 0 0 180px;
 }
 
-.portrait[data-style="tiny"] {
-  flex-direction: row;
-  gap: 15px;
-  width: unset;
+.portrait-right {
+  flex: 1;
   text-align: left;
 }
 
@@ -43,37 +40,67 @@
   transform: translate(14%, 14%);
 }
 
-.portrait[data-style="small"] .icon {
-  left: -2px;
-  top: -2px;
-}
-
-.portrait[data-style="tiny"] .icon {
-  display: none;
-}
-
 .portrait-image {
-  width: 100%;
-  margin-bottom: 20px;
+  width: 180px;
+  height: 180px;
+  margin-bottom: 0;
   aspect-ratio: 1 / 1;
   border-radius: 999px;
   object-fit: cover;
   box-shadow: var(--shadow);
 }
 
-.portrait[data-style="tiny"] .portrait-image {
-  width: 50px;
-  margin: 0;
+.portrait-name,
+.portrait-description,
+.portrait-affiliation {
+  display: block;
 }
 
 .portrait-name {
   font-family: var(--heading);
   font-weight: var(--semi-bold);
+  font-size: 1.3rem;
+  margin-bottom: 6px;
 }
 
+.portrait-description {
+  margin-bottom: 6px;
+}
+
+.portrait-affiliation {
+  margin-bottom: 16px;
+}
+
+.portrait-bio {
+  line-height: 1.7;
+}
+
+/* small style */
+.portrait[data-style="small"] {
+  width: 100px;
+}
+
+/* tiny style */
 .portrait[data-style="tiny"] {
-  .portrait-description,
-  .portrait-affiliation {
-    display: none;
-  }
+  flex-direction: row;
+  gap: 15px;
+  width: unset;
+  margin: 0;
+  text-align: left;
+}
+
+.portrait[data-style="tiny"] .icon {
+  display: none;
+}
+
+.portrait[data-style="tiny"] .portrait-image {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+}
+
+.portrait[data-style="tiny"] .portrait-description,
+.portrait[data-style="tiny"] .portrait-affiliation,
+.portrait[data-style="tiny"] .portrait-bio {
+  display: none;
 }
