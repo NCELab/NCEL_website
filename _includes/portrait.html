@@ -18,39 +18,46 @@
     data-style="{{ include.style }}"
     aria-label="{{ member.name | default: "member link" | regex_strip }}"
   >
-    {% if type %}
-      {% include icon.html icon=type.icon %}
-    {% endif %}
 
-    <img
-      src="{{ member.image | relative_url | uri_escape }}"
-      class="portrait-image"
-      alt="member portrait"
-      loading="lazy"
-      {% include fallback.html %}
-    >
+    <div class="portrait-left">
+      {% if type %}
+        {% include icon.html icon=type.icon %}
+      {% endif %}
 
-    {% if member.name %}
-      <span class="portrait-name">
-        {{ member.name }}
-      </span>
-    {% endif %}
+      <img
+        src="{{ member.image | relative_url | uri_escape }}"
+        class="portrait-image"
+        alt="member portrait"
+        loading="lazy"
+        {% include fallback.html %}
+      >
+    </div>
 
-    {% if member.description or type %}
-      <span class="portrait-description">
-        {{ member.description | default: type.description }}
-      </span>
-    {% endif %}
+    <div class="portrait-right">
+      {% if member.name %}
+        <span class="portrait-name">
+          {{ member.name }}
+        </span>
+      {% endif %}
 
-    {% if member.affiliation %}
-      <span class="portrait-affiliation">
-        {{ member.affiliation }}
-      </span>
-    {% endif %}
-    {% if member.content %}
-      <div class="portrait-bio">
-        {{ member.content }}
-      </div>
-{% endif %}
+      {% if member.description or type %}
+        <span class="portrait-description">
+          {{ member.description | default: type.description }}
+        </span>
+      {% endif %}
+
+      {% if member.affiliation %}
+        <span class="portrait-affiliation">
+          {{ member.affiliation }}
+        </span>
+      {% endif %}
+
+      {% if member.content %}
+        <div class="portrait-bio">
+          {{ member.content }}
+        </div>
+      {% endif %}
+    </div>
+
   </a>
 </div>
