@@ -1,5 +1,5 @@
 ---
-title: RA
+title: Research Assistants
 ---
 # Research Assistants
 
