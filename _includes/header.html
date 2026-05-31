@@ -47,26 +47,37 @@
   %}
 
   {% for page in pages %}
-    {% if page.title == "Our Team" %}
+    
+  {% if page.title == "Our Team" %}
       <div class="nav-dropdown">
         <a href="{{ page.dir | relative_url }}">
           Our Team ▾
         </a>
-
         <div class="nav-dropdown-content">
           <a href="{{ '/team/#principal-investigator' | relative_url }}">Principal Investigator</a>
           <a href="{{ '/team/#research-assistants' | relative_url }}">Research Assistants</a>
           <a href="{{ '/team/#alumni' | relative_url }}">Alumni</a>
         </div>
       </div>
-    {% else %}
-      <a
-        href="{{ page.dir | relative_url | uri_escape }}"
-        data-tooltip="{{ page.nav.tooltip | xml_escape }}"
-      >
-        {{ page.title }}
-      </a>
-    {% endif %}
-  {% endfor %}
+  {% elsif page.title == "Projects" %}
+      <div class="nav-dropdown">
+        <a href="{{ page.dir | relative_url }}">
+          Projects ▾
+        </a>
+        <div class="nav-dropdown-content">
+          <a href="{{ '/projects/#memory-trauma' | relative_url }}">Memory &amp; Trauma</a>
+          <a href="{{ '/projects/#attention-neurodevelopment' | relative_url }}">Attention &amp; Neurodevelopment</a>
+          <a href="{{ '/projects/#risk-decision-mental-health' | relative_url }}">Risk-Taking &amp; Decision-Making</a>
+        </div>
+      </div>
+  {% else %}
+    
+          href="{{ page.dir | relative_url | uri_escape }}"
+          data-tooltip="{{ page.nav.tooltip | xml_escape }}"
+        >
+          {{ page.title }}
+        </a>
+  {% endif %}
+{% endfor %}
 </nav>
 </header>
