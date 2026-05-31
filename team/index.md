@@ -10,7 +10,7 @@ nav:
 
 {% include list.html data="members" component="portrait" filter="role == pi" sort="order" %}
 
-## Research interns
+## Research Assistants
 
 {% include list.html data="members" component="portrait" filter="role == ra" sort="order" %}
 
