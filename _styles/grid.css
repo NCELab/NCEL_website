@@ -31,9 +31,5 @@
 .grid > :where(h1, h2, h3, h4, h5, h6) {
   display: none;
 }
-.grid > :where(h1, h2, h3, h4, h5, h6) .grid:has(.portrait) {
-  --repeat: 1;
-  grid-template-columns: minmax(0, 900px);
-}
 
 /*# sourceMappingURL=grid.css.map */
