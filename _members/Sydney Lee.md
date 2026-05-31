@@ -1,7 +1,7 @@
 ---
 name: Sydney Lee
 image: images/Sydney_Headshot.jpg
-role: Alumni
+role: alumni
 order: 1
 description: Alumni
 affiliation: University of Nevada, Las Vegas
