@@ -3,7 +3,7 @@
   --repeat: 1;
   grid-template-columns: minmax(0, 900px);
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 40px;
   margin: 40px 0;
 }
