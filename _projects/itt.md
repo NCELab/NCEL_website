@@ -2,6 +2,7 @@
 title: ITT
 subtitle: Intergenerational Trauma and Transmission
 group: memory-trauma
+layout: project
 tags:
   - Trauma
   - Intergenerational
