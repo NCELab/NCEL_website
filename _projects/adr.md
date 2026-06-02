@@ -2,6 +2,7 @@
 title: ADR
 subtitle: Attention Dysregulation Research
 group: attention-neurodevelopment
+layout: project
 tags:
   - ADHD
   - Attention
