@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .portrait-wrapper {
   display: flex;
   flex-direction: column;
@@ -9,8 +10,9 @@
   align-items: flex-start;
   gap: 30px;
   width: 100%;
-  height: 100%; /* add this line */
-  margin: 24px 0;
+  height: 100%;
+  padding: 24px 0; /* ← margin change to padding */
+  margin: 0; /* ← delete margin */
   text-align: left;
   text-decoration: none;
 }
