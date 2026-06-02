@@ -14,18 +14,18 @@ Our research projects examine how trauma, memory, attention, neurodevelopment, a
 ## Memory & Trauma
 {: #memory-trauma }
 
-{% include list.html component="card" data="projects" filter="group == 'memory-trauma'" %}
+{% include list.html component="project-excerpt" data="projects" filter="group == 'memory-trauma'" %}
 
 {% include section.html %}
 
 ## Attention & Neurodevelopment
 {: #attention-neurodevelopment }
 
-{% include list.html component="card" data="projects" filter="group == 'attention-neurodevelopment'" %}
+{% include list.html component="project-excerpt" data="projects" filter="group == 'attention-neurodevelopment'" %}
 
 {% include section.html %}
 
 ## Risk-Taking, Decision-Making & Mental Health
 {: #risk-decision-mental-health }
 
-{% include list.html component="card" data="projects" filter="group == 'risk-decision-mental-health'" %}
+{% include list.html component="project-excerpt" data="projects" filter="group == 'risk-decision-mental-health'" %}
