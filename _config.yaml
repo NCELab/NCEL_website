@@ -46,6 +46,8 @@ collections:
   posts:
     output: true
   projects:
+    output: true
+  get-involved:
     output: true 
 
 # jekyll plugins
