@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 
 .portrait {
@@ -11,12 +10,13 @@
   align-items: flex-start;
   gap: 30px;
   width: 100%;
-  flex: 1;
+  height: 280px;
   padding: 24px 0;
   margin: 0;
   text-align: left;
   text-decoration: none;
   color: var(--text);
+  overflow: hidden;
 }
 
 .portrait:hover {
@@ -30,6 +30,7 @@
 .portrait-right {
   flex: 1;
   text-align: left;
+  overflow: hidden;
 }
 
 .portrait .icon {
@@ -80,6 +81,10 @@
 
 .portrait-bio {
   line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* small style */
@@ -92,8 +97,10 @@
   flex-direction: row;
   gap: 15px;
   width: unset;
+  height: unset;
   margin: 0;
   text-align: left;
+  overflow: visible;
 }
 
 .portrait[data-style=tiny] .icon {
