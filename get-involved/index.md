@@ -24,15 +24,3 @@ We welcome individuals interested in contributing to our research — whether as
   icon="fa-solid fa-arrow-right"
   flip=true
 %}
-
-## Research Position
-{: #research-position }
-
-{% include list.html data="involved" component="portrait" filter="role == 'research-position'" %}
-
-{% include section.html %}
-
-## Be a Participant
-{: #be-a-participant }
-
-{% include list.html data="involved" component="portrait" filter="role == 'participant'" %}
