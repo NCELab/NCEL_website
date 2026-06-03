@@ -64,6 +64,14 @@
           <a href="{{ '/projects/#attention-neurodevelopment' | relative_url }}">Attention &amp; Neurodevelopment</a>
           <a href="{{ '/projects/#risk-decision-mental-health' | relative_url }}">Risk-Taking &amp; Decision-Making</a>
         </div>
+    {% elsif page.title == "Get Involved" %}
+      <div class="nav-dropdown">
+      <a href="{{ page.dir | relative_url }}">Get Involved ▾</a>
+      <div class="nav-dropdown-content">
+      <a href="{{ '/get-involved/research-position' | relative_url }}">Research Position</a>
+      <a href="{{ '/get-involved/be-a-participant' | relative_url }}">Be a Participant</a>
+    </div>
+  </div>
       </div>
     {% else %}
       <a href="{{ page.dir | relative_url | uri_escape }}" data-tooltip="{{ page.nav.tooltip | xml_escape }}">{{ page.title }}</a>
