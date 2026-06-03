@@ -24,7 +24,7 @@
   <div class="project-excerpt-right">
     {% if include.content and include.content != "" %}
       <div class="project-excerpt-content">
-        {{ include.content | markdownify | truncatewords: 60 }}
+        {{ include.content | markdownify | truncatewords: 60 }} /* ← the word limits shows on project main page */
       </div>
     {% endif %}
 
