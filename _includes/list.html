@@ -23,8 +23,13 @@
     {% assign data = data | sort: "date" | reverse %}
   {% endif %}
 
-  {% for d in data %}
-    {% assign style = d.style | default: include.style %}
+{% for d in data %}
+  {% assign style = d.style | default: include.style %}
+
+  {%
+    include {{ include.component | append: ".html" }}
+  %}
+{% endfor %}
 
     {%
       include {{ include.component | append: ".html" }}
