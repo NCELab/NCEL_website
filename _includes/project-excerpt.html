@@ -23,10 +23,11 @@
 
   <div class="project-excerpt-right">
     {% if include.content and include.content != "" %}
-      <div class="project-excerpt-content">
-        {{ include.content | markdownify | truncatewords: 60 }}
-      </div>
-    {% endif %}
+    <div class="project-excerpt-content">
+      {{ include.content | truncatewords: 60 | markdownify }}
+    </div>
+  {% endif %}
+    
 
     {% if include.url and include.url != "" %}
       <div class="project-excerpt-link">
