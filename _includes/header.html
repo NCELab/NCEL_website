@@ -19,11 +19,9 @@
   <a href="{{ "/" | relative_url }}" class="home">
     {% if logo %}
       <span class="logo">
-        {% if svg %}
-          {{ svg | file_read }}
-        {% else %}
           <img src="{{ logo | relative_url }}" alt="logo">
-        {% endif %}
+      </span>
+    {% endif %}
       </span>
     {% endif %}
     {% if site.logo-text != false %}
