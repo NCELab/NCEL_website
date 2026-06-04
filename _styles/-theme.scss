@@ -14,6 +14,7 @@
   --overlay: #00000020;
   --logo-panel: #ffffff;
   --logo-border: rgba(7, 149, 217, 0.32);
+  --background-scrim: rgba(255, 255, 255, 0.12);
 }
 [data-dark="true"] {
   --primary: #0795d9;
@@ -27,6 +28,7 @@
   --overlay: #ffffff10;
   --logo-panel: #ffffff;
   --logo-border: rgba(125, 211, 252, 0.5);
+  --background-scrim: rgba(255, 255, 255, 0.12);
 }
 
 :root {
