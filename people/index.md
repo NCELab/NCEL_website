@@ -6,6 +6,7 @@ nav:
 ---
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left;">
+<div class="people-full-bio" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left;">
 
 <div>
 
