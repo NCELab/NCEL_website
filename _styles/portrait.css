@@ -119,4 +119,14 @@
   display: none;
 }
 
+.people-full-bio .portrait-bio {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.people-full-bio .portrait {
+  height: 400;
+}
+
 /*# sourceMappingURL=portrait.css.map */
