@@ -19,11 +19,10 @@
   <a href="{{ "/" | relative_url }}" class="home">
     {% if logo %}
       <span class="logo">
-          <img src="{{ logo | relative_url }}" alt="logo">
+        <img src="{{ logo | relative_url }}" alt="logo">
       </span>
     {% endif %}
 
-    
     {% if site.logo-text != false %}
       <span class="title-text" data-tooltip="Home">
         {% if site.title and site.show-title != false %}
@@ -38,42 +37,43 @@
 
   <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
 
-<nav>
-  {% assign pages = site.pages
-    | where_exp: "page", "page.nav"
-    | sort: "nav.order"
-  %}
+  <nav>
+    {% assign pages = site.pages
+      | where_exp: "page", "page.nav"
+      | sort: "nav.order"
+    %}
 
-  {% for page in pages %}
-    {% if page.title == "Our Team" %}
-      <div class="nav-dropdown">
-        <a href="{{ page.dir | relative_url }}">Our Team ▾</a>
-        <div class="nav-dropdown-content">
-          <a href="{{ '/team/#principal-investigator' | relative_url }}">Principal Investigator</a>
-          <a href="{{ '/team/#research-assistants' | relative_url }}">Research Assistants</a>
-          <a href="{{ '/team/#alumni' | relative_url }}">Alumni</a>
+    {% for page in pages %}
+      {% if page.title == "Our Team" %}
+        <div class="nav-dropdown">
+          <a href="{{ '/pi/' | relative_url }}">People &#9662;</a>
+          <div class="nav-dropdown-content">
+            <a href="{{ '/pi/' | relative_url }}">Yael Cycowicz (PI)</a>
+            <a href="{{ '/team/' | relative_url }}">Our Team</a>
+          </div>
         </div>
-      </div>
-    {% elsif page.title == "Projects" %}
-      <div class="nav-dropdown">
-        <a href="{{ page.dir | relative_url }}">Projects ▾</a>
-        <div class="nav-dropdown-content">
-          <a href="{{ '/projects/#memory-trauma' | relative_url }}">Memory &amp; Trauma</a>
-          <a href="{{ '/projects/#attention-neurodevelopment' | relative_url }}">Attention &amp; Neurodevelopment</a>
-          <a href="{{ '/projects/#risk-decision-mental-health' | relative_url }}">Risk-Taking &amp; Decision-Making</a>
+      {% elsif page.title == "Yael Cycowicz (PI)" %}
+        {%- comment -%}Skip - handled in People dropdown above{%- endcomment -%}
+      {% elsif page.title == "Projects" %}
+        <div class="nav-dropdown">
+          <a href="{{ page.dir | relative_url }}">Projects &#9662;</a>
+          <div class="nav-dropdown-content">
+            <a href="{{ '/projects/#memory-trauma' | relative_url }}">Memory &amp; Trauma</a>
+            <a href="{{ '/projects/#attention-neurodevelopment' | relative_url }}">Attention &amp; Neurodevelopment</a>
+            <a href="{{ '/projects/#risk-decision-mental-health' | relative_url }}">Risk-Taking &amp; Decision-Making</a>
+          </div>
         </div>
-      </div>
-    {% elsif page.title == "Get Involved" %}
-      <div class="nav-dropdown">
-        <a href="{{ page.dir | relative_url }}">Get Involved ▾</a>
-        <div class="nav-dropdown-content">
-          <a href="{{ '/get-involved/research-position' | relative_url }}">Research Position</a>
-          <a href="{{ '/get-involved/be-a-participant' | relative_url }}">Be a Participant</a>
+      {% elsif page.title == "Get Involved" %}
+        <div class="nav-dropdown">
+          <a href="{{ page.dir | relative_url }}">Get Involved &#9662;</a>
+          <div class="nav-dropdown-content">
+            <a href="{{ '/get-involved/research-position' | relative_url }}">Research Position</a>
+            <a href="{{ '/get-involved/be-a-participant' | relative_url }}">Be a Participant</a>
+          </div>
         </div>
-      </div>
-    {% else %}
-      <a href="{{ page.dir | relative_url | uri_escape }}" data-tooltip="{{ page.nav.tooltip | xml_escape }}">{{ page.title }}</a>
-    {% endif %}
-  {% endfor %}
-</nav>
+      {% else %}
+        <a href="{{ page.dir | relative_url | uri_escape }}" data-tooltip="{{ page.nav.tooltip | xml_escape }}">{{ page.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
 </header>
