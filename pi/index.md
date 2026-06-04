@@ -1,6 +1,5 @@
 ---
 title: Yael Cycowicz (PI)
-nav:
   order: 3
 ---
 
