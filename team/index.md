@@ -1,12 +1,27 @@
 ---
-title: Our Team
+title: People
 nav:
   order: 3
 ---
+## Research Coordinator
+
+{: # Research Coordinator}
+
+{% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
+
+{% include section.html %}
 
 ## Research Assistants
 
-{: #research-assistants }
+{: # Research Assistant}
+
+{% include list.html data="members" component="portrait" filter="role == 'ra'" sort="order" %}
+
+{% include section.html %}
+
+## Intern
+
+{: #Intern }
 
 {% include list.html data="members" component="portrait" filter="role == 'intern'" sort="order" %}
 
