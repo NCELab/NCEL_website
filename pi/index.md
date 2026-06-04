@@ -1,5 +1,7 @@
 ---
 title: Yael Cycowicz (PI)
+nav:
+  order: 3
 ---
 
 ## Yael Cycowicz (PI)
@@ -14,4 +16,4 @@ title: Yael Cycowicz (PI)
 
 {: #collaborators }
 
-{% include list.html data="members" component="portrait" filter="role == 'collaborator'" sort="order" %}
+{% include list.html data="members" component="portrait" filter="role == 'coi'" sort="order" %}
