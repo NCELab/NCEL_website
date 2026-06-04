@@ -1,7 +1,7 @@
 ---
 name: Daniel Craft
 image: images/photo.jpg
-role: pi
+role: ra
 order: 3
 description: Research Coordinator
 affiliation: Fairleigh Dickinson University/ Columbia University / New York State Psychiatric Institute
