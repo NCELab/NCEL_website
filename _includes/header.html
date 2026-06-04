@@ -43,8 +43,9 @@
       | sort: "nav.order"
     %}
 
+        {% for page in pages %}
       {% if page.title == "People" %}
-        <div class="nav-dropdown">
+        <div class="nav-dropdown">  
           <a href="{{ '/people/' | relative_url }}">People &#9662;</a>
           <div class="nav-dropdown-content">
             <a href="{{ '/people/#principal-investigator' | relative_url }}">Yael Cycowicz (PI)</a>
