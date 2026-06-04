@@ -43,17 +43,16 @@
       | sort: "nav.order"
     %}
 
-      {% for page in pages %}
-        {% if page.title == "Our Team" %}
-          <div class="nav-dropdown">
-            <a href="{{ '/team/' | relative_url }}">People &#9662;</a>
-            <div class="nav-dropdown-content">
-              <a href="{{ '/pi/' | relative_url }}">Yael Cycowicz (PI)</a>
-              <a href="{{ '/team/' | relative_url }}">Our Team</a>
-            </div>
+      {% if page.title == "People" %}
+        <div class="nav-dropdown">
+          <a href="{{ '/people/' | relative_url }}">People &#9662;</a>
+          <div class="nav-dropdown-content">
+            <a href="{{ '/people/#principal-investigator' | relative_url }}">Yael Cycowicz (PI)</a>
+            <a href="{{ '/people/#our-team' | relative_url }}">Our Team</a>
           </div>
-      {% elsif page.title == "Yael Cycowicz (PI)" %}
-        {%- comment -%}Skip - handled above{%- endcomment -%}
+        </div>
+      {% elsif page.title == "Our Team" or page.title == "Yael Cycowicz (PI)" %}
+        {%- comment -%}Skip{%- endcomment -%}
       {% elsif page.title == "Projects" %}
         <div class="nav-dropdown">
           <a href="{{ page.dir | relative_url }}">Projects &#9662;</a>
