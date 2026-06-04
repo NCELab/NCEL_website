@@ -43,12 +43,6 @@ header a {
   align-items: center;
   justify-content: center;
   height: $logo;
-  padding: 4px;
-  background: var(--logo-panel);
-  border: 1px solid var(--logo-border);
-  border-radius: 6px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.16);
-  box-sizing: content-box;
 }
 
 .logo > * {
