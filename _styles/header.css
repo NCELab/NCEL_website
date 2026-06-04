@@ -27,12 +27,22 @@ header a {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   height: 40px;
+  padding: 4px;
+  background: var(--logo-panel);
+  border: 1px solid var(--logo-border);
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.16);
+  box-sizing: content-box;
 }
 
 .logo > * {
   width: unset;
   height: 100%;
+  display: block;
 }
 
 .title-text {
@@ -130,6 +140,7 @@ header[data-big] .home {
 }
 header[data-big] .logo {
   height: 80px;
+  padding: 8px;
   flex-shrink: 0;
 }
 header[data-big] .title-text {
