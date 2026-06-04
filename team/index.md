@@ -1,7 +1,7 @@
 ---
 title: Our Team
 nav:
-  order: 4
+  order: 3
 ---
 
 ## Research Assistants
