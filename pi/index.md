@@ -1,12 +1,19 @@
 ---
-title: Principal Investigator
+title: Yael Cycowicz (PI)
+nav:
+  order: 3
 ---
 
-# Principal Investigator
+## Yael Cycowicz (PI)
 
-{% include list.html
-   data="members"
-   component="portrait"
-   filter="role == 'pi'"
-   sort="order"
-%}
+{: #principal-investigator }
+
+{% include list.html data="members" component="portrait" filter="role == 'pi'" sort="order" %}
+
+{% include section.html %}
+
+## Collaborators
+
+{: #collaborators }
+
+{% include list.html data="members" component="portrait" filter="role == 'collaborator'" sort="order" %}
