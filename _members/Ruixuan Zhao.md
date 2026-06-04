@@ -1,7 +1,7 @@
 ---
 name: Ruixuan Zhao
 image: images/photo.jpg
-role: pi
+role: ra
 order: 4
 description: Research Assistant
 affiliation: Columbia University / New York State Psychiatric Institute
