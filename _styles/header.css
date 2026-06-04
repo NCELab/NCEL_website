@@ -30,7 +30,7 @@ header a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 60px;
 }
 
 .logo > * {
@@ -133,7 +133,7 @@ header[data-big] .home {
   flex-grow: 0;
 }
 header[data-big] .logo {
-  height: 80px;
+  height: 120px;
   padding: 8px;
   flex-shrink: 0;
 }
