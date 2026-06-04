@@ -1,9 +1,9 @@
 ---
 name: Diana V. Rodriguez Moreno
 image: images/photo.jpg
-role: collaborator
+role: coi
 order: 2
-description: Research Scientist
+description: Research Scientist 
 affiliation: Columbia University / New York State Psychiatric Institute
 links:
   Google Scholar: Diana V. Rodriguez Moreno
