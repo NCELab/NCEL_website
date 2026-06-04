@@ -152,3 +152,55 @@
   image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
   plugin: sources.py
   file: sources.yaml
+- id: doi:10.1016/S0149-7634(01)00019-7
+  title: 'The novelty P3: an event-related brain potential (ERP) sign of the brain''s
+    evaluation of novelty'
+  authors:
+  - David Friedman
+  - Yael M. Cycowicz
+  - Helen Gaeta
+  publisher: Neuroscience &amp; Biobehavioral Reviews
+  date: '2001-06-01'
+  link: https://doi.org/dtg968
+  tags:
+  - Cognitive brain potentials
+  - Orienting response
+  - Novelty P3
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1006/jecp.1996.2356
+  title: 'Picture Naming by Young Children: Norms for Name Agreement, Familiarity,
+    and Visual Complexity'
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  - Mairav Rothstein
+  - Joan Gay Snodgrass
+  publisher: Journal of Experimental Child Psychology
+  date: '1997-05-01'
+  link: https://doi.org/d5sz25
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/S0028-3932(00)00108-1
+  title: Recognition and source memory for pictures in children and adults
+  authors:
+  - Yael M Cycowicz
+  - David Friedman
+  - Joan Gay Snodgrass
+  - Martin Duff
+  publisher: Neuropsychologia
+  date: '2001-01-01'
+  link: https://doi.org/cf6723
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1017/S0048577298970664
+  title: Effects of aging on the novelty P3 during attend and ignore oddball tasks
+  authors:
+  - David Friedman
+  - Victoria A. Kazmerski
+  - Yael M. Cycowicz
+  publisher: Psychophysiology
+  date: '1998-09-01'
+  link: https://doi.org/bcs497
+  plugin: sources.py
+  file: sources.yaml
