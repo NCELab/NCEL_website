@@ -1,7 +1,5 @@
 ---
 title: Our Team
-nav:
-  order: 3
 ---
 ## Research Coordinator
 
