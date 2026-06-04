@@ -3,6 +3,7 @@ title: NERD
 subtitle: Neuroeconomic Approach to Risk Behavior in Adolescents with Depression
 group: risk-decision-mental-health
 layout: project
+image: images/nerd.jpg
 tags:
   - Depression
   - Risk-Taking
