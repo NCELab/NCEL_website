@@ -130,6 +130,16 @@
 .portrait[data-style="tiny"] .portrait-bio {
   display: none;
 }
+.people-full-bio .portrait {
+  overflow: visible;
+  height: auto;
+  min-height: unset;
+}
+
+.people-full-bio .portrait-right {
+  overflow: visible;
+}
+
 .people-full-bio .portrait-bio {
   display: block;
   -webkit-line-clamp: unset;
