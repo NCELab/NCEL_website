@@ -2,23 +2,39 @@
 .project-excerpt {
   display: flex;
   align-items: flex-start;
-  gap: 40px;
+  gap: 32px;
   width: 100%;
   margin: 24px 0;
-  padding: 30px;
+  padding: 0;
   background: var(--background);
   border-radius: var(--rounded);
   box-shadow: var(--shadow);
+  overflow: hidden;
   text-align: left;
   box-sizing: border-box;
 }
 
-/* ── Left column: acronym + subtitle + tags ── */
-.project-excerpt-left {
+/* ── left:pic ── */
+.project-excerpt-image {
   flex: 0 0 220px;
+  display: block;
+  align-self: stretch;
+}
+.project-excerpt-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── right ── */
+.project-excerpt-right {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  padding: 28px 28px 28px 0;
+  min-width: 0;
 }
 
 .project-excerpt-acronym {
@@ -27,14 +43,13 @@
   font-weight: var(--bold);
   color: var(--primary);
   line-height: 1.2;
+  margin-bottom: 4px;
 }
-
 .project-excerpt-acronym a {
   color: var(--primary);
   text-decoration: none;
   transition: color var(--transition);
 }
-
 .project-excerpt-acronym a:hover {
   color: var(--text);
 }
@@ -42,16 +57,15 @@
 .project-excerpt-subtitle {
   font-style: italic;
   color: var(--dark-gray);
-  line-height: var(--compact);
   font-size: 0.95rem;
+  line-height: var(--compact);
 }
 
-/* Non-clickable keyword tags */
 .project-excerpt-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .project-tag {
@@ -62,24 +76,12 @@
   color: var(--text);
   font-size: 0.8em;
   white-space: nowrap;
-  cursor: default;
-  user-select: none;
-}
-
-/* ── Right column: description + link ── */
-.project-excerpt-right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 0;
 }
 
 .project-excerpt-content {
   line-height: var(--spacing);
   color: var(--text);
 }
-
 .project-excerpt-content p {
   margin: 0;
   text-align: left;
@@ -93,11 +95,14 @@
 @media (max-width: 700px) {
   .project-excerpt {
     flex-direction: column;
-    gap: 20px;
   }
-  .project-excerpt-left {
+  .project-excerpt-image {
     flex: unset;
     width: 100%;
+    height: 200px;
+  }
+  .project-excerpt-right {
+    padding: 20px;
   }
 }
 
