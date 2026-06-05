@@ -1,32 +1,33 @@
 ---
 title: Our Team
 ---
-## Research Coordinator
 
-{: # Research Coordinator}
+<div class="people-full-bio">
+
+## Our Team
+
+### Research Coordinator
+
+{: #research-coordinator }
 
 {% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
 
-{% include section.html %}
+### Research Assistants
 
-## Research Assistants
-
-{: # Research Assistant}
+{: #research-assistant }
 
 {% include list.html data="members" component="portrait" filter="role == 'ra'" sort="order" %}
 
-{% include section.html %}
+### Interns
 
-## Intern
-
-{: #Intern }
+{: #intern }
 
 {% include list.html data="members" component="portrait" filter="role == 'intern'" sort="order" %}
 
-{% include section.html %}
-
-## Alumni
+### Alumni
 
 {: #alumni }
 
 {% include list.html data="members" component="portrait" filter="role == 'alumni'" sort="order" %}
+
+</div>
