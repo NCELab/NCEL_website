@@ -2,7 +2,7 @@
 title: Our Team
 ---
 
-<div class="people-full-bio">
+<div class="people-full-bio" markdown="1">
 
 ## Our Team
 
