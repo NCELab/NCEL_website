@@ -43,21 +43,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>People | Neuro-Cognition and Emotion Lab</title>
+<title>Neuro-Cognition and Emotion Lab</title>
 
 <link rel="icon" href="/NCEL_website/images/icon.png">
 
-<meta name="title" content="People">
+<meta name="title" content="">
 <meta name="description" content="An engaging 1-3 sentence description of your lab.">
 
-<meta property="og:title" content="People">
+<meta property="og:title" content="">
 <meta property="og:site_title" content="Neuro-Cognition and Emotion Lab">
 <meta property="og:description" content="An engaging 1-3 sentence description of your lab.">
 <meta property="og:url" content="https://ncelab.github.io/NCEL_website">
 <meta property="og:image" content="/NCEL_website/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="People">
+<meta property="twitter:title" content="">
 <meta property="twitter:description" content="An engaging 1-3 sentence description of your lab.">
 <meta property="twitter:url" content="https://ncelab.github.io/NCEL_website">
 <meta property="twitter:card" content="summary_large_image">
@@ -73,9 +73,9 @@
     
       "@type": "WebSite",
     
-    "name": "People",
+    "name": "",
     "description": "An engaging 1-3 sentence description of your lab.",
-    "headline": "People",
+    "headline": "",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/NCEL_website/images/icon.png" }
@@ -427,16 +427,6 @@
 
 
 <div class="nav-dropdown">
-<a href="/NCEL_website/people/">People ▾</a>
-<div class="nav-dropdown-content">
-<a href="/NCEL_website/pi/">Yael Cycowicz (PI)</a>
-<a href="/NCEL_website/team/">Our Team</a>
-</div>
-</div>
-
-
-
-<div class="nav-dropdown">
 <a href="/NCEL_website/get-involved/">Get Involved ▾</a>
 <div class="nav-dropdown-content">
 <a href="/NCEL_website/get-involved/research-position">Research Position</a>
@@ -470,176 +460,232 @@
   
 
   <section class="background" data-size="page">
-    <style>
-.people-tree {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 36px;
-  padding: 40px 20px;
-  font-family: var(--heading);
-}
+    <hr>
+<p>title: People
+nav:
+  order: 3
+    tooltip: Meet our team
+    —</p>
 
-.people-tree-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;style&gt;
+.people-page {
+  max-width: 900px;
+    margin: 0 auto;
+      padding: 40px 24px 60px;
+        font-family: var(--body);
+        }
 
-.people-tree-label {
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: var(--semi-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text);
-  opacity: 0.5;
-  margin-bottom: 14px;
-}
+        .people-section {
+          margin-bottom: 48px;
+          }
 
-.headshot-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: var(--text);
-  transition: opacity 0.2s, transform 0.2s;
-}
+          .people-section-label {
+            font-size: 0.78rem;
+              font-weight: var(--semi-bold);
+                text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                    color: var(--text);
+                      opacity: 0.5;
+                        margin-bottom: 20px;
+                          padding-bottom: 8px;
+                            border-bottom: 1px solid rgba(0,0,0,0.08);
+                            }
 
-.headshot-card:hover {
-  opacity: 0.8;
-  transform: translateY(-3px);
-}
+                            .people-card {
+                              display: flex;
+                                align-items: flex-start;
+                                  gap: 28px;
+                                    padding: 24px 0;
+                                      border-bottom: 1px solid rgba(0,0,0,0.06);
+                                        text-decoration: none;
+                                          color: var(--text);
+                                            transition: opacity 0.2s;
+                                            }
 
-.headshot-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 999px;
-  object-fit: cover;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-}
+                                            .people-card:last-child {
+                                              border-bottom: none;
+                                              }
 
-.headshot-name {
-  font-size: 0.88rem;
-  font-weight: var(--semi-bold);
-  text-align: center;
-  max-width: 155px;
-  line-height: 1.3;
-}
+                                              .people-card:hover {
+                                                opacity: 0.8;
+                                                }
 
-.headshot-role {
-  font-size: 0.75rem;
-  opacity: 0.55;
-  text-align: center;
-  max-width: 155px;
-  line-height: 1.3;
-}
+                                                .people-card-img {
+                                                  width: 110px;
+                                                    height: 110px;
+                                                      border-radius: 999px;
+                                                        object-fit: cover;
+                                                          box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+                                                            flex-shrink: 0;
+                                                            }
 
-.tree-row-divider {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-</style>
+                                                            .people-card-info {
+                                                              flex: 1;
+                                                              }
 
-<div class="people-tree">
+                                                              .people-card-name {
+                                                                font-family: var(--heading);
+                                                                  font-size: 1.2rem;
+                                                                    font-weight: var(--semi-bold);
+                                                                      margin: 0 0 4px 0;
+                                                                        color: var(--text);
+                                                                        }
 
-  <!-- PI Row -->
-  <div class="tree-row-divider">
-    <div class="people-tree-label">Principal Investigator</div>
-    <div class="people-tree-row">
-      
-      
-      <a href="/NCEL_website/members/Yael-Cycowicz.html" class="headshot-card">
-        <img src="/NCEL_website/images/photo.jpg" alt="Yael M. Cycowicz" class="headshot-img">
-        <span class="headshot-name">Yael M. Cycowicz</span>
-        <span class="headshot-role">principal-investigator</span>
-      </a>
-      
-    </div>
-  </div>
+                                                                        .people-card-role {
+                                                                          font-size: 0.95rem;
+                                                                            color: var(--primary);
+                                                                              font-weight: var(--semi-bold);
+                                                                                margin: 0 0 10px 0;
+                                                                                }
 
-  <!-- Collaborator Row -->
-  <div class="tree-row-divider">
-    <div class="people-tree-label">Collaborator</div>
-    <div class="people-tree-row">
-      
-      
-      <a href="/NCEL_website/members/Diana-Rodriguez-Moreno.html" class="headshot-card">
-        <img src="/NCEL_website/images/photo.jpg" alt="Diana V. Rodriguez Moreno" class="headshot-img">
-        <span class="headshot-name">Diana V. Rodriguez Moreno</span>
-        <span class="headshot-role">Research Scientist</span>
-      </a>
-      
-    </div>
-  </div>
+                                                                                .people-card-blurb {
+                                                                                  font-size: 0.9rem;
+                                                                                    line-height: 1.7;
+                                                                                      color: var(--text);
+                                                                                        opacity: 0.85;
+                                                                                          margin: 0;
+                                                                                          }
+                                                                                          &lt;/style&gt;
 
-  <!-- Research Coordinator & Research Assistant Row -->
-  <div class="tree-row-divider">
-    <div class="people-tree-label">Research Coordinator &amp; Research Assistant</div>
-    <div class="people-tree-row">
-      
-      
-      <a href="/NCEL_website/members/Daniel%20Craft.html" class="headshot-card">
-        <img src="/NCEL_website/images/photo.jpg" alt="Daniel Craft" class="headshot-img">
-        <span class="headshot-name">Daniel Craft</span>
-        <span class="headshot-role">Research Coordinator</span>
-      </a>
-      
-      
-      
-      <a href="/NCEL_website/members/Ruixuan%20Zhao.html" class="headshot-card">
-        <img src="/NCEL_website/images/photo.jpg" alt="Ruixuan Zhao" class="headshot-img">
-        <span class="headshot-name">Ruixuan Zhao</span>
-        <span class="headshot-role">Research Assistant</span>
-      </a>
-      
-    </div>
-  </div>
+                                                                                          &lt;div class="people-page"&gt;
 
-  <!-- Interns Row -->
-  <div class="tree-row-divider">
-    <div class="people-tree-label">Interns</div>
-    <div class="people-tree-row">
-      
-      
-      <a href="/NCEL_website/members/Kelly%20Wang.html" class="headshot-card">
-        <img src="/NCEL_website/images/Kelly_headshot.jpg" alt="Kelly Wang" class="headshot-img">
-        <span class="headshot-name">Kelly Wang</span>
-        <span class="headshot-role">intern</span>
-      </a>
-      
-      <a href="/NCEL_website/members/Jumi%20Park.html" class="headshot-card">
-        <img src="/NCEL_website/images/photo.jpg" alt="Jumi Park" class="headshot-img">
-        <span class="headshot-name">Jumi Park</span>
-        <span class="headshot-role">intern</span>
-      </a>
-      
-      <a href="/NCEL_website/members/Max%20Sklar.html" class="headshot-card">
-        <img src="/NCEL_website/images/Max_Headshot.jpg" alt="Max Sklar" class="headshot-img">
-        <span class="headshot-name">Max Sklar</span>
-        <span class="headshot-role">intern</span>
-      </a>
-      
-      <a href="/NCEL_website/members/Sanya%20Vadhavkar.html" class="headshot-card">
-        <img src="/NCEL_website/images/Sanya_headshot.jpg" alt="Sanya Vadhavkar" class="headshot-img">
-        <span class="headshot-name">Sanya Vadhavkar</span>
-        <span class="headshot-role">Intern</span>
-      </a>
-      
-      <a href="/NCEL_website/members/Morgan%20Arma.html" class="headshot-card">
-        <img src="/NCEL_website/images/Morgan_Headshot.jpg" alt="Morgan Arma" class="headshot-img">
-        <span class="headshot-name">Morgan Arma</span>
-        <span class="headshot-role">Intern</span>
-      </a>
-      
-    </div>
-  </div>
+                                                                                          &lt;!-- PI --&gt;
+                                                                                          &lt;div class="people-section"&gt;
+                                                                                          &lt;div class="people-section-label"&gt;Principal Investigator&lt;/div&gt;
+                                                                                          
+                                                                                          
+                                                                                          &lt;a href="/NCEL_website/members/Yael-Cycowicz.html" class="people-card"&gt;
+                                                                                            &lt;img src="/NCEL_website/images/photo.jpg" alt="Yael M. Cycowicz" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                              &lt;div class="people-card-info"&gt;
+                                                                                                  &lt;p class="people-card-name"&gt;Yael M. Cycowicz&lt;/p&gt;
+                                                                                                      &lt;p class="people-card-role"&gt;principal-investigator&lt;/p&gt;
+                                                                                                          
+                                                                                                              &lt;p class="people-card-blurb"&gt;Dr. Cycowicz is a cognitive neuroscientist with a strong foundation in neurophysiological research, employing methodologies such as MEG, EEG, and fMRI in combination with diverse experimental designs and advanced analytic approaches. Her work examines the dynamic relationships between brain activity and behavior, with a particular interest in neuroplasticity and how cognitive functions develop and change across the lifespan, from childhood through older...&lt;/p&gt;
+                                                                                                                  
+                                                                                                                    &lt;/div&gt;
+                                                                                                                    &lt;/a&gt;
+                                                                                                                    
+                                                                                                                    &lt;/div&gt;
+                                                                                                                    
+                                                                                                                    &lt;!-- Collaborator --&gt;
+                                                                                                                    &lt;div class="people-section"&gt;
+                                                                                                                    &lt;div class="people-section-label"&gt;Collaborator&lt;/div&gt;
+                                                                                                                    
+                                                                                                                    
+                                                                                                                    &lt;a href="/NCEL_website/members/Diana-Rodriguez-Moreno.html" class="people-card"&gt;
+                                                                                                                      &lt;img src="/NCEL_website/images/photo.jpg" alt="Diana V. Rodriguez Moreno" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                        &lt;div class="people-card-info"&gt;
+                                                                                                                            &lt;p class="people-card-name"&gt;Diana V. Rodriguez Moreno&lt;/p&gt;
+                                                                                                                                &lt;p class="people-card-role"&gt;Research Scientist&lt;/p&gt;
+                                                                                                                                    
+                                                                                                                                        &lt;p class="people-card-blurb"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</code></pre></div></div>
+<p>&lt;/p&gt;</p>
 
-</div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                                                                                                                              &lt;/div&gt;
+                                                                                                                                              &lt;/a&gt;
+                                                                                                                                              
+                                                                                                                                              &lt;/div&gt;
+                                                                                                                                              
+                                                                                                                                              &lt;!-- Research Coordinator &amp; Research Assistant --&gt;
+                                                                                                                                              &lt;div class="people-section"&gt;
+                                                                                                                                              &lt;div class="people-section-label"&gt;Research Coordinator &amp;amp; Research Assistant&lt;/div&gt;
+                                                                                                                                              
+                                                                                                                                              
+                                                                                                                                              
+                                                                                                                                              
+                                                                                                                                              &lt;a href="/NCEL_website/members/Daniel%20Craft.html" class="people-card"&gt;
+                                                                                                                                                &lt;img src="/NCEL_website/images/photo.jpg" alt="Daniel Craft" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                  &lt;div class="people-card-info"&gt;
+                                                                                                                                                      &lt;p class="people-card-name"&gt;Daniel Craft&lt;/p&gt;
+                                                                                                                                                          &lt;p class="people-card-role"&gt;Research Coordinator&lt;/p&gt;
+                                                                                                                                                              
+                                                                                                                                                                  &lt;p class="people-card-blurb"&gt;Daniel is a Clinical Psychology PhD student at Fairleigh Dickinson University whose work focuses on trauma, psychopathology, affective processes, and cognitive-emotional regulation. For the past six years, he has been a member of the NeuroCognition and Emotion Lab, where he currently serves as the Research Coordinator. In this role, he has managed large-scale research projects examining PTSD, intergenerational trauma, cognition,...&lt;/p&gt;
+                                                                                                                                                                      
+                                                                                                                                                                        &lt;/div&gt;
+                                                                                                                                                                        &lt;/a&gt;
+                                                                                                                                                                        
+                                                                                                                                              &lt;a href="/NCEL_website/members/Ruixuan%20Zhao.html" class="people-card"&gt;
+                                                                                                                                                &lt;img src="/NCEL_website/images/photo.jpg" alt="Ruixuan Zhao" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                  &lt;div class="people-card-info"&gt;
+                                                                                                                                                      &lt;p class="people-card-name"&gt;Ruixuan Zhao&lt;/p&gt;
+                                                                                                                                                          &lt;p class="people-card-role"&gt;Research Assistant&lt;/p&gt;
+                                                                                                                                                              
+                                                                                                                                                                  &lt;p class="people-card-blurb"&gt;Ruixuan Zhao received her M.A. in Quantitative Methods in the Social Sciences from Columbia University with a concentration in Data Science and her B.A. in Psychology from Barnard College. As a research assistant at the NeuroCognition and Emotion Lab, she has contributed to projects examining trauma, cognition, and mental health outcomes. Her research interests focus on trauma and human cognition,...&lt;/p&gt;
+                                                                                                                                                                      
+                                                                                                                                                                        &lt;/div&gt;
+                                                                                                                                                                        &lt;/a&gt;
+                                                                                                                                                                        
+                                                                                                                                                                        &lt;/div&gt;
+                                                                                                                                                                        
+                                                                                                                                                                        &lt;!-- Interns --&gt;
+                                                                                                                                                                        &lt;div class="people-section"&gt;
+                                                                                                                                                                        &lt;div class="people-section-label"&gt;Interns&lt;/div&gt;
+                                                                                                                                                                        
+                                                                                                                                                                        
+                                                                                                                                                                        &lt;a href="/NCEL_website/members/Kelly%20Wang.html" class="people-card"&gt;
+                                                                                                                                                                          &lt;img src="/NCEL_website/images/Kelly_headshot.jpg" alt="Kelly Wang" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                                            &lt;div class="people-card-info"&gt;
+                                                                                                                                                                                &lt;p class="people-card-name"&gt;Kelly Wang&lt;/p&gt;
+                                                                                                                                                                                    &lt;p class="people-card-role"&gt;intern&lt;/p&gt;
+                                                                                                                                                                                        
+                                                                                                                                                                                            &lt;p class="people-card-blurb"&gt;Kelly is a second -year M.A. student in the Clinical Psychology program at Teachers College, Columbia University. Her work in the NCEL lab focuses on data management and EEG preprocessing. She is deeply passionate about leveraging neuroimaging techniques (EEG, fMRI) within experimental paradigms to investigate how adverse or traumatic experiences shape cognitive functioning and emotional processing. Grounded in this perspective,...&lt;/p&gt;
+                                                                                                                                                                                                
+                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  &lt;/a&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                        &lt;a href="/NCEL_website/members/Jumi%20Park.html" class="people-card"&gt;
+                                                                                                                                                                          &lt;img src="/NCEL_website/images/photo.jpg" alt="Jumi Park" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                                            &lt;div class="people-card-info"&gt;
+                                                                                                                                                                                &lt;p class="people-card-name"&gt;Jumi Park&lt;/p&gt;
+                                                                                                                                                                                    &lt;p class="people-card-role"&gt;intern&lt;/p&gt;
+                                                                                                                                                                                        
+                                                                                                                                                                                            &lt;p class="people-card-blurb"&gt;Jumi is a second-year M.A. student in the Clinical Psychology program at Teachers College. Her research interests focus on understanding the underlying mechanisms of emotion and exploring how artificial intelligence and technology can be used to increase access to psychotherapy.
+</code></pre></div></div>
+<p>&lt;/p&gt;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  &lt;/a&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                        &lt;a href="/NCEL_website/members/Max%20Sklar.html" class="people-card"&gt;
+                                                                                                                                                                          &lt;img src="/NCEL_website/images/Max_Headshot.jpg" alt="Max Sklar" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                                            &lt;div class="people-card-info"&gt;
+                                                                                                                                                                                &lt;p class="people-card-name"&gt;Max Sklar&lt;/p&gt;
+                                                                                                                                                                                    &lt;p class="people-card-role"&gt;intern&lt;/p&gt;
+                                                                                                                                                                                        
+                                                                                                                                                                                            &lt;p class="people-card-blurb"&gt;Max is a second -year master’s student in the Clinical Psychology program at Teachers College with a concentration in Forensic Psychology. Their research interests include wartime sexual violence through an intersectional lens, conflict resolution in Israel/Palestine and other conflict-affected regions, and reducing sexual violence within carceral systems, with a particular focus on its disproportionate impact on queer incarcerated individuals.
+</code></pre></div></div>
+<p>&lt;/p&gt;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  &lt;/a&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                        &lt;a href="/NCEL_website/members/Sanya%20Vadhavkar.html" class="people-card"&gt;
+                                                                                                                                                                          &lt;img src="/NCEL_website/images/Sanya_headshot.jpg" alt="Sanya Vadhavkar" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                                            &lt;div class="people-card-info"&gt;
+                                                                                                                                                                                &lt;p class="people-card-name"&gt;Sanya Vadhavkar&lt;/p&gt;
+                                                                                                                                                                                    &lt;p class="people-card-role"&gt;Intern&lt;/p&gt;
+                                                                                                                                                                                        
+                                                                                                                                                                                            &lt;p class="people-card-blurb"&gt;Sanya is a second-year M.A. student in Clinical Psychology at Teachers College, Columbia University. She is interested in contributing to more holistic approaches to healthcare and hopes to work at the intersection of neuroscience and psychology. As she continues exploring her research interests, she is particularly drawn to understanding how brain and behavioral science can inform more integrated approaches to...&lt;/p&gt;
+                                                                                                                                                                                                
+                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  &lt;/a&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                        &lt;a href="/NCEL_website/members/Morgan%20Arma.html" class="people-card"&gt;
+                                                                                                                                                                          &lt;img src="/NCEL_website/images/Morgan_Headshot.jpg" alt="Morgan Arma" class="people-card-img" onerror="this.src='/NCEL_website/images/photo.jpg'"&gt;
+                                                                                                                                                                            &lt;div class="people-card-info"&gt;
+                                                                                                                                                                                &lt;p class="people-card-name"&gt;Morgan Arma&lt;/p&gt;
+                                                                                                                                                                                    &lt;p class="people-card-role"&gt;Intern&lt;/p&gt;
+                                                                                                                                                                                        
+                                                                                                                                                                                            &lt;p class="people-card-blurb"&gt;Morgan is a graduate student at Teachers College, Columbia University, where she is pursuing a master’s degree in psychology. Her academic and research interests include clinical psychology, trauma and resilience, suicide prevention, substance use treatment, and the ways social and interpersonal factors shape mental health. She is especially interested in working with individuals and communities affected by adversity, including veterans,...&lt;/p&gt;
+                                                                                                                                                                                                
+                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  &lt;/a&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                                                  &lt;/div&gt;
+                                                                                                                                                                                                  
+                                                                                                                                                                                                  &lt;/div&gt;
+</code></pre></div></div>
   </section>
 
 
