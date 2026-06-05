@@ -2,7 +2,7 @@
 title: Yael Cycowicz (PI)
 ---
 
-<div class="people-full-bio">
+<div class="people-full-bio" markdown="1">
 
 ## Yael Cycowicz (PI)
 
