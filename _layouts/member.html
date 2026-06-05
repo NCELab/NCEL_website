@@ -2,50 +2,156 @@
 layout: default
 ---
 
-{% capture floatcontent %}
+<style>
+/* ===== Member Profile Page ===== */
+.member-profile {
+  max-width: 860px;
+  margin: 0 auto 60px auto;
+  font-family: var(--body);
+}
 
-{% include portrait.html lookup=page.slug %}
+/* Banner */
+.member-banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 12px 12px;
+}
 
-<div>
-  {% for link in page.links %}
-    {% assign key = link[0] %}
-    {% assign value = link[1] %}
-    {% include button.html type=key link=value style="bare" %}<br>
-  {% endfor %}
+/* Card below banner */
+.member-card {
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 0 20px;
+  padding: 0 32px 32px 32px;
+  position: relative;
+  margin-top: -24px;
+}
+
+/* Avatar overlapping the card top */
+.member-avatar-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: -60px;
+  margin-bottom: 16px;
+}
+
+.member-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--background);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+
+.member-name-wrap {
+  padding-bottom: 8px;
+}
+
+.member-name {
+  font-family: var(--heading);
+  font-size: 1.7rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 4px 0;
+  color: var(--text);
+}
+
+.member-role {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+  margin: 0 0 2px 0;
+}
+
+.member-affiliation {
+  font-size: 0.9rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* Divider */
+.member-divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 20px 0;
+}
+
+/* About section */
+.member-about-title {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 10px 0;
+}
+
+.member-bio {
+  line-height: 1.75;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+/* Links row */
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+</style>
+
+<div class="member-profile">
+
+  <!-- Banner -->
+  <img
+    src="{{ '/images/background.png' | relative_url }}"
+    alt="Lab Banner"
+    class="member-banner"
+  >
+
+  <!-- Card -->
+  <div class="member-card">
+
+    <!-- Avatar + Name row -->
+    <div class="member-avatar-wrap">
+      <img
+        src="{{ page.image | relative_url | uri_escape }}"
+        alt="{{ page.name }}"
+        class="member-avatar"
+        onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'"
+      >
+      <div class="member-name-wrap">
+        <p class="member-name">{{ page.name }}</p>
+        <p class="member-role">{{ page.description }}</p>
+        <p class="member-affiliation">{{ page.affiliation }}</p>
+      </div>
+    </div>
+
+    <!-- Links -->
+    {% if page.links %}
+    <div class="member-links">
+      {% for link in page.links %}
+      {% assign key = link[0] %}
+      {% assign value = link[1] %}
+      {% include button.html type=key link=value style="button" %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <hr class="member-divider">
+
+    <!-- Bio -->
+    {% if page.content and page.content != "" %}
+    <p class="member-about-title">About</p>
+    <div class="member-bio">
+      {{ content }}
+    </div>
+    {% endif %}
+
+  </div>
+
 </div>
-
-{% endcapture %}
-
-{% include float.html content=floatcontent %}
-
-{{ content }}
-
-{% assign aliases = page.aliases
-  | default: page.name
-  | default: page.title
-  | join: ","
-  | split: ","
-  | array_filter
-%}
-
-{% capture search -%}
-  research/?search={% for alias in aliases %}"{{ alias }}" {% endfor %}
-{%- endcapture %}
-
-<p class="center">
-  <a href="{{ search | relative_url | uri_escape }}">
-    Search for {{ page.name | default: page.title }}'s papers on the Research page
-  </a>
-</p>
-
-{% capture search -%}
-  blog/?search={{ page.name }}
-{%- endcapture %}
-
-<!--
-<p class="center">
-  <a href="{{ search | relative_url | uri_escape }}">
-    See {{ page.name | default: page.title }}'s posts on the Blog page
-  </a>
-</p>
--->
