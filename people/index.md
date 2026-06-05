@@ -10,7 +10,7 @@ nav:
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 36px;
   padding: 40px 20px;
   font-family: var(--heading);
 }
@@ -18,19 +18,19 @@ nav:
 .people-tree-row {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
 .people-tree-label {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: var(--semi-bold);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: var(--text);
-  opacity: 0.6;
-  margin-bottom: 16px;
+  opacity: 0.5;
+  margin-bottom: 14px;
 }
 
 .headshot-card {
@@ -40,41 +40,36 @@ nav:
   gap: 8px;
   text-decoration: none;
   color: var(--text);
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 .headshot-card:hover {
-  opacity: 0.75;
+  opacity: 0.8;
+  transform: translateY(-3px);
 }
 
 .headshot-img {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 999px;
   object-fit: cover;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .headshot-name {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: var(--semi-bold);
   text-align: center;
-  max-width: 130px;
+  max-width: 155px;
+  line-height: 1.3;
 }
 
 .headshot-role {
-  font-size: 0.78rem;
-  opacity: 0.6;
+  font-size: 0.75rem;
+  opacity: 0.55;
   text-align: center;
-  max-width: 130px;
-}
-
-.tree-connector {
-  width: 2px;
-  height: 30px;
-  background: var(--text);
-  opacity: 0.2;
-  margin: 0 auto;
+  max-width: 155px;
+  line-height: 1.3;
 }
 
 .tree-row-divider {
@@ -102,8 +97,6 @@ nav:
     </div>
   </div>
 
-  <div class="tree-connector"></div>
-
   <!-- Collaborator Row -->
   <div class="tree-row-divider">
     <div class="people-tree-label">Collaborator</div>
@@ -118,8 +111,6 @@ nav:
       {% endfor %}
     </div>
   </div>
-
-  <div class="tree-connector"></div>
 
   <!-- Research Coordinator & Research Assistant Row -->
   <div class="tree-row-divider">
@@ -143,8 +134,6 @@ nav:
       {% endfor %}
     </div>
   </div>
-
-  <div class="tree-connector"></div>
 
   <!-- Interns Row -->
   <div class="tree-row-divider">
