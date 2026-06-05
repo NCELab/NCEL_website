@@ -416,57 +416,138 @@
   
 
   <section class="background" data-size="page">
-    <div class="float">
-  
-<div class="portrait-wrapper">
-  <a class="portrait" data-style="" aria-label="Yael M. Cycowicz">
+    <style>
+/* ===== Member Profile Page ===== */
+.member-profile {
+  max-width: 860px;
+  margin: 0 auto 60px auto;
+  font-family: var(--body);
+}
 
-    <div class="portrait-left">
-      
+/* Banner */
+.member-banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 12px 12px;
+}
 
-      <img src="/NCEL_website/images/photo.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/NCEL_website/images/fallback.svg'; this.onerror = null;">
+/* Card below banner */
+.member-card {
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 0 20px;
+  padding: 0 32px 32px 32px;
+  position: relative;
+  margin-top: -24px;
+}
+
+/* Avatar overlapping the card top */
+.member-avatar-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: -60px;
+  margin-bottom: 16px;
+}
+
+.member-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--background);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+
+.member-name-wrap {
+  padding-bottom: 8px;
+}
+
+.member-name {
+  font-family: var(--heading);
+  font-size: 1.7rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 4px 0;
+  color: var(--text);
+}
+
+.member-role {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+  margin: 0 0 2px 0;
+}
+
+.member-affiliation {
+  font-size: 0.9rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* Divider */
+.member-divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 20px 0;
+}
+
+/* About section */
+.member-about-title {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 10px 0;
+}
+
+.member-bio {
+  line-height: 1.75;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+/* Links row */
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+</style>
+
+<div class="member-profile">
+
+  <!-- Banner -->
+  <img src="/NCEL_website/images/background.png" alt="Lab Banner" class="member-banner">
+
+  <!-- Card -->
+  <div class="member-card">
+
+    <!-- Avatar + Name row -->
+    <div class="member-avatar-wrap">
+      <img src="/NCEL_website/images/photo.jpg" alt="Yael M. Cycowicz" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
+      <div class="member-name-wrap">
+        <p class="member-name">Yael M. Cycowicz</p>
+        <p class="member-role">principal-investigator</p>
+        <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>
+      </div>
     </div>
 
-    <div class="portrait-right">
-      
-        <span class="portrait-name">
-          Yael M. Cycowicz
-        </span>
-      
-
-      
-        <span class="portrait-description">
-          principal-investigator
-        </span>
-      
-
-      
-        <span class="portrait-affiliation">
-          Columbia University / New York State Psychiatric Institute
-        </span>
-      
-
-      
-        <div class="portrait-bio">
-          <p>Dr. Cycowicz is a cognitive neuroscientist with a strong foundation in neurophysiological research, employing methodologies such as MEG, EEG, and fMRI in combination with diverse experimental designs and advanced analytic approaches. Her work examines the dynamic relationships between brain activity and behavior, with a particular interest in neuroplasticity and how cognitive functions develop and change across the lifespan, from childhood through older adulthood. More recently, her research has expanded to investigate the interactions between cognition and emotion and how these processes are reshaped by exposure to trauma and by psychiatric conditions, including attention-deficit/hyperactivity disorder (ADHD), substance use disorders (SUD), anxiety, and depression.</p>
-
-        </div>
-      
-    </div>
-
-  </a>
-</div>
-
-<div>
-  
+    <!-- Links -->
     
-    
-    
+    <div class="member-links">
+      
+      
+      
+      
 
 
 
   <div class="button-wrapper">
-    <a class="button" href="https://www.columbiapsychiatry.org/profile/yael-cycowicz-phd" data-tooltip="Home page" data-style="bare" aria-label="Home page">
+    <a class="button" href="https://www.columbiapsychiatry.org/profile/yael-cycowicz-phd" data-tooltip="Home page" data-style="button" aria-label="Home page">
       <i class="icon fa-solid fa-house-user"></i>
       
         <span>Home Page</span>
@@ -474,36 +555,25 @@
     </a>
   </div>
 
-<br>
-  
+
+      
+    </div>
+    
+
+    <hr class="member-divider">
+
+    <!-- Bio -->
+    
+    <p class="member-about-title">About</p>
+    <div class="member-bio">
+      <p>Dr. Cycowicz is a cognitive neuroscientist with a strong foundation in neurophysiological research, employing methodologies such as MEG, EEG, and fMRI in combination with diverse experimental designs and advanced analytic approaches. Her work examines the dynamic relationships between brain activity and behavior, with a particular interest in neuroplasticity and how cognitive functions develop and change across the lifespan, from childhood through older adulthood. More recently, her research has expanded to investigate the interactions between cognition and emotion and how these processes are reshaped by exposure to trauma and by psychiatric conditions, including attention-deficit/hyperactivity disorder (ADHD), substance use disorders (SUD), anxiety, and depression.</p>
+
+    </div>
+    
+
+  </div>
+
 </div>
-
-
-</div>
-
-
-<p>Dr. Cycowicz is a cognitive neuroscientist with a strong foundation in neurophysiological research, employing methodologies such as MEG, EEG, and fMRI in combination with diverse experimental designs and advanced analytic approaches. Her work examines the dynamic relationships between brain activity and behavior, with a particular interest in neuroplasticity and how cognitive functions develop and change across the lifespan, from childhood through older adulthood. More recently, her research has expanded to investigate the interactions between cognition and emotion and how these processes are reshaped by exposure to trauma and by psychiatric conditions, including attention-deficit/hyperactivity disorder (ADHD), substance use disorders (SUD), anxiety, and depression.</p>
-
-
-
-
-
-
-<p class="center">
-  <a href="/NCEL_website/research/?search=%22Y.%20Cycowicz%22%20%22Yael%20Cycowicz%22%20">
-    Search for Yael M. Cycowicz's papers on the Research page
-  </a>
-</p>
-
-
-
-<!--
-<p class="center">
-  <a href="/NCEL_website/blog/?search=Yael%20M.%20Cycowicz">
-    See Yael M. Cycowicz's posts on the Blog page
-  </a>
-</p>
--->
   </section>
 
 

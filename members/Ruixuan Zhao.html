@@ -416,77 +416,143 @@
   
 
   <section class="background" data-size="page">
-    <div class="float">
-  
-<div class="portrait-wrapper">
-  <a class="portrait" data-style="" aria-label="Ruixuan Zhao">
+    <style>
+/* ===== Member Profile Page ===== */
+.member-profile {
+  max-width: 860px;
+  margin: 0 auto 60px auto;
+  font-family: var(--body);
+}
 
-    <div class="portrait-left">
-      
+/* Banner */
+.member-banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 0 12px 12px;
+}
 
-      <img src="/NCEL_website/images/photo.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/NCEL_website/images/fallback.svg'; this.onerror = null;">
+/* Card below banner */
+.member-card {
+  background: var(--background);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin: 0 20px;
+  padding: 0 32px 32px 32px;
+  position: relative;
+  margin-top: -24px;
+}
+
+/* Avatar overlapping the card top */
+.member-avatar-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  margin-top: -60px;
+  margin-bottom: 16px;
+}
+
+.member-avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--background);
+  box-shadow: var(--shadow);
+  flex-shrink: 0;
+}
+
+.member-name-wrap {
+  padding-bottom: 8px;
+}
+
+.member-name {
+  font-family: var(--heading);
+  font-size: 1.7rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 4px 0;
+  color: var(--text);
+}
+
+.member-role {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+  margin: 0 0 2px 0;
+}
+
+.member-affiliation {
+  font-size: 0.9rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
+/* Divider */
+.member-divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 20px 0;
+}
+
+/* About section */
+.member-about-title {
+  font-family: var(--heading);
+  font-size: 1.1rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 10px 0;
+}
+
+.member-bio {
+  line-height: 1.75;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+/* Links row */
+.member-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+</style>
+
+<div class="member-profile">
+
+  <!-- Banner -->
+  <img src="/NCEL_website/images/background.png" alt="Lab Banner" class="member-banner">
+
+  <!-- Card -->
+  <div class="member-card">
+
+    <!-- Avatar + Name row -->
+    <div class="member-avatar-wrap">
+      <img src="/NCEL_website/images/photo.jpg" alt="Ruixuan Zhao" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
+      <div class="member-name-wrap">
+        <p class="member-name">Ruixuan Zhao</p>
+        <p class="member-role">Research Assistant</p>
+        <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>
+      </div>
     </div>
 
-    <div class="portrait-right">
-      
-        <span class="portrait-name">
-          Ruixuan Zhao
-        </span>
-      
+    <!-- Links -->
+    
 
-      
-        <span class="portrait-description">
-          Research Assistant
-        </span>
-      
+    <hr class="member-divider">
 
-      
-        <span class="portrait-affiliation">
-          Columbia University / New York State Psychiatric Institute
-        </span>
-      
+    <!-- Bio -->
+    
+    <p class="member-about-title">About</p>
+    <div class="member-bio">
+      <p>Ruixuan Zhao received her M.A. in Quantitative Methods in the Social Sciences from Columbia University with a concentration in Data Science and her B.A. in Psychology from Barnard College. As a research assistant at the NeuroCognition and Emotion Lab, she has contributed to projects examining trauma, cognition, and mental health outcomes. Her research interests focus on trauma and human cognition, particularly the neural mechanisms underlying memory, emotion, and cognitive control, with an interest in applying neuroimaging and computational approaches to better understand mental health and behavior.</p>
 
-      
-        <div class="portrait-bio">
-          <p>Ruixuan Zhao received her M.A. in Quantitative Methods in the Social Sciences from Columbia University with a concentration in Data Science and her B.A. in Psychology from Barnard College. As a research assistant at the NeuroCognition and Emotion Lab, she has contributed to projects examining trauma, cognition, and mental health outcomes. Her research interests focus on trauma and human cognition, particularly the neural mechanisms underlying memory, emotion, and cognitive control, with an interest in applying neuroimaging and computational approaches to better understand mental health and behavior.</p>
-
-        </div>
-      
     </div>
+    
 
-  </a>
-</div>
-
-<div>
-  
-</div>
-
+  </div>
 
 </div>
-
-
-<p>Ruixuan Zhao received her M.A. in Quantitative Methods in the Social Sciences from Columbia University with a concentration in Data Science and her B.A. in Psychology from Barnard College. As a research assistant at the NeuroCognition and Emotion Lab, she has contributed to projects examining trauma, cognition, and mental health outcomes. Her research interests focus on trauma and human cognition, particularly the neural mechanisms underlying memory, emotion, and cognitive control, with an interest in applying neuroimaging and computational approaches to better understand mental health and behavior.</p>
-
-
-
-
-
-
-<p class="center">
-  <a href="/NCEL_website/research/?search=%22Ruixuan%20Zhao%22%20">
-    Search for Ruixuan Zhao's papers on the Research page
-  </a>
-</p>
-
-
-
-<!--
-<p class="center">
-  <a href="/NCEL_website/blog/?search=Ruixuan%20Zhao">
-    See Ruixuan Zhao's posts on the Blog page
-  </a>
-</p>
--->
   </section>
 
 
