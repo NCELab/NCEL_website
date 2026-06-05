@@ -153,26 +153,26 @@ layout: default
                     class="member-avatar"
                     onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'"
                   >
-      </div>div>
+      </div>
 
       <!-- Info block below avatar -->
       <div class="member-info-block">
 
             <!-- Name (full width) -->
-            <p class="member-name">{{ page.name }}</p>p>
+            <p class="member-name">{{ page.name }}</p>
 
             <!-- Role + Affiliation row -->
             <div class="member-role-row">
-                    <p class="member-role">{{ page.description }}</p>p>
-                    <p class="member-affiliation">{{ page.affiliation }}</p>p>
-            </div>div>
+                    <p class="member-role">{{ page.description }}</p>
+                    <p class="member-affiliation">{{ page.affiliation }}</p>
+            </div>
 
             <!-- Extra line for links/supplementary info -->
             <div class="member-extra-info">
                     {% if page.extra_info %}{{ page.extra_info }}{% endif %}
-            </div>div>
+            </div>
 
-      </div>div>
+      </div>
 
       <!-- Links -->
       {% if page.links %}
@@ -182,20 +182,19 @@ layout: default
             {% assign value = link[1] %}
             {% include button.html type=key link=value style="button" %}
             {% endfor %}
-      </div>div>
+      </div>
       {% endif %}
 
       <hr class="member-divider">
 
       <!-- Bio -->
       {% if page.content and page.content != "" %}
-      <p class="member-about-title">About</p>p>
+      <p class="member-about-title">About</p>
       <div class="member-bio">
             {{ content }}
-      </div>div>
+      </div>
       {% endif %}
 
-  </div>div>
+  </div>
 
-</div>div>
-</style>
+</div>
