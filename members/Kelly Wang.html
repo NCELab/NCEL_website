@@ -417,106 +417,135 @@
 
   <section class="background" data-size="page">
     <style>
-/* ===== Member Profile Page ===== */
-.member-profile {
-  max-width: 860px;
-  margin: 0 auto 60px auto;
-  font-family: var(--body);
-}
+  /* ===== Member Profile Page ===== */
+  .member-profile {
+      max-width: 620px;
+      margin: 0 auto 60px auto;
+      font-family: var(--body);
+  }
 
-/* Banner */
-.member-banner {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
-  border-radius: 0 0 12px 12px;
-}
+  /* Banner */
+  .member-banner {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0 0 12px 12px;
+  }
 
-/* Card below banner */
-.member-card {
-  background: var(--background);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  margin: 0 20px;
-  padding: 0 32px 32px 32px;
-  position: relative;
-  margin-top: -24px;
-}
+  /* Card below banner */
+  .member-card {
+      background: var(--background);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 0 20px;
+      padding: 0 32px 32px 32px;
+      position: relative;
+      margin-top: -24px;
+  }
 
-/* Avatar overlapping the card top */
-.member-avatar-wrap {
-  display: flex;
-  align-items: flex-end;
-  gap: 20px;
-  margin-top: -60px;
-  margin-bottom: 16px;
-}
+  /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
+  .member-avatar-wrap {
+      display: flex;
+      align-items: flex-start;
+      margin-top: -173px;
+      margin-bottom: 16px;
+  }
 
-.member-avatar {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--background);
-  box-shadow: var(--shadow);
-  flex-shrink: 0;
-}
+  .member-avatar {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--background);
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+  }
 
-.member-name-wrap {
-  padding-bottom: 8px;
-}
+  /* Info block: name row with affiliation on right */
+  .member-info-block {
+      margin-top: 12px;
+  }
 
-.member-name {
-  font-family: var(--heading);
-  font-size: 1.7rem;
-  font-weight: var(--semi-bold);
-  margin: 0 0 4px 0;
-  color: var(--text);
-}
+  /* Name + affiliation row */
+  .member-name-affiliation-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+  }
 
-.member-role {
-  font-size: 1rem;
-  color: var(--primary);
-  font-weight: var(--semi-bold);
-  margin: 0 0 2px 0;
-}
+  .member-name {
+      font-family: var(--heading);
+      font-size: 3.88rem;
+      font-weight: bold;
+      margin: 0 0 4px 0;
+      color: var(--text);
+      line-height: 1.1;
+  }
 
-.member-affiliation {
-  font-size: 0.9rem;
-  opacity: 0.65;
-  margin: 0;
-}
+  /* Role + affiliation side by side */
+  .member-role-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 6px;
+  }
 
-/* Divider */
-.member-divider {
-  border: none;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  margin: 20px 0;
-}
+  .member-role {
+      font-size: 2.4rem;
+      color: var(--primary);
+      font-weight: normal;
+      margin: 0;
+      line-height: 1.2;
+  }
 
-/* About section */
-.member-about-title {
-  font-family: var(--heading);
-  font-size: 1.1rem;
-  font-weight: var(--semi-bold);
-  margin: 0 0 10px 0;
-}
+  .member-affiliation {
+      font-size: 0.95rem;
+      opacity: 0.65;
+      margin: 0;
+      text-align: right;
+      white-space: nowrap;
+  }
 
-.member-bio {
-  line-height: 1.75;
-  font-size: 0.97rem;
-  color: var(--text);
-}
+  /* Extra line below role */
+  .member-extra-info {
+      margin-top: 10px;
+      font-size: 0.97rem;
+      color: var(--text);
+      min-height: 1.5em;
+  }
 
-/* Links row */
-.member-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-</style>
+  /* Divider */
+  .member-divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      margin: 20px 0;
+  }
+
+  /* About section */
+  .member-about-title {
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: var(--semi-bold);
+      margin: 0 0 10px 0;
+  }
+
+  .member-bio {
+      line-height: 1.75;
+      font-size: 0.97rem;
+      color: var(--text);
+  }
+
+  /* Links row */
+  .member-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+  }
+  </style>
 
 <div class="member-profile">
 
@@ -526,33 +555,48 @@
   <!-- Card -->
   <div class="member-card">
 
-    <!-- Avatar + Name row -->
-    <div class="member-avatar-wrap">
-      <img src="/NCEL_website/images/Kelly_headshot.jpg" alt="Kelly Wang" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
-      <div class="member-name-wrap">
-        <p class="member-name">Kelly Wang</p>
-        <p class="member-role">intern</p>
-        <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>
-      </div>
-    </div>
+      <!-- Avatar -->
+      <div class="member-avatar-wrap">
+            <img src="/NCEL_website/images/Kelly_headshot.jpg" alt="Kelly Wang" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
+      </div>div&gt;
 
-    <!-- Links -->
-    
+      <!-- Info block below avatar -->
+      <div class="member-info-block">
 
-    <hr class="member-divider">
+            <!-- Name (full width) -->
+            <p class="member-name">Kelly Wang</p>p&gt;
 
-    <!-- Bio -->
-    
-    <p class="member-about-title">About</p>
-    <div class="member-bio">
-      <p>Kelly is a second -year M.A. student in the Clinical Psychology program at Teachers College, Columbia University. Her work in the NCEL lab focuses on data management and EEG preprocessing. She is deeply passionate about leveraging neuroimaging techniques (EEG, fMRI) within experimental paradigms to investigate how adverse or traumatic experiences shape cognitive functioning and emotional processing. Grounded in this perspective, she aims to advance research that integrates biological, psychological, and experiential levels of analysis to inform more culturally responsive, accessible, and neuroscience-informed mental health interventions, with the long-term goal of pursuing a PhD in Clinical Psychology.</p>
+            <!-- Role + Affiliation row -->
+            <div class="member-role-row">
+                    <p class="member-role">intern</p>p&gt;
+                    <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>p&gt;
+            </div>div&gt;
 
-    </div>
-    
+            <!-- Extra line for links/supplementary info -->
+            <div class="member-extra-info">
+                    
+            </div>div&gt;
 
-  </div>
+      </div>div&gt;
 
-</div>
+      <!-- Links -->
+      
+
+      <hr class="member-divider">
+
+      <!-- Bio -->
+      
+      <p class="member-about-title">About</p>p&gt;
+      <div class="member-bio">
+            <p>Kelly is a second -year M.A. student in the Clinical Psychology program at Teachers College, Columbia University. Her work in the NCEL lab focuses on data management and EEG preprocessing. She is deeply passionate about leveraging neuroimaging techniques (EEG, fMRI) within experimental paradigms to investigate how adverse or traumatic experiences shape cognitive functioning and emotional processing. Grounded in this perspective, she aims to advance research that integrates biological, psychological, and experiential levels of analysis to inform more culturally responsive, accessible, and neuroscience-informed mental health interventions, with the long-term goal of pursuing a PhD in Clinical Psychology.</p>
+
+      </div>div&gt;
+      
+
+  </div>div&gt;
+
+</div>div&gt;
+
   </section>
 
 
