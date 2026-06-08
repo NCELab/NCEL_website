@@ -1,5 +1,31 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.1371/journal.pmen.0000574
+  title: 'The long shadow of 9/11: Mental health outcomes in adult children of World
+    Trade Center Responders with PTSD'
+  authors:
+  - Yael M. Cycowicz
+  - Diana V. Rodriguez-Moreno
+  - Daniel Craft
+  - Keely Cheslack-Postava
+  publisher: PLOS Mental Health
+  date: '2026-05-27'
+  link: https://doi.org/hb6v4n
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3389/FPSYT.2025.1637162
+  title: 'Psychedelic therapy: bridging neuroplasticity, phenomenology, and clinical
+    outcomes'
+  authors:
+  - Ronit Kishon
+  - Yael M. Cycowicz
+  publisher: Frontiers in Psychiatry
+  date: '2025-09-01'
+  link: https://doi.org/hb6v4p
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.3390/ijerph21080988
   title: "The Long-Term Physical\u2013Psychiatric Comorbidities Related to Childhood\
     \ Exposure to 9/11 Trauma"
@@ -17,7 +43,7 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1038/s44184-024-00068-9
+- id: doi:10.1038/S44184-024-00068-9
   title: A rapid narrative review of the clinical evolution of psychedelic treatment
     in clinical trials
   authors:
@@ -35,7 +61,16 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.3390/children11060671
+- id: wosuid:WOS:001397577000581
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:001397577000581
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3390/CHILDREN11060671
   title: Characteristics of Adolescents with and without a Family History of Substance
     Use Disorder from a Minority Cohort
   authors:
@@ -58,7 +93,23 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1016/j.appet.2022.106104
+- id: doi:10.1016/J.IJPSYCHO.2023.07.003
+  title: Sex differences in stress responses among underrepresented minority adolescents
+    at risk for substance use disorder
+  authors:
+  - Yael M. Cycowicz
+  - Sharon Cuchacovich
+  - Keely Cheslack-Postava
+  - Jacob Merrin
+  - Christina W. Hoven
+  - Diana V. Rodriguez-Moreno
+  publisher: International Journal of Psychophysiology
+  date: '2023-09-01'
+  link: https://doi.org/g97vh7
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.APPET.2022.106104
   title: Changes in appetite during quarantine and their association with pre-COVID-19
     mental and physical health
   authors:
@@ -73,7 +124,51 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
-- id: doi:10.1016/j.dcn.2021.100942
+- id: doi:10.1016/J.NEUROIMAGE.2021.118746
+  title: Ongoing neural oscillations influence behavior and sensory representations
+    by suppressing neuronal excitability
+  authors:
+  - Luca Iemi
+  - Laura Gwilliams
+  - Jason Samaha
+  - Ryszard Auksztulewicz
+  - Yael M Cycowicz
+  - Jean-Remi King
+  - Vadim V Nikulin
+  - Thomas Thesen
+  - Werner Doyle
+  - Orrin Devinsky
+  - Charles E Schroeder
+  - Lucia Melloni
+  - Saskia Haegens
+  publisher: NeuroImage
+  date: '2022-02-01'
+  link: https://doi.org/gnq4m9
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1002/HBM.25804
+  title: Shapes of subcortical structures in adolescents with and without familial
+    history of substance use disorder
+  authors:
+  - Zhishun Wang
+  - "Diana V. Rodriguez\u2010Moreno"
+  - Yael M. Cycowicz
+  - Lawrence V. Amsel
+  - "Keely Cheslack\u2010Postava"
+  - Xiaofu He
+  - Megan Ryan
+  - "Lupo Geronazzo\u2010Alman"
+  - George J. Musa
+  - Adam Bisaga
+  - Christina W. Hoven
+  publisher: Human Brain Mapping
+  date: '2022-04-07'
+  link: https://doi.org/g97vh6
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.DCN.2021.100942
   title: Delay discounting and neurocognitive correlates among inner city adolescents
     with and without family history of substance use disorder
   authors:
@@ -91,6 +186,588 @@
   publisher: Developmental Cognitive Neuroscience
   date: '2021-04-01'
   link: https://doi.org/gmzm7k
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000535308200350
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000535308200350
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1097/JOM.0000000000001971
+  title: Parental Occupational Exposure is Associated With Their Children's Psychopathology
+  authors:
+  - Ronit Kishon
+  - Lupo Geronazzo-Alman
+  - Meir Teichman
+  - Yona Teichman
+  - Keely Cheslack-Postava
+  - Bin Fan
+  - Cristiane S. Duarte
+  - Judith Wicks
+  - George J. Musa
+  - Amir Djalovski
+  - Boaz Tadmor
+  - Diana Rodriguez Moreno
+  - Yael Cycowicz
+  - Lawrence Amsel
+  - Michaeline Bresnahan
+  - Christina W. Hoven
+  publisher: Journal of Occupational &amp; Environmental Medicine
+  date: '2020-08-05'
+  link: https://doi.org/g97vjw
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000535308200535
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000535308200535
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000494324000296
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000494324000296
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000494324000387
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000494324000387
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.DCN.2019.100615
+  title: Orienting and memory to unexpected and/or unfamiliar visual events in children
+    and adults
+  authors:
+  - Yael M. Cycowicz
+  publisher: Developmental Cognitive Neuroscience
+  date: '2019-04-01'
+  link: https://doi.org/g97vj3
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1097/YCT.0000000000000470
+  title: Differences in Seizure Expression Between Magnetic Seizure Therapy and Electroconvulsive
+    Shock
+  authors:
+  - Yael M. Cycowicz
+  - Stefan B. Rowny
+  - Bruce Luber
+  - Sarah H. Lisanby
+  publisher: The Journal of ECT
+  date: '2018-06-01'
+  link: https://doi.org/gdqsjc
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.NEUROPSYCHOLOGIA.2013.09.016
+  title: Single pulse TMS differentially modulates reward behavior
+  authors:
+  - Arielle D. Stanford
+  - Bruce Luber
+  - Layla Unger
+  - Yael M. Cycowicz
+  - Dolores Malaspina
+  - Sarah H. Lisanby
+  publisher: Neuropsychologia
+  date: '2013-12-01'
+  link: https://doi.org/hb6v4q
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.3758/CABN.9.1.91
+  title: 'Development of and change in cognitive control: A comparison of children,
+    young adults, and older adults'
+  authors:
+  - D. Friedman
+  - D. Nessler
+  - Y. M. Cycowicz
+  - C. Horton
+  publisher: Cognitive, Affective, &amp; Behavioral Neuroscience
+  date: '2009-03-01'
+  link: https://doi.org/cgj6vv
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.NEUROIMAGE.2009.05.070
+  title: 'Differential heart rate response to magnetic seizure therapy (MST) relative
+    to electroconvulsive therapy: A nonhuman primate model'
+  authors:
+  - Stefan B. Rowny
+  - Yael M. Cycowicz
+  - Shawn M. McClintock
+  - Matthew D. Truesdale
+  - Bruce Luber
+  - Sarah H. Lisanby
+  publisher: NeuroImage
+  date: '2009-09-01'
+  link: https://doi.org/dgxd3f
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/J.1469-8986.2008.00754.X
+  title: "Effects of multiple study\u2013test repetition on the neural correlates\
+    \ of recognition memory: ERPs dissociate remembering and knowing"
+  authors:
+  - Marianne De Chastelaine
+  - David Friedman
+  - Yael M. Cycowicz
+  - Cort Horton
+  publisher: Psychophysiology
+  date: '2008-12-23'
+  link: https://doi.org/dksgpq
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1097/YCT.0B013E31818DD40A
+  title: Neurophysiological Characterization of High-Dose Magnetic Seizure Therapy
+  authors:
+  - Yael M. Cycowicz
+  - Bruce Luber
+  - Timothy Spellman
+  - Sarah H. Lisanby
+  publisher: The Journal of ECT
+  date: '2009-09-01'
+  link: https://doi.org/bhhxn7
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1177/155005940803900309
+  title: Differential Neurophysiological Effects of Magnetic Seizure Therapy (MST)
+    and Electroconvulsive Shock (ECS) in Non-Human Primates
+  authors:
+  - Yael M. Cycowicz
+  - Bruce Luber
+  - Timothy Spellman
+  - Sarah H. Lisanby
+  publisher: Clinical EEG and Neuroscience
+  date: '2008-07-01'
+  link: https://doi.org/g97vk3
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000259264309270
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259264309270
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000259144200383
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259144200383
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000259144200382
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259144200382
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1097/WNR.0B013E32830C8DF1
+  title: 'Retrieving object color: the influence of color congruity and test format'
+  authors:
+  - Yael M. Cycowicz
+  - Doreen Nessler
+  - Cort Horton
+  - David Friedman
+  publisher: NeuroReport
+  date: '2008-09-17'
+  link: https://doi.org/chh3bs
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1162/JOCN.2007.19.8.1286
+  title: The Development of Control Processes Supporting Source Memory Discrimination
+    as Revealed by Event-related Potentials
+  authors:
+  - Marianne de Chastelaine
+  - David Friedman
+  - Yael M. Cycowicz
+  publisher: Journal of Cognitive Neuroscience
+  date: '2007-08-01'
+  link: https://doi.org/d4g46g
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/J.1469-8986.2006.00481.X
+  title: 'Visual novel stimuli in an ERP novelty oddball paradigm: Effects of familiarity
+    on repetition and recognition memory'
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  publisher: Psychophysiology
+  date: '2006-12-21'
+  link: https://doi.org/ctg34t
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/J.1469-8986.2006.00466.X
+  title: Repetition priming of possible and impossible objects from ERP and behavioral
+    perspectives
+  authors:
+  - David Friedman
+  - Yael M. Cycowicz
+  publisher: Psychophysiology
+  date: '2006-10-11'
+  link: https://doi.org/ff948c
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.COGBRAINRES.2004.10.005
+  title: 'The late negative episodic memory effect: the effect of recapitulating study
+    details at test'
+  authors:
+  - David Friedman
+  - Yael M. Cycowicz
+  - Michael Bersick
+  publisher: Cognitive Brain Research
+  date: '2005-05-01'
+  link: https://doi.org/dvt653
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.CLINPH.2004.01.008
+  title: 'The old switcheroo: when target environmental sounds elicit a novelty P3'
+  authors:
+  - Yael M Cycowicz
+  - David Friedman
+  publisher: Clinical Neurophysiology
+  date: '2004-06-01'
+  link: https://doi.org/cn8tz8
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/J.COGBRAINRES.2003.09.002
+  title: 'Cross-form conceptual relations between sounds and words: effects on the
+    novelty P3'
+  authors:
+  - David Friedman
+  - Yael M Cycowicz
+  - Isabel Dziobek
+  publisher: Cognitive Brain Research
+  date: '2003-12-01'
+  link: https://doi.org/dsnk7t
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1162/JOCN.2003.15.5.759
+  title: 'Pictures and Their Colors: What Do Children Remember?'
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  - Martin Duff
+  publisher: Journal of Cognitive Neuroscience
+  date: '2003-05-01'
+  link: https://doi.org/d8dntv
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/1469-8986.00047
+  title: "Source memory for the color of pictures: Event\u2010related brain potentials\
+    \ (ERPs) reveal sensory\u2010specific retrieval\u2010related activity"
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  publisher: Psychophysiology
+  date: '2003-04-29'
+  link: https://doi.org/bqp72s
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000177939700114
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000177939700114
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000169817300053
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000169817300053
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/S0028-3932(00)00108-1
+  title: Recognition and source memory for pictures in children and adults
+  authors:
+  - Yael M Cycowicz
+  - David Friedman
+  - Joan Gay Snodgrass
+  - Martin Duff
+  publisher: Neuropsychologia
+  date: '2001-01-01'
+  link: https://doi.org/cf6723
+  orcid: 0000-0001-8397-5492
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1093/CERCOR/11.4.322
+  title: 'Remembering the Color of Objects: An ERP Investigation of Source Memory'
+  authors:
+  - Y. M. Cycowicz
+  publisher: Cerebral Cortex
+  date: '2001-04-01'
+  link: https://doi.org/d79psf
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/S0149-7634(01)00019-7
+  title: 'The novelty P3: an event-related brain potential (ERP) sign of the brain''s
+    evaluation of novelty'
+  authors:
+  - David Friedman
+  - Yael M. Cycowicz
+  - Helen Gaeta
+  publisher: Neuroscience &amp; Biobehavioral Reviews
+  date: '2001-06-01'
+  link: https://doi.org/dtg968
+  orcid: 0000-0001-8397-5492
+  plugin: sources.py
+  file: sources.yaml
+  tags:
+  - Cognitive brain potentials
+  - Orienting response
+  - Novelty P3
+- id: doi:10.1080/096582100387687
+  title: A Developmental Trajectory in Implicit Memory is Revealed by Picture Fragment
+    Completion
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  - Joan Gay Snodgrass
+  - Mairav Rothstein
+  publisher: Memory
+  date: '2000-01-01'
+  link: https://doi.org/dpnmmh
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/S0301-0511(00)00055-7
+  title: Memory development and event-related brain potentials in children
+  authors:
+  - Yael M. Cycowicz
+  publisher: Biological Psychology
+  date: '2000-10-01'
+  link: https://doi.org/fgb8qf
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000081817000104
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081817000104
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/S0926-6410(99)00031-2
+  title: 'ERP recordings during a picture fragment completion task: effects of memory
+    instructions'
+  authors:
+  - Yael M Cycowicz
+  - David Friedman
+  publisher: Cognitive Brain Research
+  date: '1999-10-01'
+  link: https://doi.org/c3q8d9
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000081797400172
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081797400172
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000081797400171
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081797400171
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:000082700000037
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000082700000037
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/S0301-0511(99)00004-6
+  title: The effect of intention to learn novel, environmental sounds on the novelty
+    P3 and old/new recognition memory
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  publisher: Biological Psychology
+  date: '1999-05-01'
+  link: https://doi.org/frn7fb
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1006/BRCG.1997.0955
+  title: Effect of Sound Familiarity on the Event-Related Potentials Elicited by Novel
+    Environmental Sounds
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  publisher: Brain and Cognition
+  date: '1998-02-01'
+  link: https://doi.org/d72d54
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1017/S0048577298970664
+  title: Effects of aging on the novelty P3 during attend and ignore oddball tasks
+  authors:
+  - David Friedman
+  - Victoria A. Kazmerski
+  - Yael M. Cycowicz
+  publisher: Psychophysiology
+  date: '1998-09-01'
+  link: https://doi.org/bcs497
+  orcid: 0000-0001-8397-5492
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/S0013-4694(97)96053-3
+  title: A developmental study of the effect of temporal order on the ERPs elicited
+    by novel environmental sounds
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  publisher: Electroencephalography and Clinical Neurophysiology
+  date: '1997-08-01'
+  link: https://doi.org/cfs65m
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1006/JECP.1996.2356
+  title: 'Picture Naming by Young Children: Norms for Name Agreement, Familiarity,
+    and Visual Complexity'
+  authors:
+  - Yael M. Cycowicz
+  - David Friedman
+  - Mairav Rothstein
+  - Joan Gay Snodgrass
+  publisher: Journal of Experimental Child Psychology
+  date: '1997-05-01'
+  link: https://doi.org/d5sz25
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/J.1469-8986.1996.TB02364.X
+  title: An ERP developmental study of repetition priming by auditory novel stimuli
+  authors:
+  - YAEL M. CYCOWICZ
+  - DAVID FRIEDMAN
+  - MAIRAV ROTHSTEIN
+  publisher: Psychophysiology
+  date: '1996-11-01'
+  link: https://doi.org/bjrvn7
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1111/J.1469-8986.1996.TB01072.X
+  title: 'Naming norms for brief environmental sounds: Effects of age and dementia'
+  authors:
+  - MONICA FABIANI
+  - VICTORIA A. KAZMERSKI
+  - YAEL M. CYCOWICZ
+  - DAVID FRIEDMAN
+  publisher: Psychophysiology
+  date: '1996-07-01'
+  link: https://doi.org/bfvt5j
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:A1996VF57700125
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1996VF57700125
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:A1995RT16000107
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1995RT16000107
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: wosuid:WOS:A1989AX54900197
+  title: Web of Science
+  authors: []
+  publisher: ''
+  date: ''
+  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1989AX54900197
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1016/0378-5955(88)90154-2
+  title: 'Perinatal hypoxia and auditory brainstem response thresholds: No evidence
+    of permanent hearing loss'
+  authors:
+  - Yael Cycowicz
+  - Michal Schmuel
+  - Sharon Freeman
+  - Alan Wanszelbaum
+  - Haim Sohmer
+  publisher: Hearing Research
+  date: '1988-07-01'
+  link: https://doi.org/d96hnb
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- id: doi:10.1007/BF00453487
+  title: Experimental analyses of the source of ABR wave II
+  authors:
+  - C. Tait
+  - J. Miller
+  - Y. Cycowicz
+  - H. Sohmer
+  publisher: Archives of Oto-Rhino-Laryngology
+  date: '1987-05-01'
+  link: https://doi.org/cqxg7v
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
@@ -152,22 +829,6 @@
   image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
   plugin: sources.py
   file: sources.yaml
-- id: doi:10.1016/S0149-7634(01)00019-7
-  title: 'The novelty P3: an event-related brain potential (ERP) sign of the brain''s
-    evaluation of novelty'
-  authors:
-  - David Friedman
-  - Yael M. Cycowicz
-  - Helen Gaeta
-  publisher: Neuroscience &amp; Biobehavioral Reviews
-  date: '2001-06-01'
-  link: https://doi.org/dtg968
-  tags:
-  - Cognitive brain potentials
-  - Orienting response
-  - Novelty P3
-  plugin: sources.py
-  file: sources.yaml
 - id: doi:10.1006/jecp.1996.2356
   title: 'Picture Naming by Young Children: Norms for Name Agreement, Familiarity,
     and Visual Complexity'
@@ -179,28 +840,5 @@
   publisher: Journal of Experimental Child Psychology
   date: '1997-05-01'
   link: https://doi.org/d5sz25
-  plugin: sources.py
-  file: sources.yaml
-- id: doi:10.1016/S0028-3932(00)00108-1
-  title: Recognition and source memory for pictures in children and adults
-  authors:
-  - Yael M Cycowicz
-  - David Friedman
-  - Joan Gay Snodgrass
-  - Martin Duff
-  publisher: Neuropsychologia
-  date: '2001-01-01'
-  link: https://doi.org/cf6723
-  plugin: sources.py
-  file: sources.yaml
-- id: doi:10.1017/S0048577298970664
-  title: Effects of aging on the novelty P3 during attend and ignore oddball tasks
-  authors:
-  - David Friedman
-  - Victoria A. Kazmerski
-  - Yael M. Cycowicz
-  publisher: Psychophysiology
-  date: '1998-09-01'
-  link: https://doi.org/bcs497
   plugin: sources.py
   file: sources.yaml
