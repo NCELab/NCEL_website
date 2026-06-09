@@ -1,34 +1,52 @@
-- id: doi:10.1371/journal.pcbi.1007128
-  type: paper
-  description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  date: 2020-12-4
-  image: https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&rev=2
-  buttons:
-    - type: manubot
-      link: https://greenelab.github.io/meta-review/
-    - type: source
-      text: Manuscript Source
-      link: https://github.com/greenelab/meta-review
-    - type: website
-      link: http://manubot.org/
-  tags:
-    - open science
-    - collaboration
-  repo: greenelab/meta-review
+- id: doi.org/10.1371/journal.pmen.0000574
+  topics:
+    - intergenerational trauma
+    - Mental Health
+    - Family Studies
+  keywords:
+    - intergenerational trauma
+    - Mental health and psychiatry
+    - Depression
+    - anxiety disorder
+    - emotions
+    - human families
+    - suveys
+    - Post-traumatic stress disorder
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+  
+- id: doi.org/10.3390/ijerph21080988
+  topics:
+    - Trauma
+    - Mental Health
+    - Family Studies
+  keywords:
+    - comorbidity
+    - trauma
+    - children
+    - 9/11
+    - disaster
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
 
-- id: doi:10.1016/j.csbj.2020.05.017
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg
-
-- id: doi:10.7554/eLife.32822
-  image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
-
-- id: doi:10.1016/S0149-7634(01)00019-7
-  tags:
-    - Cognitive brain potentials
-    - Orienting response
-    - Novelty P3
-
-- id: doi:10.1006/jecp.1996.2356
-
-- id: doi:10.1016/S0028-3932(00)00108-1
-- id: doi:10.1017/S0048577298970664
+  - id: doi.org/10.3390/children11060671
+  topics:
+    - Trauma
+    - Mental Health
+    - Family Studies
+  keywords:
+    - family history
+    - substance use disorder
+    - minority cohort
+    - family environment
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
