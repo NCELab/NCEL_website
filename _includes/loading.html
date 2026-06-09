@@ -1,0 +1,122 @@
+<!-- _includes/loading.html -->
+<!-- Full-screen loading overlay: logo + progress bar + percentage -->
+<!-- Only shown on the homepage. JS in parallax-loader.js drives the progress. -->
+{% if page.url == "/" or page.url == "/index.html" %}
+<div id="ncel-loader" role="status" aria-live="polite" aria-label="Loading site assets">
+  <div class="ncel-loader__inner">
+    <div class="ncel-loader__logo-wrap">
+      <img
+        src="{{ 'images/logo.png' | relative_url }}"
+        alt="NCEL logo"
+        class="ncel-loader__logo"
+        width="80"
+        height="80"
+        onerror="this.style.display='none'"
+      />
+      <span class="ncel-loader__lab-name">NCEL</span>
+      <span class="ncel-loader__lab-subtitle">Neuro-Cognition &amp; Emotion Lab</span>
+    </div>
+    <div class="ncel-loader__bar-track" aria-hidden="true">
+      <div id="ncel-loader-bar" class="ncel-loader__bar-fill"></div>
+    </div>
+    <span id="ncel-loader-pct" class="ncel-loader__pct" aria-hidden="true">0%</span>
+  </div>
+</div>
+
+<style>
+#ncel-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
+              visibility 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+#ncel-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.ncel-loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: min(320px, 90vw);
+}
+.ncel-loader__logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ncel-loader__logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: ncLoaderIn 0.55s 0.05s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.ncel-loader__lab-name {
+  font-family: var(--heading, "Barlow", sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text, #000000);
+  opacity: 0;
+  animation: ncLoaderIn 0.55s 0.18s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.ncel-loader__lab-subtitle {
+  font-family: var(--body, "Barlow", sans-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray, #808080);
+  opacity: 0;
+  animation: ncLoaderIn 0.55s 0.28s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+.ncel-loader__bar-track {
+  width: 100%;
+  height: 1px;
+  background: var(--light-gray, #e0e0e0);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.ncel-loader__bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--primary, #0795d9);
+  border-radius: 1px;
+  transition: width 0.18s ease-out;
+  will-change: width;
+}
+.ncel-loader__pct {
+  font-family: var(--body, "Barlow", sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--gray, #808080);
+  min-width: 3.5ch;
+  text-align: center;
+}
+@keyframes ncLoaderIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ncel-loader__logo,
+  .ncel-loader__lab-name,
+  .ncel-loader__lab-subtitle {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .ncel-loader__bar-fill { transition: none; }
+  #ncel-loader { transition: none; }
+}
+</style>
+{% endif %}
