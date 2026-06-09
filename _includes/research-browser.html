@@ -1,594 +1,117 @@
 {% comment %}
-  Research Browser
-  Three-tab interface: By Year | By Topic | Current Projects
-  Reads from site.data.citations and site.projects collection.
+  _includes/research-browser.html
+  Publication browser for NCEL website.
+  Data is injected as PUB_DATA (JSON) from site.data.citations + sources.yaml.
+  All interactive logic lives in _scripts/publications.js.
+  Styles live in _styles/publications.scss.
 {% endcomment %}
 
-<style>
-#rb-wrap {
-  width: 100%;
-  font-family: var(--body);
-}
-.rb-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 2px solid var(--light-gray);
-  margin-bottom: 32px;
-}
-.rb-tab {
-  padding: 10px 22px;
-  font-family: var(--heading);
-  font-weight: var(--semi-bold);
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--gray);
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  cursor: pointer;
-  transition: color 0.18s, border-color 0.18s;
-}
-.rb-tab:hover { color: var(--primary); }
-.rb-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
-.rb-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-.rb-controls label {
-  font-size: 0.85rem;
-  color: var(--gray);
-  font-weight: var(--semi-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.rb-controls select,
-.rb-search {
-  height: 36px;
-  padding: 0 12px;
-  border: 1px solid var(--light-gray);
-  border-radius: var(--rounded);
-  background: var(--background);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 0.9rem;
-  transition: border-color 0.18s;
-}
-.rb-controls select:focus,
-.rb-search:focus { outline: none; border-color: var(--primary); }
-.rb-search { width: 240px; }
-.rb-tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.rb-tag {
-  padding: 5px 13px;
-  border-radius: 999px;
-  background: var(--background-alt);
-  border: 1px solid var(--light-gray);
-  color: var(--dark-gray);
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-.rb-tag:hover { background: var(--secondary); border-color: var(--secondary); }
-.rb-tag.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-.rb-year-group { margin-bottom: 36px; }
-.rb-year-heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--light-gray);
-  cursor: pointer;
-  user-select: none;
-}
-.rb-year-heading h2 {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: var(--regular);
-  color: var(--primary);
-}
-.rb-year-toggle {
-  margin-left: auto;
-  color: var(--gray);
-  font-size: 0.75rem;
-  transition: transform 0.2s;
-}
-.rb-year-heading.collapsed .rb-year-toggle { transform: rotate(-90deg); }
-.rb-paper {
-  display: flex;
-  margin-bottom: 4px;
-  padding: 16px 20px;
-  border-radius: var(--rounded);
-  background: var(--background);
-  box-shadow: 0 1px 4px 0 var(--overlay);
-  text-align: left;
-  transition: box-shadow 0.18s;
-}
-.rb-paper:hover { box-shadow: 0 2px 10px 0 var(--overlay); }
-.rb-paper-body { flex: 1; min-width: 0; }
-.rb-paper-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 7px;
-}
-.rb-paper-tag {
-  padding: 2px 9px;
-  border-radius: 999px;
-  background: var(--secondary);
-  color: var(--text);
-  font-size: 0.73rem;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.rb-paper-tag:hover { background: var(--light-gray); }
-.rb-paper-title {
-  font-weight: var(--semi-bold);
-  font-size: 0.97rem;
-  line-height: 1.45;
-  margin-bottom: 4px;
-}
-.rb-paper-title a { color: var(--text); text-decoration: none; }
-.rb-paper-title a:hover { color: var(--primary); }
-.rb-paper-authors {
-  font-size: 0.85rem;
-  color: var(--dark-gray);
-  margin-bottom: 3px;
-}
-.rb-paper-meta {
-  font-size: 0.82rem;
-  color: var(--gray);
-  font-style: italic;
-}
-.rb-paper-meta a { color: var(--primary); font-style: normal; text-decoration: none; }
-.rb-paper-meta a:hover { text-decoration: underline; }
-.rb-empty {
-  padding: 40px 0;
-  text-align: center;
-  color: var(--gray);
-  font-style: italic;
-}
-.rb-projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 4px;
-}
-.rb-project-card {
-  padding: 22px 20px 18px;
-  border-radius: var(--rounded);
-  background: var(--background);
-  box-shadow: 0 1px 4px 0 var(--overlay);
-  text-align: left;
-  transition: box-shadow 0.18s, transform 0.18s;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.rb-project-card:hover {
-  box-shadow: 0 3px 14px 0 var(--overlay);
-  transform: translateY(-2px);
-}
-.rb-project-acronym {
-  font-family: var(--heading);
-  font-size: 1.5rem;
-  font-weight: var(--bold);
-  color: var(--primary);
-  line-height: 1;
-}
-.rb-project-acronym a { color: inherit; text-decoration: none; }
-.rb-project-acronym a:hover { color: var(--dark-gray); }
-.rb-project-subtitle {
-  font-size: 0.88rem;
-  color: var(--dark-gray);
-  line-height: 1.4;
-  font-style: italic;
-}
-.rb-project-desc {
-  font-size: 0.88rem;
-  color: var(--text);
-  line-height: 1.65;
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.rb-project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.rb-project-tag {
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: var(--secondary);
-  color: var(--text);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.rb-project-tag:hover { background: var(--light-gray); }
-.rb-project-link {
-  display: inline-block;
-  margin-top: 4px;
-  font-size: 0.82rem;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: var(--semi-bold);
-}
-.rb-project-link:hover { text-decoration: underline; }
-.rb-results-info {
-  font-size: 0.85rem;
-  color: var(--gray);
-  margin-bottom: 18px;
-  font-style: italic;
-}
-.rb-results-info a { color: var(--primary); }
-.rb-panel { display: none; }
-.rb-panel.active { display: block; }
-@media (max-width: 600px) {
-  .rb-search { width: 100%; }
-  .rb-controls { gap: 8px; }
-  .rb-paper { padding: 14px; }
-  .rb-project-card { padding: 16px 14px 14px; }
-}
-</style>
+<div id="pub-browser" role="main" aria-label="Publication browser">
 
-<div id="rb-wrap">
+  <!-- ── Toolbar ──────────────────────────────────────────────────────── -->
+  <div class="pub-toolbar" role="search" aria-label="Filter publications">
 
-  <div class="rb-tabs" role="tablist">
-    <button class="rb-tab active" role="tab" aria-selected="true"  data-panel="by-year"  onclick="rbSwitchTab('by-year')">By Year</button>
-    <button class="rb-tab"        role="tab" aria-selected="false" data-panel="by-topic" onclick="rbSwitchTab('by-topic')">By Topic</button>
-    <button class="rb-tab"        role="tab" aria-selected="false" data-panel="projects" onclick="rbSwitchTab('projects')">Current Projects</button>
-  </div>
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-search">Search</label>
+      <input
+        id="pub-search"
+        class="pub-toolbar__search"
+        type="text"
+        placeholder="title, author, journal, keyword…"
+        autocomplete="off"
+        aria-label="Search publications"
+      >
+    </div>
 
-  <!-- TAB 1: BY YEAR -->
-  <div id="rb-panel-by-year" class="rb-panel active">
-    <div class="rb-controls">
-      <label for="rb-sort">Sort:</label>
-      <select id="rb-sort" onchange="rbApplyFilters()">
-        <option value="year-desc">Year (newest first)</option>
-        <option value="year-asc">Year (oldest first)</option>
+    <div class="pub-toolbar__divider" aria-hidden="true"></div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-sort">Sort</label>
+      <select id="pub-sort" aria-label="Sort order">
+        <option value="year-desc">Year ↓</option>
+        <option value="year-asc">Year ↑</option>
+        <option value="title-asc">Title A–Z</option>
       </select>
-      <label for="rb-filter-year" style="margin-left:8px">Year:</label>
-      <select id="rb-filter-year" onchange="rbApplyFilters()">
+    </div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-year">Year</label>
+      <select id="pub-year" aria-label="Filter by year">
         <option value="">All years</option>
         {% assign pub_years = "" | split: "" %}
         {% for c in site.data.citations %}
           {% assign yr = c.date | slice: 0, 4 %}
-          {% unless pub_years contains yr %}
-            {% assign pub_years = pub_years | push: yr %}
-          {% endunless %}
+          {% if yr and yr != "" %}
+            {% unless pub_years contains yr %}
+              {% assign pub_years = pub_years | push: yr %}
+            {% endunless %}
+          {% endif %}
         {% endfor %}
         {% assign pub_years = pub_years | sort | reverse %}
         {% for y in pub_years %}
-          <option value="{{ y }}">{{ y }}</option>
+          {% if y and y != "" %}
+            <option value="{{ y }}">{{ y }}</option>
+          {% endif %}
         {% endfor %}
       </select>
-      <label for="rb-search-input" style="margin-left:8px">Search:</label>
-      <input id="rb-search-input" class="rb-search" type="text"
-             placeholder="title, author, journal…"
-             oninput="rbApplyFilters()">
     </div>
-    <div id="rb-results-info" class="rb-results-info" style="display:none"></div>
-    <div id="rb-by-year-content"></div>
-  </div>
 
-  <!-- TAB 2: BY TOPIC -->
-  <div id="rb-panel-by-topic" class="rb-panel">
-    <p style="color:var(--gray);font-size:0.9rem;margin-bottom:16px">
-      Click a topic tag to filter publications. Click again to deselect.
-    </p>
-    <div id="rb-topic-cloud" class="rb-tag-cloud"></div>
-    <div id="rb-results-info-topic" class="rb-results-info" style="display:none"></div>
-    <div id="rb-by-topic-content"></div>
-  </div>
-
-  <!-- TAB 3: CURRENT PROJECTS -->
-  <div id="rb-panel-projects" class="rb-panel">
-    <div class="rb-controls">
-      <label for="rb-proj-search">Search:</label>
-      <input id="rb-proj-search" class="rb-search" type="text"
-             placeholder="keyword, topic…"
-             oninput="rbFilterProjects()">
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-limit">Show</label>
+      <select id="pub-limit" aria-label="Limit publication type">
+        <option value="">All</option>
+        <option value="published">Published only</option>
+        <option value="preprint">Preprints only</option>
+        <option value="featured">Featured only</option>
+      </select>
     </div>
-    <div id="rb-proj-tag-cloud" class="rb-tag-cloud"></div>
-    <div id="rb-projects-grid" class="rb-projects-grid"></div>
+
+  </div><!-- /.pub-toolbar -->
+
+  <!-- ── View tabs ────────────────────────────────────────────────────── -->
+  <div class="pub-tabs" role="tablist" aria-label="Publication views">
+    <button class="pub-tab is-active" role="tab" aria-selected="true"  data-view="year"     >By Year</button>
+    <button class="pub-tab"           role="tab" aria-selected="false" data-view="topic"    >By Topic</button>
+    <button class="pub-tab"           role="tab" aria-selected="false" data-view="featured" >Featured</button>
+    <button class="pub-tab"           role="tab" aria-selected="false" data-view="preprint" >Preprints</button>
   </div>
 
-</div>
+  <!-- ── Status ───────────────────────────────────────────────────────── -->
+  <div id="pub-status" class="pub-status" aria-live="polite"></div>
 
-<!-- Jekyll injects data into JS -->
+  <!-- ── Panels ───────────────────────────────────────────────────────── -->
+  <div id="pub-panel-year"     class="pub-panel is-active" role="tabpanel"></div>
+  <div id="pub-panel-topic"    class="pub-panel"           role="tabpanel"></div>
+  <div id="pub-panel-featured" class="pub-panel"           role="tabpanel"></div>
+  <div id="pub-panel-preprint" class="pub-panel"           role="tabpanel"></div>
+
+</div><!-- /#pub-browser -->
+
+<!-- ── Data injection (Liquid → JS) ──────────────────────────────────── -->
 <script>
-const RB_PUBS = [
+var PUB_DATA = [
   {% for c in site.data.citations %}
+  {% if c.title and c.title != "Web of Science" %}
   {
     title:     {{ c.title     | default: "" | jsonify }},
     authors:   {{ c.authors   | join: ", " | jsonify }},
     publisher: {{ c.publisher | default: "" | jsonify }},
     date:      {{ c.date      | default: "" | jsonify }},
-    year:      "{{ c.date | slice: 0, 4 }}",
+    year:      {{ c.date | slice: 0, 4 | jsonify }},
     link:      {{ c.link      | default: "" | jsonify }},
-    tags:      {{ c.tags      | default: "" | split: "," | jsonify }},
-    id:        {{ c.id        | default: "" | jsonify }}
+    id:        {{ c.id        | default: "" | jsonify }},
+    doi:       {{ c.doi       | default: c.id | default: "" | jsonify }},
+    abstract:  {{ c.abstract  | default: c.description | default: "" | jsonify }},
+    topics:    {{ c.topics    | default: c.tags | default: "" | jsonify }},
+    keywords:  {{ c.keywords  | default: "" | jsonify }},
+    pdf:       {{ c.pdf       | default: "" | jsonify }},
+    materials: {{ c.materials | default: "" | jsonify }},
+    code:      {{ c.code      | default: "" | jsonify }},
+    bibtex:    {{ c.bibtex    | default: "" | jsonify }},
+    preprint:  {{ c.preprint  | default: false | jsonify }},
+    featured:  {{ c.featured  | default: false | jsonify }}
   }{% unless forloop.last %},{% endunless %}
+  {% endif %}
   {% endfor %}
 ];
-
-const RB_PROJECTS = [
-  {% for project in site.projects %}
-  {
-    title:    {{ project.title    | default: "" | jsonify }},
-    subtitle: {{ project.subtitle | default: "" | jsonify }},
-    content:  {{ project.content  | strip_html | strip_newlines | truncate: 400 | jsonify }},
-    tags:     {{ project.tags     | default: "" | jsonify }},
-    url:      {{ project.url      | relative_url | jsonify }},
-    group:    {{ project.group    | default: "" | jsonify }}
-  }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-];
-</script>
-
-<script>
-let rbActivePubTags  = [];
-let rbActiveProjTags = [];
-
-function rbSwitchTab(name) {
-  document.querySelectorAll('.rb-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.panel === name);
-    t.setAttribute('aria-selected', t.dataset.panel === name);
-  });
-  document.querySelectorAll('.rb-panel').forEach(p => {
-    p.classList.toggle('active', p.id === 'rb-panel-' + name);
-  });
-  if (name === 'by-topic' && !document.getElementById('rb-topic-cloud').children.length) rbBuildTopicView();
-  if (name === 'projects' && !document.getElementById('rb-projects-grid').children.length) rbBuildProjectsView();
-}
-
-/* ── TAB 1: BY YEAR ── */
-function rbApplyFilters() {
-  const sort     = document.getElementById('rb-sort').value;
-  const yearFilt = document.getElementById('rb-filter-year').value;
-  const query    = document.getElementById('rb-search-input').value.toLowerCase().trim();
-
-  let pubs = RB_PUBS.filter(p => {
-    if (yearFilt && p.year !== yearFilt) return false;
-    if (query) {
-      const hay = (p.title + ' ' + p.authors + ' ' + p.publisher + ' ' + p.tags.join(' ')).toLowerCase();
-      if (!query.split(/\s+/).every(w => hay.includes(w))) return false;
-    }
-    return true;
-  });
-
-  pubs = pubs.slice().sort((a, b) => {
-    const da = a.date || '0000', db = b.date || '0000';
-    return sort === 'year-asc' ? da.localeCompare(db) : db.localeCompare(da);
-  });
-
-  rbRenderByYear(pubs, query);
-}
-
-function rbRenderByYear(pubs, query) {
-  const el   = document.getElementById('rb-by-year-content');
-  const info = document.getElementById('rb-results-info');
-
-  if (!pubs.length) {
-    el.innerHTML = '<p class="rb-empty">No publications match your search. <a href="#" onclick="rbClearFilters();return false;">Clear filters</a></p>';
-    info.style.display = 'none';
-    return;
-  }
-
-  if (pubs.length < RB_PUBS.length) {
-    info.style.display = '';
-    info.innerHTML = `Showing ${pubs.length} of ${RB_PUBS.length} publications. <a href="#" onclick="rbClearFilters();return false;">Clear filters</a>`;
-  } else {
-    info.style.display = 'none';
-  }
-
-  const groups = {};
-  pubs.forEach(p => {
-    const y = p.year || 'Unknown';
-    if (!groups[y]) groups[y] = [];
-    groups[y].push(p);
-  });
-
-  const sort = document.getElementById('rb-sort').value;
-  const sortedYears = Object.keys(groups).sort((a,b) =>
-    sort === 'year-asc' ? a.localeCompare(b) : b.localeCompare(a)
-  );
-
-  el.innerHTML = sortedYears.map(year => `
-    <div class="rb-year-group" data-year="${year}">
-      <div class="rb-year-heading" onclick="rbToggleYear(this)">
-        <h2>${year}</h2>
-        <span class="rb-year-toggle">▼</span>
-      </div>
-      <div class="rb-year-body">
-        ${groups[year].map(rbPaperCard).join('')}
-      </div>
-    </div>
-  `).join('');
-}
-
-function rbPaperCard(p) {
-  const tagsHtml = (p.tags || []).filter(Boolean).map(t =>
-    `<span class="rb-paper-tag" onclick="rbFilterByTag(${JSON.stringify(t)})">${t}</span>`
-  ).join('');
-
-  const title = p.link
-    ? `<a href="${p.link}" target="_blank" rel="noopener">${p.title || '(Untitled)'}</a>`
-    : (p.title || '(Untitled)');
-
-  const authors = p.authors ? rbHighlightPI(p.authors) : '';
-  const meta    = [p.publisher, p.date ? p.date.slice(0,4) : ''].filter(Boolean).join(' · ');
-  const pdfLink = p.link ? `<a href="${p.link}" target="_blank" rel="noopener">[link]</a>` : '';
-
-  return `
-    <div class="rb-paper">
-      <div class="rb-paper-body">
-        ${tagsHtml ? `<div class="rb-paper-tags">${tagsHtml}</div>` : ''}
-        <div class="rb-paper-title">${title}</div>
-        <div class="rb-paper-authors">${authors}</div>
-        <div class="rb-paper-meta">${meta}${pdfLink ? ' · ' + pdfLink : ''}</div>
-      </div>
-    </div>`;
-}
-
-function rbHighlightPI(authors) {
-  return authors.replace(/(Cycowicz[^,;]*)/g, '<strong>$1</strong>');
-}
-
-function rbToggleYear(heading) {
-  heading.classList.toggle('collapsed');
-  const body = heading.nextElementSibling;
-  body.style.display = body.style.display === 'none' ? '' : 'none';
-}
-
-function rbClearFilters() {
-  document.getElementById('rb-search-input').value = '';
-  document.getElementById('rb-filter-year').value  = '';
-  rbApplyFilters();
-}
-
-function rbFilterByTag(tag) {
-  rbSwitchTab('by-topic');
-  rbActivePubTags = [tag];
-  rbBuildTopicView();
-}
-
-/* ── TAB 2: BY TOPIC ── */
-function rbBuildTopicView() {
-  const tagSet = {};
-  RB_PUBS.forEach(p => (p.tags || []).filter(Boolean).forEach(t => {
-    tagSet[t] = (tagSet[t] || 0) + 1;
-  }));
-  const allTags = Object.entries(tagSet).sort((a,b) => b[1]-a[1]).map(e => e[0]);
-
-  const cloud = document.getElementById('rb-topic-cloud');
-  cloud.innerHTML = allTags.map(t => {
-    const active = rbActivePubTags.includes(t) ? ' active' : '';
-    return `<span class="rb-tag${active}" onclick="rbTogglePubTag(${JSON.stringify(t)})">${t} <small style="opacity:.6">(${tagSet[t]})</small></span>`;
-  }).join('');
-
-  rbRenderByTopic();
-}
-
-function rbTogglePubTag(tag) {
-  const idx = rbActivePubTags.indexOf(tag);
-  idx === -1 ? rbActivePubTags.push(tag) : rbActivePubTags.splice(idx, 1);
-  rbBuildTopicView();
-}
-
-function rbRenderByTopic() {
-  const el   = document.getElementById('rb-by-topic-content');
-  const info = document.getElementById('rb-results-info-topic');
-
-  if (!rbActivePubTags.length) {
-    el.innerHTML = '<p class="rb-empty" style="padding:20px 0">Select one or more topic tags above to filter publications.</p>';
-    info.style.display = 'none';
-    return;
-  }
-
-  const pubs = RB_PUBS.filter(p =>
-    rbActivePubTags.every(tag => (p.tags || []).includes(tag))
-  ).sort((a,b) => (b.date||'').localeCompare(a.date||''));
-
-  info.style.display = '';
-  info.innerHTML = `${pubs.length} publication${pubs.length !== 1 ? 's' : ''} tagged <strong>${rbActivePubTags.join(' + ')}</strong>. <a href="#" onclick="rbActivePubTags=[];rbBuildTopicView();return false;">Clear</a>`;
-
-  el.innerHTML = pubs.length
-    ? pubs.map(rbPaperCard).join('')
-    : '<p class="rb-empty">No publications match the selected tags.</p>';
-}
-
-/* ── TAB 3: CURRENT PROJECTS ── */
-function rbBuildProjectsView() {
-  const tagSet = {};
-  RB_PROJECTS.forEach(p => (p.tags || []).filter(Boolean).forEach(t => {
-    tagSet[t] = (tagSet[t] || 0) + 1;
-  }));
-  const allTags = Object.entries(tagSet).sort((a,b) => b[1]-a[1]).map(e => e[0]);
-
-  const cloud = document.getElementById('rb-proj-tag-cloud');
-  cloud.innerHTML = allTags.map(t => {
-    const active = rbActiveProjTags.includes(t) ? ' active' : '';
-    return `<span class="rb-tag${active}" onclick="rbToggleProjTag(${JSON.stringify(t)})">${t}</span>`;
-  }).join('');
-
-  rbRenderProjects();
-}
-
-function rbToggleProjTag(tag) {
-  const idx = rbActiveProjTags.indexOf(tag);
-  idx === -1 ? rbActiveProjTags.push(tag) : rbActiveProjTags.splice(idx, 1);
-  document.querySelectorAll('#rb-proj-tag-cloud .rb-tag').forEach(el => {
-    el.classList.toggle('active', rbActiveProjTags.includes(el.textContent.trim().split('(')[0].trim()));
-  });
-  rbRenderProjects();
-}
-
-function rbFilterProjects() {
-  rbRenderProjects();
-}
-
-function rbRenderProjects() {
-  const query = (document.getElementById('rb-proj-search').value || '').toLowerCase().trim();
-  const grid  = document.getElementById('rb-projects-grid');
-
-  const projects = RB_PROJECTS.filter(p => {
-    if (rbActiveProjTags.length) {
-      if (!rbActiveProjTags.every(t => (p.tags || []).includes(t))) return false;
-    }
-    if (query) {
-      const hay = (p.title + ' ' + p.subtitle + ' ' + p.content + ' ' + (p.tags || []).join(' ')).toLowerCase();
-      if (!query.split(/\s+/).every(w => hay.includes(w))) return false;
-    }
-    return true;
-  });
-
-  if (!projects.length) {
-    grid.innerHTML = '<p class="rb-empty" style="grid-column:1/-1">No projects match your search.</p>';
-    return;
-  }
-
-  grid.innerHTML = projects.map(p => {
-    const tagsHtml = (p.tags || []).filter(Boolean).map(t =>
-      `<span class="rb-project-tag" onclick="rbToggleProjTag(${JSON.stringify(t)})">${t}</span>`
-    ).join('');
-    const titleHtml = p.url ? `<a href="${p.url}">${p.title}</a>` : p.title;
-    const learnMore = p.url ? `<a class="rb-project-link" href="${p.url}">Learn more →</a>` : '';
-
-    return `
-      <div class="rb-project-card">
-        <div class="rb-project-acronym">${titleHtml}</div>
-        ${p.subtitle ? `<div class="rb-project-subtitle">${p.subtitle}</div>` : ''}
-        ${p.content  ? `<div class="rb-project-desc">${p.content}</div>`    : ''}
-        ${tagsHtml   ? `<div class="rb-project-tags">${tagsHtml}</div>`      : ''}
-        ${learnMore}
-      </div>`;
-  }).join('');
-}
-
-/* ── Init ── */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', rbApplyFilters);
-} else {
-  rbApplyFilters();
-}
 </script>
