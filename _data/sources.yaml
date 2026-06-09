@@ -1,3 +1,21 @@
+# _data/sources.yaml
+# Manual citation overrides and enrichment data.
+#
+# Fields supported:
+#   id          – DOI URI, required for Manubot to auto-fetch base metadata
+#   topics      – list, used for "By Topic" browser view and chips
+#   keywords    – list, shown as small chips; also searchable
+#   abstract    – plain text; auto-fetched via enrich.py if blank
+#   featured    – true/false; appears in "Featured" tab and with ★ chip
+#   preprint    – true/false; appears in "Preprints" tab and with chip
+#   pdf         – direct URL to OA PDF (legal sources only)
+#   materials   – URL to supplementary materials / OSF / Dataverse
+#   code        – URL to code repo
+#   bibtex      – override BibTeX string; auto-generated if blank
+#
+# If enrich.py has already populated a field in citations.yaml,
+# you do NOT need to repeat it here unless you want to override it.
+
 - id: https://doi.org/10.1371/journal.pmen.0000574
   topics:
     - intergenerational trauma
