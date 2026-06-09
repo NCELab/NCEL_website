@@ -1,5 +1,11 @@
 """
-cite process to convert sources and metasources into full citations
+_cite/cite.py  (with DOI enrichment)
+─────────────────────────────────────
+This is a DROP-IN REPLACEMENT for the existing cite.py.
+The only addition is the block near the bottom that calls enrich.py
+after citations.yaml has been written.
+
+All original behaviour is preserved.
 """
 
 import traceback
@@ -182,6 +188,21 @@ try:
 except Exception as e:
     log(e, level="ERROR")
     errors.append(e)
+
+
+# ── DOI Enrichment ──────────────────────────────────────────────────────────
+# Run after saving so enrich.py can read + update citations.yaml in-place.
+log()
+log("Running DOI enrichment (Crossref / BibTeX / Unpaywall)")
+try:
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from enrich import main as enrich_main
+    enrich_main()
+except Exception as e:
+    log(f"Enrichment skipped: {e}", level="WARNING")
+    warnings.append(f"DOI enrichment failed: {e}")
+# ── End enrichment ──────────────────────────────────────────────────────────
 
 
 log()
