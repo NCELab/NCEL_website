@@ -111,27 +111,27 @@
       return;
     }
 
-    var loaded  = 0;
-    var n       = images.length;
-
-    images.forEach(function (src) {
-      preloadImage(src).then(function () {
-        loaded++;
-        setProgress((loaded / n) * 100);
-        if (loaded === n) {
-          clearTimeout(safetyTimer);
-          hideLoader();
-        }
+      var loaded = 0;
+      var n = images.length;
+      
+      // 建立一個包含所有圖片 Promise 的陣列
+      var promises = images.map(function (src) {
+        return preloadImage(src).then(function () {
+          loaded++;
+          // 每好一張就更新一次進度條
+          setProgress((loaded / n) * 100);
+        });
       });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runLoader);
-  } else {
-    runLoader();
-  }
-
+      
+      // 當所有圖片都處理完畢（包含 onerror 的狀況）
+      Promise.all(promises).then(function () {
+        clearTimeout(safetyTimer);
+        hideLoader();
+      }).catch(function() {
+        // 萬一有漏網之魚出錯，也強制關閉載入畫面
+        clearTimeout(safetyTimer);
+        hideLoader();
+      });        
   /* ══════════════════════════════════════════════════════════════════════════
      2. HERO PARALLAX  (scroll-synced, no autoplay)
      ══════════════════════════════════════════════════════════════════════════ */
