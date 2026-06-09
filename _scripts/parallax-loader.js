@@ -111,27 +111,43 @@
       return;
     }
 
-      var loaded = 0;
-      var n = images.length;
-      
-      // 建立一個包含所有圖片 Promise 的陣列
-      var promises = images.map(function (src) {
-        return preloadImage(src).then(function () {
-          loaded++;
-          // 每好一張就更新一次進度條
-          setProgress((loaded / n) * 100);
-        });
+     function runLoader() {
+    var images = gatherImages();
+
+    if (!images.length) {
+      // Nothing to preload – just simulate a brief progress sweep
+      var steps = 0;
+      var total = 20;
+      var id = setInterval(function () {
+        steps++;
+        setProgress((steps / total) * 100);
+        if (steps >= total) {
+          clearInterval(id);
+          clearTimeout(safetyTimer);
+          hideLoader();
+        }
+      }, 30);
+      return;
+    }
+
+    var loaded  = 0;
+    var n       = images.length;
+
+    var promises = images.map(function (src) {
+      return preloadImage(src).then(function () {
+        loaded++;
+        setProgress((loaded / n) * 100);
       });
-      
-      // 當所有圖片都處理完畢（包含 onerror 的狀況）
-      Promise.all(promises).then(function () {
-        clearTimeout(safetyTimer);
-        hideLoader();
-      }).catch(function() {
-        // 萬一有漏網之魚出錯，也強制關閉載入畫面
-        clearTimeout(safetyTimer);
-        hideLoader();
-      });        
+    });
+
+    Promise.all(promises).then(function () {
+      clearTimeout(safetyTimer);
+      hideLoader();
+    }).catch(function() {
+      clearTimeout(safetyTimer);
+      hideLoader();
+    });
+  }
   /* ══════════════════════════════════════════════════════════════════════════
      2. HERO PARALLAX  (scroll-synced, no autoplay)
      ══════════════════════════════════════════════════════════════════════════ */
