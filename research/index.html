@@ -231,6 +231,10 @@
   
 
   
+    <link href="/NCEL_website/_styles/parallax.css" rel="stylesheet">
+  
+
+  
     <link href="/NCEL_website/_styles/portrait.css" rel="stylesheet">
   
 
@@ -252,6 +256,10 @@
 
   
     <link href="/NCEL_website/_styles/project-page.css" rel="stylesheet">
+  
+
+  
+    <link href="/NCEL_website/_styles/projects.css" rel="stylesheet">
   
 
   
@@ -367,6 +375,8 @@
 
   <script src="/NCEL_website/_scripts/fetch-tags.js"></script>
 
+  <script src="/NCEL_website/_scripts/parallax-loader.js"></script>
+
   <script src="/NCEL_website/_scripts/search.js"></script>
 
   <script src="/NCEL_website/_scripts/site-search.js"></script>
@@ -379,6 +389,11 @@
 </head>
 
   <body>
+    <!-- _includes/loading.html -->
+<!-- Full-screen loading overlay: logo + progress bar + percentage -->
+<!-- Only shown on the homepage. JS in parallax-loader.js drives the progress. -->
+
+
     
 
 
@@ -387,7 +402,7 @@
 
 
 
-<header class="background" style="--image: url('/NCEL_website/images/background.png')" data-dark="false">
+<header class="background" style="--image: url('/NCEL_website/images/background.jpeg')" data-dark="false">
 <a href="/NCEL_website/" class="home">
 
 <span class="logo">
@@ -758,7 +773,13 @@
         
         
         
+          <option value="2026">2026</option>
+        
+          <option value="2025">2025</option>
+        
           <option value="2024">2024</option>
+        
+          <option value="2023">2023</option>
         
           <option value="2022">2022</option>
         
@@ -766,13 +787,43 @@
         
           <option value="2020">2020</option>
         
+          <option value="2019">2019</option>
+        
           <option value="2018">2018</option>
         
+          <option value="2013">2013</option>
+        
+          <option value="2009">2009</option>
+        
+          <option value="2008">2008</option>
+        
+          <option value="2007">2007</option>
+        
+          <option value="2006">2006</option>
+        
+          <option value="2005">2005</option>
+        
+          <option value="2004">2004</option>
+        
+          <option value="2003">2003</option>
+        
           <option value="2001">2001</option>
+        
+          <option value="2000">2000</option>
+        
+          <option value="1999">1999</option>
         
           <option value="1998">1998</option>
         
           <option value="1997">1997</option>
+        
+          <option value="1996">1996</option>
+        
+          <option value="1988">1988</option>
+        
+          <option value="1987">1987</option>
+        
+          <option value=""></option>
         
       </select>
       <label for="rb-search-input" style="margin-left:8px">Search:</label>
@@ -809,6 +860,28 @@
 const RB_PUBS = [
   
   {
+    title:     "The long shadow of 9/11: Mental health outcomes in adult children of World Trade Center Responders with PTSD",
+    authors:   "Yael M. Cycowicz, Diana V. Rodriguez-Moreno, Daniel Craft, Keely Cheslack-Postava",
+    publisher: "PLOS Mental Health",
+    date:      "2026-05-27",
+    year:      "2026",
+    link:      "https://doi.org/hb6v4n",
+    tags:      [],
+    id:        "doi:10.1371/journal.pmen.0000574"
+  },
+  
+  {
+    title:     "Psychedelic therapy: bridging neuroplasticity, phenomenology, and clinical outcomes",
+    authors:   "Ronit Kishon, Yael M. Cycowicz",
+    publisher: "Frontiers in Psychiatry",
+    date:      "2025-09-01",
+    year:      "2025",
+    link:      "https://doi.org/hb6v4p",
+    tags:      [],
+    id:        "doi:10.3389/FPSYT.2025.1637162"
+  },
+  
+  {
     title:     "The Long-Term Physical–Psychiatric Comorbidities Related to Childhood Exposure to 9/11 Trauma",
     authors:   "Lawrence Amsel, Yael M. Cycowicz, Diana V. Rodriguez-Moreno, Keely Cheslack-Postava, Larkin S. McReynolds, George J. Musa, Christina W. Hoven",
     publisher: "International Journal of Environmental Research and Public Health",
@@ -827,7 +900,18 @@ const RB_PUBS = [
     year:      "2024",
     link:      "https://doi.org/g97vm6",
     tags:      [],
-    id:        "doi:10.1038/s44184-024-00068-9"
+    id:        "doi:10.1038/S44184-024-00068-9"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:001397577000581",
+    tags:      [],
+    id:        "wosuid:WOS:001397577000581"
   },
   
   {
@@ -838,7 +922,18 @@ const RB_PUBS = [
     year:      "2024",
     link:      "https://doi.org/g97vmg",
     tags:      [],
-    id:        "doi:10.3390/children11060671"
+    id:        "doi:10.3390/CHILDREN11060671"
+  },
+  
+  {
+    title:     "Sex differences in stress responses among underrepresented minority adolescents at risk for substance use disorder",
+    authors:   "Yael M. Cycowicz, Sharon Cuchacovich, Keely Cheslack-Postava, Jacob Merrin, Christina W. Hoven, Diana V. Rodriguez-Moreno",
+    publisher: "International Journal of Psychophysiology",
+    date:      "2023-09-01",
+    year:      "2023",
+    link:      "https://doi.org/g97vh7",
+    tags:      [],
+    id:        "doi:10.1016/J.IJPSYCHO.2023.07.003"
   },
   
   {
@@ -849,7 +944,29 @@ const RB_PUBS = [
     year:      "2022",
     link:      "https://doi.org/g97vmh",
     tags:      [],
-    id:        "doi:10.1016/j.appet.2022.106104"
+    id:        "doi:10.1016/J.APPET.2022.106104"
+  },
+  
+  {
+    title:     "Ongoing neural oscillations influence behavior and sensory representations by suppressing neuronal excitability",
+    authors:   "Luca Iemi, Laura Gwilliams, Jason Samaha, Ryszard Auksztulewicz, Yael M Cycowicz, Jean-Remi King, Vadim V Nikulin, Thomas Thesen, Werner Doyle, Orrin Devinsky, Charles E Schroeder, Lucia Melloni, Saskia Haegens",
+    publisher: "NeuroImage",
+    date:      "2022-02-01",
+    year:      "2022",
+    link:      "https://doi.org/gnq4m9",
+    tags:      [],
+    id:        "doi:10.1016/J.NEUROIMAGE.2021.118746"
+  },
+  
+  {
+    title:     "Shapes of subcortical structures in adolescents with and without familial history of substance use disorder",
+    authors:   "Zhishun Wang, Diana V. Rodriguez‐Moreno, Yael M. Cycowicz, Lawrence V. Amsel, Keely Cheslack‐Postava, Xiaofu He, Megan Ryan, Lupo Geronazzo‐Alman, George J. Musa, Adam Bisaga, Christina W. Hoven",
+    publisher: "Human Brain Mapping",
+    date:      "2022-04-07",
+    year:      "2022",
+    link:      "https://doi.org/g97vh6",
+    tags:      [],
+    id:        "doi:10.1002/HBM.25804"
   },
   
   {
@@ -860,7 +977,546 @@ const RB_PUBS = [
     year:      "2021",
     link:      "https://doi.org/gmzm7k",
     tags:      [],
-    id:        "doi:10.1016/j.dcn.2021.100942"
+    id:        "doi:10.1016/J.DCN.2021.100942"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000535308200350",
+    tags:      [],
+    id:        "wosuid:WOS:000535308200350"
+  },
+  
+  {
+    title:     "Parental Occupational Exposure is Associated With Their Children's Psychopathology",
+    authors:   "Ronit Kishon, Lupo Geronazzo-Alman, Meir Teichman, Yona Teichman, Keely Cheslack-Postava, Bin Fan, Cristiane S. Duarte, Judith Wicks, George J. Musa, Amir Djalovski, Boaz Tadmor, Diana Rodriguez Moreno, Yael Cycowicz, Lawrence Amsel, Michaeline Bresnahan, Christina W. Hoven",
+    publisher: "Journal of Occupational &amp; Environmental Medicine",
+    date:      "2020-08-05",
+    year:      "2020",
+    link:      "https://doi.org/g97vjw",
+    tags:      [],
+    id:        "doi:10.1097/JOM.0000000000001971"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000535308200535",
+    tags:      [],
+    id:        "wosuid:WOS:000535308200535"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000494324000296",
+    tags:      [],
+    id:        "wosuid:WOS:000494324000296"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000494324000387",
+    tags:      [],
+    id:        "wosuid:WOS:000494324000387"
+  },
+  
+  {
+    title:     "Orienting and memory to unexpected and/or unfamiliar visual events in children and adults",
+    authors:   "Yael M. Cycowicz",
+    publisher: "Developmental Cognitive Neuroscience",
+    date:      "2019-04-01",
+    year:      "2019",
+    link:      "https://doi.org/g97vj3",
+    tags:      [],
+    id:        "doi:10.1016/J.DCN.2019.100615"
+  },
+  
+  {
+    title:     "Differences in Seizure Expression Between Magnetic Seizure Therapy and Electroconvulsive Shock",
+    authors:   "Yael M. Cycowicz, Stefan B. Rowny, Bruce Luber, Sarah H. Lisanby",
+    publisher: "The Journal of ECT",
+    date:      "2018-06-01",
+    year:      "2018",
+    link:      "https://doi.org/gdqsjc",
+    tags:      [],
+    id:        "doi:10.1097/YCT.0000000000000470"
+  },
+  
+  {
+    title:     "Single pulse TMS differentially modulates reward behavior",
+    authors:   "Arielle D. Stanford, Bruce Luber, Layla Unger, Yael M. Cycowicz, Dolores Malaspina, Sarah H. Lisanby",
+    publisher: "Neuropsychologia",
+    date:      "2013-12-01",
+    year:      "2013",
+    link:      "https://doi.org/hb6v4q",
+    tags:      [],
+    id:        "doi:10.1016/J.NEUROPSYCHOLOGIA.2013.09.016"
+  },
+  
+  {
+    title:     "Development of and change in cognitive control: A comparison of children, young adults, and older adults",
+    authors:   "D. Friedman, D. Nessler, Y. M. Cycowicz, C. Horton",
+    publisher: "Cognitive, Affective, &amp; Behavioral Neuroscience",
+    date:      "2009-03-01",
+    year:      "2009",
+    link:      "https://doi.org/cgj6vv",
+    tags:      [],
+    id:        "doi:10.3758/CABN.9.1.91"
+  },
+  
+  {
+    title:     "Differential heart rate response to magnetic seizure therapy (MST) relative to electroconvulsive therapy: A nonhuman primate model",
+    authors:   "Stefan B. Rowny, Yael M. Cycowicz, Shawn M. McClintock, Matthew D. Truesdale, Bruce Luber, Sarah H. Lisanby",
+    publisher: "NeuroImage",
+    date:      "2009-09-01",
+    year:      "2009",
+    link:      "https://doi.org/dgxd3f",
+    tags:      [],
+    id:        "doi:10.1016/J.NEUROIMAGE.2009.05.070"
+  },
+  
+  {
+    title:     "Effects of multiple study–test repetition on the neural correlates of recognition memory: ERPs dissociate remembering and knowing",
+    authors:   "Marianne De Chastelaine, David Friedman, Yael M. Cycowicz, Cort Horton",
+    publisher: "Psychophysiology",
+    date:      "2008-12-23",
+    year:      "2008",
+    link:      "https://doi.org/dksgpq",
+    tags:      [],
+    id:        "doi:10.1111/J.1469-8986.2008.00754.X"
+  },
+  
+  {
+    title:     "Neurophysiological Characterization of High-Dose Magnetic Seizure Therapy",
+    authors:   "Yael M. Cycowicz, Bruce Luber, Timothy Spellman, Sarah H. Lisanby",
+    publisher: "The Journal of ECT",
+    date:      "2009-09-01",
+    year:      "2009",
+    link:      "https://doi.org/bhhxn7",
+    tags:      [],
+    id:        "doi:10.1097/YCT.0B013E31818DD40A"
+  },
+  
+  {
+    title:     "Differential Neurophysiological Effects of Magnetic Seizure Therapy (MST) and Electroconvulsive Shock (ECS) in Non-Human Primates",
+    authors:   "Yael M. Cycowicz, Bruce Luber, Timothy Spellman, Sarah H. Lisanby",
+    publisher: "Clinical EEG and Neuroscience",
+    date:      "2008-07-01",
+    year:      "2008",
+    link:      "https://doi.org/g97vk3",
+    tags:      [],
+    id:        "doi:10.1177/155005940803900309"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259264309270",
+    tags:      [],
+    id:        "wosuid:WOS:000259264309270"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259144200383",
+    tags:      [],
+    id:        "wosuid:WOS:000259144200383"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000259144200382",
+    tags:      [],
+    id:        "wosuid:WOS:000259144200382"
+  },
+  
+  {
+    title:     "Retrieving object color: the influence of color congruity and test format",
+    authors:   "Yael M. Cycowicz, Doreen Nessler, Cort Horton, David Friedman",
+    publisher: "NeuroReport",
+    date:      "2008-09-17",
+    year:      "2008",
+    link:      "https://doi.org/chh3bs",
+    tags:      [],
+    id:        "doi:10.1097/WNR.0B013E32830C8DF1"
+  },
+  
+  {
+    title:     "The Development of Control Processes Supporting Source Memory Discrimination as Revealed by Event-related Potentials",
+    authors:   "Marianne de Chastelaine, David Friedman, Yael M. Cycowicz",
+    publisher: "Journal of Cognitive Neuroscience",
+    date:      "2007-08-01",
+    year:      "2007",
+    link:      "https://doi.org/d4g46g",
+    tags:      [],
+    id:        "doi:10.1162/JOCN.2007.19.8.1286"
+  },
+  
+  {
+    title:     "Visual novel stimuli in an ERP novelty oddball paradigm: Effects of familiarity on repetition and recognition memory",
+    authors:   "Yael M. Cycowicz, David Friedman",
+    publisher: "Psychophysiology",
+    date:      "2006-12-21",
+    year:      "2006",
+    link:      "https://doi.org/ctg34t",
+    tags:      [],
+    id:        "doi:10.1111/J.1469-8986.2006.00481.X"
+  },
+  
+  {
+    title:     "Repetition priming of possible and impossible objects from ERP and behavioral perspectives",
+    authors:   "David Friedman, Yael M. Cycowicz",
+    publisher: "Psychophysiology",
+    date:      "2006-10-11",
+    year:      "2006",
+    link:      "https://doi.org/ff948c",
+    tags:      [],
+    id:        "doi:10.1111/J.1469-8986.2006.00466.X"
+  },
+  
+  {
+    title:     "The late negative episodic memory effect: the effect of recapitulating study details at test",
+    authors:   "David Friedman, Yael M. Cycowicz, Michael Bersick",
+    publisher: "Cognitive Brain Research",
+    date:      "2005-05-01",
+    year:      "2005",
+    link:      "https://doi.org/dvt653",
+    tags:      [],
+    id:        "doi:10.1016/J.COGBRAINRES.2004.10.005"
+  },
+  
+  {
+    title:     "The old switcheroo: when target environmental sounds elicit a novelty P3",
+    authors:   "Yael M Cycowicz, David Friedman",
+    publisher: "Clinical Neurophysiology",
+    date:      "2004-06-01",
+    year:      "2004",
+    link:      "https://doi.org/cn8tz8",
+    tags:      [],
+    id:        "doi:10.1016/J.CLINPH.2004.01.008"
+  },
+  
+  {
+    title:     "Cross-form conceptual relations between sounds and words: effects on the novelty P3",
+    authors:   "David Friedman, Yael M Cycowicz, Isabel Dziobek",
+    publisher: "Cognitive Brain Research",
+    date:      "2003-12-01",
+    year:      "2003",
+    link:      "https://doi.org/dsnk7t",
+    tags:      [],
+    id:        "doi:10.1016/J.COGBRAINRES.2003.09.002"
+  },
+  
+  {
+    title:     "Pictures and Their Colors: What Do Children Remember?",
+    authors:   "Yael M. Cycowicz, David Friedman, Martin Duff",
+    publisher: "Journal of Cognitive Neuroscience",
+    date:      "2003-05-01",
+    year:      "2003",
+    link:      "https://doi.org/d8dntv",
+    tags:      [],
+    id:        "doi:10.1162/JOCN.2003.15.5.759"
+  },
+  
+  {
+    title:     "Source memory for the color of pictures: Event‐related brain potentials (ERPs) reveal sensory‐specific retrieval‐related activity",
+    authors:   "Yael M. Cycowicz, David Friedman",
+    publisher: "Psychophysiology",
+    date:      "2003-04-29",
+    year:      "2003",
+    link:      "https://doi.org/bqp72s",
+    tags:      [],
+    id:        "doi:10.1111/1469-8986.00047"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000177939700114",
+    tags:      [],
+    id:        "wosuid:WOS:000177939700114"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000169817300053",
+    tags:      [],
+    id:        "wosuid:WOS:000169817300053"
+  },
+  
+  {
+    title:     "Recognition and source memory for pictures in children and adults",
+    authors:   "Yael M Cycowicz, David Friedman, Joan Gay Snodgrass, Martin Duff",
+    publisher: "Neuropsychologia",
+    date:      "2001-01-01",
+    year:      "2001",
+    link:      "https://doi.org/cf6723",
+    tags:      [],
+    id:        "doi:10.1016/S0028-3932(00)00108-1"
+  },
+  
+  {
+    title:     "Remembering the Color of Objects: An ERP Investigation of Source Memory",
+    authors:   "Y. M. Cycowicz",
+    publisher: "Cerebral Cortex",
+    date:      "2001-04-01",
+    year:      "2001",
+    link:      "https://doi.org/d79psf",
+    tags:      [],
+    id:        "doi:10.1093/CERCOR/11.4.322"
+  },
+  
+  {
+    title:     "The novelty P3: an event-related brain potential (ERP) sign of the brain's evaluation of novelty",
+    authors:   "David Friedman, Yael M. Cycowicz, Helen Gaeta",
+    publisher: "Neuroscience &amp; Biobehavioral Reviews",
+    date:      "2001-06-01",
+    year:      "2001",
+    link:      "https://doi.org/dtg968",
+    tags:      ["[\"Cognitive brain potentials\""," \"Orienting response\""," \"Novelty P3\"]"],
+    id:        "doi:10.1016/S0149-7634(01)00019-7"
+  },
+  
+  {
+    title:     "A Developmental Trajectory in Implicit Memory is Revealed by Picture Fragment Completion",
+    authors:   "Yael M. Cycowicz, David Friedman, Joan Gay Snodgrass, Mairav Rothstein",
+    publisher: "Memory",
+    date:      "2000-01-01",
+    year:      "2000",
+    link:      "https://doi.org/dpnmmh",
+    tags:      [],
+    id:        "doi:10.1080/096582100387687"
+  },
+  
+  {
+    title:     "Memory development and event-related brain potentials in children",
+    authors:   "Yael M. Cycowicz",
+    publisher: "Biological Psychology",
+    date:      "2000-10-01",
+    year:      "2000",
+    link:      "https://doi.org/fgb8qf",
+    tags:      [],
+    id:        "doi:10.1016/S0301-0511(00)00055-7"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081817000104",
+    tags:      [],
+    id:        "wosuid:WOS:000081817000104"
+  },
+  
+  {
+    title:     "ERP recordings during a picture fragment completion task: effects of memory instructions",
+    authors:   "Yael M Cycowicz, David Friedman",
+    publisher: "Cognitive Brain Research",
+    date:      "1999-10-01",
+    year:      "1999",
+    link:      "https://doi.org/c3q8d9",
+    tags:      [],
+    id:        "doi:10.1016/S0926-6410(99)00031-2"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081797400172",
+    tags:      [],
+    id:        "wosuid:WOS:000081797400172"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000081797400171",
+    tags:      [],
+    id:        "wosuid:WOS:000081797400171"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:000082700000037",
+    tags:      [],
+    id:        "wosuid:WOS:000082700000037"
+  },
+  
+  {
+    title:     "The effect of intention to learn novel, environmental sounds on the novelty P3 and old/new recognition memory",
+    authors:   "Yael M. Cycowicz, David Friedman",
+    publisher: "Biological Psychology",
+    date:      "1999-05-01",
+    year:      "1999",
+    link:      "https://doi.org/frn7fb",
+    tags:      [],
+    id:        "doi:10.1016/S0301-0511(99)00004-6"
+  },
+  
+  {
+    title:     "Effect of Sound Familiarity on the Event-Related Potentials Elicited by Novel Environmental Sounds",
+    authors:   "Yael M. Cycowicz, David Friedman",
+    publisher: "Brain and Cognition",
+    date:      "1998-02-01",
+    year:      "1998",
+    link:      "https://doi.org/d72d54",
+    tags:      [],
+    id:        "doi:10.1006/BRCG.1997.0955"
+  },
+  
+  {
+    title:     "Effects of aging on the novelty P3 during attend and ignore oddball tasks",
+    authors:   "David Friedman, Victoria A. Kazmerski, Yael M. Cycowicz",
+    publisher: "Psychophysiology",
+    date:      "1998-09-01",
+    year:      "1998",
+    link:      "https://doi.org/bcs497",
+    tags:      [],
+    id:        "doi:10.1017/S0048577298970664"
+  },
+  
+  {
+    title:     "A developmental study of the effect of temporal order on the ERPs elicited by novel environmental sounds",
+    authors:   "Yael M. Cycowicz, David Friedman",
+    publisher: "Electroencephalography and Clinical Neurophysiology",
+    date:      "1997-08-01",
+    year:      "1997",
+    link:      "https://doi.org/cfs65m",
+    tags:      [],
+    id:        "doi:10.1016/S0013-4694(97)96053-3"
+  },
+  
+  {
+    title:     "Picture Naming by Young Children: Norms for Name Agreement, Familiarity, and Visual Complexity",
+    authors:   "Yael M. Cycowicz, David Friedman, Mairav Rothstein, Joan Gay Snodgrass",
+    publisher: "Journal of Experimental Child Psychology",
+    date:      "1997-05-01",
+    year:      "1997",
+    link:      "https://doi.org/d5sz25",
+    tags:      [],
+    id:        "doi:10.1006/JECP.1996.2356"
+  },
+  
+  {
+    title:     "An ERP developmental study of repetition priming by auditory novel stimuli",
+    authors:   "YAEL M. CYCOWICZ, DAVID FRIEDMAN, MAIRAV ROTHSTEIN",
+    publisher: "Psychophysiology",
+    date:      "1996-11-01",
+    year:      "1996",
+    link:      "https://doi.org/bjrvn7",
+    tags:      [],
+    id:        "doi:10.1111/J.1469-8986.1996.TB02364.X"
+  },
+  
+  {
+    title:     "Naming norms for brief environmental sounds: Effects of age and dementia",
+    authors:   "MONICA FABIANI, VICTORIA A. KAZMERSKI, YAEL M. CYCOWICZ, DAVID FRIEDMAN",
+    publisher: "Psychophysiology",
+    date:      "1996-07-01",
+    year:      "1996",
+    link:      "https://doi.org/bfvt5j",
+    tags:      [],
+    id:        "doi:10.1111/J.1469-8986.1996.TB01072.X"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1996VF57700125",
+    tags:      [],
+    id:        "wosuid:WOS:A1996VF57700125"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1995RT16000107",
+    tags:      [],
+    id:        "wosuid:WOS:A1995RT16000107"
+  },
+  
+  {
+    title:     "Web of Science",
+    authors:   "",
+    publisher: "",
+    date:      "",
+    year:      "",
+    link:      "https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:A1989AX54900197",
+    tags:      [],
+    id:        "wosuid:WOS:A1989AX54900197"
+  },
+  
+  {
+    title:     "Perinatal hypoxia and auditory brainstem response thresholds: No evidence of permanent hearing loss",
+    authors:   "Yael Cycowicz, Michal Schmuel, Sharon Freeman, Alan Wanszelbaum, Haim Sohmer",
+    publisher: "Hearing Research",
+    date:      "1988-07-01",
+    year:      "1988",
+    link:      "https://doi.org/d96hnb",
+    tags:      [],
+    id:        "doi:10.1016/0378-5955(88)90154-2"
+  },
+  
+  {
+    title:     "Experimental analyses of the source of ABR wave II",
+    authors:   "C. Tait, J. Miller, Y. Cycowicz, H. Sohmer",
+    publisher: "Archives of Oto-Rhino-Laryngology",
+    date:      "1987-05-01",
+    year:      "1987",
+    link:      "https://doi.org/cqxg7v",
+    tags:      [],
+    id:        "doi:10.1007/BF00453487"
   },
   
   {
@@ -897,17 +1553,6 @@ const RB_PUBS = [
   },
   
   {
-    title:     "The novelty P3: an event-related brain potential (ERP) sign of the brain's evaluation of novelty",
-    authors:   "David Friedman, Yael M. Cycowicz, Helen Gaeta",
-    publisher: "Neuroscience &amp; Biobehavioral Reviews",
-    date:      "2001-06-01",
-    year:      "2001",
-    link:      "https://doi.org/dtg968",
-    tags:      ["[\"Cognitive brain potentials\""," \"Orienting response\""," \"Novelty P3\"]"],
-    id:        "doi:10.1016/S0149-7634(01)00019-7"
-  },
-  
-  {
     title:     "Picture Naming by Young Children: Norms for Name Agreement, Familiarity, and Visual Complexity",
     authors:   "Yael M. Cycowicz, David Friedman, Mairav Rothstein, Joan Gay Snodgrass",
     publisher: "Journal of Experimental Child Psychology",
@@ -916,28 +1561,6 @@ const RB_PUBS = [
     link:      "https://doi.org/d5sz25",
     tags:      [],
     id:        "doi:10.1006/jecp.1996.2356"
-  },
-  
-  {
-    title:     "Recognition and source memory for pictures in children and adults",
-    authors:   "Yael M Cycowicz, David Friedman, Joan Gay Snodgrass, Martin Duff",
-    publisher: "Neuropsychologia",
-    date:      "2001-01-01",
-    year:      "2001",
-    link:      "https://doi.org/cf6723",
-    tags:      [],
-    id:        "doi:10.1016/S0028-3932(00)00108-1"
-  },
-  
-  {
-    title:     "Effects of aging on the novelty P3 during attend and ignore oddball tasks",
-    authors:   "David Friedman, Victoria A. Kazmerski, Yael M. Cycowicz",
-    publisher: "Psychophysiology",
-    date:      "1998-09-01",
-    year:      "1998",
-    link:      "https://doi.org/bcs497",
-    tags:      [],
-    id:        "doi:10.1017/S0048577298970664"
   }
   
 ];
@@ -1248,6 +1871,170 @@ if (document.readyState === 'loading') {
   rbApplyFilters();
 }
 </script>
+
+<hr>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     EDITORIAL PROJECTS INDEX  ·  id="projects" for anchor linking
+     Grouped by research category, staggered asymmetric grid
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="projects" class="ncel-projects-page">
+
+  <header class="ncel-projects-header">
+    <span class="ncel-projects-header__eyebrow">Research</span>
+    <h2 class="ncel-projects-header__title">Current Projects</h2>
+    <p class="ncel-projects-header__description">
+      Active studies from our lab, grouped by research theme.
+    </p>
+  </header>
+
+  <!-- ── Category 1: Memory & Trauma ───────────────────────────────────── -->
+  <section class="ncel-projects-category" aria-labelledby="cat-memory-trauma">
+    <div class="ncel-projects-category__label">
+      <span id="cat-memory-trauma" class="ncel-projects-category__name">Memory &amp; Trauma</span>
+      <span class="ncel-projects-category__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="ncel-projects-grid ncel-projects-grid--layout-a">
+
+      <!-- ITT -->
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <div class="ncel-project-item__img-wrap--no-img">
+              <span class="ncel-project-item__img-fallback" aria-hidden="true">ITT</span>
+            </div>
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            ITT
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Intergenerational Trauma and Transmission
+          </p>
+          <a href="/NCEL_website/projects/itt.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+
+      <!-- ENM -->
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <img src="/NCEL_website/images/ENM.png" alt="ENM project" class="ncel-project-item__img" loading="lazy">
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            ENM
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Emotion &amp; Memory Study
+          </p>
+          <a href="/NCEL_website/projects/enm.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+
+      <!-- CF -->
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <img src="/NCEL_website/images/cf.png" alt="CF project" class="ncel-project-item__img" loading="lazy">
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            CF
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Cognitive Decline Study
+          </p>
+          <a href="/NCEL_website/projects/cf.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+
+      <!-- EMLAS -->
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <img src="/NCEL_website/images/emlas.png" alt="EMLAS project" class="ncel-project-item__img" loading="lazy">
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            EMLAS
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Episodic Memory and Life Stories Study
+          </p>
+          <a href="/NCEL_website/projects/emlas.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Category 2: Attention & Neurodevelopment ───────────────────────── -->
+  <section class="ncel-projects-category" aria-labelledby="cat-attention">
+    <div class="ncel-projects-category__label">
+      <span id="cat-attention" class="ncel-projects-category__name">Attention &amp; Neurodevelopment</span>
+      <span class="ncel-projects-category__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="ncel-projects-grid ncel-projects-grid--layout-solo">
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <img src="/NCEL_website/images/adr.png" alt="ADR project" class="ncel-project-item__img" loading="lazy">
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            ADR
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Attention Dysregulation Research
+          </p>
+          <a href="/NCEL_website/projects/adr.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Category 3: Risk-Taking, Decision-Making & Mental Health ──────── -->
+  <section class="ncel-projects-category" aria-labelledby="cat-risk">
+    <div class="ncel-projects-category__label">
+      <span id="cat-risk" class="ncel-projects-category__name">Risk-Taking, Decision-Making &amp; Mental Health</span>
+      <span class="ncel-projects-category__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="ncel-projects-grid ncel-projects-grid--layout-solo">
+      
+      <article class="ncel-project-item">
+        <div class="ncel-project-item__img-wrap">
+          
+            <img src="/NCEL_website/images/nerd.png" alt="NERD project" class="ncel-project-item__img" loading="lazy">
+          
+        </div>
+        <div class="ncel-project-item__body">
+          <h3 class="ncel-project-item__title">
+            NERD
+          </h3>
+          <p class="ncel-project-item__subtitle">
+            Neuroeconomic Approach to Risk Behavior in Adolescents with Depression
+          </p>
+          <a href="/NCEL_website/projects/nerd.html" class="ncel-project-item__link">Learn more</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</div>
   </section>
 
 
@@ -1255,7 +2042,7 @@ if (document.readyState === 'loading') {
     
 
 
-<footer class="background" style="--image: url('/NCEL_website/images/background.png')" data-dark="false" data-size="wide">
+<footer class="background" style="--image: url('/NCEL_website/images/background.jpeg')" data-dark="false" data-size="wide">
   <!--
     <div>
       Extra details like contact info or address
