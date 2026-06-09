@@ -1,4 +1,4 @@
-- id: doi.org/10.1371/journal.pmen.0000574
+- id: https://doi.org/10.1371/journal.pmen.0000574
   topics:
     - intergenerational trauma
     - Mental Health
@@ -18,7 +18,7 @@
   materials:
   code:
   
-- id: doi.org/10.3390/ijerph21080988
+- id: https://doi.org/10.3390/ijerph21080988
   topics:
     - Trauma
     - Mental Health
@@ -35,7 +35,7 @@
   materials:
   code:
 
-  - id: doi.org/10.3390/children11060671
+  - id: https://doi.org/10.3390/children11060671
   topics:
     - Trauma
     - Mental Health
