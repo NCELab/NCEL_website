@@ -3,7 +3,7 @@ title: CF
 subtitle: Cognitive Decline Study
 group: memory-trauma
 layout: project
-image: images/CF.png
+image: images/cf.png
 tags:
   - Cognitive Decline
   - Aging
