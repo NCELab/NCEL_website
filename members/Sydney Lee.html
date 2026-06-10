@@ -441,184 +441,209 @@
 
   <section class="background" data-size="page">
     <style>
-  /* ===== Member Profile Page ===== */
-  .member-profile {
-      max-width: 760px;
-      margin: 0 auto 60px auto;
-      font-family: var(--body);
+/* ===== Member Profile Page — Si Digital Style ===== */
+
+.member-si-section {
+  width: 100%;
+  background: #f5f5f5;
+  padding: 70px 0;
+}
+
+.member-si-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Text side */
+.member-si-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.member-si-name {
+  font-family: var(--heading);
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.member-si-role {
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999;
+  font-weight: 600;
+  margin: 0 0 24px 0;
+}
+
+.member-si-affiliation {
+  font-size: 0.88rem;
+  color: #aaa;
+  margin: 0 0 20px 0;
+}
+
+.member-si-bio {
+  font-size: 0.97rem;
+  line-height: 1.78;
+  color: #555;
+  margin: 0;
+}
+
+/* Links */
+.member-si-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* Image side */
+.member-si-img-wrap {
+  flex: 0 0 280px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gray circle behind photo */
+.member-si-img-wrap::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: #ddd;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.member-si-photo {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  display: block;
+  border: 4px solid #f5f5f5;
+}
+
+/* Social icons floating around circle */
+.member-si-socials {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.member-si-social-icon {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary, #e91e8c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.member-si-social-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.member-si-social-icon svg,
+.member-si-social-icon i {
+  width: 16px;
+  height: 16px;
+  fill: white;
+  color: white;
+  font-size: 16px;
+}
+
+/* Position icons around the circle */
+.member-si-social-icon:nth-child(1) { top: 2px;  left: 50%; transform: translateX(-50%); }
+.member-si-social-icon:nth-child(2) { top: 50%;  right: -8px; transform: translateY(-50%); }
+.member-si-social-icon:nth-child(3) { bottom: 2px; left: 50%; transform: translateX(-50%); }
+.member-si-social-icon:nth-child(4) { top: 50%;  left: -8px; transform: translateY(-50%); }
+
+.member-si-social-icon:nth-child(1):hover { transform: translateX(-50%) scale(1.15); }
+.member-si-social-icon:nth-child(2):hover { transform: translateY(-50%) scale(1.15); }
+.member-si-social-icon:nth-child(3):hover { transform: translateX(-50%) scale(1.15); }
+.member-si-social-icon:nth-child(4):hover { transform: translateY(-50%) scale(1.15); }
+
+/* Different icon colors */
+.member-si-social-icon.icon-twitter   { background: #1da1f2; }
+.member-si-social-icon.icon-linkedin  { background: #0077b5; }
+.member-si-social-icon.icon-orcid     { background: #a6ce39; }
+.member-si-social-icon.icon-scholar   { background: #4285f4; }
+.member-si-social-icon.icon-github    { background: #333; }
+.member-si-social-icon.icon-website   { background: var(--primary, #e91e8c); }
+.member-si-social-icon.icon-email     { background: #e74c3c; }
+.member-si-social-icon.icon-youtube   { background: #ff0000; }
+
+@media (max-width: 680px) {
+  .member-si-inner {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
   }
-
-  /* Banner */
-  .member-banner {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      border-radius: 0 0 12px 12px;
+  .member-si-img-wrap {
+    flex: 0 0 auto;
   }
-
-  /* Card below banner */
-  .member-card {
-      background: var(--background);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      margin: 0 20px;
-      padding: 0 24px 32px 24px;
-      position: relative;
-      margin-top: -24px;
+  .member-si-links {
+    justify-content: center;
   }
+}
+</style>
 
-  /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
-  .member-avatar-wrap {
-      display: flex;
-      align-items: flex-start;
-      margin-top: -173px;
-      margin-bottom: 16px;
-  }
+<div class="member-si-section">
+  <div class="member-si-inner">
 
-  .member-avatar {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--background);
-      box-shadow: var(--shadow);
-      flex-shrink: 0;
-  }
-
-  /* Info block: name row with affiliation on right */
-  .member-info-block {
-      margin-top: 12px;
-  }
-
-  /* Name + affiliation row */
-  .member-name-affiliation-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-  }
-
-  .member-name {
-      font-family: var(--heading);
-      font-size: 3.88rem;
-      font-weight: bold;
-      margin: 0 0 4px 0;
-      color: var(--text);
-      line-height: 1.1;
-  }
-
-  /* Role + affiliation side by side */
-  .member-role-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 6px;
-  }
-
-  .member-role {
-      font-size: 1.6rem;
-      color: var(--primary);
-      font-weight: normal;
-      margin: 0;
-      line-height: 1.2;
-  }
-
-  .member-affiliation {
-      font-size: 0.95rem;
-      opacity: 0.65;
-      margin: 0;
-      text-align: right;
-      white-space: nowrap;
-  }
-
-  /* Extra line below role */
-  .member-extra-info {
-      margin-top: 10px;
-      font-size: 0.97rem;
-      color: var(--text);
-      min-height: 1.5em;
-  }
-
-  /* Divider */
-  .member-divider {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      margin: 20px 0;
-  }
-
-  /* About section */
-  .member-about-title {
-      font-family: var(--heading);
-      font-size: 1.1rem;
-      font-weight: var(--semi-bold);
-      margin: 0 0 10px 0;
-  }
-
-  .member-bio {
-      line-height: 1.75;
-      font-size: 0.97rem;
-      color: var(--text);
-  }
-
-  /* Links row */
-  .member-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-  }
-  </style>
-
-<div class="member-profile">
-
-  <!-- Banner -->
-  <img src="/NCEL_website/images/background.png" alt="Lab Banner" class="member-banner">
-
-  <!-- Card -->
-  <div class="member-card">
-
-      <!-- Avatar -->
-      <div class="member-avatar-wrap">
-            <img src="/NCEL_website/images/Sydney_Headshot.jpg" alt="Sydney Lee" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
-      </div>
-
-      <!-- Info block below avatar -->
-      <div class="member-info-block">
-
-            <!-- Name (full width) -->
-            <p class="member-name">Sydney Lee</p>
-
-            <!-- Role + Affiliation row -->
-            <div class="member-role-row">
-                    <p class="member-role">Alumni</p>
-                    <p class="member-affiliation">University of Nevada, Las Vegas</p>
-            </div>
-
-            <!-- Extra line for links/supplementary info -->
-            <div class="member-extra-info">
-                    
-            </div>
-
-      </div>
-
-      <!-- Links -->
+    <!-- Text block -->
+    <div class="member-si-text">
+      <h1 class="member-si-name">Sydney Lee</h1>
+      <p class="member-si-role">Alumni</p>
+      
+      <p class="member-si-affiliation">University of Nevada, Las Vegas</p>
       
 
-      <hr class="member-divider">
-
-      <!-- Bio -->
       
-      <p class="member-about-title">About</p>
-      <div class="member-bio">
-            <p>Sydney Lee received her M.A. in Clinical Psychology from Teachers College, Columbia University. A former professional ballet dancer and actor, she focuses on performing arts psychology, with particular interest in supporting artists with sensory sensitivities, including ADHD, in high-performance settings. As part of NCEL, she helps manage participant relations and assists with session data collection for the EEG and ADHD study. Sydney was recently admitted to her first-choice PhD program in clinical psychology at the University of Nevada, Las Vegas, where she will conduct research under the mentorship of Dr. Bradley Donohue in the Optimal Performance Program in Sports Lab (TOPPS). Reach Sydney at ￼sydneyvnlee@gmail.com￼.</p>
-
-      </div>
+      <div class="member-si-bio">
+<p>Sydney Lee received her M.A. in Clinical Psychology from Teachers College, Columbia University. A former professional ballet dancer and actor, she focuses on performing arts psychology, with particular interest in supporting artists with sensory sensitivities, including ADHD, in high-performance settings. As part of NCEL, she helps manage participant relations and assists with session data collection for the EEG and ADHD study. Sydney was recently admitted to her first-choice PhD program in clinical psychology at the University of Nevada, Las Vegas, where she will conduct research under the mentorship of Dr. Bradley Donohue in the Optimal Performance Program in Sports Lab (TOPPS). Reach Sydney at ￼sydneyvnlee@gmail.com￼.</p>
+</div>
       
+
+      
+    </div>
+
+    <!-- Image block -->
+    <div class="member-si-img-wrap">
+      <img src="/NCEL_website/images/Sydney_Headshot.jpg" alt="Sydney Lee" class="member-si-photo" onerror="this.src='/NCEL_website/images/photo.jpg'">
+
+      <!-- Social icons around circle -->
+      
+      
+
+      
+    </div>
 
   </div>
-
 </div>
   </section>
 
