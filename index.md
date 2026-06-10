@@ -1,5 +1,4 @@
 ---
-hide_header: true
 ---
 
 <!-- Hero section: scroll-synced parallax, no autoplay
