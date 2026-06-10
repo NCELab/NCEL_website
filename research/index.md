@@ -14,9 +14,3 @@ Our research combines behavioral assessments, neurophysiological methods (includ
 {% include section.html %}
 
 {% include research-browser.html %}
-
-{% include section.html %}
-
-{::nomarkdown}
-{% include research-projects-grid.html %}
-{:/nomarkdown}
