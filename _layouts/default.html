@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" data-dark="false">
-{% unless page.hide_header %}
-  {% include header.html %}
-{% endunless %}
+  {% include head.html %} 
   <body>
     {% include loading.html %}
-    {% include header.html %}
+    {% unless page.hide_header %}
+      {% include header.html %}
+    {% endunless %}
     <main>
       {% include content.html content=content %}
     </main>
