@@ -167,31 +167,6 @@
   line-height: 1.35;
 }
 
-/* ── Close/dismiss button (decorative, like reference) ── */
-.proj-scroll-card__close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  font-size: 0.65rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 0.2s;
-  backdrop-filter: blur(4px);
-}
-
-.proj-scroll-card:hover .proj-scroll-card__close {
-  opacity: 1;
-}
 
 /* ── Nav buttons ── */
 .proj-scroll-nav {
