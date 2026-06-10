@@ -2,8 +2,8 @@
 title: Projects
 nav:
   order: 2
-    tooltip: Research projects
-    ---
+  tooltip: Research projects
+---
 
     <header class="ncel-current-projects-header">
       <span class="ncel-cph__label">RESEARCH</span>
