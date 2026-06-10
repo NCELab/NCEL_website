@@ -206,14 +206,9 @@
   color: var(--gray);
 }
 
-/* ── Parallax depth layers (JS-driven via --px offset) ── */
-.proj-scroll-card {
-  --px: 0px;
-  transform: translateX(var(--px));
-}
-
+/* Scale is now driven by JS — only keep hover lift on top */
 .proj-scroll-card:hover {
-  transform: translateX(var(--px)) translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
 }
 
 /* ── Responsive ── */
