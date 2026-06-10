@@ -1,16 +1,40 @@
 {% comment %}
-  _includes/research-browser.html
-  Publication browser for NCEL website.
-  Data is injected as PUB_DATA (JSON) from site.data.citations + sources.yaml.
-  All interactive logic lives in _scripts/publications.js.
-  Styles live in _styles/publications.scss.
+  _includes/research-browser.html  (NCEL — updated layout)
+  ─────────────────────────────────────────────────────────
+  Three-section publication browser:
+    1. ★ Featured
+    2. Team Innovations
+    3. All Publications (full timeline)
+
+  • Current Projects section removed entirely.
+  • PI name (Cycowicz) bolded.
+  • NCEL team member names underlined + blue + bold.
+  • Intro note about underline convention shown above toolbar.
 {% endcomment %}
+
+{% comment %} ── Known NCEL team members (first + last variants) ───────── {% endcomment %}
+{% assign ncel_members = "Craft,Rodriguez-Moreno,Griggi,Moran,Cheslack-Postava,Amsel,Kishon,Modlin,Mourtada,Wilson,Williamson,Iemi,He,Wang,Stanford,Cuchacovich,Merrin,Vazquez,McReynolds,Musa,Geronazzo-Alman,Bisaga,Nessler,Friedman,de Chastelaine,Duff,Snodgrass,Rothstein,Figner,Rowny,Luber,Spellman,Lisanby,Hoven,Fabiani,Kazmerski,Tait,Schmuel,Freeman,Sohmer,Bersick,Horton,Sun,Tang,Ryan,Xu,Duarte,Wicks,Djalovski,Tadmor,Bresnahan,Fan,Teichman,Dziobek" | split: "," %}
 
 <div id="pub-browser" role="main" aria-label="Publication browser">
 
-  <!-- ── Toolbar ──────────────────────────────────────────────────────── -->
-  <div class="pub-toolbar" role="search" aria-label="Filter publications">
+  <!-- ── Intro note ────────────────────────────────────────────────────── -->
+  <p class="pub-intro-note">
+    The research at NCEL reflects our long-term trajectory in understanding
+    cognitive control and neurodevelopment, as well as collaborative breakthroughs
+    achieved alongside our dedicated lab members.
+    (Note: <span class="pub-member-legend">underlined blue names</span> indicate
+    NCEL lab members / students; <strong>Cycowicz</strong> indicates the PI.)
+  </p>
 
+  <!-- ── Section tabs ─────────────────────────────────────────────────── -->
+  <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
+    <button class="pub-section-tab is-active" role="tab" aria-selected="true"  data-section="featured">★ Featured Masterpieces</button>
+    <button class="pub-section-tab"           role="tab" aria-selected="false" data-section="team"    >Student &amp; Team Innovations</button>
+    <button class="pub-section-tab"           role="tab" aria-selected="false" data-section="all"     >All Publications</button>
+  </div>
+
+  <!-- ── Toolbar (search + sort + year — shared) ──────────────────────── -->
+  <div class="pub-toolbar" role="search" aria-label="Filter publications">
     <div class="pub-toolbar__group">
       <label class="pub-toolbar__label" for="pub-search">Search</label>
       <input
@@ -55,39 +79,61 @@
         {% endfor %}
       </select>
     </div>
-
-    <div class="pub-toolbar__group">
-      <label class="pub-toolbar__label" for="pub-limit">Show</label>
-      <select id="pub-limit" aria-label="Limit publication type">
-        <option value="">All</option>
-        <option value="published">Published only</option>
-        <option value="preprint">Preprints only</option>
-        <option value="featured">Featured only</option>
-      </select>
-    </div>
-
-  </div><!-- /.pub-toolbar -->
-
-  <!-- ── View tabs ────────────────────────────────────────────────────── -->
-  <div class="pub-tabs" role="tablist" aria-label="Publication views">
-    <button class="pub-tab is-active" role="tab" aria-selected="true"  data-view="year"     >By Year</button>
-    <button class="pub-tab"           role="tab" aria-selected="false" data-view="topic"    >By Topic</button>
-    <button class="pub-tab"           role="tab" aria-selected="false" data-view="featured" >Featured</button>
-    <button class="pub-tab"           role="tab" aria-selected="false" data-view="preprint" >Preprints</button>
   </div>
 
   <!-- ── Status ───────────────────────────────────────────────────────── -->
   <div id="pub-status" class="pub-status" aria-live="polite"></div>
 
-  <!-- ── Panels ───────────────────────────────────────────────────────── -->
-  <div id="pub-panel-year"     class="pub-panel is-active" role="tabpanel"></div>
-  <div id="pub-panel-topic"    class="pub-panel"           role="tabpanel"></div>
-  <div id="pub-panel-featured" class="pub-panel"           role="tabpanel"></div>
-  <div id="pub-panel-preprint" class="pub-panel"           role="tabpanel"></div>
+  <!-- ── Section panels ───────────────────────────────────────────────── -->
 
-</div><!-- /#pub-browser -->
+  <!-- 1. Featured -->
+  <div id="pub-panel-featured" class="pub-section-panel is-active" role="tabpanel">
+    <div class="pub-section-header pub-section-header--featured">
+      <span class="pub-section-header__icon">★</span>
+      <div>
+        <h2 class="pub-section-header__title">Featured</h2>
+        <p class="pub-section-header__desc">
+          Landmark papers that define our research trajectory — from foundational
+          discoveries to major collaborative breakthroughs.
+        </p>
+      </div>
+    </div>
+    <div id="pub-list-featured" class="pub-list"></div>
+  </div>
 
-<!-- ── Data injection (Liquid → JS) ──────────────────────────────────── -->
+  <!-- 2. Team Innovations -->
+  <div id="pub-panel-team" class="pub-section-panel" role="tabpanel">
+    <div class="pub-section-header pub-section-header--team">
+      <span class="pub-section-header__icon">🔬</span>
+      <div>
+        <h2 class="pub-section-header__title">Team Innovations</h2>
+        <p class="pub-section-header__desc">
+          Recent publications (2021–present) led or co-led by NCEL lab members
+          and students — reflecting the lab's growing collaborative energy.
+        </p>
+      </div>
+    </div>
+    <div id="pub-list-team" class="pub-list"></div>
+  </div>
+
+  <!-- 3. All Publications -->
+  <div id="pub-panel-all" class="pub-section-panel" role="tabpanel">
+    <div class="pub-section-header pub-section-header--all">
+      <span class="pub-section-header__icon">📚</span>
+      <div>
+        <h2 class="pub-section-header__title">All Publications</h2>
+        <p class="pub-section-header__desc">
+          Complete publication record — from early foundational work through
+          today's collaborative research.
+        </p>
+      </div>
+    </div>
+    <div id="pub-list-all" class="pub-list"></div>
+  </div>
+
+</div>
+
+<!-- ── Data injection ────────────────────────────────────────────────── -->
 <script>
 var PUB_DATA = [
   {% for c in site.data.citations %}
@@ -113,5 +159,26 @@ var PUB_DATA = [
   }{% unless forloop.last %},{% endunless %}
   {% endif %}
   {% endfor %}
+];
+
+/* ── NCEL member & PI name lists ── */
+var NCEL_MEMBERS = [
+  "Craft","Rodriguez-Moreno","Griggi","Moran","Cheslack-Postava",
+  "Amsel","Kishon","Modlin","Mourtada","Wilson","Williamson",
+  "Iemi","He","Wang","Stanford","Cuchacovich","Merrin","Vazquez",
+  "McReynolds","Musa","Geronazzo-Alman","Bisaga","Nessler","Friedman",
+  "de Chastelaine","Duff","Snodgrass","Rothstein","Figner","Rowny",
+  "Luber","Spellman","Lisanby","Hoven","Fabiani","Kazmerski","Tait",
+  "Schmuel","Freeman","Sohmer","Bersick","Horton","Sun","Tang","Ryan",
+  "Xu","Duarte","Wicks","Djalovski","Tadmor","Bresnahan","Fan",
+  "Teichman","Dziobek"
+];
+var PI_NAME = "Cycowicz";
+
+/* ── Team-led papers: first author is NCEL member, year ≥ 2021 ── */
+var TEAM_FIRST_AUTHORS = [
+  "Craft","Rodriguez-Moreno","Griggi","Moran","He","Wang",
+  "Cheslack-Postava","Amsel","Kishon","Stanford","Cuchacovich",
+  "Iemi","Rowny"
 ];
 </script>
