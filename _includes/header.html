@@ -54,7 +54,9 @@ data-big
 {% elsif page.title == "Directors and Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Alumni" %}
 {%- comment -%}Skip{%- endcomment -%}
 {% elsif page.title == "Projects" %}
-  
+<div class="nav-item">
+  <a href="{{ '/projects/' | relative_url }}">Projects</a>
+</div> 
 {% elsif page.title == "Get Involved" %}
 <div class="nav-dropdown">
 <a href="{{ page.dir | relative_url }}">Get Involved &#9662;</a>
