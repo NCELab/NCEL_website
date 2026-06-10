@@ -78,8 +78,23 @@
   date: '2025-09-01'
   link: https://doi.org/hb6v4p
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Psychedelic Therapy
+  - Mental Health
+  - Neuroplasticity
+  keywords:
+  - psychedelic therapy
+  - neuroplasticity
+  - serotonin
+  - clinical outcomes
+  - psychiatry
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   abstract: 'The resurgence of interest in psychedelic compounds as potential treatments
     for psychiatric disorders represents a paradigm shift in mental health care. Psychedelics
     exert their effects through serotonergic modulation, particularly via 5-HT2A receptor
@@ -166,8 +181,23 @@
   date: '2024-07-02'
   link: https://doi.org/g97vm6
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Psychedelic Therapy
+  - Mental Health
+  - Clinical Research
+  keywords:
+  - psychedelics
+  - clinical trials
+  - therapeutic model
+  - phenomenology
+  - treatment
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   abstract: "Abstract\n          Pre-prohibition psychedelic research with complex\
     \ psychiatric patients generated a wealth of treatment methodologies and practices,\
     \ providing invaluable clinical insights pertaining to the medical administration\
@@ -213,8 +243,23 @@
   date: '2024-05-31'
   link: https://doi.org/g97vmg
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Risk & Decision-Making
+  - Family Studies
+  - Neurodevelopment
+  keywords:
+  - family history
+  - substance use disorder
+  - minority cohort
+  - family environment
+  - adolescents
+  featured: false
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   abstract: Family history (FH+) of substance use disorder (SUD) is an established
     risk factor for offspring SUD. The extent to which offspring psychological traits
     or the family environment, each of which may be relevant to familial transmission
@@ -370,8 +415,23 @@
   date: '2022-04-07'
   link: https://doi.org/g97vh6
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Risk & Decision-Making
+  - Neurodevelopment
+  - Family Studies
+  keywords:
+  - substance use disorder
+  - family history
+  - hippocampus
+  - MRI
+  - adolescence
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   abstract: AbstractIt has been suggested that intergenerational transmission of risk
     for substance use disorder (SUD) manifests in the brain anatomy of substance naïve
     adolescents. While volume and shapes of subcortical structures (SSS) have been
@@ -1081,8 +1141,23 @@
   date: '2001-04-01'
   link: https://doi.org/d79psf
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Memory
+  - Cognitive Neuroscience
+  - ERP / Neurophysiology
+  keywords:
+  - source memory
+  - ERP
+  - color
+  - episodic memory
+  - cerebral cortex
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   bibtex: '@article{Cycowicz_2001, title={Remembering the Color of Objects: An ERP
     Investigation of Source Memory}, volume={11}, ISSN={1460-2199}, url={http://dx.doi.org/10.1093/CERCOR/11.4.322},
     DOI={10.1093/cercor/11.4.322}, number={4}, journal={Cerebral Cortex}, publisher={Oxford
@@ -1099,8 +1174,21 @@
   date: '2001-06-01'
   link: https://doi.org/dtg968
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Cognitive Neuroscience
+  - ERP / Neurophysiology
+  keywords:
+  - novelty P3
+  - orienting response
+  - event-related potentials
+  - attention
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   bibtex: '@article{Friedman_2001, title={The novelty P3: an event-related brain potential
     (ERP) sign of the brain’s evaluation of novelty}, volume={25}, ISSN={0149-7634},
     url={http://dx.doi.org/10.1016/S0149-7634(01)00019-7}, DOI={10.1016/s0149-7634(01)00019-7},
@@ -1134,8 +1222,22 @@
   date: '2000-10-01'
   link: https://doi.org/fgb8qf
   orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
+  plugin: sources.py
+  file: sources.yaml
+  topics:
+  - Memory
+  - Development
+  - ERP / Neurophysiology
+  keywords:
+  - memory development
+  - event-related brain potentials
+  - children
+  - neurophysiology
+  featured: true
+  preprint: false
+  pdf: null
+  materials: null
+  code: null
   bibtex: '@article{Cycowicz_2000, title={Memory development and event-related brain
     potentials in children}, volume={54}, ISSN={0301-0511}, url={http://dx.doi.org/10.1016/S0301-0511(00)00055-7},
     DOI={10.1016/s0301-0511(00)00055-7}, number={1-3}, journal={Biological Psychology},
@@ -1442,10 +1544,9 @@
   - Mental health and psychiatry
   - Depression
   - anxiety disorder
-  - emotions
-  - human families
-  - suveys
-  - Post-traumatic stress disorder
+  - PTSD
+  - 9/11
+  - World Trade Center
   featured: true
   preprint: false
   pdf: null
@@ -1503,10 +1604,11 @@
   - Mental Health
   - Family Studies
   keywords:
-  - family history
-  - substance use disorder
-  - minority cohort
-  - family environment
+  - comorbidity
+  - trauma
+  - children
+  - 9/11
+  - disaster
   featured: true
   preprint: false
   pdf: null
