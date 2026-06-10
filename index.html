@@ -32,6 +32,7 @@
   transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1),
               visibility 0.7s cubic-bezier(0.4,0,0.2,1);
 }
+  
 #ncel-loader.is-hidden {
   opacity: 0;
   visibility: hidden;
@@ -100,6 +101,18 @@
   color: var(--gray, #808080);
   min-width: 3.5ch;
   text-align: center;
+}
+@keyframes ncForceHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+#ncel-loader {
+  /* JS 失敗時的保險：10秒後強制隱藏 */
+  animation: ncForceHide 0s 10s forwards;
 }
 @keyframes ncLoaderIn {
   to { opacity: 1; transform: translateY(0); }
