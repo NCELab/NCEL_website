@@ -1,21 +1,26 @@
 # _data/sources.yaml
-# Manual citation overrides and enrichment data.
+# Manual citation overrides — controls featured flag, topics, and extra metadata.
 #
-# Fields supported:
-#   id          – DOI URI, required for Manubot to auto-fetch base metadata
-#   topics      – list, used for "By Topic" browser view and chips
-#   keywords    – list, shown as small chips; also searchable
-#   abstract    – plain text; auto-fetched via enrich.py if blank
-#   featured    – true/false; appears in "Featured" tab and with ★ chip
-#   preprint    – true/false; appears in "Preprints" tab and with chip
-#   pdf         – direct URL to OA PDF (legal sources only)
-#   materials   – URL to supplementary materials / OSF / Dataverse
-#   code        – URL to code repo
-#   bibtex      – override BibTeX string; auto-generated if blank
-#
-# If enrich.py has already populated a field in citations.yaml,
-# you do NOT need to repeat it here unless you want to override it.
+# FEATURED MASTERPIECES (8 selected):
+#   Landmark + high-citation + milestone collaborative papers.
 
+# ── 1. Novelty P3 review – foundational PI paper ─────────────────────────
+- id: doi:10.1016/S0149-7634(01)00019-7
+  topics:
+    - Cognitive Neuroscience
+    - ERP / Neurophysiology
+  keywords:
+    - novelty P3
+    - orienting response
+    - event-related potentials
+    - attention
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── 2. 9/11 intergenerational trauma – 2026 flagship collaborative paper ──
 - id: https://doi.org/10.1371/journal.pmen.0000574
   topics:
     - intergenerational trauma
@@ -26,16 +31,16 @@
     - Mental health and psychiatry
     - Depression
     - anxiety disorder
-    - emotions
-    - human families
-    - suveys
-    - Post-traumatic stress disorder
+    - PTSD
+    - 9/11
+    - World Trade Center
   featured: true
   preprint: false
   pdf:
   materials:
   code:
-  
+
+# ── 3. 9/11 childhood physical-psychiatric comorbidities ─────────────────
 - id: https://doi.org/10.3390/ijerph21080988
   topics:
     - Trauma
@@ -53,17 +58,109 @@
   materials:
   code:
 
-  - id: https://doi.org/10.3390/children11060671
+# ── 4. Psychedelic therapy – neuroplasticity + phenomenology ─────────────
+- id: doi:10.3389/FPSYT.2025.1637162
   topics:
-    - Trauma
+    - Psychedelic Therapy
     - Mental Health
+    - Neuroplasticity
+  keywords:
+    - psychedelic therapy
+    - neuroplasticity
+    - serotonin
+    - clinical outcomes
+    - psychiatry
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── 5. Source memory & ERP – foundational picture color memory paper ──────
+- id: doi:10.1093/CERCOR/11.4.322
+  topics:
+    - Memory
+    - Cognitive Neuroscience
+    - ERP / Neurophysiology
+  keywords:
+    - source memory
+    - ERP
+    - color
+    - episodic memory
+    - cerebral cortex
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── 6. Memory development & ERPs in children – foundational review ────────
+- id: doi:10.1016/S0301-0511(00)00055-7
+  topics:
+    - Memory
+    - Development
+    - ERP / Neurophysiology
+  keywords:
+    - memory development
+    - event-related brain potentials
+    - children
+    - neurophysiology
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── 7. Adolescent substance use risk – subcortical shapes (team paper) ────
+- id: doi:10.1002/HBM.25804
+  topics:
+    - Risk & Decision-Making
+    - Neurodevelopment
     - Family Studies
+  keywords:
+    - substance use disorder
+    - family history
+    - hippocampus
+    - MRI
+    - adolescence
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── 8. Psychedelic clinical evolution review (narrative) ─────────────────
+- id: doi:10.1038/S44184-024-00068-9
+  topics:
+    - Psychedelic Therapy
+    - Mental Health
+    - Clinical Research
+  keywords:
+    - psychedelics
+    - clinical trials
+    - therapeutic model
+    - phenomenology
+    - treatment
+  featured: true
+  preprint: false
+  pdf:
+  materials:
+  code:
+
+# ── Additional non-featured entries with topics ───────────────────────────
+
+- id: doi:10.3390/CHILDREN11060671
+  topics:
+    - Risk & Decision-Making
+    - Family Studies
+    - Neurodevelopment
   keywords:
     - family history
     - substance use disorder
     - minority cohort
     - family environment
-  featured: true
+    - adolescents
+  featured: false
   preprint: false
   pdf:
   materials:
