@@ -1,4 +1,5 @@
 ---
+hide_header: true
 ---
 
 <!-- Hero section: scroll-synced parallax, no autoplay
@@ -12,8 +13,8 @@
   <div class="ncel-hero__content">
     <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
     <h1 class="ncel-hero__title">
-      Understanding <strong>emotion, memory,</strong><br>
-      and decision-making
+      Neuro-Cognition and<br>
+      <strong>Emotion Lab</strong>
     </h1>
     <p class="ncel-hero__subtitle">
       We investigate how emotion and cognition interact to shape behavior and
