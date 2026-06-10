@@ -1,0 +1,271 @@
+@charset "UTF-8";
+/* ═══════════════════════════════════════════
+   Horizontal scrolling project gallery
+   Inspired by Over-Stimulated® editorial strip
+   ═══════════════════════════════════════════ */
+.proj-scroll-page {
+  min-height: 100vh;
+  background: var(--background);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.proj-scroll-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 32px 48px 20px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.proj-scroll-header__eyebrow {
+  font-family: var(--heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.proj-scroll-header__title {
+  font-family: var(--heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 600;
+  margin: 0;
+  border: none;
+  text-align: right;
+}
+
+/* ── Scrolling track ── */
+.proj-scroll-track-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 48px 0 32px;
+  /* Parallax container */
+}
+
+.proj-scroll-track {
+  display: flex;
+  gap: 20px;
+  padding: 0 48px;
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  align-items: center;
+  cursor: grab;
+}
+
+.proj-scroll-track:active {
+  cursor: grabbing;
+}
+
+/* ── Cards ── */
+.proj-scroll-card {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background: var(--background-alt);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  /* Staggered heights for editorial feel */
+}
+.proj-scroll-card:nth-child(odd) {
+  width: 280px;
+  height: 380px;
+  margin-top: -30px;
+}
+.proj-scroll-card:nth-child(even) {
+  width: 320px;
+  height: 440px;
+  margin-top: 30px;
+}
+.proj-scroll-card:nth-child(3n) {
+  width: 260px;
+  height: 360px;
+  margin-top: 0;
+}
+.proj-scroll-card:nth-child(4n) {
+  width: 340px;
+  height: 460px;
+  margin-top: -20px;
+}
+
+.proj-scroll-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+/* ── Card image ── */
+.proj-scroll-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.proj-scroll-card:hover .proj-scroll-card__img {
+  transform: scale(1.06);
+}
+
+.proj-scroll-card__img--fallback {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+}
+.proj-scroll-card__img--fallback span {
+  font-family: var(--heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.02em;
+}
+
+/* ── Dark gradient overlay ── */
+.proj-scroll-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.55) 100%);
+  z-index: 1;
+}
+
+/* ── Text info ── */
+.proj-scroll-card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 18px 18px;
+  z-index: 2;
+}
+
+.proj-scroll-card__index {
+  display: block;
+  font-family: var(--heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 6px;
+}
+
+.proj-scroll-card__subtitle {
+  font-family: var(--heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* ── Close/dismiss button (decorative, like reference) ── */
+.proj-scroll-card__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.proj-scroll-card:hover .proj-scroll-card__close {
+  opacity: 1;
+}
+
+/* ── Nav buttons ── */
+.proj-scroll-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 48px 36px;
+  justify-content: flex-end;
+}
+
+.proj-scroll-nav button {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--light-gray);
+  background: var(--background);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.proj-scroll-nav button:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+#proj-counter {
+  font-family: var(--heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gray);
+}
+
+/* ── Parallax depth layers (JS-driven via --px offset) ── */
+.proj-scroll-card {
+  --px: 0px;
+  transform: translateX(var(--px));
+}
+
+.proj-scroll-card:hover {
+  transform: translateX(var(--px)) translateY(-8px) scale(1.02);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .proj-scroll-header {
+    padding: 20px 24px 16px;
+  }
+  .proj-scroll-track {
+    padding: 0 24px;
+    gap: 14px;
+  }
+  .proj-scroll-nav {
+    padding: 16px 24px 28px;
+  }
+  .proj-scroll-card:nth-child(odd), .proj-scroll-card:nth-child(even), .proj-scroll-card:nth-child(3n), .proj-scroll-card:nth-child(4n) {
+    width: 220px;
+    height: 300px;
+    margin-top: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proj-scroll-track,
+  .proj-scroll-card,
+  .proj-scroll-card__img {
+    transition: none !important;
+  }
+}
+
+/*# sourceMappingURL=proj-scroll.css.map */
