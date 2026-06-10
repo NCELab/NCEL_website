@@ -11,11 +11,18 @@ hide_header: true
   aria-label="Lab hero"
 >
   <div class="ncel-hero__content">
-    <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
-    <h1 class="ncel-hero__title">
-      Neuro-Cognition and<br>
-      <strong>Emotion Lab</strong>
-    </h1>
+     <img
+       src="{{ 'images/logo.png' | relative_url }}"
+       alt="NCEL logo"
+       class="ncel-hero__logo"
+     />
+     
+     <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
+     
+     <h1 class="ncel-hero__title">
+       Neuro-Cognition and<br>
+       <strong>Emotion Lab</strong>
+     </h1>
     <p class="ncel-hero__subtitle">
       We investigate how emotion and cognition interact to shape behavior and
       mental health across development — using EEG, fMRI, and behavioral methods.
