@@ -6,13 +6,13 @@
 /* ── Hero wrapper ──────────────────────────────────────────────────────────── */
 .ncel-hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-1 * (100vw - 100%) / 2);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Parallax offset applied by JS via CSS custom property */
   --parallax-y: 0px;
 }
 
@@ -209,23 +209,29 @@
   }
 }
 /* ── Dark mode: darken hero background image ── */
-[data-dark=true] .ncel-hero::before {
-  filter: brightness(0.45) saturate(0.8);
+/* ── 背景圖過渡動畫 ── */
+.ncel-hero::before {
+  transition: filter 0.5s ease, transform 0.1s linear;
 }
 
+/* ── 日間模式：原圖亮度，不加濾鏡 ── */
 [data-dark=false] .ncel-hero::before {
   filter: brightness(1) saturate(1);
-  transition: filter 0.4s ease;
 }
 
-/* smooth transition when toggling */
-.ncel-hero::before {
-  transition: filter 0.4s ease, transform 0.1s linear;
+/* ── 夜間模式：壓暗背景圖 ── */
+[data-dark=true] .ncel-hero::before {
+  filter: brightness(0.35) saturate(0.75);
 }
 
-/* Dark mode: slightly deepen the gradient scrim too */
+/* ── 夜間模式：加深前景漸層 ── */
 [data-dark=true] .ncel-hero::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.72) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.78) 100%);
+}
+
+/* ── 漸層也加過渡 ── */
+.ncel-hero::after {
+  transition: background 0.5s ease;
 }
 
 /*# sourceMappingURL=parallax.css.map */
