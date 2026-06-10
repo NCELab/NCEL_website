@@ -39,11 +39,17 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.42) 0%,
-    rgba(0,0,0,0.18) 50%,
-    rgba(0,0,0,0.52) 100%
+    rgba(0,0,0,0.65) 0%,
+    rgba(0,0,0,0.35) 50%,
+    rgba(0,0,0,0.78) 100%
   );
+  opacity: 0;
   z-index: 1;
+  transition: opacity 0.5s ease;
+}
+
+[data-dark="true"] .ncel-hero::after {
+  opacity: 1;
 }
 
 /* Hero content sits above both layers */
@@ -212,7 +218,7 @@
 
 /* ── 夜間模式：壓暗背景圖 ── */
 [data-dark="true"] .ncel-hero::before {
-  filter: brightness(0.35) saturate(0.75);
+  filter: brightness(0.45) saturate(0.8);
 }
 
 /* ── 夜間模式：加深前景漸層 ── */
