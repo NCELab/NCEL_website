@@ -88,6 +88,13 @@
   margin: 0 0 40px;
 }
 
+.ncel-hero__logo {
+  display: block;
+  width: clamp(86px, 10vw, 140px);
+  height: auto;
+  margin: 0 auto 28px;
+}
+
 /* ── CTA row ────────────────────────────────────────────────────────────── */
 .ncel-hero__actions {
   display: flex;
