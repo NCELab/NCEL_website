@@ -47,21 +47,14 @@ data-big
 <div class="nav-dropdown">
 <a href="{{ '/people/' | relative_url }}">People &#9662;</a>
 <div class="nav-dropdown-content">
-<a href="{{ '/pi/' | relative_url }}">Yael Cycowicz (PI)</a>
+<a href="{{ '/pi/' | relative_url }}">Directors and Collaborators</a>
 <a href="{{ '/team/' | relative_url }}">Our Team</a>
 </div>
 </div>
-{% elsif page.title == "Yael Cycowicz (PI)" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Alumni" %}
+{% elsif page.title == "Directors and Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Alumni" %}
 {%- comment -%}Skip{%- endcomment -%}
 {% elsif page.title == "Projects" %}
-<div class="nav-dropdown">
-<a href="{{ page.dir | relative_url }}">Projects &#9662;</a>
-<div class="nav-dropdown-content">
-<a href="{{ '/projects/#memory-trauma' | relative_url }}">Memory &amp; Trauma</a>
-<a href="{{ '/projects/#attention-neurodevelopment' | relative_url }}">Attention &amp; Neurodevelopment</a>
-<a href="{{ '/projects/#risk-decision-mental-health' | relative_url }}">Risk-Taking &amp; Decision-Making</a>
-</div>
-</div>
+  
 {% elsif page.title == "Get Involved" %}
 <div class="nav-dropdown">
 <a href="{{ page.dir | relative_url }}">Get Involved &#9662;</a>
