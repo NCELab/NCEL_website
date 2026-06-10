@@ -199,3 +199,27 @@
     justify-content: center;
   }
 }
+/* ── Dark mode: darken hero background image ── */
+[data-dark="true"] .ncel-hero::before {
+  filter: brightness(0.45) saturate(0.8);
+}
+
+[data-dark="false"] .ncel-hero::before {
+  filter: brightness(1) saturate(1);
+  transition: filter 0.4s ease;
+}
+
+/* smooth transition when toggling */
+.ncel-hero::before {
+  transition: filter 0.4s ease, transform 0.1s linear;
+}
+
+/* Dark mode: slightly deepen the gradient scrim too */
+[data-dark="true"] .ncel-hero::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.60) 0%,
+    rgba(0,0,0,0.30) 50%,
+    rgba(0,0,0,0.72) 100%
+  );
+}
