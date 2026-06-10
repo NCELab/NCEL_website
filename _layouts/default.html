@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-dark="false">
-  {% include head.html %}
+{% unless page.hide_header %}
+  {% include header.html %}
+{% endunless %}
   <body>
     {% include loading.html %}
     {% include header.html %}
