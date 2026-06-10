@@ -34,7 +34,6 @@ nav:
               <span class="proj-scroll-card__index">○ {{ proj.title }}</span>
               <p class="proj-scroll-card__subtitle">{{ proj.subtitle }}</p>
             </div>
-            <button class="proj-scroll-card__close" aria-label="dismiss">✕</button>
           </a>
         {% endfor %}
       {% endfor %}
