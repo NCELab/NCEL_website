@@ -266,3 +266,175 @@
     aspect-ratio: 4 / 3;
   }
 }
+
+
+/* ================================================================
+   Current Projects header banner (shared: projects page + research page)
+   ================================================================ */
+
+.ncel-current-projects-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0 32px;
+    padding: 32px 40px;
+    background: var(--white, #fff);
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    margin-bottom: 48px;
+
+    .ncel-cph__label {
+          font-size: 0.7rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--gray, #888);
+          font-weight: 600;
+          grid-row: 1;
+          grid-column: 1;
+  }
+
+    .ncel-cph__title {
+          font-size: 2.8rem;
+          font-weight: 300;
+          letter-spacing: -0.01em;
+          color: var(--text, #222);
+          margin: 0;
+          border-bottom: 2px solid var(--text, #222);
+          padding-bottom: 4px;
+          grid-row: 1;
+          grid-column: 2;
+  }
+
+    .ncel-cph__desc {
+          font-size: 0.95rem;
+          color: var(--gray, #888);
+          margin: 0;
+          grid-row: 1;
+          grid-column: 3;
+          max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+    .ncel-current-projects-header {
+          grid-template-columns: 1fr;
+          gap: 8px;
+
+          .ncel-cph__label,
+          .ncel-cph__title,
+          .ncel-cph__desc {
+                  grid-column: 1;
+                  grid-row: auto;
+      }
+
+          .ncel-cph__title {
+                  font-size: 2rem;
+      }
+  }
+}
+
+/* ================================================================
+   Research page — compact 6-grid project tiles
+   ================================================================ */
+
+.ncel-research-projects-overview {
+    padding: 16px 0 40px;
+}
+
+.ncel-rpo__group {
+    margin-bottom: 40px;
+}
+
+.ncel-rpo__group-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray, #888);
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--light-gray, #e0e0e0);
+}
+
+.ncel-rpo__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 900px) {
+    .ncel-rpo__grid {
+          grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+    .ncel-rpo__grid {
+          grid-template-columns: 1fr;
+  }
+}
+
+/* Individual tile */
+.ncel-rpo__tile {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 20px 16px;
+    background: var(--white, #fff);
+    border: 1px solid var(--light-gray, #e8e8e8);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+
+    &:hover {
+          box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+          border-color: var(--primary, #7d9ec0);
+          transform: translateY(-2px);
+          text-decoration: none;
+  }
+}
+
+.ncel-rpo__tile-acronym {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary, #5a7fa8);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+}
+
+.ncel-rpo__tile-name {
+    font-size: 0.82rem;
+    color: var(--text, #444);
+    line-height: 1.35;
+    font-style: italic;
+}
+
+.ncel-rpo__tile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+}
+
+.ncel-rpo__tile-tag {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--light-gray, #edf2f7);
+    color: var(--gray, #666);
+    white-space: nowrap;
+}
+
+.ncel-rpo__tile-link {
+    margin-top: auto;
+    padding-top: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary, #5a7fa8);
+    border-top: 1px solid var(--light-gray, #eee);
+}
