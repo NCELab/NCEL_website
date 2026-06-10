@@ -2,24 +2,36 @@
 title: Our Team
 ---
 
-<div class="people-full-bio">
+<style>
+/* Our Team page section headings in Si digital style */
+.team-section-heading {
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 50px 0 0 0;
+  padding: 30px 0 0 0;
+}
 
-## Our Team
+.team-section-heading:first-child {
+  margin-top: 0;
+}
+</style>
 
-### Research Coordinator
+<p class="team-section-heading">Research Coordinator</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
 
-### Research Assistants
+<p class="team-section-heading">Research Assistants</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'ra'" sort="order" %}
 
-### Interns
+<p class="team-section-heading">Interns</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'intern'" sort="order" %}
 
-### Alumni
+<p class="team-section-heading">Alumni</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'alumni'" sort="order" %}
-
-</div>
