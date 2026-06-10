@@ -330,6 +330,7 @@
   font-size: 0.95rem;
   line-height: 1.45;
   margin-bottom: 5px;
+  text-align: left;
 }
 
 .pub-card__title a {
@@ -347,6 +348,11 @@
   color: var(--dark-gray);
   margin-bottom: 3px;
   line-height: 1.5;
+}
+
+.pub-card__authors,
+.pub-card__meta {
+  text-align: left;
 }
 
 /* PI name: bold only */
