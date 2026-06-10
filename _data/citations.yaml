@@ -45,6 +45,29 @@
     (PLoS)}, author={Cycowicz, Yael M. and Rodriguez-Moreno, Diana V. and Craft, Daniel
     and Cheslack-Postava, Keely}, editor={Klymchuk, Vitalii}, year={2026}, month=May,
     pages={e0000574} }'
+- title: When Everything becomes "Trauma"
+  publisher: Psychology Today
+  date: '2026-06-10'
+  link: https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- title: Craft, D., Cheslack-Postava, K., Rodriguez-Moreno, DV., Cycowicz, YM.Parent-Child
+    Emotional Dynamics and the Intergenerational Transmission  of Trauma in WTC Responders
+  publisher: Under Review
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- title: 'Cycowicz, YM., Rodriguez-Moreno, DV., Cheslack-Postava, K., Kishon, R. (2026).
+    From PTSD to Depression: Longitudinal Shifts in Psychopathology Among 9/11 Responders.
+    Pioneering Israel Science Conference (PISC), 1st Annual Meeting, New York, Abstract.'
+  publisher: Pioneering Israel Science Conference (PISC), 1st Annual Meeting, New
+    York, Abstract.
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.3389/FPSYT.2025.1637162
   title: 'Psychedelic therapy: bridging neuroplasticity, phenomenology, and clinical
     outcomes'
@@ -169,15 +192,6 @@
     Modlin, Nadav Liam and Cycowicz, Yael M. and Mourtada, Hania and Wilson, Tayler
     and Williamson, Victoria and Cleare, Anthony and Rucker, James}, year={2024},
     month=July }'
-- id: wosuid:WOS:001397577000581
-  title: Web of Science
-  authors: []
-  publisher: ''
-  date: ''
-  link: https://www.webofscience.com/wos/woscc/full-record/WOS:WOS:001397577000581
-  orcid: 0000-0001-8397-5492
-  plugin: orcid.py
-  file: orcid.yaml
 - id: doi:10.3390/CHILDREN11060671
   title: Characteristics of Adolescents with and without a Family History of Substance
     Use Disorder from a Minority Cohort
@@ -228,6 +242,40 @@
     Michaeline and Tang, Huilan and Geronazzo-Alman, Lupo and Bisaga, Adam and Wang,
     Zhishun and He, Xiaofu and Hoven, Christina W.}, year={2024}, month=May, pages={671}
     }'
+- title: 'Craft, D. Rodriguez-Moreno, DV., Cheslack-Postava, K., Waxman, A., Cycowicz,
+    YM., Intergenerational Transmission of Trauma via Irritability: The case of 9/11
+    Responders with PTSD and their Adult Children. '
+  publisher: International Society for Traumatic Stress Studies (ISTSS), Annual Meeting,
+    Boston, Abstract.
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- title: 'Cycowicz, YM., Goldblum, R., Craft, D., Hoven, CW., Rodriguez-Moreno, DV.
+    Childhood Trauma Legacy: Emotional Memory and Neural Responses to 9/11-Related
+    Stimuli. '
+  publisher: Society of Psychophysiology Research (SPR) Annual Meeting, Prague, Abstract.
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- title: 'Griggi, D., Craft, D. Cycowicz, YM., Rodriguez-Moreno, DV. Perceived Parental
+    Overprotection is Associated with Internalizing Symptoms Among Children of 9/11
+    First Responders.  '
+  publisher: International Society for Traumatic Stress Studies (ISTSS) Annual Meeting,
+    Boston, Abstract
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+- title: 'Moran, G., Craft., D., Rodriguez-Moreno, DV. Cycowicz, YM.Perceived Family
+    Support Negatively Correlates with PTSD Symptomology Among 9/11 Responders. '
+  publisher: International Society for Traumatic Stress Studies (ISTSS), Annual meeting,
+    Boston, Abstract.
+  date: '2026-06-10'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1016/J.IJPSYCHO.2023.07.003
   title: Sex differences in stress responses among underrepresented minority adolescents
     at risk for substance use disorder
@@ -359,6 +407,36 @@
     and He, Xiaofu and Ryan, Megan and Geronazzo‐Alman, Lupo and Musa, George J. and
     Bisaga, Adam and Hoven, Christina W.}, year={2022}, month=Apr, pages={2759–2770}
     }'
+- id: doi:10.1016/j.ynirp.2021.100037
+  title: White matter integrity and functional connectivity in adolescents with a
+    parental history of substance use disorder
+  authors:
+  - Xiaofu He
+  - Diana V. Rodriguez-Moreno
+  - Yael M. Cycowicz
+  - Keely Cheslack-Postava
+  - Huilan Tang
+  - Zhishun Wang
+  - Lawrence V. Amsel
+  - Megan Ryan
+  - Lupo Geronazzo-Alman
+  - George J. Musa
+  - Adam Bisaga
+  - Christina W. Hoven
+  publisher: 'Neuroimage: Reports'
+  date: '2021-09-01'
+  link: https://doi.org/g97vg3
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
+  bibtex: '@article{He_2021, title={White matter integrity and functional connectivity
+    in adolescents with a parental history of substance use disorder}, volume={1},
+    ISSN={2666-9560}, url={http://dx.doi.org/10.1016/j.ynirp.2021.100037}, DOI={10.1016/j.ynirp.2021.100037},
+    number={3}, journal={Neuroimage: Reports}, publisher={Elsevier BV}, author={He,
+    Xiaofu and Rodriguez-Moreno, Diana V. and Cycowicz, Yael M. and Cheslack-Postava,
+    Keely and Tang, Huilan and Wang, Zhishun and Amsel, Lawrence V. and Ryan, Megan
+    and Geronazzo-Alman, Lupo and Musa, George J. and Bisaga, Adam and Hoven, Christina
+    W.}, year={2021}, month=Sept, pages={100037} }'
 - id: doi:10.1016/J.DCN.2021.100942
   title: Delay discounting and neurocognitive correlates among inner city adolescents
     with and without family history of substance use disorder
