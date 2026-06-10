@@ -1,8 +1,6 @@
 @charset "UTF-8";
 /* ═══════════════════════════════════════════════════════════════════════════
-   publications.scss  –  NCEL publication browser styles
-   Design: clean academic data-browser; the signature is the inline
-   abstract/bibtex drawer that expands like a lab notebook entry.
+   publications.scss  –  NCEL three-section publication browser (v2)
    ═══════════════════════════════════════════════════════════════════════════ */
 /* ── Shell ──────────────────────────────────────────────────────────────── */
 #pub-browser {
@@ -11,15 +9,143 @@
   color: var(--text);
 }
 
+/* ── Intro note ─────────────────────────────────────────────────────────── */
+.pub-intro-note {
+  margin: 0 0 28px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--primary);
+  background: rgba(7, 149, 217, 0.06);
+  border-radius: 0 var(--rounded) var(--rounded) 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--dark-gray);
+  text-align: left;
+}
+
+.pub-member-legend {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: var(--semi-bold);
+}
+
+/* ── Section tabs (top-level) ───────────────────────────────────────────── */
+.pub-section-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--light-gray);
+  overflow-x: auto;
+}
+
+.pub-section-tab {
+  padding: 10px 22px;
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.88rem;
+  color: var(--gray);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.pub-section-tab:hover {
+  color: var(--primary);
+}
+
+.pub-section-tab.is-active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ── Section panels ─────────────────────────────────────────────────────── */
+.pub-section-panel {
+  display: none;
+}
+
+.pub-section-panel.is-active {
+  display: block;
+}
+
+/* ── Section header banners ─────────────────────────────────────────────── */
+.pub-section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 22px;
+  border-radius: var(--rounded);
+  margin-bottom: 24px;
+}
+
+.pub-section-header--featured {
+  background: linear-gradient(135deg, rgba(253, 230, 138, 0.25) 0%, rgba(253, 211, 77, 0.1) 100%);
+  border: 1px solid rgba(253, 211, 77, 0.45);
+}
+
+.pub-section-header--team {
+  background: linear-gradient(135deg, rgba(7, 149, 217, 0.1) 0%, rgba(125, 211, 252, 0.08) 100%);
+  border: 1px solid rgba(7, 149, 217, 0.25);
+}
+
+.pub-section-header--all {
+  background: var(--background-alt);
+  border: 1px solid var(--light-gray);
+}
+
+.pub-section-header__icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.pub-section-header__title {
+  font-family: var(--heading);
+  font-size: 1.25rem;
+  font-weight: var(--semi-bold);
+  margin: 0 0 6px;
+  padding: 0;
+  border: none;
+  text-align: left;
+  letter-spacing: 0;
+}
+
+.pub-section-header--featured .pub-section-header__title {
+  color: #92400e;
+}
+
+[data-dark=true] .pub-section-header--featured .pub-section-header__title {
+  color: #fde68a;
+}
+
+.pub-section-header--team .pub-section-header__title {
+  color: var(--primary);
+}
+
+.pub-section-header--all .pub-section-header__title {
+  color: var(--text);
+}
+
+.pub-section-header__desc {
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--gray);
+  text-align: left;
+}
+
 /* ── Toolbar ────────────────────────────────────────────────────────────── */
 .pub-toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 16px;
-  padding: 16px 0 20px;
-  border-bottom: 2px solid var(--light-gray);
-  margin-bottom: 28px;
+  padding: 14px 0 18px;
+  border-bottom: 1px solid var(--light-gray);
+  margin-bottom: 22px;
 }
 
 .pub-toolbar__group {
@@ -48,7 +174,6 @@
   font-family: inherit;
   font-size: 0.88rem;
   transition: border-color 0.15s;
-  box-shadow: none;
 }
 
 .pub-toolbar select:focus,
@@ -68,47 +193,14 @@
   flex-shrink: 0;
 }
 
-/* ── View tabs ──────────────────────────────────────────────────────────── */
-.pub-tabs {
-  display: flex;
-  gap: 0;
-  border-bottom: 2px solid var(--light-gray);
-  margin-bottom: 28px;
-}
-
-.pub-tab {
-  padding: 9px 20px;
-  font-family: var(--heading);
-  font-weight: var(--semi-bold);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--gray);
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
-  cursor: pointer;
-  transition: color 0.15s, border-color 0.15s;
-  white-space: nowrap;
-}
-
-.pub-tab:hover {
-  color: var(--primary);
-}
-
-.pub-tab.is-active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
-}
-
 /* ── Status bar ─────────────────────────────────────────────────────────── */
 .pub-status {
   font-size: 0.82rem;
   color: var(--gray);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   min-height: 1.2em;
   font-style: italic;
+  text-align: left;
 }
 
 .pub-status a {
@@ -121,48 +213,9 @@
   text-decoration: underline;
 }
 
-/* ── Topic cloud ────────────────────────────────────────────────────────── */
-.pub-topic-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-bottom: 24px;
-}
-
-.pub-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 11px;
-  border-radius: 999px;
-  border: 1px solid var(--light-gray);
-  background: var(--background-alt);
-  color: var(--dark-gray);
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: background 0.14s, border-color 0.14s, color 0.14s;
-  user-select: none;
-}
-
-.pub-chip:hover {
-  background: var(--secondary);
-  border-color: var(--secondary);
-}
-
-.pub-chip.is-active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #fff;
-}
-
-.pub-chip__count {
-  opacity: 0.65;
-  font-size: 0.72rem;
-}
-
-/* ── Year group ─────────────────────────────────────────────────────────── */
+/* ── Year groups ────────────────────────────────────────────────────────── */
 .pub-year-group {
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .pub-year-heading {
@@ -170,7 +223,7 @@
   align-items: baseline;
   gap: 12px;
   padding-bottom: 6px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   border-bottom: 1px solid var(--light-gray);
   cursor: pointer;
   user-select: none;
@@ -178,7 +231,7 @@
 
 .pub-year-heading__label {
   font-family: var(--heading);
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   font-weight: var(--regular);
   color: var(--primary);
   margin: 0;
@@ -213,8 +266,8 @@
   background: var(--background);
   border-radius: var(--rounded);
   box-shadow: 0 1px 3px 0 var(--overlay);
-  transition: box-shadow 0.16s;
   overflow: hidden;
+  transition: box-shadow 0.16s;
 }
 
 .pub-card:hover {
@@ -233,7 +286,7 @@
   min-width: 0;
 }
 
-/* keyword/topic chips on card */
+/* Chips */
 .pub-card__chips {
   display: flex;
   flex-wrap: wrap;
@@ -247,13 +300,8 @@
   background: var(--secondary);
   color: var(--text);
   font-size: 0.7rem;
-  cursor: pointer;
-  transition: background 0.13s;
+  cursor: default;
   border: none;
-}
-
-.pub-card__chip:hover {
-  background: var(--light-gray);
 }
 
 .pub-card__chip--featured {
@@ -276,11 +324,12 @@
   color: #ddd6fe;
 }
 
+/* Title */
 .pub-card__title {
   font-weight: var(--semi-bold);
   font-size: 0.95rem;
   line-height: 1.45;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .pub-card__title a {
@@ -292,19 +341,37 @@
   color: var(--primary);
 }
 
+/* Authors — member name styling */
 .pub-card__authors {
   font-size: 0.83rem;
   color: var(--dark-gray);
   margin-bottom: 3px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
+/* PI name: bold only */
+.pub-card__authors strong {
+  font-weight: var(--bold);
+}
+
+/* NCEL member: underline + primary color + bold */
+.pub-author-member {
+  color: var(--primary);
+  font-weight: var(--bold);
+}
+
+.pub-card__authors u {
+  text-decoration-color: var(--primary);
+}
+
+/* Meta */
 .pub-card__meta {
   font-size: 0.8rem;
   color: var(--gray);
   font-style: italic;
 }
 
+/* Links */
 .pub-card__links {
   display: flex;
   flex-wrap: wrap;
@@ -318,9 +385,6 @@
   font-weight: var(--semi-bold);
   color: var(--primary);
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
   transition: color 0.14s;
 }
 
@@ -333,7 +397,7 @@
   font-size: 0.7rem;
 }
 
-/* expand toggle */
+/* Toggle buttons */
 .pub-card__toggles {
   display: flex;
   flex-shrink: 0;
@@ -345,7 +409,6 @@
 .pub-card__toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   padding: 3px 9px;
   border-radius: 999px;
   border: 1px solid var(--light-gray);
@@ -356,7 +419,7 @@
   font-weight: var(--semi-bold);
   cursor: pointer;
   white-space: nowrap;
-  transition: border-color 0.13s, color 0.13s, background 0.13s;
+  transition: border-color 0.13s, color 0.13s;
 }
 
 .pub-card__toggle-btn:hover,
@@ -365,7 +428,7 @@
   color: var(--primary);
 }
 
-/* ── Drawer (abstract / bibtex) ─────────────────────────────────────────── */
+/* Drawers */
 .pub-card__drawer {
   display: none;
   border-top: 1px solid var(--light-gray);
@@ -404,7 +467,6 @@
   font-family: var(--code);
   font-size: 0.76rem;
   margin: 0;
-  overflow-x: auto;
 }
 
 .pub-card__copy-btn {
@@ -432,6 +494,13 @@
   border-color: #16a34a;
 }
 
+/* ── Pub list container ─────────────────────────────────────────────────── */
+.pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 /* ── Empty state ────────────────────────────────────────────────────────── */
 .pub-empty {
   padding: 48px 0;
@@ -442,15 +511,6 @@
 
 .pub-empty a {
   color: var(--primary);
-}
-
-/* ── Panel visibility ───────────────────────────────────────────────────── */
-.pub-panel {
-  display: none;
-}
-
-.pub-panel.is-active {
-  display: block;
 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
@@ -473,12 +533,16 @@
   .pub-card__toggles {
     flex-direction: row;
   }
-  .pub-tabs {
+  .pub-section-tabs {
     overflow-x: auto;
   }
-  .pub-tab {
+  .pub-section-tab {
     padding: 9px 14px;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
+  }
+  .pub-section-header {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
