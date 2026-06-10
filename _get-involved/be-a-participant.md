@@ -8,7 +8,6 @@ We are grateful for your willingness to contribute to our research. Participatin
 
 Our studies are conducted at the New York State Psychiatric Institute and Columbia University Medical Center in New York City. Participation typically involves behavioral tasks, questionnaires, and/or neuroimaging (EEG or MRI). All studies are IRB-approved and fully voluntary.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 ---
 
