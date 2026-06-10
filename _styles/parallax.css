@@ -20,7 +20,7 @@
 .ncel-hero::before {
   content: "";
   position: absolute;
-  inset: -15% 0; /* oversized so parallax shift doesn't reveal edges */
+  inset: -15% 0;
   background-image: var(--hero-bg);
   background-size: cover;
   background-position: center center;
@@ -28,6 +28,13 @@
   transform: translateY(var(--parallax-y));
   will-change: transform;
   z-index: 0;
+  /* the filter switch on when dark mode on */
+  filter: brightness(1);
+  transition: filter 0.5s ease;
+}
+
+[data-dark=true] .ncel-hero::before {
+  filter: brightness(0.55);
 }
 
 /* Dark scrim over the background */
@@ -35,10 +42,10 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.78) 100%);
   opacity: 0;
   z-index: 1;
   transition: opacity 0.5s ease;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0.48) 100%);
 }
 
 [data-dark=true] .ncel-hero::after {
@@ -213,31 +220,6 @@
     width: 100%;
     justify-content: center;
   }
-}
-/* ── Dark mode: darken hero background image ── */
-/* ── 背景圖過渡動畫 ── */
-.ncel-hero::before {
-  transition: filter 0.5s ease, transform 0.1s linear;
-}
-
-/* ── 日間模式：原圖亮度，不加濾鏡 ── */
-[data-dark=false] .ncel-hero::before {
-  filter: brightness(1) saturate(1);
-}
-
-/* ── 夜間模式：壓暗背景圖 ── */
-[data-dark=true] .ncel-hero::before {
-  filter: brightness(0.45) saturate(0.8);
-}
-
-/* ── 夜間模式：加深前景漸層 ── */
-[data-dark=true] .ncel-hero::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.35) 50%, rgba(0, 0, 0, 0.78) 100%);
-}
-
-/* ── 漸層也加過渡 ── */
-.ncel-hero::after {
-  transition: background 0.5s ease;
 }
 
 /*# sourceMappingURL=parallax.css.map */
