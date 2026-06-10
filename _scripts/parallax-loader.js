@@ -76,23 +76,18 @@
               - Hero background image (from data-hero-bg on the hero section)
               - Any images with data-preload="true" */
         function gatherImages() {
-                  var imgs = [];
-
-             // Hero background
-             var heroEl = qs('.ncel-hero');
-                  if (heroEl) {
-                              var bg = heroEl.dataset.heroBg;
-                              if (bg) imgs.push(bg);
-                  }
-
-             // Explicit preload hints
-             document.querySelectorAll('[data-preload="true"]').forEach(function (el) {
-                         var src = el.src || el.dataset.src || el.href;
-                         if (src) imgs.push(src);
-             });
-
-             return imgs;
-        }
+              var imgs = [];
+              var heroEl = qs('.ncel-hero');
+              if (heroEl) {
+                var bg = heroEl.dataset.heroBg;
+                if (bg && !bg.includes('{{')) imgs.push(bg);
+              }
+              document.querySelectorAll('[data-preload="true"]').forEach(function (el) {
+                var src = el.src || el.dataset.src || el.href;
+                if (src) imgs.push(src);
+              });
+              return imgs;
+            }
 
         function runLoader() {
                   var images = gatherImages();
