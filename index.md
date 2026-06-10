@@ -1,8 +1,6 @@
 ---
 ---
 
-<!-- Hero section: scroll-synced parallax, no autoplay
-     data-hero-bg is read by parallax-loader.js to preload the image -->
 <section
   class="ncel-hero"
   data-hero-bg="{{ 'images/background.jpeg' | relative_url }}"
@@ -10,25 +8,23 @@
   aria-label="Lab hero"
 >
   <div class="ncel-hero__content">
-     <img
-       src="{{ 'images/logo.png' | relative_url }}"
-       alt="NCEL logo"
-       class="ncel-hero__logo"
-     />
-     
-     <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
-     
-     <h1 class="ncel-hero__title">
-       Neuro-Cognition and<br>
-       <strong>Emotion Lab</strong>
-     </h1>
+    <img
+      src="{{ 'images/logo.png' | relative_url }}"
+      alt="NCEL logo"
+      class="ncel-hero__logo"
+    />
+    <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
+    <h1 class="ncel-hero__title">
+      Neuro-Cognition and<br>
+      <strong>Emotion Lab</strong>
+    </h1>
     <p class="ncel-hero__subtitle">
       We investigate how emotion and cognition interact to shape behavior and
       mental health across development — using EEG, fMRI, and behavioral methods.
     </p>
     <div class="ncel-hero__actions">
       <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Our Research</a>
-      <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">View Projects</a>
+      <a href="{{ '/projects/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">View Projects</a>
     </div>
   </div>
   <div class="ncel-hero__scroll-cue" aria-hidden="true">
@@ -36,8 +32,6 @@
     <p>Scroll</p>
   </div>
 </section>
-
-Welcome to the Neuro-Cognition and Emotion Lab (NCEL), where we explore how cognition and emotion interact to shape behavior and mental health across development.
 
 {% include section.html %}
 
