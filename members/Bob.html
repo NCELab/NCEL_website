@@ -43,22 +43,22 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Yael Cycowicz (PI) | Neuro-Cognition and Emotion Lab</title>
+<title>BOB | Neuro-Cognition and Emotion Lab</title>
 
 <link rel="icon" href="/NCEL_website/images/icon.png">
 
-<meta name="title" content="Yael Cycowicz (PI)">
-<meta name="description" content="An engaging 1-3 sentence description of your lab.">
+<meta name="title" content="BOB">
+<meta name="description" content="Collaborator">
 
-<meta property="og:title" content="Yael Cycowicz (PI)">
+<meta property="og:title" content="BOB">
 <meta property="og:site_title" content="Neuro-Cognition and Emotion Lab">
-<meta property="og:description" content="An engaging 1-3 sentence description of your lab.">
+<meta property="og:description" content="Collaborator">
 <meta property="og:url" content="https://ncelab.github.io/NCEL_website">
 <meta property="og:image" content="/NCEL_website/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Yael Cycowicz (PI)">
-<meta property="twitter:description" content="An engaging 1-3 sentence description of your lab.">
+<meta property="twitter:title" content="BOB">
+<meta property="twitter:description" content="Collaborator">
 <meta property="twitter:url" content="https://ncelab.github.io/NCEL_website">
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:image" content="/NCEL_website/images/share.jpg">
@@ -73,9 +73,9 @@
     
       "@type": "WebSite",
     
-    "name": "Yael Cycowicz (PI)",
-    "description": "An engaging 1-3 sentence description of your lab.",
-    "headline": "Yael Cycowicz (PI)",
+    "name": "BOB",
+    "description": "Collaborator",
+    "headline": "BOB",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/NCEL_website/images/icon.png" }
@@ -310,60 +310,6 @@
     <link href="/NCEL_website/_styles/util.css" rel="stylesheet">
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 <!-- include all css in styles folder -->
 
@@ -499,130 +445,203 @@
   
 
   <section class="background" data-size="page">
-    <div class="people-full-bio">
+    <style>
+  /* ===== Member Profile Page ===== */
+  .member-profile {
+      max-width: 760px;
+      margin: 0 auto 60px auto;
+      font-family: var(--body);
+  }
 
-  <h2 id="yael-cycowicz-pi">Yael Cycowicz (PI)</h2>
+  /* Banner */
+  .member-banner {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-radius: 0 0 12px 12px;
+  }
 
-  <div class="portrait-wrapper">
-  <a href="/NCEL_website/members/Yael-Cycowicz.html" class="portrait" data-style="" aria-label="Yael M. Cycowicz">
+  /* Card below banner */
+  .member-card {
+      background: var(--background);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 0 20px;
+      padding: 0 24px 32px 24px;
+      position: relative;
+      margin-top: -24px;
+  }
 
-    <div class="portrait-left">
+  /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
+  .member-avatar-wrap {
+      display: flex;
+      align-items: flex-start;
+      margin-top: -173px;
+      margin-bottom: 16px;
+  }
+
+  .member-avatar {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--background);
+      box-shadow: var(--shadow);
+      flex-shrink: 0;
+  }
+
+  /* Info block: name row with affiliation on right */
+  .member-info-block {
+      margin-top: 12px;
+  }
+
+  /* Name + affiliation row */
+  .member-name-affiliation-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+  }
+
+  .member-name {
+      font-family: var(--heading);
+      font-size: 3.88rem;
+      font-weight: bold;
+      margin: 0 0 4px 0;
+      color: var(--text);
+      line-height: 1.1;
+  }
+
+  /* Role + affiliation side by side */
+  .member-role-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 6px;
+  }
+
+  .member-role {
+      font-size: 1.6rem;
+      color: var(--primary);
+      font-weight: normal;
+      margin: 0;
+      line-height: 1.2;
+  }
+
+  .member-affiliation {
+      font-size: 0.95rem;
+      opacity: 0.65;
+      margin: 0;
+      text-align: right;
+      white-space: nowrap;
+  }
+
+  /* Extra line below role */
+  .member-extra-info {
+      margin-top: 10px;
+      font-size: 0.97rem;
+      color: var(--text);
+      min-height: 1.5em;
+  }
+
+  /* Divider */
+  .member-divider {
+      border: none;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      margin: 20px 0;
+  }
+
+  /* About section */
+  .member-about-title {
+      font-family: var(--heading);
+      font-size: 1.1rem;
+      font-weight: var(--semi-bold);
+      margin: 0 0 10px 0;
+  }
+
+  .member-bio {
+      line-height: 1.75;
+      font-size: 0.97rem;
+      color: var(--text);
+  }
+
+  /* Links row */
+  .member-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+  }
+  </style>
+
+<div class="member-profile">
+
+  <!-- Banner -->
+  <img src="/NCEL_website/images/background.png" alt="Lab Banner" class="member-banner">
+
+  <!-- Card -->
+  <div class="member-card">
+
+      <!-- Avatar -->
+      <div class="member-avatar-wrap">
+            <img src="/NCEL_website/images/photo.jpg" alt="BOB" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
+      </div>
+
+      <!-- Info block below avatar -->
+      <div class="member-info-block">
+
+            <!-- Name (full width) -->
+            <p class="member-name">BOB</p>
+
+            <!-- Role + Affiliation row -->
+            <div class="member-role-row">
+                    <p class="member-role">Collaborator</p>
+                    <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>
+            </div>
+
+            <!-- Extra line for links/supplementary info -->
+            <div class="member-extra-info">
+                    
+            </div>
+
+      </div>
+
+      <!-- Links -->
+      
+      <div class="member-links">
+            
+            
+            
+            
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="/NCEL_website/Diana%20V.%20Rodriguez%20Moreno" data-style="button" aria-label="button">
+      
+      
+    </a>
+  </div>
+
+
+            
+      </div>
       
 
-      <img src="/NCEL_website/images/photo.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/NCEL_website/images/fallback.svg'; this.onerror = null;">
-    </div>
+      <hr class="member-divider">
 
-    <div class="portrait-right">
+      <!-- Bio -->
       
-        <span class="portrait-name">
-          Yael M. Cycowicz
-        </span>
-      
+      <p class="member-about-title">About</p>
+      <div class="member-bio">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-      
-        <span class="portrait-description">
-          Lab Director
-        </span>
+      </div>
       
 
-      
-        <span class="portrait-affiliation">
-          Columbia University / New York State Psychiatric Institute
-        </span>
-      
-
-      
-        <div class="portrait-bio">
-          <p>Dr. Cycowicz is a cognitive neuroscientist with a strong foundation in neurophysiological research, employing methodologies such as MEG, EEG, and fMRI in combination with diverse experimental designs and advanced analytic approaches. Her work examines the dynamic relationships between brain activity and behavior, with a particular interest in neuroplasticity and how cognitive functions develop and change across the lifespan, from childhood through older adulthood. More recently, her research has expanded to investigate the interactions between cognition and emotion and how these processes are reshaped by exposure to trauma and by psychiatric conditions, including attention-deficit/hyperactivity disorder (ADHD), substance use disorders (SUD), anxiety, and depression.</p>
-
-        </div>
-      
-    </div>
-
-  </a>
-</div>
-
-  <div class="portrait-wrapper">
-  <a href="/NCEL_website/members/Diana-Rodriguez-Moreno.html" class="portrait" data-style="" aria-label="Diana V. Rodriguez Moreno">
-
-    <div class="portrait-left">
-      
-
-      <img src="/NCEL_website/images/photo.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/NCEL_website/images/fallback.svg'; this.onerror = null;">
-    </div>
-
-    <div class="portrait-right">
-      
-        <span class="portrait-name">
-          Diana V. Rodriguez Moreno
-        </span>
-      
-
-      
-        <span class="portrait-description">
-          Associate Director
-        </span>
-      
-
-      
-        <span class="portrait-affiliation">
-          Columbia University / New York State Psychiatric Institute
-        </span>
-      
-
-      
-        <div class="portrait-bio">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-        </div>
-      
-    </div>
-
-  </a>
-</div>
-
-  <hr>
-
-  <h2 id="collaborators">Collaborators</h2>
-
-  <div class="portrait-wrapper">
-  <a href="/NCEL_website/members/Bob.html" class="portrait" data-style="" aria-label="BOB">
-
-    <div class="portrait-left">
-      
-
-      <img src="/NCEL_website/images/photo.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/NCEL_website/images/fallback.svg'; this.onerror = null;">
-    </div>
-
-    <div class="portrait-right">
-      
-        <span class="portrait-name">
-          BOB
-        </span>
-      
-
-      
-        <span class="portrait-description">
-          Collaborator
-        </span>
-      
-
-      
-        <span class="portrait-affiliation">
-          Columbia University / New York State Psychiatric Institute
-        </span>
-      
-
-      
-        <div class="portrait-bio">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-        </div>
-      
-    </div>
-
-  </a>
-</div>
+  </div>
 
 </div>
   </section>
