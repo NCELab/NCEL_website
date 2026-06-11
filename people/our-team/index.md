@@ -20,13 +20,11 @@ title: Our Team
 }
 </style>
 
-<p class="team-section-heading">Research Coordinator and Assistant</p>
+<p class="team-section-heading">Our Team</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
 
 {% include list.html data="members" component="portrait" filter="role == 'ra'" sort="order" %}
-
-<p class="team-section-heading">Interns</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'intern'" sort="order" %}
 
