@@ -1,6 +1,6 @@
 ---
 name: Ruixuan Zhao
-image: images/photo.jpg
+image: images/Ruixuan_headshot.jpg
 role: ra
 order: 4
 description: Research Assistant
