@@ -3,149 +3,159 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style>
-  /* ===== Member Profile Page ===== */
-  .member-profile {
-      max-width: 760px;
-      margin: 0 auto 60px auto;
-      font-family: var(--body);
-  }
-  /* Banner */
-  .member-banner {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      border-radius: 0 0 12px 12px;
-  }
-  /* Card below banner */
-  .member-card {
-      background: var(--background);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      margin: 0 20px;
-      padding: 0 24px 32px 24px;
-      position: relative;
-      margin-top: -24px;
-  }
-  /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
-  .member-avatar-wrap {
-      display: flex;
-      align-items: flex-start;
-      margin-top: -173px;
-      margin-bottom: 16px;
-  }
-  .member-avatar {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--background);
-      box-shadow: var(--shadow);
-      flex-shrink: 0;
-  }
-  /* Info block: name row with affiliation on right */
-  .member-info-block {
-      margin-top: 12px;
-  }
-  .member-name {
-      font-family: var(--heading);
-      font-size: 2.5rem; 
-      font-weight: bold;
-      margin: 0 0 8px 0;
-      color: var(--text);
-      line-height: 1.1;
-  }
-  /* Role + affiliation side by side */
-  .member-role-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-top: 6px;
-      flex-wrap: wrap; 
-  }
-  .member-role {
-      font-size: 1.4rem;
-      color: var(--primary);
-      font-weight: normal;
-      margin: 0;
-      line-height: 1.2;
-  }
-  .member-affiliation {
-      font-size: 0.95rem;
-      opacity: 0.65;
-      margin: 0;
-      text-align: right;
-      white-space: nowrap;
-  }
-  /* Extra line below role */
-  .member-extra-info {
-      margin-top: 10px;
-      font-size: 0.97rem;
-      color: var(--text);
-      min-height: 1.5em;
-  }
-  /* Divider */
-  .member-divider {
-      border: none;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      margin: 20px 0;
-  }
-  /* About section */
-  .member-about-title {
-      font-family: var(--heading);
-      font-size: 1.1rem;
-      font-weight: var(--semi-bold);
-      margin: 0 0 10px 0;
-  }
-  .member-bio {
-      line-height: 1.75;
-      font-size: 0.97rem;
-      color: var(--text);
-  }
-  /* Links row */
-  .member-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-  }
-</style>
+ /* ===== Version B: Individual Member Profile Page ===== */
+ .mp-wrap {
+    max-width: 860px;
+    margin: 40px auto 80px;
+    padding: 0 24px;
+    font-family: var(--body);
+ }
+ .mp-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--gray, #888);
+   text-decoration: none;
+    margin-bottom: 32px;
+    letter-spacing: 0.04em;
+    transition: color 0.18s;
+ }
+ .mp-back:hover { color: var(--primary); }
+ .mp-back::before { content: "\2190"; font-size: 1em; }
+ .mp-hero {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 48px;
+ }
+ .mp-left { display: flex; flex-direction: column; }
+ .mp-name {
+    font-family: var(--heading);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text);
+    margin: 0 0 10px 0;
+ }
+ .mp-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 6px 0;
+ }
+ .mp-affiliation {
+    font-size: 0.88rem;
+    color: var(--gray, #888);
+    margin: 0 0 28px 0;
+    line-height: 1.5;
+ }
+ .mp-section-label {
+    font-family: var(--heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray, #888);
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+ }
+ .mp-bio {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin: 0 0 32px 0;
+ }
+ .mp-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+ }
+ .mp-right { position: sticky; top: 100px; }
+ .mp-photo-frame {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--light-gray, #f0f0f0);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+    aspect-ratio: 3 / 4;
+    width: 100%;
+ }
+ .mp-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+ }
+ @media (max-width: 720px) {
+    .mp-hero { grid-template-columns: 1fr; gap: 28px; }
+    .mp-right { position: static; order: -1; }
+    .mp-photo-frame { aspect-ratio: 1 / 1; max-width: 220px; }
+    .mp-name { font-size: 1.8rem; }
+ }
+ </style>
 
 </head>
 <body>
-<div class="member-profile">
+<div class="mp-wrap">
+   <a href="/NCEL_website/team" class="mp-back">Back to Our Team</a>a&gt;
+   <div class="mp-hero">
+        <div class="mp-left">
+               <h1 class="mp-name">Sanya Vadhavkar</h1>h1&gt;
+               <p class="mp-role">Intern</p>p&gt;
+               <p class="mp-affiliation">Columbia University / New York State Psychiatric Institute</p>p&gt;
+               
+               <p class="mp-section-label">About</p>p&gt;
+               <div class="mp-bio">
+<p>Sanya is a second-year M.A. student in Clinical Psychology at Teachers College, Columbia University. She is interested in contributing to more holistic approaches to healthcare and hopes to work at the intersection of neuroscience and psychology. As she continues exploring her research interests, she is particularly drawn to understanding how brain and behavioral science can inform more integrated approaches to mental health and well-being.</p>
+</div>div&gt;
+               
+               <p class="mp-section-label">Links</p>p&gt;
+               <div class="mp-links">
+                        
+                          
 
-  <img src="/NCEL_website/images/background.png" alt="Lab Banner" class="member-banner">
 
-  <div class="member-card">
 
-      <div class="member-avatar-wrap">
-          <img src="/NCEL_website/images/Sanya_headshot.jpg" alt="Sanya Vadhavkar" class="member-avatar" onerror="this.src='/NCEL_website/images/photo.jpg'">
-      </div>
-
-      <div class="member-info-block">
-          <p class="member-name">Sanya Vadhavkar</p>
-          <div class="member-role-row">
-              <p class="member-role">Intern</p>
-              <p class="member-affiliation">Columbia University / New York State Psychiatric Institute</p>
-          </div>
-          <div class="member-extra-info">
-              
-          </div>
-      </div>
-
+  <div class="button-wrapper">
+    <a class="button" href="/NCEL_website/" data-style="button" aria-label="fa-solid fa-globe">
+      <i class="icon fa-solid fa-globe"></i>
       
-
+        <span>Personal Website (coming soon)</span>
       
-          <hr class="member-divider">
-          <p class="member-about-title">About</p>
-          <div class="member-bio">
-              <p>Sanya is a second-year M.A. student in Clinical Psychology at Teachers College, Columbia University. She is interested in contributing to more holistic approaches to healthcare and hopes to work at the intersection of neuroscience and psychology. As she continues exploring her research interests, she is particularly drawn to understanding how brain and behavioral science can inform more integrated approaches to mental health and well-being.</p>
+    </a>
+  </div>
 
-          </div>
+
+                          
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="/NCEL_website/" data-style="button" aria-label="fa-solid fa-graduation-cap">
+      <i class="icon fa-solid fa-graduation-cap"></i>
       
-        
-  </div> </div>
+        <span>Google Scholar (coming soon)</span>
+      
+    </a>
+  </div>
+
+
+                        
+               </div>div&gt;
+        </div>div&gt;
+        <div class="mp-right">
+               <div class="mp-photo-frame">
+                        <img src="/NCEL_website/images/Sanya_headshot.jpg" alt="Sanya Vadhavkar" class="mp-photo" onerror="this.src='/NCEL_website/images/photo.jpg'">
+               </div>div&gt;
+        </div>div&gt;
+   </div>div&gt;
+</div>div&gt;
+
 </body>
 </html>
