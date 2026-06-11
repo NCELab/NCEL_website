@@ -1,13 +1,11 @@
----
-
-<style>
+ <style>
   /* ===== Member Profile Page ===== */
   .member-profile {
       max-width: 760px;
       margin: 0 auto 60px auto;
       font-family: var(--body);
   }
-/* Banner */
+  /* Banner */
   .member-banner {
       width: 100%;
       height: 200px;
@@ -15,7 +13,7 @@
       display: block;
       border-radius: 0 0 12px 12px;
   }
- /* Card below banner */
+  /* Card below banner */
   .member-card {
       background: var(--background);
       border-radius: 12px;
@@ -25,14 +23,14 @@
       position: relative;
       margin-top: -24px;
   }
-   /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
+  /* Avatar: 2x size, positioned so top 2/3 overlaps banner */
   .member-avatar-wrap {
       display: flex;
       align-items: flex-start;
       margin-top: -173px;
       margin-bottom: 16px;
   }
-   .member-avatar {
+  .member-avatar {
       width: 260px;
       height: 260px;
       border-radius: 50%;
@@ -41,35 +39,29 @@
       box-shadow: var(--shadow);
       flex-shrink: 0;
   }
-   /* Info block: name row with affiliation on right */
+  /* Info block: name row with affiliation on right */
   .member-info-block {
       margin-top: 12px;
   }
-  /* Name + affiliation row */
-  .member-name-affiliation-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-  }
   .member-name {
       font-family: var(--heading);
-      font-size: 3.88rem;
+      font-size: 2.5rem; 
       font-weight: bold;
-      margin: 0 0 4px 0;
+      margin: 0 0 8px 0;
       color: var(--text);
       line-height: 1.1;
   }
-   /* Role + affiliation side by side */
+  /* Role + affiliation side by side */
   .member-role-row {
       display: flex;
       align-items: baseline;
       justify-content: space-between;
       gap: 16px;
       margin-top: 6px;
+      flex-wrap: wrap; 
   }
-   .member-role {
-      font-size: 1.6rem;
+  .member-role {
+      font-size: 1.4rem;
       color: var(--primary);
       font-weight: normal;
       margin: 0;
@@ -82,20 +74,20 @@
       text-align: right;
       white-space: nowrap;
   }
- /* Extra line below role */
+  /* Extra line below role */
   .member-extra-info {
       margin-top: 10px;
       font-size: 0.97rem;
       color: var(--text);
       min-height: 1.5em;
   }
-   /* Divider */
+  /* Divider */
   .member-divider {
       border: none;
       border-top: 1px solid rgba(0,0,0,0.1);
       margin: 20px 0;
   }
-   /* About section */
+  /* About section */
   .member-about-title {
       font-family: var(--heading);
       font-size: 1.1rem;
@@ -107,67 +99,52 @@
       font-size: 0.97rem;
       color: var(--text);
   }
-   /* Links row */
+  /* Links row */
   .member-links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 20px;
   }
-  </style>
+</style>
 
 <div class="member-profile">
 
-  <!-- Banner -->
-  <img
-      src="{{ '/images/background.png' | relative_url }}"
-      alt="Lab Banner"
-      class="member-banner"
-    >
+  <img src="{{ '/images/background.png' | relative_url }}" alt="Lab Banner" class="member-banner">
 
-  <!-- Card -->
   <div class="member-card">
 
-      <!-- Avatar -->
       <div class="member-avatar-wrap">
-            <img
-                    src="{{ page.image | relative_url | uri_escape }}"
-                    alt="{{ page.name }}"
-                    class="member-avatar"
-                    onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'"
-                  >
+          <img src="{{ page.image | relative_url | uri_escape }}" alt="{{ page.name }}" class="member-avatar" onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'">
       </div>
-         <!-- Info block below avatar -->
+
       <div class="member-info-block">
-                 <!-- Name (full width) -->
-            <p class="member-name">{{ page.name }}</p>
-             <!-- Role + Affiliation row -->
-            <div class="member-role-row">
-                    <p class="member-role">{{ page.description }}</p>
-                    <p class="member-affiliation">{{ page.affiliation }}</p>
-            </div>
-              <!-- Extra line for links/supplementary info -->
-            <div class="member-extra-info">
-                    {% if page.extra_info %}{{ page.extra_info }}{% endif %}
-            </div>
-               </div>
-                 <!-- Links -->
+          <p class="member-name">{{ page.name }}</p>
+          <div class="member-role-row">
+              <p class="member-role">{{ page.description }}</p>
+              <p class="member-affiliation">{{ page.affiliation }}</p>
+          </div>
+          <div class="member-extra-info">
+              {% if page.extra_info %}{{ page.extra_info }}{% endif %}
+          </div>
+      </div>
+
       {% if page.links %}
       <div class="member-links">
-            {% for link in page.links %}
-            {% assign key = link[0] %}
-            {% assign value = link[1] %}
-            {% include button.html type=key link=value style="button" %}
-            {% endfor %}
-          <hr class="member-divider">
-           <!-- Bio -->
+          {% for link in page.links %}
+              {% assign key = link[0] %}
+              {% assign value = link[1] %}
+              {% include button.html type=key link=value style="button" %}
+          {% endfor %}
+      </div>
+      {% endif %}
+
       {% if page.content and page.content != "" %}
-      <p class="member-about-title">About</p>
-      <div class="member-bio">
-            {{ content }}
-        </div>
+          <hr class="member-divider">
+          <p class="member-about-title">About</p>
+          <div class="member-bio">
+              {{ content }}
+          </div>
       {% endif %}
         
-  </div>
-
-</div>
+  </div> </div>
