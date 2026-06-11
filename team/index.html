@@ -494,271 +494,327 @@
   
 
   <section class="background" data-size="page">
-    <div class="people-full-bio">
+    <style>
+  .team-section { margin-bottom: 48px; }
+  .team-section-title {
+      font-family: var(--heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray, #888);
+      margin: 0 0 20px 0;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .member-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 28px 20px;
+  }
+  a.member-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+  }
+  a.member-card-link:hover .member-card-item {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+  }
+  .member-card-item {
+      background: var(--background);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+  }
+  .member-card-photo-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: var(--light-gray, #f0f0f0);
+  }
+  .member-card-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.3s ease;
+  }
+  a.member-card-link:hover .member-card-photo { transform: scale(1.04); }
+  .member-card-info { padding: 12px 14px 14px; }
+  .member-card-name {
+      font-family: var(--heading);
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0 0 4px 0;
+      line-height: 1.3;
+  }
+  .member-card-role {
+      font-size: 0.78rem;
+      color: var(--gray, #888);
+      margin: 0;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+  }
+  @media (max-width: 600px) {
+      .member-card-grid { grid-template-columns: repeat(2, 1fr); gap: 16px 12px; }
+  }
+  </style>
 
-  <h2 id="our-team">Our Team</h2>
+<p>## Our Team</p>
 
-  <h3 id="research-coordinator">Research Coordinator</h3>
+<div class="team-section">
+    <p class="team-section-title">Research Coordinator</p>p&gt;
+    <div class="member-card-grid">
+      
 
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>&lt;a
-    href="/NCEL_website/members/Daniel%20Craft.html"
-    class="member-card-link"
-    aria-label="Daniel Craft"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/photo.jpg"
-                            alt="Daniel Craft"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Daniel Craft&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;Research Coordinator&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
-</code></pre></div>  </div>
 
-  <h3 id="research-assistants">Research Assistants</h3>
 
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>&lt;a
-    href="/NCEL_website/members/Ruixuan%20Zhao.html"
-    class="member-card-link"
-    aria-label="Ruixuan Zhao"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Ruixuan_headshot.jpg"
-                            alt="Ruixuan Zhao"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Ruixuan Zhao&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;Research Assistant&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
-</code></pre></div>  </div>
-
-  <h3 id="interns">Interns</h3>
-
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>&lt;a
-    href="/NCEL_website/members/Kelly%20Wang.html"
-    class="member-card-link"
-    aria-label="Kelly Wang"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Kelly_headshot.jpg"
-                            alt="Kelly Wang"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Kelly Wang&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;intern&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
 
 
   
 
   
 
+    
 
-
-&lt;a
-    href="/NCEL_website/members/Jumi%20Park.html"
-    class="member-card-link"
-    aria-label="Jumi Park"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Jumi_headshot.jpg"
-                            alt="Jumi Park"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Jumi Park&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;intern&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
-
-
-  
-
-  
+    <a href="/NCEL_website/members/Daniel%20Craft.html" class="member-card-link" aria-label="Daniel Craft">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/photo.jpg" alt="Daniel Craft" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Daniel Craft</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">Research Coordinator</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
 
 
 
-&lt;a
-    href="/NCEL_website/members/Max%20Sklar.html"
-    class="member-card-link"
-    aria-label="Max Sklar"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Max_Headshot.jpg"
-                            alt="Max Sklar"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Max Sklar&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;intern&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
+    </div>div&gt;
+  </div>
+<p>div&gt;</p>
+
+<div class="team-section">
+    <p class="team-section-title">Research Assistants</p>p&gt;
+    <div class="member-card-grid">
+      
+
+
+
 
 
   
 
   
 
+    
+
+    <a href="/NCEL_website/members/Ruixuan%20Zhao.html" class="member-card-link" aria-label="Ruixuan Zhao">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Ruixuan_headshot.jpg" alt="Ruixuan Zhao" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Ruixuan Zhao</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">Research Assistant</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
 
 
-&lt;a
-    href="/NCEL_website/members/Sanya%20Vadhavkar.html"
-    class="member-card-link"
-    aria-label="Sanya Vadhavkar"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Sanya_headshot.jpg"
-                            alt="Sanya Vadhavkar"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Sanya Vadhavkar&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;Intern&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
+
+    </div>div&gt;
+  </div>
+<p>div&gt;</p>
+
+<div class="team-section">
+    <p class="team-section-title">Interns</p>p&gt;
+    <div class="member-card-grid">
+      
+
+
+
 
 
   
 
   
 
+    
+
+    <a href="/NCEL_website/members/Kelly%20Wang.html" class="member-card-link" aria-label="Kelly Wang">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Kelly_headshot.jpg" alt="Kelly Wang" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Kelly Wang</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">intern</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
 
 
-&lt;a
-    href="/NCEL_website/members/Morgan%20Arma.html"
-    class="member-card-link"
-    aria-label="Morgan Arma"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Morgan_Headshot.jpg"
-                            alt="Morgan Arma"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Morgan Arma&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;Intern&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
-</code></pre></div>  </div>
+  
 
-  <h3 id="alumni">Alumni</h3>
+  
 
-  <div class="language-plaintext highlighter-rouge">
-<div class="highlight"><pre class="highlight"><code>&lt;a
-    href="/NCEL_website/members/Sydney%20Lee.html"
-    class="member-card-link"
-    aria-label="Sydney Lee"
-  &gt;
-    &lt;div class="member-card-item"&gt;
-          &lt;div class="member-card-photo-wrap"&gt;
-                  &lt;img
-                            src="/NCEL_website/images/Sydney_Headshot.jpg"
-                            alt="Sydney Lee"
-                            class="member-card-photo"
-                            loading="lazy"
-                            onerror="this.src='/NCEL_website/images/photo.jpg'"
-                          &gt;
-          &lt;/div&gt;div&gt;
-          &lt;div class="member-card-info"&gt;
-                  
-                  &lt;p class="member-card-name"&gt;Sydney Lee&lt;/p&gt;p&gt;
-                  
-                  
-                  &lt;p class="member-card-role"&gt;Alumni&lt;/p&gt;p&gt;
-                  
-          &lt;/div&gt;div&gt;
-    &lt;/div&gt;div&gt;
-&lt;/a&gt;
-  &lt;/a&gt;
-</code></pre></div>  </div>
+    
 
-</div>
+    <a href="/NCEL_website/members/Jumi%20Park.html" class="member-card-link" aria-label="Jumi Park">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Jumi_headshot.jpg" alt="Jumi Park" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Jumi Park</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">intern</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
+
+
+  
+
+  
+
+    
+
+    <a href="/NCEL_website/members/Max%20Sklar.html" class="member-card-link" aria-label="Max Sklar">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Max_Headshot.jpg" alt="Max Sklar" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Max Sklar</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">intern</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
+
+
+  
+
+  
+
+    
+
+    <a href="/NCEL_website/members/Sanya%20Vadhavkar.html" class="member-card-link" aria-label="Sanya Vadhavkar">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Sanya_headshot.jpg" alt="Sanya Vadhavkar" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Sanya Vadhavkar</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">Intern</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
+
+
+  
+
+  
+
+    
+
+    <a href="/NCEL_website/members/Morgan%20Arma.html" class="member-card-link" aria-label="Morgan Arma">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Morgan_Headshot.jpg" alt="Morgan Arma" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Morgan Arma</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">Intern</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
+
+
+
+    </div>div&gt;
+  </div>
+<p>div&gt;</p>
+
+<div class="team-section">
+    <p class="team-section-title">Alumni</p>p&gt;
+    <div class="member-card-grid">
+      
+
+
+
+
+
+  
+
+  
+
+    
+
+    <a href="/NCEL_website/members/Sydney%20Lee.html" class="member-card-link" aria-label="Sydney Lee">
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img src="/NCEL_website/images/Sydney_Headshot.jpg" alt="Sydney Lee" class="member-card-photo" loading="lazy" onerror="this.src='/NCEL_website/images/photo.jpg'">
+              </div>div&gt;
+              <div class="member-card-info">
+                      
+                      <p class="member-card-name">Sydney Lee</p>p&gt;
+                      
+                      
+                      <p class="member-card-role">Alumni</p>p&gt;
+                      
+              </div>div&gt;
+        </div>div&gt;
+    </a>
+      &lt;/a&gt;
+
+
+
+    </div>div&gt;
+  </div>
+<p>div&gt;
+&lt;/style&gt;</p>
   </section>
 
 
