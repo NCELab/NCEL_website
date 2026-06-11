@@ -24,8 +24,6 @@ title: Our Team
 
 {% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
 
-<p class="team-section-heading">Research Assistants</p>
-
 {% include list.html data="members" component="portrait" filter="role == 'ra'" sort="order" %}
 
 <p class="team-section-heading">Interns</p>
