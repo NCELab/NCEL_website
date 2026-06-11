@@ -20,7 +20,7 @@ title: Our Team
 }
 </style>
 
-<p class="team-section-heading">Research Coordinator</p>
+<p class="team-section-heading">Research Coordinator and Assistant</p>
 
 {% include list.html data="members" component="portrait" filter="role == 'rc'" sort="order" %}
 
