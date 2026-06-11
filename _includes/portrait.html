@@ -1,65 +1,37 @@
 {% if include.lookup %}
 {% assign member = site.members
-| where_exp: "member", "member.slug == include.lookup"
-| first
-%}
-{% else %}
-{% assign member = include %}
-{% endif %}
+  | where_exp: "member", "member.slug == include.lookup"
+    | first
+    %}
+    {% else %}
+    {% assign member = include %}
+    {% endif %}
 
-{% assign type = site.data.types[member.role] %}
+    {% assign type = site.data.types[member.role] %}
 
-<div class="portrait-si-row{% cycle ' portrait-si-odd', ' portrait-si-even' %}">
-  <div class="portrait-si-inner">
-
-    <div class="portrait-si-text">
-      {% if member.name %}
-      <h2 class="portrait-si-name">
-        <a
-          {% if page.slug != member.slug %}
-          href="{{ member.url | relative_url | uri_escape }}"
-          {% endif %}
-          class="portrait-si-name-link"
-        >{{ member.name }}</a>
-      </h2>
-      {% endif %}
-
-      {% if member.description or type %}
-      <p class="portrait-si-role">{{ member.description | default: type.description }}</p>
-      {% endif %}
-
-      {% if member.affiliation %}
-      <p class="portrait-si-affiliation">{{ member.affiliation }}</p>
-      {% endif %}
-
-      {% if member.content %}
-      <div class="portrait-si-bio">{{ member.content }}</div>
-      {% endif %}
-    </div>
-
-    <div class="portrait-si-img-wrap">
-      {% if type %}
-      <div class="portrait-si-type-icon">
-        {% include icon.html icon=type.icon %}
-      </div>
-      {% endif %}
-
-      <a
-        {% if page.slug != member.slug %}
+    <a
         href="{{ member.url | relative_url | uri_escape }}"
-        {% endif %}
-        class="portrait-si-img-link"
-        aria-label="{{ member.name | default: 'member link' | regex_strip }}"
+        class="member-card-link"
+        aria-label="{{ member.name }}"
       >
-        <img
-          src="{{ member.image | relative_url | uri_escape }}"
-          class="portrait-si-photo"
-          alt="{{ member.name | default: 'member portrait' }}"
-          loading="lazy"
-          {% include fallback.html %}
-        >
+        <div class="member-card-item">
+              <div class="member-card-photo-wrap">
+                      <img
+                                src="{{ member.image | relative_url | uri_escape }}"
+                                alt="{{ member.name }}"
+                                class="member-card-photo"
+                                loading="lazy"
+                                onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'"
+                              >
+              </div>div>
+              <div class="member-card-info">
+                      {% if member.name %}
+                      <p class="member-card-name">{{ member.name }}</p>p>
+                      {% endif %}
+                      {% if member.description or type %}
+                      <p class="member-card-role">{{ member.description | default: type.description }}</p>p>
+                      {% endif %}
+              </div>div>
+        </div>div>
+    </a>
       </a>
-    </div>
-
-  </div>
-</div>
