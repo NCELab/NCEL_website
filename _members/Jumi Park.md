@@ -1,6 +1,6 @@
 ---
 name: Jumi Park
-image: images/photo.jpg
+image: images/Jumi_headshot.jpg
 role: intern
 order: 2
 description: intern
