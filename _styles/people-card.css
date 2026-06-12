@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Horizontal "people card" list layout, shared by People, Our Team,
    and Directors & Collaborators pages */
 .people-page {
@@ -42,12 +43,33 @@
   opacity: 0.8;
 }
 
+.people-card-img-wrap {
+  position: relative;
+  width: 140px; /* ← 改這裡調整整體大小 */
+  height: 140px; /* ← 同上 */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.people-card-img-wrap::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #d8d8d8;
+}
+
 .people-card-img {
-  width: 140px;
-  height: 140px;
+  width: 110px;
+  height: 110px;
   border-radius: 999px;
   object-fit: cover;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  object-position: top center;
+  position: relative;
+  z-index: 1;
   flex-shrink: 0;
 }
 
