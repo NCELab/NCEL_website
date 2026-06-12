@@ -5,7 +5,9 @@
 {% endif %}
 {% for member in data %}
 <a href="{{ member.url | relative_url }}" class="people-card">
-<img src="{{ member.image | relative_url }}" alt="{{ member.name }}" class="people-card-img" onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'">
+<div class="people-card-img-wrap">
+  <img src="{{ member.image | relative_url }}" alt="{{ member.name }}" class="people-card-img" onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'">
+</div>
 <div class="people-card-info">
 <p class="people-card-name">{{ member.name }}</p>
 <p class="people-card-role">{{ member.description }}</p>
