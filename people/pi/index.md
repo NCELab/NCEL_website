@@ -1,5 +1,5 @@
 ---
-title: Directors and collaborator
+title: Directors and Collaborators
 ---
 
 <div class="people-page">
