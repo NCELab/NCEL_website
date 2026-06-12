@@ -321,6 +321,14 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+- title: Rodriguez-Moreno, DV.,  Craft, D., Goldblum, R., Wei-Yi Chang, W., Villant,
+    K., Hoven, CW.,  Cycowicz, YM. (2024) Emotional Reactivity in Adults with Childhood
+    Exposure to 9/11 Trauma. Society for Research in Psychopathology (SRP).
+  publisher: Society for Research in Psychopathology (SRP), Montreal, Abstract
+  date: '2026-06-12'
+  orcid: 0000-0001-8397-5492
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1016/J.IJPSYCHO.2023.07.003
   title: Sex differences in stress responses among underrepresented minority adolescents
     at risk for substance use disorder
