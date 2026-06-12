@@ -1,0 +1,17 @@
+{% assign emptyarray = "" | split: "," %}
+{% assign data = site.members | default: emptyarray | data_filter: include.filter %}
+{% if include.sort %}
+  {% assign data = data | sort: include.sort %}
+{% endif %}
+{% for member in data %}
+<a href="{{ member.url | relative_url }}" class="people-card">
+<img src="{{ member.image | relative_url }}" alt="{{ member.name }}" class="people-card-img" onerror="this.src='{{ '/images/photo.jpg' | relative_url }}'">
+<div class="people-card-info">
+<p class="people-card-name">{{ member.name }}</p>
+<p class="people-card-role">{{ member.description }}</p>
+{% if member.content and member.content != "" %}
+<p class="people-card-blurb">{{ member.content | strip_html | truncatewords: 60 }}</p>
+{% endif %}
+</div>
+</a>
+{% endfor %}
