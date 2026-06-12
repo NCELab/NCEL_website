@@ -48,8 +48,8 @@
 
 .people-card-img-wrap {
   position: relative;
-  width: 140px;      /* ← 改這裡調整整體大小 */
-  height: 140px;     /* ← 同上 */
+  width: 140px;      
+  height: 140px;    
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -66,8 +66,8 @@
 }
 
 .people-card-img {
-  width: 110px;       
-  height: 110px;
+  width: 120px;       
+  height: 120px;
   border-radius: 999px;
   object-fit: cover;
   object-position: top center;
