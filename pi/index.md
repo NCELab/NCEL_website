@@ -1,17 +1,21 @@
----
-title: Yael Cycowicz (PI)
----
-
-<div class="people-full-bio" markdown="1">
-
-## Yael Cycowicz (PI)
-
-{% include list.html data="members" component="portrait" filter="role == 'pi'" sort="order" %}
-
+content: ---
+title: Directors and Collaborators
 ---
 
-## Collaborators
+<div class="people-page">
 
-{% include list.html data="members" component="portrait" filter="role == 'coi'" sort="order" %}
+<div class="people-section">
+<div class="people-section-label">Directors</div>
+{% include people-row-list.html filter="role == 'pi'" sort="order" %}
+</div>
+
+<div class="people-section">
+<div class="people-section-label">Collaborators</div>
+{% include people-row-list.html filter="role == 'coi'" sort="order" %}
+</div>
 
 </div>
+
+file_path: /home/user/NCEL_website/pi/index.md
+
+File has not been read yet. Read it first before writing to it.
