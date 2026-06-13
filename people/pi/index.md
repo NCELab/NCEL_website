@@ -1,5 +1,6 @@
 ---
 title: Directors and Collaborators
+redirect_to: /people/pi/
 ---
 
 <div class="people-page">
