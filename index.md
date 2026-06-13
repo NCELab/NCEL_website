@@ -55,7 +55,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/mri.jpeg"
   link="research"
   title="Our Research"
   text=text
@@ -63,7 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The Neuro-Cognition and Emotion Lab (NCEL) investigates the fundamental mechanisms underlying attention, memory, decision-making, and emotional regulation. We integrate cognitive neuroscience, clinical science, and computational approaches to understand how these processes interact to shape mental health across development.
 
 {%
   include button.html
@@ -78,7 +78,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {%
   include feature.html
-  image="images/photo.jpg"
+  image="images/eeg.jpeg"
   link="projects"
   title="Our Projects"
   flip=true
