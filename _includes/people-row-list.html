@@ -12,7 +12,7 @@
 <p class="people-card-name">{{ member.name }}</p>
 <p class="people-card-role">{{ member.description }}</p>
 {% if member.content and member.content != "" %}
-<p class="people-card-blurb">{{ member.content | strip_html | truncatewords: 60 }}</p>
+<p class="people-card-blurb">{{ member.content | strip_html }}</p>
 {% endif %}
 </div>
 </a>
