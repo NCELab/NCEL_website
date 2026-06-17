@@ -62,8 +62,8 @@
 }
 
 .people-card-img {
-  width: 225px;
-  height: 225px;
+  width: 240px;
+  height: 240px;
   border-radius: 999px;
   object-fit: cover;
   object-position: top center;
