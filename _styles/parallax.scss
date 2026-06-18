@@ -100,7 +100,8 @@
   letter-spacing: -0.01em;
   color: #ffffff;
   margin: 0 0 24px;
-  max-width: 760px;
+  max-width: 100%
+  white-space: nowrap;
 }
 
 
@@ -216,5 +217,11 @@
   .ncel-hero__cta {
     width: 100%;
     justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .ncel-hero__title {
+    white-space: normal;  
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
 }
