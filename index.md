@@ -10,7 +10,7 @@ hide_header: true
 >
   <div class="ncel-hero__content">
     <img
-      src="{{ 'images/logo.png' | relative_url }}"
+      src="{{ 'images/NCEL-logo.png' | relative_url }}"
       alt="NCEL logo"
       class="ncel-hero__logo"
     />
