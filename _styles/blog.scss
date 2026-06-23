@@ -154,35 +154,24 @@
 
 /* ── Single post page ───────────────────────────────────────────────────── */
 
+/* FIX 1: wider single-column layout, no sidebar */
 .post-page {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 60px;
-  max-width: 1100px;
+  display: block;           /* was: grid with sidebar */
+  max-width: 820px;         /* wider reading column */
   margin: 0 auto;
   padding: 48px 24px 80px;
-  align-items: flex-start;
   font-family: var(--body);
 }
 
-/* Article */
+/* Article fills full width */
 .post-page__article {
-  min-width: 0;
+  width: 100%;
 }
 
-/* Hero image */
-.post-page__hero-image {
-  width: 100%;
-  margin-bottom: 32px;
-  border-radius: var(--rounded);
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    max-height: 420px;
-    object-fit: cover;
-    display: block;
-  }
+/* FIX 2: hide hero image and sidebar entirely */
+.post-page__hero-image,
+.post-page__sidebar {
+  display: none;
 }
 
 /* Header text */
@@ -237,8 +226,8 @@
 
 /* Body content */
 .post-page__body {
-  font-size: 0.95rem;
-  line-height: 1.85;
+  font-size: 1rem;
+  line-height: 1.9;
   color: var(--text);
   border-bottom: 1px solid var(--light-gray);
   padding-bottom: 36px;
@@ -297,104 +286,4 @@
   font-size: 0.75rem;
   color: var(--gray);
   letter-spacing: 0.04em;
-}
-
-/* ── Sidebar ─────────────────────────────────────────────────────────────── */
-
-.post-page__sidebar {
-  position: sticky;
-  top: 100px;
-}
-
-.post-page__sidebar-title {
-  font-family: var(--heading);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin: 0 0 20px 0;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--light-gray);
-}
-
-/* Sidebar article card */
-.sidebar-card {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--light-gray);
-  text-decoration: none;
-  color: var(--text);
-  transition: opacity var(--transition);
-
-  &:hover { opacity: 0.75; }
-  &:last-of-type { border-bottom: none; }
-}
-
-.sidebar-card__image {
-  width: 72px;
-  height: 56px;
-  object-fit: cover;
-  flex-shrink: 0;
-  border-radius: var(--rounded);
-}
-
-.sidebar-card__image--placeholder {
-  background: var(--light-gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gray);
-  font-size: 1rem;
-}
-
-.sidebar-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.sidebar-card__category {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--primary);
-}
-
-.sidebar-card__title {
-  font-size: 0.82rem;
-  font-weight: var(--semi-bold);
-  line-height: 1.4;
-  color: var(--text);
-  margin: 0;
-  text-align: left;
-}
-
-.post-page__all-link {
-  display: inline-block;
-  margin-top: 20px;
-  font-size: 0.78rem;
-  font-weight: var(--semi-bold);
-  color: var(--primary);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  transition: color var(--transition);
-
-  &:hover { color: var(--text); }
-}
-
-/* ── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 860px) {
-  .post-page {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .post-page__sidebar {
-    position: static;
-    border-top: 1px solid var(--light-gray);
-    padding-top: 32px;
-  }
 }
