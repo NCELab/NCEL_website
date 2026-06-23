@@ -147,22 +147,27 @@
 /* ── Single post page ───────────────────────────────────────────────────── */
 /* FIX 1: wider single-column layout, no sidebar */
 .post-page {
-  display: block; /* was: grid with sidebar */
-  max-width: 820px; /* wider reading column */
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 48px 24px 80px;
+  align-items: flex-start;
   font-family: var(--body);
 }
 
-/* Article fills full width */
 .post-page__article {
-  width: 100%;
+  min-width: 0;
 }
 
-/* FIX 2: hide hero image and sidebar entirely */
-.post-page__hero-image,
-.post-page__sidebar {
+.post-page__hero-image {
   display: none;
+}
+
+.post-page__sidebar {
+  position: sticky;
+  top: 100px;
 }
 
 /* Header text */
