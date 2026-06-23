@@ -99,6 +99,11 @@
   white-space: normal;
 }
 
+.ncel-hero__title strong {
+  font-weight: 800;
+  color: #ffffff;
+}
+
 .ncel-hero__subtitle {
   font-family: var(--body, "Barlow", sans-serif);
   font-size: clamp(0.95rem, 1.6vw, 1.15rem);
