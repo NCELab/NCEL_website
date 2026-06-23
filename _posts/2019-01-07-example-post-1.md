@@ -1,10 +1,28 @@
 ---
-title: Example post 1
-author: sarah-johnson
+title: When Everything Becomes “Trauma”
+author: Yael M. Cycowicz Ph.D.
+image: images/post1.png
 tags:
-  - biology
-  - medicine
-  - big data
+  - Resilience
+  - memory
+  - trauma
+  - meaning-making
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+The noise of the rotor was deafening as I held my daughter tightly on my lap, terrified that she might slip from my arms and be pulled out through the still-open door of the rescue helicopter. Below us, the Swiss Alps were breathtaking, lush green valleys carved between rugged mountains, water rushing in thin white streams. It was the tenth day of what had been meant to be a relaxed two-week summer vacation, abruptly interrupted by a major flood. Who would have imagined that such a deadly flood would occur high in the mountains? Only when we arrived at the hotel in Zurich did we learn of the larger catastrophe unfolding in the United States, Hurricane Katrina. Watching the images on television, I remember thinking that if I had to experience a flood, I was fortunate to have lived through one in Switzerland. Yet that moment also deepened my growing interest in psychological trauma and how memory shapes our resilience or vulnerability to its lingering effects.
+
+The word “trauma” comes from the ancient Greek word " trauma, meaning “wound.” Originally, it referred solely to physical injuries, such as cuts, blows, or other bodily harm. The psychological sense of the word, as a wound to the mind, emerged in the late 19th century. The term was rarely used in much of the 20th century, with a noticeable increase beginning around the 1970s, likely linked to Vietnam veterans experiencing war-related trauma. Over time, the language of trauma has gradually expanded in everyday use, often applied to a wide range of difficult life events. Usage of the term has tripled over the subsequent five decades.
+
+While individuals’ responses to traumatic events vary, some being more sensitive to long-term consequences, the term “trauma” has increasingly permeated how we describe almost any challenging life experience. Experiences once described as stressful, painful, or simply “hard” are now commonly framed as traumatic, whether taking a challenging exam, undergoing a complicated but healthy childbirth, or facing personal or professional disappointments. Historically, psychological trauma referred to exposure to events that overwhelmed a person’s capacity to cope: war, natural disasters, assault, or life-threatening danger. It describes a rupture in one’s sense of safety and stability. Today, however, the term is used so broadly and so casually that its meaning risks becoming blunted, even diminished. Overuse risks blurring the distinction between individuals facing genuinely overwhelming experiences, those that profoundly disrupt functioning and undermine a sense of safety, and individuals who may need support in reframing challenges or finding the brighter side of daily life.
+
+But the shift is not only linguistic. How we frame our experiences or tell the story shapes our emotional responses and, ultimately, our mental health. When ordinary hardship is framed as trauma, we may unintentionally encourage fragility rather than resilience, reinforcing vulnerability instead of fostering recovery. How we remember our experiences not only reflects our psychological state; it actively shapes it.
+
+Of course, not all trauma is the same. The most damaging experiences are often chronic, prolonged, or rooted in early childhood, when we cannot protect ourselves or make sense of what is happening. At the same time, evolution has equipped us with stress-response systems meant to help us survive and recover. We are built to withstand hardship. Why do some challenging experiences leave deep psychological wounds, while others do not?
+
+Part of the answer lies within the individual, their temperament, biology, and history. But culture also plays a powerful role. We have increasingly come to expect that life should be smooth, predictable, and free of discomfort. When that expectation is violated, disappointment itself can take on the weight of trauma. We begin to describe difficult moments, exams, breakups, transitions, as “traumatizing,” and in doing so, we may inadvertently limit our capacity to recover. Language shapes experience. If a test is “traumatic,” how could one possibly move past it? But if a test is challenging, we understand that challenges are part of growth, and growth implies strength.
+
+I would suggest that broadening the definition of trauma, while well-intentioned, may have unintended consequences for resilience. Rather than focusing on what causes psychopathology, we might also ask what enables and supports recovery, how people make meaning, how they remember, and how their communities respond. Helping individuals reflect on difficult experiences without immediately labeling them as trauma may create room for meaning-making, adaptation, and even strength.
+
+Returning to our own family ordeal, I remember how every ounce of my attention went toward staying calm for our three young children when we were suddenly separated from my husband. We had arrived only the evening before; we were not yet settled. The rain was relentless, and my husband had walked to town to buy food, while I took the kids to visit my parents up the street. As I slowly walked with the kids, careful not to slip, I watched the road quickly fill with water; yet, I could not imagine that by the time we reached our destination, it would have turned into a gushing river, or that we would soon be stranded in a building whose entrance would be blocked by silt. Without our suitcases, we quickly lost power and had no food. I could not tell the children where their dad was or how he spent the nights across that vast expanse of water that had risen, flooding basements and eroding pathways. The hikes and adventures we had expected were replaced with made-up stories and games. I asked strangers for crackers and fruits, climbed to the roof to scan for any sign of my husband, and longed for information. When my son briefly fainted, I tried to quiet the rising fear of how we would get medical help when the helicopters delivering food could barely reach us.
+
+And yet, when we returned home to begin the school year, I told my children that we had the most adventurous summer vacation. We learned how to manage with little, how to pass the time together, and how to stay brave while flying in a loud, open military helicopter. Recently, when the twentieth anniversary of Katrina resurfaced in the news, I asked my now-adult children what they remembered from that trip. They remembered almost nothing, let alone any fear. What stayed with them was the helicopter, a memory of awe.
