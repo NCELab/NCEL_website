@@ -16,7 +16,7 @@ hide_header: true
     />
     <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
     <h1 class="ncel-hero__title">
-      <strong> Neuro-Cognition and Emotion Lab</strong>
+  <strong>Neuro-Cognition</strong> and <strong>Emotion</strong> Lab
     </h1>
     <p class="ncel-hero__subtitle">
       We investigate how emotion and cognition interact to shape behavior and
