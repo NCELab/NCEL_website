@@ -38,6 +38,13 @@
     intergenerational mental health effects more than two decades after 9/11, highlighting
     how parental trauma exposure, ongoing psychopathology, and family relational functioning
     collectively shape outcomes in WTC-R offspring.
+  bibtex: '@article{Cycowicz_2026, title={The long shadow of 9/11: Mental health outcomes
+    in adult children of World Trade Center Responders with PTSD}, volume={3}, ISSN={2837-8156},
+    url={http://dx.doi.org/10.1371/journal.pmen.0000574}, DOI={10.1371/journal.pmen.0000574},
+    number={5}, journal={PLOS Mental Health}, publisher={Public Library of Science
+    (PLoS)}, author={Cycowicz, Yael M. and Rodriguez-Moreno, Diana V. and Craft, Daniel
+    and Cheslack-Postava, Keely}, editor={Klymchuk, Vitalii}, year={2026}, month=May,
+    pages={e0000574} }'
 - title: When Everything becomes "Trauma"
   publisher: Psychology Today
   date: '2026-06-10'
@@ -109,6 +116,11 @@
     research is required to refine treatment protocols, elucidate the relationship
     between subjective experiences and therapeutic outcomes, and establish best practices
     for integrating psychedelics into clinical settings.'
+  bibtex: '@article{Kishon_2025, title={Psychedelic therapy: bridging neuroplasticity,
+    phenomenology, and clinical outcomes}, volume={16}, ISSN={1664-0640}, url={http://dx.doi.org/10.3389/FPSYT.2025.1637162},
+    DOI={10.3389/fpsyt.2025.1637162}, journal={Frontiers in Psychiatry}, publisher={Frontiers
+    Media SA}, author={Kishon, Ronit and Cycowicz, Yael M.}, year={2025}, month=Sept
+    }'
 - id: doi:10.3390/ijerph21080988
   title: The Long-Term Physical–Psychiatric Comorbidities Related to Childhood Exposure
     to 9/11 Trauma
@@ -145,6 +157,14 @@
     physical health issues. Our findings also highlight the importance of early and
     ongoing interventions to prevent future comorbidities and promote better quality
     of life throughout the lifespan.
+  bibtex: '@article{Amsel_2024, title={The Long-Term Physical–Psychiatric Comorbidities
+    Related to Childhood Exposure to 9/11 Trauma}, volume={21}, ISSN={1660-4601},
+    url={http://dx.doi.org/10.3390/ijerph21080988}, DOI={10.3390/ijerph21080988},
+    number={8}, journal={International Journal of Environmental Research and Public
+    Health}, publisher={MDPI AG}, author={Amsel, Lawrence and Cycowicz, Yael M. and
+    Rodriguez-Moreno, Diana V. and Cheslack-Postava, Keely and McReynolds, Larkin
+    S. and Musa, George J. and Hoven, Christina W.}, year={2024}, month=July, pages={988}
+    }'
 - id: doi:10.1038/S44184-024-00068-9
   title: A rapid narrative review of the clinical evolution of psychedelic treatment
     in clinical trials
@@ -195,6 +215,13 @@
     \ Lastly, this paper explores a range of clinician perspectives and psychological\
     \ interventions employed in pre-prohibition psychedelic research to inform future\
     \ research directions and best practice guidelines."
+  bibtex: '@article{Kishon_2024, title={A rapid narrative review of the clinical evolution
+    of psychedelic treatment in clinical trials}, volume={3}, ISSN={2731-4251}, url={http://dx.doi.org/10.1038/S44184-024-00068-9},
+    DOI={10.1038/s44184-024-00068-9}, number={1}, journal={npj Mental Health Research},
+    publisher={Springer Science and Business Media LLC}, author={Kishon, Ronit and
+    Modlin, Nadav Liam and Cycowicz, Yael M. and Mourtada, Hania and Wilson, Tayler
+    and Williamson, Victoria and Cleare, Anthony and Rucker, James}, year={2024},
+    month=July }'
 - id: doi:10.3390/CHILDREN11060671
   title: Characteristics of Adolescents with and without a Family History of Substance
     Use Disorder from a Minority Cohort
@@ -251,6 +278,15 @@
     a population of low-income, minority urban youth, FH+ was associated with differences
     in the family environment and only subtle differences in individual psychological
     characteristics.
+  bibtex: '@article{Cheslack_Postava_2024, title={Characteristics of Adolescents with
+    and without a Family History of Substance Use Disorder from a Minority Cohort},
+    volume={11}, ISSN={2227-9067}, url={http://dx.doi.org/10.3390/CHILDREN11060671},
+    DOI={10.3390/children11060671}, number={6}, journal={Children}, publisher={MDPI
+    AG}, author={Cheslack-Postava, Keely and Cycowicz, Yael M. and Rodriguez-Moreno,
+    Diana V. and Amsel, Lawrence V. and Musa, George J. and Ryan, Megan and Bresnahan,
+    Michaeline and Tang, Huilan and Geronazzo-Alman, Lupo and Bisaga, Adam and Wang,
+    Zhishun and He, Xiaofu and Hoven, Christina W.}, year={2024}, month=May, pages={671}
+    }'
 - title: 'Craft, D. Rodriguez-Moreno, DV., Cheslack-Postava, K., Waxman, A., Cycowicz,
     YM., Intergenerational Transmission of Trauma via Irritability: The case of 9/11
     Responders with PTSD and their Adult Children. '
@@ -309,6 +345,13 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2023, title={Sex differences in stress responses among
+    underrepresented minority adolescents at risk for substance use disorder}, volume={191},
+    ISSN={0167-8760}, url={http://dx.doi.org/10.1016/J.IJPSYCHO.2023.07.003}, DOI={10.1016/j.ijpsycho.2023.07.003},
+    journal={International Journal of Psychophysiology}, publisher={Elsevier BV},
+    author={Cycowicz, Yael M. and Cuchacovich, Sharon and Cheslack-Postava, Keely
+    and Merrin, Jacob and Hoven, Christina W. and Rodriguez-Moreno, Diana V.}, year={2023},
+    month=Sept, pages={42–48} }'
 - id: doi:10.1016/J.APPET.2022.106104
   title: Changes in appetite during quarantine and their association with pre-COVID-19
     mental and physical health
@@ -324,6 +367,12 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Rodriguez_Moreno_2022, title={Changes in appetite during quarantine
+    and their association with pre-COVID-19 mental and physical health}, volume={176},
+    ISSN={0195-6663}, url={http://dx.doi.org/10.1016/J.APPET.2022.106104}, DOI={10.1016/j.appet.2022.106104},
+    journal={Appetite}, publisher={Elsevier BV}, author={Rodriguez-Moreno, Diana V.
+    and Vazquez, Sima and Cheslack-Postava, Keely and Xu, Guangling and Cycowicz,
+    Yael M.}, year={2022}, month=Sept, pages={106104} }'
 - id: doi:10.1016/J.NEUROIMAGE.2021.118746
   title: Ongoing neural oscillations influence behavior and sensory representations
     by suppressing neuronal excitability
@@ -347,6 +396,14 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Iemi_2022, title={Ongoing neural oscillations influence behavior
+    and sensory representations by suppressing neuronal excitability}, volume={247},
+    ISSN={1053-8119}, url={http://dx.doi.org/10.1016/J.NEUROIMAGE.2021.118746}, DOI={10.1016/j.neuroimage.2021.118746},
+    journal={NeuroImage}, publisher={Elsevier BV}, author={Iemi, Luca and Gwilliams,
+    Laura and Samaha, Jason and Auksztulewicz, Ryszard and Cycowicz, Yael M and King,
+    Jean-Remi and Nikulin, Vadim V and Thesen, Thomas and Doyle, Werner and Devinsky,
+    Orrin and Schroeder, Charles E and Melloni, Lucia and Haegens, Saskia}, year={2022},
+    month=Feb, pages={118746} }'
 - id: doi:10.1002/HBM.25804
   title: Shapes of subcortical structures in adolescents with and without familial
     history of substance use disorder
@@ -410,6 +467,14 @@
     scores across the FH+ and FH− adolescents. These novel findings may reveal neural
     correlates, not captured by traditional volumetric analysis, of familial transmission
     of increased vulnerability to SUD.
+  bibtex: '@article{Wang_2022, title={Shapes of subcortical structures in adolescents
+    with and without familial history of substance use disorder}, volume={43}, ISSN={1097-0193},
+    url={http://dx.doi.org/10.1002/HBM.25804}, DOI={10.1002/hbm.25804}, number={9},
+    journal={Human Brain Mapping}, publisher={Wiley}, author={Wang, Zhishun and Rodriguez‐Moreno,
+    Diana V. and Cycowicz, Yael M. and Amsel, Lawrence V. and Cheslack‐Postava, Keely
+    and He, Xiaofu and Ryan, Megan and Geronazzo‐Alman, Lupo and Musa, George J. and
+    Bisaga, Adam and Hoven, Christina W.}, year={2022}, month=Apr, pages={2759–2770}
+    }'
 - id: doi:10.1016/j.ynirp.2021.100037
   title: White matter integrity and functional connectivity in adolescents with a
     parental history of substance use disorder
@@ -432,6 +497,14 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{He_2021, title={White matter integrity and functional connectivity
+    in adolescents with a parental history of substance use disorder}, volume={1},
+    ISSN={2666-9560}, url={http://dx.doi.org/10.1016/j.ynirp.2021.100037}, DOI={10.1016/j.ynirp.2021.100037},
+    number={3}, journal={Neuroimage: Reports}, publisher={Elsevier BV}, author={He,
+    Xiaofu and Rodriguez-Moreno, Diana V. and Cycowicz, Yael M. and Cheslack-Postava,
+    Keely and Tang, Huilan and Wang, Zhishun and Amsel, Lawrence V. and Ryan, Megan
+    and Geronazzo-Alman, Lupo and Musa, George J. and Bisaga, Adam and Hoven, Christina
+    W.}, year={2021}, month=Sept, pages={100037} }'
 - id: doi:10.1016/J.DCN.2021.100942
   title: Delay discounting and neurocognitive correlates among inner city adolescents
     with and without family history of substance use disorder
@@ -453,6 +526,14 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Rodriguez_Moreno_2021, title={Delay discounting and neurocognitive
+    correlates among inner city adolescents with and without family history of substance
+    use disorder}, volume={48}, ISSN={1878-9293}, url={http://dx.doi.org/10.1016/J.DCN.2021.100942},
+    DOI={10.1016/j.dcn.2021.100942}, journal={Developmental Cognitive Neuroscience},
+    publisher={Elsevier BV}, author={Rodriguez-Moreno, Diana V. and Cycowicz, Yael
+    M. and Figner, Bernd and Wang, Zhishun and He, Xiaofu and Geronazzo-Alman, Lupo
+    and Sun, Xiaoxiao and Cheslack-Postava, Keely and Bisaga, Adam and Hoven, Christina
+    W. and Amsel, Lawrence V.}, year={2021}, month=Apr, pages={100942} }'
 - id: wosuid:WOS:000535308200350
   title: Web of Science
   authors: []
@@ -502,6 +583,16 @@
     \         Conclusions:\n            Additional research on children of FRs is\
     \ encouraged. An adaption to this understudied population of family-centered interventions\
     \ available for military families could inform targeted prevention efforts."
+  bibtex: '@article{Kishon_2020, title={Parental Occupational Exposure is Associated
+    With Their Children’s Psychopathology: A Study of Families of Israeli First Responders},
+    volume={62}, ISSN={1536-5948}, url={http://dx.doi.org/10.1097/JOM.0000000000001971},
+    DOI={10.1097/jom.0000000000001971}, number={11}, journal={Journal of Occupational
+    &amp; Environmental Medicine}, publisher={Ovid Technologies (Wolters Kluwer Health)},
+    author={Kishon, Ronit and Geronazzo-Alman, Lupo and Teichman, Meir and Teichman,
+    Yona and Cheslack-Postava, Keely and Fan, Bin and Duarte, Cristiane S. and Wicks,
+    Judith and Musa, George J. and Djalovski, Amir and Tadmor, Boaz and Moreno, Diana
+    Rodriguez and Cycowicz, Yael and Amsel, Lawrence and Bresnahan, Michaeline and
+    Hoven, Christina W.}, year={2020}, month=Aug, pages={904–915} }'
 - id: wosuid:WOS:000535308200535
   title: Web of Science
   authors: []
@@ -540,6 +631,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2019, title={Orienting and memory to unexpected and/or
+    unfamiliar visual events in children and adults}, volume={36}, ISSN={1878-9293},
+    url={http://dx.doi.org/10.1016/J.DCN.2019.100615}, DOI={10.1016/j.dcn.2019.100615},
+    journal={Developmental Cognitive Neuroscience}, publisher={Elsevier BV}, author={Cycowicz,
+    Yael M.}, year={2019}, month=Apr, pages={100615} }'
 - id: doi:10.1097/YCT.0000000000000470
   title: Differences in Seizure Expression Between Magnetic Seizure Therapy and Electroconvulsive
     Shock
@@ -583,6 +679,12 @@
     \         Contrasting EEG in ECS and MST may lead to insights on the physiological\
     \ underpinnings of seizure-induced amnesia and to finding ways to reduce cognitive\
     \ side effects."
+  bibtex: '@article{Cycowicz_2018, title={Differences in Seizure Expression Between
+    Magnetic Seizure Therapy and Electroconvulsive Shock}, volume={34}, ISSN={1095-0680},
+    url={http://dx.doi.org/10.1097/YCT.0000000000000470}, DOI={10.1097/yct.0000000000000470},
+    number={2}, journal={The Journal of ECT}, publisher={Ovid Technologies (Wolters
+    Kluwer Health)}, author={Cycowicz, Yael M. and Rowny, Stefan B. and Luber, Bruce
+    and Lisanby, Sarah H.}, year={2018}, month=June, pages={95–103} }'
 - id: doi:10.1016/J.NEUROPSYCHOLOGIA.2013.09.016
   title: Single pulse TMS differentially modulates reward behavior
   authors:
@@ -598,6 +700,12 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Stanford_2013, title={Single pulse TMS differentially modulates
+    reward behavior}, volume={51}, ISSN={0028-3932}, url={http://dx.doi.org/10.1016/J.NEUROPSYCHOLOGIA.2013.09.016},
+    DOI={10.1016/j.neuropsychologia.2013.09.016}, number={14}, journal={Neuropsychologia},
+    publisher={Elsevier BV}, author={Stanford, Arielle D. and Luber, Bruce and Unger,
+    Layla and Cycowicz, Yael M. and Malaspina, Dolores and Lisanby, Sarah H.}, year={2013},
+    month=Dec, pages={3041–3047} }'
 - id: doi:10.3758/CABN.9.1.91
   title: 'Development of and change in cognitive control: A comparison of children,
     young adults, and older adults'
@@ -612,6 +720,12 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Friedman_2009, title={Development of and change in cognitive control:
+    A comparison of children, young adults, and older adults}, volume={9}, ISSN={1531-135X},
+    url={http://dx.doi.org/10.3758/CABN.9.1.91}, DOI={10.3758/cabn.9.1.91}, number={1},
+    journal={Cognitive, Affective, &amp; Behavioral Neuroscience}, publisher={Springer
+    Science and Business Media LLC}, author={Friedman, D. and Nessler, D. and Cycowicz,
+    Y. M. and Horton, C.}, year={2009}, month=Mar, pages={91–102} }'
 - id: doi:10.1016/J.NEUROIMAGE.2009.05.070
   title: 'Differential heart rate response to magnetic seizure therapy (MST) relative
     to electroconvulsive therapy: A nonhuman primate model'
@@ -628,6 +742,13 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Rowny_2009, title={Differential heart rate response to magnetic
+    seizure therapy (MST) relative to electroconvulsive therapy: A nonhuman primate
+    model}, volume={47}, ISSN={1053-8119}, url={http://dx.doi.org/10.1016/J.NEUROIMAGE.2009.05.070},
+    DOI={10.1016/j.neuroimage.2009.05.070}, number={3}, journal={NeuroImage}, publisher={Elsevier
+    BV}, author={Rowny, Stefan B. and Cycowicz, Yael M. and McClintock, Shawn M. and
+    Truesdale, Matthew D. and Luber, Bruce and Lisanby, Sarah H.}, year={2009}, month=Sept,
+    pages={1086–1091} }'
 - id: doi:10.1111/J.1469-8986.2008.00754.X
   title: 'Effects of multiple study–test repetition on the neural correlates of recognition
     memory: ERPs dissociate remembering and knowing'
@@ -655,6 +776,12 @@
     (R) but not know (K) judgments. R and K old–new topographies differed. These findings
     support dual‐process proposals that familiarity‐ and recollection‐based processes
     are distinct.
+  bibtex: '@article{De_Chastelaine_2008, title={Effects of multiple study–test repetition
+    on the neural correlates of recognition memory: ERPs dissociate remembering and
+    knowing}, volume={46}, ISSN={1469-8986}, url={http://dx.doi.org/10.1111/J.1469-8986.2008.00754.X},
+    DOI={10.1111/j.1469-8986.2008.00754.x}, number={1}, journal={Psychophysiology},
+    publisher={Wiley}, author={De Chastelaine, Marianne and Friedman, David and Cycowicz,
+    Yael M. and Horton, Cort}, year={2008}, month=Dec, pages={86–99} }'
 - id: doi:10.1097/YCT.0B013E31818DD40A
   title: Neurophysiological Characterization of High-Dose Magnetic Seizure Therapy
   authors:
@@ -668,6 +795,13 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2009, title={Neurophysiological Characterization of High-Dose
+    Magnetic Seizure Therapy: Comparisons With Electroconvulsive Shock and Cognitive
+    Outcomes}, volume={25}, ISSN={1095-0680}, url={http://dx.doi.org/10.1097/YCT.0B013E31818DD40A},
+    DOI={10.1097/yct.0b013e31818dd40a}, number={3}, journal={The Journal of ECT},
+    publisher={Ovid Technologies (Wolters Kluwer Health)}, author={Cycowicz, Yael
+    M. and Luber, Bruce and Spellman, Timothy and Lisanby, Sarah H.}, year={2009},
+    month=Sept, pages={157–164} }'
 - id: doi:10.1177/155005940803900309
   title: Differential Neurophysiological Effects of Magnetic Seizure Therapy (MST)
     and Electroconvulsive Shock (ECS) in Non-Human Primates
@@ -707,6 +841,13 @@
     \ with ECS, but that these modalities share some aspects of seizure expression.\
     \ The clinical significance of these similarities and differences awaits clinical\
     \ correlation."
+  bibtex: '@article{Cycowicz_2008, title={Differential Neurophysiological Effects
+    of Magnetic Seizure Therapy (MST) and Electroconvulsive Shock (ECS) in Non-Human
+    Primates}, volume={39}, ISSN={2169-5202}, url={http://dx.doi.org/10.1177/155005940803900309},
+    DOI={10.1177/155005940803900309}, number={3}, journal={Clinical EEG and Neuroscience},
+    publisher={SAGE Publications}, author={Cycowicz, Yael M. and Luber, Bruce and
+    Spellman, Timothy and Lisanby, Sarah H.}, year={2008}, month=July, pages={144–149}
+    }'
 - id: wosuid:WOS:000259264309270
   title: Web of Science
   authors: []
@@ -747,6 +888,12 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2008, title={Retrieving object color: the influence of
+    color congruity and test format}, volume={19}, ISSN={0959-4965}, url={http://dx.doi.org/10.1097/WNR.0B013E32830C8DF1},
+    DOI={10.1097/wnr.0b013e32830c8df1}, number={14}, journal={NeuroReport}, publisher={Ovid
+    Technologies (Wolters Kluwer Health)}, author={Cycowicz, Yael M. and Nessler,
+    Doreen and Horton, Cort and Friedman, David}, year={2008}, month=Sept, pages={1387–1390}
+    }'
 - id: doi:10.1162/JOCN.2007.19.8.1286
   title: The Development of Control Processes Supporting Source Memory Discrimination
     as Revealed by Event-related Potentials
@@ -783,6 +930,12 @@
     \ for nontargets. The findings support the notion that the development of source\
     \ memory relies on the maturation of control processes that serve to enhance accurate\
     \ selection of task-relevant memories."
+  bibtex: '@article{de_Chastelaine_2007, title={The Development of Control Processes
+    Supporting Source Memory Discrimination as Revealed by Event-related Potentials},
+    volume={19}, ISSN={1530-8898}, url={http://dx.doi.org/10.1162/JOCN.2007.19.8.1286},
+    DOI={10.1162/jocn.2007.19.8.1286}, number={8}, journal={Journal of Cognitive Neuroscience},
+    publisher={MIT Press - Journals}, author={de Chastelaine, Marianne and Friedman,
+    David and Cycowicz, Yael M.}, year={2007}, month=Aug, pages={1286–1301} }'
 - id: doi:10.1111/J.1469-8986.2006.00481.X
   title: 'Visual novel stimuli in an ERP novelty oddball paradigm: Effects of familiarity
     on repetition and recognition memory'
@@ -806,6 +959,11 @@
     effect, which was absent for the unfamiliar symbols in the incidental task. These
     data demonstrate that processing of novel events depends on expectation and whether
     stimuli have preexisting representations in long‐term semantic memory.
+  bibtex: '@article{Cycowicz_2006, title={Visual novel stimuli in an ERP novelty oddball
+    paradigm: Effects of familiarity on repetition and recognition memory}, volume={44},
+    ISSN={1469-8986}, url={http://dx.doi.org/10.1111/J.1469-8986.2006.00481.X}, DOI={10.1111/j.1469-8986.2006.00481.x},
+    number={1}, journal={Psychophysiology}, publisher={Wiley}, author={Cycowicz, Yael
+    M. and Friedman, David}, year={2006}, month=Dec, pages={11–29} }'
 - id: doi:10.1111/J.1469-8986.2006.00466.X
   title: Repetition priming of possible and impossible objects from ERP and behavioral
     perspectives
@@ -830,6 +988,11 @@
     suggest that RT priming of impossible objects depends on part‐based structural
     encoding, whereas ERP priming most likely reflects contact, upon repetition, with
     a unitized representation that exists only for possible objects.
+  bibtex: '@article{Friedman_2006, title={Repetition priming of possible and impossible
+    objects from ERP and behavioral perspectives}, volume={43}, ISSN={1469-8986},
+    url={http://dx.doi.org/10.1111/J.1469-8986.2006.00466.X}, DOI={10.1111/j.1469-8986.2006.00466.x},
+    number={6}, journal={Psychophysiology}, publisher={Wiley}, author={Friedman, David
+    and Cycowicz, Yael M.}, year={2006}, month=Oct, pages={569–578} }'
 - id: doi:10.1016/J.COGBRAINRES.2004.10.005
   title: 'The late negative episodic memory effect: the effect of recapitulating study
     details at test'
@@ -843,6 +1006,12 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Friedman_2005, title={The late negative episodic memory effect:
+    the effect of recapitulating study details at test}, volume={23}, ISSN={0926-6410},
+    url={http://dx.doi.org/10.1016/J.COGBRAINRES.2004.10.005}, DOI={10.1016/j.cogbrainres.2004.10.005},
+    number={2-3}, journal={Cognitive Brain Research}, publisher={Elsevier BV}, author={Friedman,
+    David and Cycowicz, Yael M. and Bersick, Michael}, year={2005}, month=May, pages={185–198}
+    }'
 - id: doi:10.1016/J.CLINPH.2004.01.008
   title: 'The old switcheroo: when target environmental sounds elicit a novelty P3'
   authors:
@@ -854,6 +1023,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2004, title={The old switcheroo: when target environmental
+    sounds elicit a novelty P3}, volume={115}, ISSN={1388-2457}, url={http://dx.doi.org/10.1016/J.CLINPH.2004.01.008},
+    DOI={10.1016/j.clinph.2004.01.008}, number={6}, journal={Clinical Neurophysiology},
+    publisher={Elsevier BV}, author={Cycowicz, Yael M and Friedman, David}, year={2004},
+    month=June, pages={1359–1367} }'
 - id: doi:10.1016/J.COGBRAINRES.2003.09.002
   title: 'Cross-form conceptual relations between sounds and words: effects on the
     novelty P3'
@@ -867,6 +1041,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Friedman_2003, title={Cross-form conceptual relations between
+    sounds and words: effects on the novelty P3}, volume={18}, ISSN={0926-6410}, url={http://dx.doi.org/10.1016/J.COGBRAINRES.2003.09.002},
+    DOI={10.1016/j.cogbrainres.2003.09.002}, number={1}, journal={Cognitive Brain
+    Research}, publisher={Elsevier BV}, author={Friedman, David and Cycowicz, Yael
+    M and Dziobek, Isabel}, year={2003}, month=Dec, pages={58–64} }'
 - id: doi:10.1162/JOCN.2003.15.5.759
   title: 'Pictures and Their Colors: What Do Children Remember?'
   authors:
@@ -889,6 +1068,11 @@
     \ age and was accompanied by different patterns of brain potentials. The results\
     \ implicate immaturity of frontal lobe structures in children's difficulty in\
     \ retrieving source information."
+  bibtex: '@article{Cycowicz_2003, title={Pictures and Their Colors: What Do Children
+    Remember?}, volume={15}, ISSN={1530-8898}, url={http://dx.doi.org/10.1162/JOCN.2003.15.5.759},
+    DOI={10.1162/jocn.2003.15.5.759}, number={5}, journal={Journal of Cognitive Neuroscience},
+    publisher={MIT Press - Journals}, author={Cycowicz, Yael M. and Friedman, David
+    and Duff, Martin}, year={2003}, month=May, pages={759–768} }'
 - id: doi:10.1111/1469-8986.00047
   title: 'Source memory for the color of pictures: Event‐related brain potentials
     (ERPs) reveal sensory‐specific retrieval‐related activity'
@@ -915,6 +1099,12 @@
     the source that lead to the presence of the parieto‐occipital EM effect. The data
     further imply that memories for perceptual attributes such as color are stored
     in and retrieved from sensory‐specific cortical areas.
+  bibtex: '@article{Cycowicz_2003, title={Source memory for the color of pictures:
+    Event‐related brain potentials (ERPs) reveal sensory‐specific retrieval‐related
+    activity}, volume={40}, ISSN={1469-8986}, url={http://dx.doi.org/10.1111/1469-8986.00047},
+    DOI={10.1111/1469-8986.00047}, number={3}, journal={Psychophysiology}, publisher={Wiley},
+    author={Cycowicz, Yael M. and Friedman, David}, year={2003}, month=Apr, pages={455–464}
+    }'
 - id: wosuid:WOS:000177939700114
   title: Web of Science
   authors: []
@@ -946,6 +1136,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2001, title={Recognition and source memory for pictures
+    in children and adults}, volume={39}, ISSN={0028-3932}, url={http://dx.doi.org/10.1016/S0028-3932(00)00108-1},
+    DOI={10.1016/s0028-3932(00)00108-1}, number={3}, journal={Neuropsychologia}, publisher={Elsevier
+    BV}, author={Cycowicz, Yael M and Friedman, David and Snodgrass, Joan Gay and
+    Duff, Martin}, year={2001}, month=Jan, pages={255–267} }'
 - id: doi:10.1093/CERCOR/11.4.322
   title: 'Remembering the Color of Objects: An ERP Investigation of Source Memory'
   authors:
@@ -971,6 +1166,11 @@
   pdf: null
   materials: null
   code: null
+  bibtex: '@article{Cycowicz_2001, title={Remembering the Color of Objects: An ERP
+    Investigation of Source Memory}, volume={11}, ISSN={1460-2199}, url={http://dx.doi.org/10.1093/CERCOR/11.4.322},
+    DOI={10.1093/cercor/11.4.322}, number={4}, journal={Cerebral Cortex}, publisher={Oxford
+    University Press (OUP)}, author={Cycowicz, Y. M.}, year={2001}, month=Apr, pages={322–334}
+    }'
 - id: doi:10.1016/S0149-7634(01)00019-7
   title: 'The novelty P3: an event-related brain potential (ERP) sign of the brain''s
     evaluation of novelty'
@@ -997,6 +1197,12 @@
   pdf: null
   materials: null
   code: null
+  bibtex: '@article{Friedman_2001, title={The novelty P3: an event-related brain potential
+    (ERP) sign of the brain’s evaluation of novelty}, volume={25}, ISSN={0149-7634},
+    url={http://dx.doi.org/10.1016/S0149-7634(01)00019-7}, DOI={10.1016/s0149-7634(01)00019-7},
+    number={4}, journal={Neuroscience &amp; Biobehavioral Reviews}, publisher={Elsevier
+    BV}, author={Friedman, David and Cycowicz, Yael M. and Gaeta, Helen}, year={2001},
+    month=June, pages={355–373} }'
 - id: doi:10.1080/096582100387687
   title: A Developmental Trajectory in Implicit Memory is Revealed by Picture Fragment
     Completion
@@ -1011,6 +1217,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_2000, title={A Developmental Trajectory in Implicit Memory
+    is Revealed by Picture Fragment Completion}, volume={8}, ISSN={1464-0686}, url={http://dx.doi.org/10.1080/096582100387687},
+    DOI={10.1080/096582100387687}, number={1}, journal={Memory}, publisher={Informa
+    UK Limited}, author={Cycowicz, Yael M. and Friedman, David and Snodgrass, Joan
+    Gay and Rothstein, Mairav}, year={2000}, month=Jan, pages={19–35} }'
 - id: doi:10.1016/S0301-0511(00)00055-7
   title: Memory development and event-related brain potentials in children
   authors:
@@ -1035,6 +1246,11 @@
   pdf: null
   materials: null
   code: null
+  bibtex: '@article{Cycowicz_2000, title={Memory development and event-related brain
+    potentials in children}, volume={54}, ISSN={0301-0511}, url={http://dx.doi.org/10.1016/S0301-0511(00)00055-7},
+    DOI={10.1016/s0301-0511(00)00055-7}, number={1-3}, journal={Biological Psychology},
+    publisher={Elsevier BV}, author={Cycowicz, Yael M.}, year={2000}, month=Oct, pages={145–174}
+    }'
 - id: wosuid:WOS:000081817000104
   title: Web of Science
   authors: []
@@ -1056,6 +1272,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_1999, title={ERP recordings during a picture fragment
+    completion task: effects of memory instructions}, volume={8}, ISSN={0926-6410},
+    url={http://dx.doi.org/10.1016/S0926-6410(99)00031-2}, DOI={10.1016/s0926-6410(99)00031-2},
+    number={3}, journal={Cognitive Brain Research}, publisher={Elsevier BV}, author={Cycowicz,
+    Yael M and Friedman, David}, year={1999}, month=Oct, pages={271–288} }'
 - id: wosuid:WOS:000081797400172
   title: Web of Science
   authors: []
@@ -1095,6 +1316,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_1999, title={The effect of intention to learn novel,
+    environmental sounds on the novelty P3 and old/new recognition memory}, volume={50},
+    ISSN={0301-0511}, url={http://dx.doi.org/10.1016/S0301-0511(99)00004-6}, DOI={10.1016/s0301-0511(99)00004-6},
+    number={1}, journal={Biological Psychology}, publisher={Elsevier BV}, author={Cycowicz,
+    Yael M. and Friedman, David}, year={1999}, month=May, pages={35–60} }'
 - id: doi:10.1006/BRCG.1997.0955
   title: Effect of Sound Familiarity on the Event-Related Potentials Elicited by Novel
     Environmental Sounds
@@ -1107,6 +1333,11 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
+  bibtex: '@article{Cycowicz_1998, title={Effect of Sound Familiarity on the Event-Related
+    Potentials Elicited by Novel Environmental Sounds}, volume={36}, ISSN={0278-2626},
+    url={http://dx.doi.org/10.1006/BRCG.1997.0955}, DOI={10.1006/brcg.1997.0955},
+    number={1}, journal={Brain and Cognition}, publisher={Elsevier BV}, author={Cycowicz,
+    Yael M. and Friedman, David}, year={1998}, month=Feb, pages={30–51} }'
 - id: doi:10.1017/S0048577298970664
   title: Effects of aging on the novelty P3 during attend and ignore oddball tasks
   authors:
