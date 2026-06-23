@@ -1,6 +1,6 @@
 ---
 name: Daniel Craft
-image: images/photo.jpg
+image: images/Dan_headshot.jpg
 role: rc
 order: 3
 description: Research Coordinator
