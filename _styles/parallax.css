@@ -96,7 +96,7 @@
   color: #ffffff;
   margin: 0 0 24px;
   max-width: 100%;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .ncel-hero__subtitle {
