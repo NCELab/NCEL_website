@@ -43,9 +43,15 @@ nav:
           {{ post.excerpt | strip_html | truncatewords: 30 }}
         </p>
 
-        <a href="{{ post.url | relative_url }}" class="blog-card__read-more">
+        {% if post.external_url %}
+          <a href="{{ post.external_url }}" class="blog-card__read-more" target="_blank" rel="noopener noreferrer">
           Read More →
-        </a>
+          </a>
+        {% else %}
+          <a href="{{ post.url | relative_url }}" class="blog-card__read-more">
+            Read More →
+          </a>
+        {% endif %}
       </div>
     </article>
     {% endfor %}
