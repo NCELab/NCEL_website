@@ -16,7 +16,7 @@
 
   /* ── State ────────────────────────────────────────────────────────────── */
   var state = {
-    section:     'featured',
+    section:     'all',
     sort:        'year-desc',
     yearFilter:  '',
     query:       ''
