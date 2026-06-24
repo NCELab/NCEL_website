@@ -237,6 +237,7 @@
 .post-page__body p {
   text-align: left;
   margin-top: 0;
+  text-indent: 2em;
 }
 .post-page__body h2, .post-page__body h3, .post-page__body h4 {
   text-align: left;
