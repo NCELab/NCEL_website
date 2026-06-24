@@ -34,13 +34,6 @@ layout: default
       </div>
     </header>
 
-    <!-- Hero image BELOW header text -->
-    {% if page.image %}
-      <div class="post-page__hero-image">
-        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
-      </div>
-    {% endif %}
-
     <!-- Body -->
     <div class="post-page__body">
       {{ content }}
