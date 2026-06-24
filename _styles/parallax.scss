@@ -78,29 +78,25 @@
   text-align: left;
   padding: 120px 0 80px;
   color: #ffffff;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto auto;
+  align-items: start;
+  gap: 0 40px;
 }
 
 /* ── Typography ─────────────────────────────────────────────────────────── */
-.ncel-hero__eyebrow {
-  display: block;
-  font-family: var(--heading, "Barlow", sans-serif);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 20px;
-}
 
 .ncel-hero__title {
+  grid-column: 2;
+  grid-row: 2;
   font-family: var(--heading, "Barlow", sans-serif);
   font-size: clamp(1.8rem, 3.5vw, 3.2rem);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.01em;
   color: #ffffff;
-  margin: 0 0 24px;
-  max-width: 100%;
+  margin: 0 0 20px;
   white-space: normal;
 }
 .ncel-hero__title strong {
@@ -108,23 +104,28 @@
   color: #ffffff;
 }
 .ncel-hero__subtitle {
+  grid-column: 2;
+  grid-row: 3;
   font-family: var(--body, "Barlow", sans-serif);
   font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   font-weight: 500;
   line-height: 1.65;
   color: rgba(255,255,255,0.82);
   max-width: 580px;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
 }
-
 .ncel-hero__logo {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  align-self: center;
   display: block;
-  width: clamp(86px, 10vw, 140px);
+  width: clamp(86px, 10vw, 130px);
   height: auto;
-  margin: 0 auto 28px;
+  margin: 0;
 }
 /* ── CTA row ────────────────────────────────────────────────────────────── */
 .ncel-hero__actions {
+  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
@@ -207,23 +208,26 @@
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .ncel-hero__content {
-    padding: 100px 0 80px;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
     text-align: center;
+    padding: 100px 0 80px;
   }
+
+  .ncel-hero__logo {
+    grid-column: 1;
+    grid-row: auto;
+    margin: 0 auto 20px;
+  }
+
+  .ncel-hero__eyebrow,
+  .ncel-hero__title,
+  .ncel-hero__subtitle,
+  .ncel-hero__actions {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .ncel-hero__subtitle { max-width: 100%; }
   .ncel-hero__actions { justify-content: center; }
-  .ncel-hero__scroll-cue { display: none; }
-}
-
-@media (max-width: 480px) {
-  .ncel-hero__cta {
-    width: 100%;
-    justify-content: center;
-  }
-}
-@media (max-width: 768px) {
-  .ncel-hero__title {
-    white-space: normal;  
-    font-size: clamp(1.4rem, 5vw, 2.2rem);
-  }
 }
