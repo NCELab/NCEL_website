@@ -3,6 +3,7 @@
    blog.scss  –  NCEL Blog list page + single post page
    ═══════════════════════════════════════════════════════════════════════════ */
 /* ── Blog list page ─────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
 .blog-page {
   max-width: 900px;
   margin: 0 auto;
@@ -145,6 +146,7 @@
   }
 }
 /* ── Single post page ───────────────────────────────────────────────────── */
+/* 引入 Playfair Display */
 .post-page {
   display: grid;
   grid-template-columns: 1fr 260px;
@@ -160,34 +162,31 @@
   min-width: 0;
 }
 
-.post-page__hero-image {
-  width: 100%;
-  margin-bottom: 32px;
-  border-radius: var(--rounded);
+/* 整合卡片：header + body 在同一容器 */
+.post-page__card {
+  background: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   overflow: hidden;
-}
-.post-page__hero-image img {
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
-  display: block;
+  margin-bottom: 32px;
 }
 
-/* Header text */
+/* Header */
 .post-page__header {
-  margin-bottom: 28px;
+  padding: 36px 40px 20px;
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .post-page__title {
-  font-family: var(--heading);
-  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   font-weight: 700;
   line-height: 1.2;
   color: var(--text);
-  text-align: left;
+  text-align: center; /* 水平置中 */
   text-transform: none;
   letter-spacing: -0.01em;
-  margin: 0 0 16px 0;
+  margin: 0 0 20px 0;
   padding: 0;
   border: none;
 }
@@ -196,11 +195,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center; /* meta 也置中 */
   gap: 16px;
   font-size: 0.82rem;
   color: var(--gray);
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--light-gray);
 }
 
 .post-page__author,
@@ -214,6 +212,7 @@
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .post-page__tag {
@@ -225,14 +224,16 @@
   font-weight: var(--semi-bold);
 }
 
-/* Body content */
+/* Body — 緊接在 header 下方，無多餘空白 */
 .post-page__body {
+  padding: 28px 40px 36px;
   font-size: 0.97rem;
   line-height: 1.9;
   color: var(--text);
-  border-bottom: 1px solid var(--light-gray);
-  padding-bottom: 36px;
-  margin-bottom: 36px;
+  /* 第一個子元素去掉頂部 margin，消除空白 */
+}
+.post-page__body > :first-child {
+  margin-top: 0 !important;
 }
 .post-page__body p {
   text-align: left;
@@ -390,8 +391,14 @@
 @media (max-width: 768px) {
   .post-page {
     grid-template-columns: 1fr;
-    padding: 32px 24px 60px;
+    padding: 24px 16px 60px;
     gap: 40px;
+  }
+  .post-page__header {
+    padding: 24px 20px 16px;
+  }
+  .post-page__body {
+    padding: 20px 20px 28px;
   }
   .post-page__sidebar {
     position: static;
