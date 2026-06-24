@@ -7,9 +7,10 @@ layout: default
   <!-- ── Main content ── -->
   <article class="post-page__article">
 
-    <!-- Header -->
-    <header class="post-page__header">
-      <div class="post-page__header-text">
+    <!-- Header + Body 整合卡片 -->
+    <div class="post-page__card">
+
+      <header class="post-page__header">
         <h1 class="post-page__title">{{ page.title }}</h1>
 
         <div class="post-page__meta">
@@ -31,12 +32,12 @@ layout: default
             </span>
           {% endif %}
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Body -->
-    <div class="post-page__body">
-      {{ content }}
+      <div class="post-page__body">
+        {{ content }}
+      </div>
+
     </div>
 
     <!-- Prev / Next -->
@@ -67,12 +68,7 @@ layout: default
       {% if post.url != page.url and shown < 4 %}
         <a href="{{ post.url | relative_url }}" class="sidebar-card">
           {% if post.image %}
-            <img
-              src="{{ post.image | relative_url }}"
-              alt="{{ post.title }}"
-              class="sidebar-card__image"
-              loading="lazy"
-            >
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="sidebar-card__image" loading="lazy">
           {% else %}
             <div class="sidebar-card__image sidebar-card__image--placeholder">
               <i class="fa-solid fa-newspaper"></i>
