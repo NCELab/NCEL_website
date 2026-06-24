@@ -9,12 +9,6 @@ layout: default
 
     <!-- Header -->
     <header class="post-page__header">
-      {% if page.image %}
-        <div class="post-page__hero-image">
-          <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
-        </div>
-      {% endif %}
-
       <div class="post-page__header-text">
         <h1 class="post-page__title">{{ page.title }}</h1>
 
@@ -39,6 +33,13 @@ layout: default
         </div>
       </div>
     </header>
+
+    <!-- Hero image BELOW header text -->
+    {% if page.image %}
+      <div class="post-page__hero-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" loading="lazy">
+      </div>
+    {% endif %}
 
     <!-- Body -->
     <div class="post-page__body">
