@@ -6,17 +6,7 @@
   Chain with | default: to pick the first existing file.
   Then prepend the path so relative_url works correctly.
 {% endcomment %}
-{% assign logo_file = nil %}
-{% assign try_svg = "images/logo.svg" | file_exists %}
-{% assign try_png = "images/logo.png" | file_exists %}
-{% assign try_jpg = "images/logo.jpg" | file_exists %}
-{% if try_svg %}
-  {% assign logo_file = "images/logo.svg" %}
-{% elsif try_png %}
-  {% assign logo_file = "images/logo.png" %}
-{% elsif try_jpg %}
-  {% assign logo_file = "images/logo.jpg" %}
-{% endif %}
+{% assign logo_file = "images/NCEL_word_logo.png" %}
 
 <header
 class="background"
