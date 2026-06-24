@@ -382,6 +382,16 @@
     }
 
     render();
+    
+      if (window.location.hash === '#open') {
+        setTimeout(function () {
+          qsa('.pub-year-heading').forEach(function (heading) {
+            heading.classList.remove('is-collapsed');
+            var body = heading.nextElementSibling;
+            if (body) body.style.display = '';
+          });
+        }, 100);
+}
   }
 
   if (document.readyState === 'loading') {
