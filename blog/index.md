@@ -35,9 +35,13 @@ nav:
           {{ post.date | date: "%d/%m/%Y" }}
         </time>
 
-        <h2 class="blog-card__title">
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
+      <h2 class="blog-card__title">
+          {% if post.external_url %}
+            <a href="{{ post.external_url }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
+          {% else %}
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          {% endif %}
+      </h2>
 
         <p class="blog-card__excerpt">
           {{ post.excerpt | strip_html | truncatewords: 30 }}
