@@ -64,69 +64,107 @@
 }
 
 /* Hero content sits above both layers */
+/* ── Hero content ───────────────────────────────────────────────────────── */
 .ncel-hero__content {
-  position: relative;
+  position: absolute;
+  bottom: 80px;
+  left: max(5%, (100% - 900px) / 2);
+  width: min(90%, 900px);
   z-index: 2;
-  max-width: 900px;
-  width: 90%;
-  margin: 0 auto;
-  text-align: left;
-  padding: 120px 0 80px;
-  color: #ffffff;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto auto;
-  align-items: start;
-  gap: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-/* ── Typography ─────────────────────────────────────────────────────────── */
-.ncel-hero__title {
-  grid-column: 2;
-  grid-row: 2;
+/* ── Logo + 三行標題橫排區塊 ────────────────────────────────────────────── */
+.ncel-hero__header-block {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* Logo 高度自動撐滿標題高度 */
+  gap: 20px;
+  width: 100%;
+}
+
+/* 左欄：Logo */
+.ncel-hero__logo-col {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ncel-hero__logo-img {
+  height: 100%; /* 撐滿右欄高度 */
+  width: auto;
+  max-height: 140px; /* 防止過大 */
+  min-height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 右欄：三行文字 */
+.ncel-hero__title-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+
+/* ── Eyebrow（第一行小標） ──────────────────────────────────────────────── */
+.ncel-hero__eyebrow {
+  display: block;
   font-family: var(--heading, "Barlow", sans-serif);
-  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-  font-weight: 600;
-  line-height: 1.1;
+  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.4;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+/* ── 主標題（第二、三行） ───────────────────────────────────────────────── */
+.ncel-hero__title {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  font-family: var(--heading, "Barlow", sans-serif);
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -0.01em;
   color: #ffffff;
-  margin: 0 0 20px;
-  white-space: normal;
+  text-transform: uppercase;
 }
 
-.ncel-hero__title strong {
-  font-weight: 800;
-  color: #ffffff;
-}
-
-.ncel-hero__subtitle {
-  grid-column: 2;
-  grid-row: 3;
-  font-family: var(--body, "Barlow", sans-serif);
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-  font-weight: 500;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.82);
-  max-width: 580px;
-  margin: 0 0 32px;
-}
-
-.ncel-hero__logo {
-  grid-column: 1;
-  grid-row: 1/4;
-  align-self: center;
+.ncel-hero__title-line {
   display: block;
-  width: clamp(86px, 10vw, 130px);
-  height: auto;
-  margin: 0;
+  text-align: left;
 }
 
-/* ── CTA row ────────────────────────────────────────────────────────────── */
+/* ── 副標題（Logo+標題下方） ────────────────────────────────────────────── */
+.ncel-hero__subtitle {
+  font-family: var(--body, "Barlow", sans-serif);
+  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 560px;
+  margin: 0;
+  text-align: left;
+}
+
+/* ── CTA 按鈕 ───────────────────────────────────────────────────────────── */
 .ncel-hero__actions {
-  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   align-items: center;
 }
 
@@ -160,6 +198,7 @@
 }
 .ncel-hero__cta--ghost:hover {
   border-color: #ffffff;
+  color: #ffffff;
 }
 
 /* ── Scroll cue ─────────────────────────────────────────────────────────── */
@@ -203,7 +242,7 @@
     opacity: 0.9;
   }
 }
-/* ── Reduced motion overrides ───────────────────────────────────────────── */
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .ncel-hero::before {
     transform: none !important;
@@ -213,31 +252,31 @@
     animation: none;
   }
 }
-/* ── Responsive ─────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+/* ── Responsive（手機版） ───────────────────────────────────────────────── */
+@media (max-width: 640px) {
   .ncel-hero__content {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    text-align: center;
-    padding: 100px 0 80px;
+    bottom: 60px;
+    left: 5%;
+    width: 90%;
+    gap: 16px;
   }
-  .ncel-hero__logo {
-    grid-column: 1;
-    grid-row: auto;
-    margin: 0 auto 20px;
+  .ncel-hero__header-block {
+    flex-direction: column; /* 手機版：Logo 在上，文字在下 */
+    align-items: flex-start;
+    gap: 12px;
   }
-  .ncel-hero__eyebrow,
-  .ncel-hero__title,
-  .ncel-hero__subtitle,
-  .ncel-hero__actions {
-    grid-column: 1;
-    grid-row: auto;
+  .ncel-hero__logo-img {
+    height: 56px;
+    max-height: 56px;
+  }
+  .ncel-hero__title {
+    font-size: clamp(1.6rem, 8vw, 2.4rem);
   }
   .ncel-hero__subtitle {
     max-width: 100%;
   }
   .ncel-hero__actions {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
