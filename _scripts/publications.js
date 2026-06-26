@@ -82,15 +82,13 @@
   }
 
   /* ── Filter helpers ───────────────────────────────────────────────────── */
-  function isFeatured(p)  { return !!p.featured; }
-
-  function isTeamLed(p) {
-    if (!p.year || parseInt(p.year, 10) < 2021) return false;
-    /* Also include conference abstracts (no DOI, publisher looks like abstract) */
-    var firstAuthor = (p.authors || '').split(',')[0].trim();
-    var isFirst = TEAM_FIRST_AUTHORS.some(function (m) {
-      return firstAuthor.indexOf(m) !== -1;
-    });
+    function isPeerReview(p) {
+      var pub = (p.publisher || '').toLowerCase();
+      return pub.indexOf('under review') !== -1 ||
+             pub.indexOf('in press') !== -1 ||
+             pub.indexOf('submitted') !== -1;
+    }
+    function isPoster(p) { return !!p.poster; }
     /* Broaden: any paper with ≥1 team member AND year ≥ 2021 qualifies */
     var hasTeamMember = NCEL_MEMBERS.some(function (m) {
       return (p.authors || '').indexOf(m) !== -1;
@@ -128,12 +126,10 @@
     var valid = PUB_DATA.filter(matchesFilters);
     updateStatus(valid);
 
-    if (state.section === 'featured') {
-      renderFlat(applySort(valid.filter(isFeatured)), 'featured');
-    } else if (state.section === 'team') {
-      renderTeam(applySort(valid.filter(isTeamLed)));
-    } else {
-      renderByYear(applySort(valid));
+    if (state.section === 'peer-review') {
+      renderFlat(applySort(valid.filter(isPeerReview)), 'peer-review');
+    } else if (state.section === 'poster') {
+      renderPosterList(applySort(valid.filter(isPoster)));
     }
   }
 
@@ -221,7 +217,27 @@
       '<div class="pub-year-body">' + pubs.map(pubCard).join('') + '</div>' +
     '</div>';
   }
-
+  function renderPosterList(pubs) {
+    var el = qs('#pub-list-poster');
+    if (!el) return;
+    el.innerHTML = pubs.length
+      ? pubs.map(posterCard).join('')
+      : '<p class="pub-empty">No posters match the current filters.</p>';
+  }
+  
+  function posterCard(p) {
+    var excerpt = (p.abstract || '').slice(0, 200);
+    if ((p.abstract || '').length > 200) excerpt += '…';
+    return '<div class="pub-card pub-card--poster">' +
+      '<div class="pub-card__body">' +
+        '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
+        '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
+        '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
+        '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
+        (p.pdf ? '<a class="pub-card__learn-more" href="' + esc(p.pdf) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
+      '</div>' +
+    '</div>';
+  }
   /* ── Publication card ─────────────────────────────────────────────────── */
   function pubCard(p) {
     var id = 'pub-' + Math.random().toString(36).slice(2, 9);
