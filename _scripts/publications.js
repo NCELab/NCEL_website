@@ -89,14 +89,15 @@
              pub.indexOf('submitted') !== -1;
     }
     function isPoster(p) { return !!p.poster; }
-    /* Broaden: any paper with ≥1 team member AND year ≥ 2021 qualifies */
-    var hasTeamMember = NCEL_MEMBERS.some(function (m) {
-      return (p.authors || '').indexOf(m) !== -1;
-    });
-    /* Include if first author is team member, OR it's a 2024+ Cycowicz paper
-       co-authored with team members (to avoid making PI look solo) */
-    return isFirst || (hasTeamMember && parseInt(p.year, 10) >= 2024);
-  }
+function isTeam(p) {
+  var isFirst = TEAM_FIRST_AUTHORS.some(function (m) {
+    return (p.authors || '').indexOf(m) !== -1;
+  });
+  var hasTeamMember = NCEL_MEMBERS.some(function (m) {
+    return (p.authors || '').indexOf(m) !== -1;
+  });
+  return isFirst || (hasTeamMember && parseInt(p.year, 10) >= 2024);
+}
 
   function matchesFilters(p) {
     if (!p.title || p.title === 'Web of Science') return false;
@@ -226,18 +227,21 @@
   }
   
   function posterCard(p) {
-    var excerpt = (p.abstract || '').slice(0, 200);
-    if ((p.abstract || '').length > 200) excerpt += '…';
-    return '<div class="pub-card pub-card--poster">' +
-      '<div class="pub-card__body">' +
-        '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
-        '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
-        '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
-        '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
-        (p.pdf ? '<a class="pub-card__learn-more" href="' + esc(p.pdf) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
-      '</div>' +
+  var excerpt = (p.abstract || '').slice(0, 200);
+  if ((p.abstract || '').length > 200) excerpt += '…';
+  
+  var posterFile = p.poster || p.pdf || '';
+
+  return '<div class="pub-card pub-card--poster">' +
+    '<div class="pub-card__body">' +
+    '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
+    '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
+    '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
+    '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
+    (posterFile ? '<a class="pub-card__learn-more" href="' + esc(posterFile) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
+    '</div>' +
     '</div>';
-  }
+}
   /* ── Publication card ─────────────────────────────────────────────────── */
   function pubCard(p) {
     var id = 'pub-' + Math.random().toString(36).slice(2, 9);
