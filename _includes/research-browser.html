@@ -189,7 +189,7 @@ var POSTER_DATA = [
     date:     {{ c.date     | default: "" | jsonify }},
     year:     {{ c.date | slice: 0, 4 | jsonify }},
     abstract: {{ c.abstract | default: "" | jsonify }},
-    poster:   {{ c.poster   | relative_url | jsonify }}
+    poster:   {{ c.poster   | remove_first: '/' | relative_url | jsonify }}
   }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ];
