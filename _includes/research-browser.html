@@ -145,6 +145,7 @@ var PUB_DATA = [
     topics:    {{ c.topics    | default: c.tags | default: "" | jsonify }},
     keywords:  {{ c.keywords  | default: "" | jsonify }},
     pdf:       {{ c.pdf       | default: "" | jsonify }},
+    poster: {{ c.poster | default: "" | jsonify }},
     materials: {{ c.materials | default: "" | jsonify }},
     code:      {{ c.code      | default: "" | jsonify }},
     bibtex:    {{ c.bibtex    | default: "" | jsonify }},
