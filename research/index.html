@@ -1979,8 +1979,27 @@ var PUB_DATA = [
   
   
 ];
+var POSTER_DATA = PUB_DATA.filter(function(p) { return !!p.poster; });
 
-/* ── NCEL member & PI name lists ── */
+var PEER_REVIEW_DATA = [
+  
+  {
+    title: "My Paper Under Review",
+    authors: "Smith, J., Cycowicz, Y.",
+    publisher: "Under Review",
+    date: "2025",
+    year: "2025",
+    doi: "10.1016/S0149-7634(01)00019-7",
+    abstract: "",
+    pdf: ""
+  }
+  
+];
+
+
+</script>
+
+/* ── NCEL member &amp; PI name lists ── */
 var NCEL_MEMBERS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
@@ -1989,7 +2008,7 @@ var PI_NAME = "Cycowicz";
 var TEAM_FIRST_AUTHORS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
-</script>
+&lt;/script&gt;
 
 </div>
   </section>
