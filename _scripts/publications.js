@@ -406,7 +406,7 @@ function isTeam(p) {
         timer = setTimeout(function () { state.query = els.search.value.trim().toLowerCase(); render(); }, 280);
       });
     }
-
+    switchSection('all');
     render();
     
       if (window.location.hash === '#open') {
