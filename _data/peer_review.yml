@@ -1,0 +1,9 @@
+- doi: 10.1016/S0149-7634(01)00019-7
+  title: "My Paper Under Review"
+  authors: "Smith, J., Cycowicz, Y."
+  publisher: "Under Review"
+  date: "2025"
+
+- doi: 10.1234/example2
+  title: "Another Paper In Press"
+  ...
