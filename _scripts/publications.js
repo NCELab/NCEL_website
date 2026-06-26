@@ -1,14 +1,14 @@
 /**
- * publications.js  –  NCEL three-section publication browser (v2)
+ * publications.js  –  NCEL three-section publication browser
  *
  * Sections:
- *   all         – full year-grouped timeline (deduped, year-desc default)
+ *   all         – full year-grouped timeline, all years expanded by default
  *   peer-review – from PEER_REVIEW_DATA (_data/peer_review.yml)
  *   poster      – from POSTER_DATA (_data/posters.yml)
  *
  * Name styling:
- *   PI (Cycowicz)        → <strong>Cycowicz …</strong>
- *   NCEL members         → <u><strong class="pub-author-member">Name</strong></u>
+ *   PI (Cycowicz)   → <strong>
+ *   NCEL members    → <u><strong class="pub-author-member">
  */
 
 (function () {
@@ -16,16 +16,16 @@
 
   /* ── State ────────────────────────────────────────────────────────────── */
   var state = {
-    section:     'all',
-    sort:        'year-desc',
-    yearFilter:  '',
-    query:       ''
+    section:    'all',
+    sort:       'year-desc',
+    yearFilter: '',
+    query:      ''
   };
 
   var els = {};
 
   /* ── Helpers ──────────────────────────────────────────────────────────── */
-  function qs(sel, ctx) { return (ctx || document).querySelector(sel); }
+  function qs(sel, ctx)  { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
   function esc(s) {
     return String(s || '')
@@ -80,7 +80,8 @@
       var words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
       var hay = [p.title, p.authors, p.publisher, p.year,
                  p.doi, p.abstract,
-                 (p.topics || []).join(' '), (p.keywords || []).join(' ')
+                 (p.topics  || []).join(' '),
+                 (p.keywords || []).join(' ')
                 ].join(' ').toLowerCase();
       if (!words.every(function (w) { return hay.includes(w); })) return false;
     }
@@ -95,9 +96,9 @@
     });
   }
 
-  /* ── Render ───────────────────────────────────────────────────────────── */
+  /* ── Render dispatcher ────────────────────────────────────────────────── */
   function render() {
-    var pubs = (PUB_DATA || []).filter(matchesFilters);
+    var pubs   = (PUB_DATA || []).filter(matchesFilters);
     var sorted = applySort(pubs);
 
     if (state.section === 'all') {
@@ -106,7 +107,7 @@
       var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
       renderFlat(applySort(prPubs), 'peer-review');
     } else if (state.section === 'poster') {
-      var posterPubs = (typeof POSTER_DATA !== 'undefined' ? POSTER_DATA : []).filter(matchesFilters);
+      var posterPubs = (typeof POSTER_DATA !== 'undefined' ? POSTER_DATA : []);
       renderPosterList(posterPubs);
     }
     updateStatus();
@@ -121,7 +122,8 @@
     var hasFilter = state.query || state.yearFilter;
     if (hasFilter) {
       var showing = (PUB_DATA || []).filter(matchesFilters).length;
-      els.status.innerHTML = 'Showing <strong>' + showing + '</strong> of ' + total +
+      els.status.innerHTML =
+        'Showing <strong>' + showing + '</strong> of ' + total +
         ' publications. <a href="#" id="pub-clear-link">Clear filters</a>';
       var cl = qs('#pub-clear-link');
       if (cl) cl.addEventListener('click', function (e) { e.preventDefault(); clearAll(); });
@@ -134,19 +136,18 @@
   function renderFlat(pubs, listId) {
     var el = qs('#pub-list-' + listId);
     if (!el) return;
-    if (!pubs.length) {
-      el.innerHTML = '<p class="pub-empty">No publications match the current filters.</p>';
-    } else {
-      el.innerHTML = pubs.map(pubCard).join('');
-    }
+    el.innerHTML = pubs.length
+      ? pubs.map(pubCard).join('')
+      : '<p class="pub-empty">No publications match the current filters.</p>';
   }
 
-  /* ── All Publications: year groups ───────────────────────────────────── */
+  /* ── All Publications: year groups (all expanded by default) ─────────── */
   function renderByYear(pubs) {
     var el = qs('#pub-list-all');
     if (!el) return;
     if (!pubs.length) {
-      el.innerHTML = '<p class="pub-empty">No publications match. <a href="#" onclick="NCEL_PUB.clearAll();return false;">Clear filters</a></p>';
+      el.innerHTML = '<p class="pub-empty">No publications match. ' +
+        '<a href="#" onclick="NCEL_PUB.clearAll();return false;">Clear filters</a></p>';
       return;
     }
     var groups = {};
@@ -163,6 +164,7 @@
     }).join('');
   }
 
+  /* ── Year group — body visible by default (no display:none) ──────────── */
   function yearGroup(year, pubs) {
     return '<div class="pub-year-group" data-year="' + esc(year) + '">' +
       '<div class="pub-year-heading" onclick="NCEL_PUB.toggleYear(this)">' +
@@ -170,7 +172,7 @@
         '<span class="pub-year-heading__count">(' + pubs.length + ')</span>' +
         '<span class="pub-year-heading__toggle">▼</span>' +
       '</div>' +
-      '<div class="pub-year-body" style="display:none">' + pubs.map(pubCard).join('') + '</div>' +
+      '<div class="pub-year-body">' + pubs.map(pubCard).join('') + '</div>' +
     '</div>';
   }
 
@@ -189,12 +191,14 @@
     var posterFile = p.poster || p.pdf || '';
 
     return '<div class="pub-card pub-card--poster">' +
-      '<div class="pub-card__body">' +
+      '<div class="pub-card__body pub-card__body--centered">' +
         '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
         '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
         '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
-        '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
-        (posterFile ? '<a class="pub-card__learn-more" href="' + esc(posterFile) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
+        (excerpt ? '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' : '') +
+        (posterFile
+          ? '<a class="pub-card__learn-more" href="' + esc(posterFile) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>'
+          : '') +
       '</div>' +
     '</div>';
   }
@@ -203,14 +207,14 @@
   function pubCard(p) {
     var id = 'pub-' + Math.random().toString(36).slice(2, 9);
 
-    /* Chips — only preprint remains; featured chip removed */
+    /* Chips */
     var chips = [];
     if (p.preprint) chips.push('<span class="pub-card__chip pub-card__chip--preprint">Preprint</span>');
     var chipsHtml = chips.length ? '<div class="pub-card__chips">' + chips.join('') + '</div>' : '';
 
     /* Title link */
     var doiClean = (p.doi || '').replace(/^doi:/, '').replace(/^https?:\/\/doi\.org\//, '');
-    var doiUrl = p.link || (doiClean ? 'https://doi.org/' + doiClean : '');
+    var doiUrl   = p.link || (doiClean ? 'https://doi.org/' + doiClean : '');
     var titleHtml = doiUrl
       ? '<a href="' + esc(doiUrl) + '" target="_blank" rel="noopener">' + esc(p.title || '(Untitled)') + '</a>'
       : esc(p.title || '(Untitled)');
@@ -221,10 +225,12 @@
     /* Links row */
     var links = [];
     if (doiUrl)      links.push('<a class="pub-card__link" href="' + esc(doiUrl) + '" target="_blank" rel="noopener">↗ DOI</a>');
-    if (p.pdf)       links.push('<a class="pub-card__link" href="' + esc(p.pdf) + '" target="_blank" rel="noopener">⬇ PDF</a>');
+    if (p.pdf)       links.push('<a class="pub-card__link" href="' + esc(p.pdf)  + '" target="_blank" rel="noopener">⬇ PDF</a>');
     if (p.materials) links.push('<a class="pub-card__link" href="' + esc(p.materials) + '" target="_blank" rel="noopener">📁 Materials</a>');
     if (p.code)      links.push('<a class="pub-card__link" href="' + esc(p.code) + '" target="_blank" rel="noopener">{ } Code</a>');
-    var linksHtml = links.length ? '<div class="pub-card__links">' + links.join('<span class="pub-card__link-sep">·</span>') + '</div>' : '';
+    var linksHtml = links.length
+      ? '<div class="pub-card__links">' + links.join('<span class="pub-card__link-sep">·</span>') + '</div>'
+      : '';
 
     /* Toggle buttons */
     var toggles = '';
@@ -259,9 +265,9 @@
       '<div class="pub-card__main">' +
         '<div class="pub-card__body">' +
           chipsHtml +
-          '<div class="pub-card__title">' + titleHtml + '</div>' +
+          '<div class="pub-card__title">'   + titleHtml + '</div>' +
           '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
-          '<div class="pub-card__meta">' + esc(meta) + '</div>' +
+          '<div class="pub-card__meta">'    + esc(meta) + '</div>' +
           linksHtml +
         '</div>' +
         togglesHtml +
@@ -273,7 +279,7 @@
   /* ── BibTeX fallback ──────────────────────────────────────────────────── */
   function buildBibtex(p) {
     if (!p.title) return '';
-    var first = (p.authors || 'author').split(',')[0].trim().split(' ').pop().replace(/[^a-zA-Z]/g,'');
+    var first = (p.authors || 'author').split(',')[0].trim().split(' ').pop().replace(/[^a-zA-Z]/g, '');
     var key   = first + (p.year || '');
     var doi   = (p.doi || '').replace(/^doi:/, '').replace(/^https?:\/\/doi\.org\//, '');
     return '@article{' + key + ',\n  title   = {' + (p.title || '') + '},\n  author  = {' +
@@ -283,16 +289,12 @@
 
   /* ── Public API ───────────────────────────────────────────────────────── */
   window.NCEL_PUB = {
+    /* Toggle a year group open/closed.
+       Body starts visible (no display:none), so first click closes it. */
     toggleYear: function (heading) {
+      heading.classList.toggle('is-collapsed');
       var body = heading.nextElementSibling;
-      var isOpen = body.style.display !== 'none';
-      if (isOpen) {
-        body.style.display = 'none';
-        heading.classList.add('is-collapsed');
-      } else {
-        body.style.display = '';
-        heading.classList.remove('is-collapsed');
-      }
+      body.style.display = body.style.display === 'none' ? '' : 'none';
     },
     toggleDrawer: function (id, btn) {
       var drawer = qs('#' + id);
@@ -359,22 +361,15 @@
       var timer;
       els.search.addEventListener('input', function () {
         clearTimeout(timer);
-        timer = setTimeout(function () { state.query = els.search.value.trim().toLowerCase(); render(); }, 280);
+        timer = setTimeout(function () {
+          state.query = els.search.value.trim().toLowerCase();
+          render();
+        }, 280);
       });
     }
 
     switchSection('all');
     render();
-
-    if (window.location.hash === '#open') {
-      setTimeout(function () {
-        qsa('.pub-year-heading').forEach(function (heading) {
-          heading.classList.remove('is-collapsed');
-          var body = heading.nextElementSibling;
-          if (body) body.style.display = '';
-        });
-      }, 100);
-    }
   }
 
   if (document.readyState === 'loading') {
