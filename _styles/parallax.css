@@ -29,7 +29,7 @@
   will-change: transform;
   z-index: 0;
   /* the filter switch on when dark mode on */
-  filter: brightness(0.9);
+  filter: brightness(0.75);
   transition: filter 0.5s ease;
 }
 
