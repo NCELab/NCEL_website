@@ -123,16 +123,22 @@ function isTeam(p) {
 
   /* ── Render ───────────────────────────────────────────────────────────── */
   function render() {
-    if (typeof PUB_DATA === 'undefined' || !PUB_DATA.length) return;
-    var valid = PUB_DATA.filter(matchesFilters);
-    updateStatus(valid);
+  var pubs = (PUB_DATA || []).filter(matchesFilters);
+  var sorted = applySort(pubs);
 
-    if (state.section === 'peer-review') {
-      renderFlat(applySort(valid.filter(isPeerReview)), 'peer-review');
-    } else if (state.section === 'poster') {
-      renderPosterList(applySort(valid.filter(isPoster)));
-    }
+  if (state.section === 'all') {
+    renderByYear(sorted);
+  } else if (state.section === 'peer-review') {
+   
+    var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
+    renderFlat(applySort(prPubs), '#pub-list-peer-review');
+  } else if (state.section === 'poster') {
+    
+    var posterPubs = (typeof POSTER_DATA !== 'undefined' ? POSTER_DATA : []).filter(matchesFilters);
+    renderPosterList(posterPubs);
   }
+  updateStatus(sorted.length);
+}
 
   function updateStatus(pubs) {
     var total = (PUB_DATA || []).filter(function (p) {
