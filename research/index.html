@@ -541,6 +541,8 @@
   <!-- ── Section tabs ─────────────────────────────────────────────────── -->
   <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
     <button class="pub-section-tab" role="tab" aria-selected="false" data-section="all">All Publications</button>
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="peer-review">Peer Review</button>
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="poster">Poster</button>
   </div>
 
   <!-- ── Toolbar (search + sort + year — shared) ──────────────────────── -->
@@ -693,7 +695,32 @@
     </div>
     <div id="pub-list-all" class="pub-list"></div>
   </div>
+  <!-- Peer Review -->
+<div id="pub-panel-peer-review" class="pub-section-panel" role="tabpanel">
+  <div class="pub-section-header pub-section-header--peer-review">
+    <span class="pub-section-header__icon">📝</span>
+    <div>
+      <h2 class="pub-section-header__title">Peer Review</h2>
+      <p class="pub-section-header__desc">
+        Manuscripts currently under review or in press — shared here ahead of formal publication.
+      </p>
+    </div>
+  </div>
+  <div id="pub-list-peer-review" class="pub-list"></div>
+</div>
 
+<!-- Poster -->
+<div id="pub-panel-poster" class="pub-section-panel" role="tabpanel">
+  <div class="pub-section-header pub-section-header--poster">
+    <span class="pub-section-header__icon">🖼️</span>
+    <div>
+      <h2 class="pub-section-header__title">Posters</h2>
+      <p class="pub-section-header__desc">
+        Conference posters from the lab — click Learn More to open the full poster PDF.
+      </p>
+    </div>
+  </div>
+  <div id="pub-list-poster" class="pub-list"></div>
 </div>
 
 <!-- ── Data injection ────────────────────────────────────────────────── -->
@@ -1878,11 +1905,11 @@ var PUB_DATA = [
   
   
   {
-    title:     "Poster Title Here",
-    authors:   "Cycowicz, YM., Craft, D., ...",
-    publisher: "Conference Name, Poster",
-    date:      "2026-05-01",
-    year:      "2026",
+    title:     "From PTSD to Depression: Longitudinal Shifts in Psychopathology Among 9/11 Responders",
+    authors:   "Yael M. Cycowicz, Diana Rodriguez-Moreno, Keely Cheslack-Postava, Ronit Kishon",
+    publisher: "",
+    date:      "",
+    year:      "",
     link:      "",
     id:        "",
     doi:       "",
@@ -1910,6 +1937,8 @@ var TEAM_FIRST_AUTHORS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
 </script>
+
+</div>
   </section>
 
 
