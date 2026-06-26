@@ -2,9 +2,9 @@
  * publications.js  –  NCEL three-section publication browser (v2)
  *
  * Sections:
- *   featured  – papers where featured === true
- *   team      – papers year >= 2021 whose first author is an NCEL member
- *   all       – full year-grouped timeline (deduped, year-desc default)
+ *   all         – full year-grouped timeline (deduped, year-desc default)
+ *   peer-review – from PEER_REVIEW_DATA (_data/peer_review.yml)
+ *   poster      – from POSTER_DATA (_data/posters.yml)
  *
  * Name styling:
  *   PI (Cycowicz)        → <strong>Cycowicz …</strong>
@@ -34,22 +34,14 @@
   }
 
   /* ── Author name rendering ────────────────────────────────────────────── */
-  /**
-   * Tokenise an author string like "Cycowicz, Yael M., Craft, D., He, X."
-   * into individual name tokens and apply highlighting.
-   */
   function renderAuthors(raw) {
     if (!raw) return '<span class="pub-card__authors-empty">[no author info]</span>';
 
-    /* Split by comma-space boundaries but keep "Last, F." pairs together.
-       Strategy: split on ", " then re-join pairs where second element looks
-       like an initial "F." or "F.M." */
     var parts = raw.split(/,\s*/);
     var names = [];
     var i = 0;
     while (i < parts.length) {
       var p = parts[i];
-      /* If next token is a short initial (1-3 chars ending with "."), merge */
       if (i + 1 < parts.length && /^[A-Z][\.\w]{0,3}\.?$/.test(parts[i + 1].trim())) {
         names.push(p.trim() + ', ' + parts[i + 1].trim());
         i += 2;
@@ -73,7 +65,6 @@
       return esc(name);
     });
 
-    /* Collapse to show max 6 authors with "et al." beyond that */
     if (rendered.length > 6) {
       rendered = rendered.slice(0, 6).concat(['<em>et al.</em>']);
     }
@@ -82,23 +73,6 @@
   }
 
   /* ── Filter helpers ───────────────────────────────────────────────────── */
-    function isPeerReview(p) {
-      var pub = (p.publisher || '').toLowerCase();
-      return pub.indexOf('under review') !== -1 ||
-             pub.indexOf('in press') !== -1 ||
-             pub.indexOf('submitted') !== -1;
-    }
-    function isPoster(p) { return !!p.poster; }
-function isTeam(p) {
-  var isFirst = TEAM_FIRST_AUTHORS.some(function (m) {
-    return (p.authors || '').indexOf(m) !== -1;
-  });
-  var hasTeamMember = NCEL_MEMBERS.some(function (m) {
-    return (p.authors || '').indexOf(m) !== -1;
-  });
-  return isFirst || (hasTeamMember && parseInt(p.year, 10) >= 2024);
-}
-
   function matchesFilters(p) {
     if (!p.title || p.title === 'Web of Science') return false;
     if (state.yearFilter && p.year !== state.yearFilter) return false;
@@ -123,33 +97,30 @@ function isTeam(p) {
 
   /* ── Render ───────────────────────────────────────────────────────────── */
   function render() {
-  var pubs = (PUB_DATA || []).filter(matchesFilters);
-  var sorted = applySort(pubs);
+    var pubs = (PUB_DATA || []).filter(matchesFilters);
+    var sorted = applySort(pubs);
 
-  if (state.section === 'all') {
-    renderByYear(sorted);
-  } else if (state.section === 'peer-review') {
-   
-    var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
-    renderFlat(applySort(prPubs), '#pub-list-peer-review');
-  } else if (state.section === 'poster') {
-    
-    var posterPubs = (typeof POSTER_DATA !== 'undefined' ? POSTER_DATA : []).filter(matchesFilters);
-    renderPosterList(posterPubs);
+    if (state.section === 'all') {
+      renderByYear(sorted);
+    } else if (state.section === 'peer-review') {
+      var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
+      renderFlat(applySort(prPubs), 'peer-review');
+    } else if (state.section === 'poster') {
+      var posterPubs = (typeof POSTER_DATA !== 'undefined' ? POSTER_DATA : []).filter(matchesFilters);
+      renderPosterList(posterPubs);
+    }
+    updateStatus();
   }
-  updateStatus(sorted.length);
-}
 
-  function updateStatus(pubs) {
+  /* ── Status bar ───────────────────────────────────────────────────────── */
+  function updateStatus() {
     var total = (PUB_DATA || []).filter(function (p) {
       return p.title && p.title !== 'Web of Science';
     }).length;
-    var showing = pubs.length;
-    if (state.section === 'featured') showing = pubs.filter(isFeatured).length;
-    if (state.section === 'team')     showing = pubs.filter(isTeamLed).length;
 
     var hasFilter = state.query || state.yearFilter;
     if (hasFilter) {
+      var showing = (PUB_DATA || []).filter(matchesFilters).length;
       els.status.innerHTML = 'Showing <strong>' + showing + '</strong> of ' + total +
         ' publications. <a href="#" id="pub-clear-link">Clear filters</a>';
       var cl = qs('#pub-clear-link');
@@ -159,7 +130,7 @@ function isTeam(p) {
     }
   }
 
-  /* Flat list (Featured, Team) */
+  /* ── Flat list (Peer Review) ──────────────────────────────────────────── */
   function renderFlat(pubs, listId) {
     var el = qs('#pub-list-' + listId);
     if (!el) return;
@@ -170,29 +141,7 @@ function isTeam(p) {
     }
   }
 
-  /* Team section: group by year */
-  function renderTeam(pubs) {
-    var el = qs('#pub-list-team');
-    if (!el) return;
-    if (!pubs.length) {
-      el.innerHTML = '<p class="pub-empty">No team-led publications match the current filters.</p>';
-      return;
-    }
-    var groups = {};
-    pubs.forEach(function (p) {
-      var y = p.year || 'Unknown';
-      if (!groups[y]) groups[y] = [];
-      groups[y].push(p);
-    });
-    var years = Object.keys(groups).sort(function (a, b) {
-      return state.sort === 'year-asc' ? a.localeCompare(b) : b.localeCompare(a);
-    });
-    el.innerHTML = years.map(function (year) {
-      return yearGroup(year, groups[year]);
-    }).join('');
-  }
-
-  /* All Publications: year groups */
+  /* ── All Publications: year groups ───────────────────────────────────── */
   function renderByYear(pubs) {
     var el = qs('#pub-list-all');
     if (!el) return;
@@ -221,9 +170,11 @@ function isTeam(p) {
         '<span class="pub-year-heading__count">(' + pubs.length + ')</span>' +
         '<span class="pub-year-heading__toggle">▼</span>' +
       '</div>' +
-      '<div class="pub-year-body">' + pubs.map(pubCard).join('') + '</div>' +
+      '<div class="pub-year-body" style="display:none">' + pubs.map(pubCard).join('') + '</div>' +
     '</div>';
   }
+
+  /* ── Poster list ──────────────────────────────────────────────────────── */
   function renderPosterList(pubs) {
     var el = qs('#pub-list-poster');
     if (!el) return;
@@ -231,30 +182,29 @@ function isTeam(p) {
       ? pubs.map(posterCard).join('')
       : '<p class="pub-empty">No posters match the current filters.</p>';
   }
-  
-  function posterCard(p) {
-  var excerpt = (p.abstract || '').slice(0, 200);
-  if ((p.abstract || '').length > 200) excerpt += '…';
-  
-  var posterFile = p.poster || p.pdf || '';
 
-  return '<div class="pub-card pub-card--poster">' +
-    '<div class="pub-card__body">' +
-    '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
-    '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
-    '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
-    '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
-    (posterFile ? '<a class="pub-card__learn-more" href="' + esc(posterFile) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
-    '</div>' +
+  function posterCard(p) {
+    var excerpt = (p.abstract || '').slice(0, 200);
+    if ((p.abstract || '').length > 200) excerpt += '…';
+    var posterFile = p.poster || p.pdf || '';
+
+    return '<div class="pub-card pub-card--poster">' +
+      '<div class="pub-card__body">' +
+        '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
+        '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
+        '<div class="pub-card__meta">' + esc([p.publisher, p.year].filter(Boolean).join(' · ')) + '</div>' +
+        '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' +
+        (posterFile ? '<a class="pub-card__learn-more" href="' + esc(posterFile) + '" target="_blank" rel="noopener noreferrer">Learn More →</a>' : '') +
+      '</div>' +
     '</div>';
-}
+  }
+
   /* ── Publication card ─────────────────────────────────────────────────── */
   function pubCard(p) {
     var id = 'pub-' + Math.random().toString(36).slice(2, 9);
 
-    /* Chips */
+    /* Chips — only preprint remains; featured chip removed */
     var chips = [];
-    if (p.featured) chips.push('<span class="pub-card__chip pub-card__chip--featured">★ Featured</span>');
     if (p.preprint) chips.push('<span class="pub-card__chip pub-card__chip--preprint">Preprint</span>');
     var chipsHtml = chips.length ? '<div class="pub-card__chips">' + chips.join('') + '</div>' : '';
 
@@ -334,9 +284,15 @@ function isTeam(p) {
   /* ── Public API ───────────────────────────────────────────────────────── */
   window.NCEL_PUB = {
     toggleYear: function (heading) {
-      heading.classList.toggle('is-collapsed');
       var body = heading.nextElementSibling;
-      body.style.display = body.style.display === 'none' ? '' : 'none';
+      var isOpen = body.style.display !== 'none';
+      if (isOpen) {
+        body.style.display = 'none';
+        heading.classList.add('is-collapsed');
+      } else {
+        body.style.display = '';
+        heading.classList.remove('is-collapsed');
+      }
     },
     toggleDrawer: function (id, btn) {
       var drawer = qs('#' + id);
@@ -406,18 +362,19 @@ function isTeam(p) {
         timer = setTimeout(function () { state.query = els.search.value.trim().toLowerCase(); render(); }, 280);
       });
     }
+
     switchSection('all');
     render();
-    
-      if (window.location.hash === '#open') {
-        setTimeout(function () {
-          qsa('.pub-year-heading').forEach(function (heading) {
-            heading.classList.remove('is-collapsed');
-            var body = heading.nextElementSibling;
-            if (body) body.style.display = '';
-          });
-        }, 100);
-}
+
+    if (window.location.hash === '#open') {
+      setTimeout(function () {
+        qsa('.pub-year-heading').forEach(function (heading) {
+          heading.classList.remove('is-collapsed');
+          var body = heading.nextElementSibling;
+          if (body) body.style.display = '';
+        });
+      }, 100);
+    }
   }
 
   if (document.readyState === 'loading') {
