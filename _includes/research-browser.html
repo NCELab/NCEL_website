@@ -155,7 +155,7 @@ var PUB_DATA = [
   {% endif %}
   {% endfor %}
 ];
-var POSTER_DATA = PUB_DATA.filter(function(p) { return !!p.poster; });
+var POSTER_DATA = [{% for c in site.data.posters %}{title:{{ c.title | default: "" | jsonify }},authors:{{ c.authors | default: "" | jsonify }},date:{{ c.date | default: "" | jsonify }},year:{{ c.date | slice: 0, 4 | jsonify }},abstract:{{ c.abstract | default: "" | jsonify }},poster:{{ c.poster | default: "" | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}];
 
 var PEER_REVIEW_DATA = [
   {% for c in site.data.peer_review %}
