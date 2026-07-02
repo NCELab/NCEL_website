@@ -1,7 +1,7 @@
 ---
 title: Get Involved
 nav:
-  order: 4
+  order: 5
   tooltip: Join our research
 ---
 
