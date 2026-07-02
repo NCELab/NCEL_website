@@ -49,11 +49,13 @@ data-big
 <div class="nav-dropdown">
 <a href="{{ '/people/' | relative_url }}">People &#9662;</a>
 <div class="nav-dropdown-content">
-<a href="{{ '/people/pi/' | relative_url }}">Directors and Collaborators</a>
+<a href="{{ '/people/pi/' | relative_url }}">Directors</a>
 <a href="{{ '/people/our-team/' | relative_url }}">Our Team</a>
+<a href="{{ '/people/collaborators/' | relative_url }}">Collaborators</a>
+<a href="{{ '/people/Previous Lab members/' | relative_url }}">Directors</a>
 </div>
 </div>
-{% elsif page.title == "Directors and Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Alumni" %}
+{% elsif page.title == "Directors" or page.title == "Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Previous Lab Members" %}
 {%- comment -%}Skip{%- endcomment -%}
 {% elsif page.title == "Projects" %}
 <div class="nav-item">
