@@ -1,42 +1,42 @@
 ---
-title: Blog
+title: Media
 nav:
-  order: 5
+  order: 4
   tooltip: News and articles
   external_url: https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma
 ---
 
-<div class="blog-page">
+<div class=" Media-page">
 
-  <div class="blog-page__header">
-    <h1 class="blog-page__title">News / Articles</h1>
+  <div class=" Media-page__header">
+    <h1 class=" Media-page__title">News / Articles</h1>
   </div>
 
-  <div class="blog-page__list">
+  <div class=" Media-page__list">
     {% assign posts = site.posts | sort: "date" | reverse %}
     {% for post in posts %}
-    <article class="blog-card">
-      <a href="{{ post.url | relative_url }}" class="blog-card__image-link" aria-label="{{ post.title }}">
+    <article class=" Media-card">
+      <a href="{{ post.url | relative_url }}" class="Media-card__image-link" aria-label="{{ post.title }}">
         {% if post.image %}
           <img
             src="{{ post.image | relative_url }}"
             alt="{{ post.title }}"
-            class="blog-card__image"
+            class=" Media-card__image"
             loading="lazy"
           >
         {% else %}
-          <div class="blog-card__image blog-card__image--placeholder">
+          <div class=" Media-card__image  Media-card__image--placeholder">
             <i class="fa-solid fa-newspaper"></i>
           </div>
         {% endif %}
       </a>
 
-      <div class="blog-card__body">
-        <time class="blog-card__date" datetime="{{ post.date | date_to_xmlschema }}">
+      <div class=" Media-card__body">
+        <time class=" Media-card__date" datetime="{{ post.date | date_to_xmlschema }}">
           {{ post.date | date: "%d/%m/%Y" }}
         </time>
 
-      <h2 class="blog-card__title">
+      <h2 class=" Media-card__title">
           {% if post.external_url %}
             <a href="{{ post.external_url }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
           {% else %}
@@ -44,16 +44,16 @@ nav:
           {% endif %}
       </h2>
 
-        <p class="blog-card__excerpt">
+        <p class=" Media-card__excerpt">
           {{ post.excerpt | strip_html | truncatewords: 30 }}
         </p>
 
         {% if post.external_url %}
-          <a href="{{ post.external_url }}" class="blog-card__read-more" target="_blank" rel="noopener noreferrer">
+          <a href="{{ post.external_url }}" class= Media-card__read-more" target="_blank" rel="noopener noreferrer">
           Read More →
           </a>
         {% else %}
-          <a href="{{ post.url | relative_url }}" class="blog-card__read-more">
+          <a href="{{ post.url | relative_url }}" class= Media-card__read-more">
             Read More →
           </a>
         {% endif %}
