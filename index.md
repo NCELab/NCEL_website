@@ -36,9 +36,9 @@ hide_header: true
     <div class="ncel-hero__actions">
       <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Research</a>
       <a href="{{ '/projects/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Projects</a>
-      <a href="{{ '/people/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">People</a>
+      <a href="{{ '/people/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">People</a>
       <a href="{{ '/Media/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Media</a>
-      <a href="{{ '/get-involved/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Get Inovlved</a>
+      <a href="{{ '/get-involved/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Get Inovlved</a>
       <a href="{{ '/contact/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Contact</a>
     </div>
 
