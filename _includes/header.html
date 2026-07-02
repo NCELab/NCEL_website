@@ -49,13 +49,21 @@ data-big
 <div class="nav-dropdown">
 <a href="{{ '/people/' | relative_url }}">People &#9662;</a>
 <div class="nav-dropdown-content">
-<a href="{{ '/people/pi/' | relative_url }}">Directors</a>
+<a href="{{ '/people/directors/' | relative_url }}">Directors</a>
 <a href="{{ '/people/our-team/' | relative_url }}">Our Team</a>
 <a href="{{ '/people/collaborators/' | relative_url }}">Collaborators</a>
-<a href="{{ '/people/Previous Lab members/' | relative_url }}">Directors</a>
+<a href="{{ '/people/previous-lab-members/' | relative_url }}">Previous Lab Members</a>
 </div>
 </div>
-{% elsif page.title == "Directors" or page.title == "Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Previous Lab Members" %}
+{% elsif page.title == "Research" %}
+<div class="nav-dropdown">
+<a href="{{ '/research/' | relative_url }}">Research &#9662;</a>
+<div class="nav-dropdown-content">
+<a href="{{ '/research/' | relative_url }}">Overview</a>
+<a href="{{ '/research/publications/' | relative_url }}">Publications</a>
+</div>
+</div>
+{% elsif page.title == "Directors" or page.title == "Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Previous Lab Members" or page.title == "Publications" %}
 {%- comment -%}Skip{%- endcomment -%}
 {% elsif page.title == "Projects" %}
 <div class="nav-item">
