@@ -5,12 +5,10 @@ nav:
   tooltip: Research projects
 ---
 
-<div class="proj-scroll-page">
 
-  <div class="proj-scroll-header">
-    <span class="proj-scroll-header__eyebrow">NCEL / Current Projects</span>
-    <h1 class="proj-scroll-header__title">Research</h1>
-  </div>
+ # {% include icon.html icon="fa-solid fa-microscope" %} Current Projects
+ 
+ <div class="proj-scroll-page">
 
   <div class="proj-scroll-track-wrapper">
     <div class="proj-scroll-track" id="proj-track">
