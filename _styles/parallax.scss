@@ -75,8 +75,8 @@
 /* ── Hero content ───────────────────────────────────────────────────────── */
 .ncel-hero__content {
   position: absolute;
-  bottom: 80px;
-  left: max(5%, calc((100% - 900px) / 2));
+  bottom: 200px;
+  left: max(10%, calc((100% - 900px) / 2 + 60px));
   width: min(90%, 900px);
   z-index: 2;
   display: flex;
