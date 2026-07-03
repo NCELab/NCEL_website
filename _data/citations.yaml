@@ -1438,6 +1438,6 @@
     a specific focus on whether PTSD symptoms attenuate over time and whether depressive
     symptoms become a more prominent source of impairment
   poster: true
-  pdf: posters/ ITT_Depression.pdf
+  pdf: images/ITT_Depression.pdf
   plugin: sources.py
   file: sources.yaml
