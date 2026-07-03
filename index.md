@@ -19,7 +19,6 @@ hide_header: true
         />
       </div>
       <div class="ncel-hero__title-col">
-        <span class="ncel-hero__eyebrow">Neuro-Cognition &amp; Emotion Lab</span>
         <h1 class="ncel-hero__title">
           <span class="ncel-hero__title-line">NEURO-COGNITION</span>
           <span class="ncel-hero__title-line">AND</span>
@@ -31,7 +30,7 @@ hide_header: true
     <!-- 下方：副標題 + CTA -->
     <p class="ncel-hero__subtitle">
       We investigate how emotion and cognition interact to shape behavior and
-      mental health across development — using EEG, fMRI, and behavioral methods.
+      mental health across development using EEG, fMRI, and behavioral methods.
     </p>
     <div class="ncel-hero__actions">
       <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Research</a>
