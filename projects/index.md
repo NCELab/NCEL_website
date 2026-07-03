@@ -4,8 +4,7 @@ nav:
   order: 2
   tooltip: Research projects
 ---
-
-# {% include icon.html icon="fa-solid fa-microscope" %} Current Projects
+# Current Projects
  
  <div class="proj-scroll-page">
 
