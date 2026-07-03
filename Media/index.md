@@ -49,11 +49,11 @@ nav:
         </p>
 
         {% if post.external_url %}
-          <a href="{{ post.external_url }}" class= Media-card__read-more" target="_blank" rel="noopener noreferrer">
+          <a href="{{ post.external_url }}" class="Media-card__read-more" target="_blank" rel="noopener noreferrer">
           Read More →
           </a>
         {% else %}
-          <a href="{{ post.url | relative_url }}" class= Media-card__read-more">
+          <a href="{{ post.url | relative_url }}" class="Media-card__read-more">
             Read More →
           </a>
         {% endif %}
