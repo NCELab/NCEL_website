@@ -1,5 +1,5 @@
 ---
-title: media
+title: Media
 nav:
   order: 4
   tooltip: News and articles
