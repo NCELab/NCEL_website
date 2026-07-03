@@ -4,7 +4,7 @@ nav:
   order: 1
   tooltip: Overview and Publications
 ---
-Click to learn more about our studies.
+# Click to learn more about our studies.
 
 {%
   include button.html
