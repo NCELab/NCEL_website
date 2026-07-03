@@ -1,6 +1,8 @@
 ---
 ---
-
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet")
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet")
+  
 // colors
 [data-dark="false"] {
   --primary: #0795d9;
@@ -33,9 +35,9 @@
 
 :root {
   // font families
-  --title: "Barlow", sans-serif;
-  --heading: "Barlow", sans-serif;
-  --body: "Barlow", sans-serif;
+  --title: "Forum", serif;
+  --heading: "Raleway", sans-serif;
+  --body: "Raleway", sans-serif;
   --code: "Roboto Mono", monospace;
 
   // font sizes
