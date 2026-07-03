@@ -4,5 +4,4 @@ Psychopathology Among 9/11 Responders"
   Aim: "This study examines the long-term trajectory of PTSD symptoms in WTC-R, with 
 a specific focus on whether PTSD symptoms attenuate over time and whether 
 depressive symptoms become a more prominent source of impairment"
-  poster: true
-  poster: images/itt.depression.png
+  poster: "images/itt.depression.png"
