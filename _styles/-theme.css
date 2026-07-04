@@ -31,8 +31,8 @@
 }
 
 :root {
-  --title: "Forum", serif;
-  --heading: "Raleway", sans-serif;
+  --title: "Raleway", sans-serif;
+  --heading: "Forum", serif;
   --body: "Raleway", sans-serif;
   --code: "Roboto Mono", monospace;
   --large: 1.2rem;
