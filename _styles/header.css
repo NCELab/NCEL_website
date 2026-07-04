@@ -160,13 +160,15 @@ header[data-big] .subtitle {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   min-width: 200px;
-  background: var(--background);
+  background: color-mix(in srgb, var(--background) 60%, transparent);
+  backdrop-filter: blur(8px);
   box-shadow: var(--shadow);
   border-radius: 8px;
   padding: 8px 0;
   z-index: 1000;
+  text-align: right;
 }
 
 .nav-dropdown:hover .nav-dropdown-content {
