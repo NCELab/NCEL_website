@@ -1,7 +1,7 @@
 ---
 ---
-@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
   
 // colors
 [data-dark="false"] {
@@ -35,9 +35,9 @@
 
 :root {
   // font families
-  --title: "Hanken Grotesk", sans-serif;
-  --heading: "Bodoni Moda", serif;
-  --body: "Hanken Grotesk", sans-serif;
+  --title: "Josefin Sans", sans-serif;
+  --heading: "Josefin Sans", sans-serif;
+  --body: "Source Sans 3", sans-serif;
   --code: "Roboto Mono", monospace;
 
   // font sizes
