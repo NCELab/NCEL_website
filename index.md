@@ -79,7 +79,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {% capture text %}
 
-The Neuro-Cognition and Emotion Lab (NCEL) investigates the fundamental mechanisms underlying attention, memory, decision-making, and emotional regulation. We integrate cognitive neuroscience, clinical science, and computational approaches to understand how these processes interact to shape mental health across development.
+The Neuro-Cognition and Emotion Lab (NCEL) investigates the fundamental mechanisms underlying attention, memory, decision-making, and emotion regulation. We integrate cognitive neuroscience, clinical science, and computational approaches to understand how these processes interact to shape mental health across development.
 
 {%
   include button.html
