@@ -1430,13 +1430,3 @@
     DOI={10.1007/bf00453487}, number={1}, journal={Archives of Oto-Rhino-Laryngology},
     publisher={Springer Science and Business Media LLC}, author={Tait, C. and Miller,
     J. and Cycowicz, Y. and Sohmer, H.}, year={1987}, month=May, pages={26–29} }'
-- title: 'From PTSD to Depression: Longitudinal Shifts in Psychopathology Among 9/11
-    Responders'
-  authors: Yael M. Cycowicz, Diana Rodriguez-Moreno, Keely Cheslack-Postava, Ronit
-    Kishon
-  Aim: This study examines the long-term trajectory of PTSD symptoms in WTC-R, with
-    a specific focus on whether PTSD symptoms attenuate over time and whether depressive
-    symptoms become a more prominent source of impairment
-  poster: images/itt.depression.png
-  plugin: sources.py
-  file: sources.yaml
