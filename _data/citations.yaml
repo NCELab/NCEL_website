@@ -888,17 +888,18 @@
   orcid: 0000-0001-8397-5492
   plugin: orcid.py
   file: orcid.yaml
-  abstract: AbstractThe orienting response, the brain's reaction to novel and/or out
-    of context familiar events, is reflected by the novelty P3 of the ERP. Contextually
-    novel events also engender high rates of recognition memory. We examined, under
-    incidental and intentional conditions, the effects of visual symbol familiarity
-    on the novelty P3 recorded during an oddball task and on the parietal episodic
-    memory (EM) effect, an index of recollection. Repetition of familiar, but not
-    unfamiliar, symbols elicited a reduction in the novelty P3. Better recognition
-    performance for the familiar symbols was associated with a robust parietal EM
-    effect, which was absent for the unfamiliar symbols in the incidental task. These
-    data demonstrate that processing of novel events depends on expectation and whether
-    stimuli have preexisting representations in long‐term semantic memory.
+  abstract: "Abstract\n                  The orienting response, the brain's reaction\
+    \ to novel and/or out of context familiar events, is reflected by the novelty\
+    \ P3 of the ERP. Contextually novel events also engender high rates of recognition\
+    \ memory. We examined, under incidental and intentional conditions, the effects\
+    \ of visual symbol familiarity on the novelty P3 recorded during an oddball task\
+    \ and on the parietal episodic memory (EM) effect, an index of recollection. Repetition\
+    \ of familiar, but not unfamiliar, symbols elicited a reduction in the novelty\
+    \ P3. Better recognition performance for the familiar symbols was associated with\
+    \ a robust parietal EM effect, which was absent for the unfamiliar symbols in\
+    \ the incidental task. These data demonstrate that processing of novel events\
+    \ depends on expectation and whether stimuli have preexisting representations\
+    \ in long‐term semantic memory."
   bibtex: '@article{Cycowicz_2006, title={Visual novel stimuli in an ERP novelty oddball
     paradigm: Effects of familiarity on repetition and recognition memory}, volume={44},
     ISSN={1469-8986}, url={http://dx.doi.org/10.1111/J.1469-8986.2006.00481.X}, DOI={10.1111/j.1469-8986.2006.00481.x},
