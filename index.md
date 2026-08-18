@@ -29,8 +29,7 @@ hide_header: true
 
     <!-- 下方：副標題 + CTA -->
     <p class="ncel-hero__subtitle">
-      We investigate how emotion and cognition interact to shape behavior and
-      mental health across development using EEG, fMRI, and behavioral methods.
+      We investigate how cognition and emotion interact to shape behavior and mental health across the lifespan. Using behavioral methods, EEG, fMRI, and computational approaches, we study how the brain supports attention, memory, decision-making, and emotional regulation, and how these processes change across development and in psychiatric disorders.
     </p>
     <div class="ncel-hero__actions">
       <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Research</a>
