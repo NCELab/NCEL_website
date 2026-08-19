@@ -1,16 +1,15 @@
----
 title: CF
-subtitle: Cognitive Decline Study
+subtitle: Cognitive Functioning Study
 group: memory-trauma
 layout: project
 image: images/cf.png
 tags:
-  - Cognitive Decline
-  - Aging
+  - Trauma
+  - Cognitive Aging
   - Attention
   - Memory
   - EEG
   - MRI
 ---
-
-The Cognitive Decline (CD) Study investigates whether exposure to trauma and cumulative life stress may contribute to premature cognitive aging among World Trade Center responders. While trauma-related health consequences are well documented, less is known about how long-term exposure affects cognitive functioning earlier in adulthood. Through longitudinal cognitive assessments, EEG, and MRI measures, this study examines changes in attention, memory, and brain function associated with early cognitive decline. By identifying behavioral and neural markers of risk, the project aims to improve early detection and inform interventions that support long-term cognitive health.
+Trauma exposure and cumulative life stress may have lasting effects on cognitive health, but their potential contribution to cognitive aging in midlife remains poorly understood. This study examines whether trauma exposure among World Trade Center responders is associated with changes in attention, memory, and other aspects of cognitive functioning.
+Using longitudinal cognitive assessments, EEG, and MRI, we investigate behavioral and neural markers of cognitive aging and cognitive risk. The goal is to identify early indicators of cognitive decline and factors that may contribute to maintaining cognitive health over time.
