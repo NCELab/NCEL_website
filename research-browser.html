@@ -1,0 +1,195 @@
+{% comment %}
+  _includes/research-browser.html  (NCEL — updated layout)
+  ─────────────────────────────────────────────────────────
+  Three-section publication browser:
+    1. ★ Featured
+    2. Team Innovations
+    3. All Publications (full timeline)
+
+  • Current Projects section removed entirely.
+  • PI name (Cycowicz) bolded.
+  • NCEL team member names underlined + blue + bold.
+  • Intro note about underline convention shown above toolbar.
+{% endcomment %}
+
+{% comment %} ── Known NCEL team members (first + last variants) ───────── {% endcomment %}
+{% assign ncel_members = "Craft,Rodriguez-Moreno,Griggi,Moran,Cheslack-Postava,Amsel,Kishon,Modlin,Mourtada,Wilson,Williamson,Iemi,He,Wang,Stanford,Cuchacovich,Merrin,Vazquez,McReynolds,Musa,Geronazzo-Alman,Bisaga,Nessler,Friedman,de Chastelaine,Duff,Snodgrass,Rothstein,Figner,Rowny,Luber,Spellman,Lisanby,Hoven,Fabiani,Kazmerski,Tait,Schmuel,Freeman,Sohmer,Bersick,Horton,Sun,Tang,Ryan,Xu,Duarte,Wicks,Djalovski,Tadmor,Bresnahan,Fan,Teichman,Dziobek" | split: "," %}
+
+<div id="pub-browser" role="main" aria-label="Publication browser">
+
+  <!-- ── Intro note ────────────────────────────────────────────────────── -->
+  <p class="pub-intro-note">
+    The research at NCEL reflects our long-term trajectory in understanding
+    cognitive control and neurodevelopment, as well as collaborative breakthroughs
+    achieved alongside our dedicated lab members.
+  </p>
+
+  <!-- ── Section tabs ─────────────────────────────────────────────────── -->
+  <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
+    <button class="pub-section-tab"           role="tab" aria-selected="false" data-section="all"     >All Publications</button>
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="peer-review">Peer Review</button>
+  </div>
+
+  <!-- ── Toolbar (search + sort + year — shared) ──────────────────────── -->
+  <div class="pub-toolbar" role="search" aria-label="Filter publications">
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-search">Search</label>
+      <input
+        id="pub-search"
+        class="pub-toolbar__search"
+        type="text"
+        placeholder="title, author, journal, keyword…"
+        autocomplete="off"
+        aria-label="Search publications"
+      >
+    </div>
+
+    <div class="pub-toolbar__divider" aria-hidden="true"></div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-sort">Sort</label>
+      <select id="pub-sort" aria-label="Sort order">
+        <option value="year-desc">Year ↓</option>
+        <option value="year-asc">Year ↑</option>
+        <option value="title-asc">Title A–Z</option>
+      </select>
+    </div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pub-year">Year</label>
+      <select id="pub-year" aria-label="Filter by year">
+        <option value="">All years</option>
+        {% assign pub_years = "" | split: "" %}
+        {% for c in site.data.citations %}
+          {% assign yr = c.date | slice: 0, 4 %}
+          {% if yr and yr != "" %}
+            {% unless pub_years contains yr %}
+              {% assign pub_years = pub_years | push: yr %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+        {% assign pub_years = pub_years | sort | reverse %}
+        {% for y in pub_years %}
+          {% if y and y != "" %}
+            <option value="{{ y }}">{{ y }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- ── Status ───────────────────────────────────────────────────────── -->
+  <div id="pub-status" class="pub-status" aria-live="polite"></div>
+
+  <!-- ── Section panels ───────────────────────────────────────────────── -->
+
+
+  <!-- 3. All Publications -->
+  <div id="pub-panel-all" class="pub-section-panel" role="tabpanel">
+    <div id="pub-list-all" class="pub-list"></div>
+  </div>
+  <!-- Peer Review -->
+<div id="pub-panel-peer-review" class="pub-section-panel" role="tabpanel">
+  <div id="pub-list-peer-review" class="pub-list"></div>
+</div>
+
+<!-- ── Data injection ────────────────────────────────────────────────── -->
+<script>
+
+{% comment %}
+  Categorise every citation so we can route it to the right section.
+  Rules (checked in order):
+    1. publisher contains "under review / in press / submitted"  → peer_review only
+    2. publisher contains "Abstract" or known conference society  → excluded from all tabs
+    3. publisher is a known non-academic outlet (Psychology Today…) → excluded from all tabs
+    4. everything else → journal (shown in All Publications)
+{% endcomment %}
+
+var PUB_DATA = [
+  {% for c in site.data.citations %}
+  {% if c.title and c.title != "Web of Science" %}
+  {% assign pub_lc = c.publisher | downcase %}
+  {% assign is_review = false %}
+  {% assign is_conf   = false %}
+  {% assign is_blog   = false %}
+  {% if pub_lc contains "under review" or pub_lc contains "in press" or pub_lc contains "submitted" %}
+    {% assign is_review = true %}
+  {% endif %}
+  {% if pub_lc contains "abstract" or pub_lc contains "annual meeting" or pub_lc contains "conference" or pub_lc contains "society of" or pub_lc contains "society for" or pub_lc contains "international society" or pub_lc contains "symposium" %}
+    {% assign is_conf = true %}
+  {% endif %}
+  {% if pub_lc contains "psychology today" or pub_lc contains "blog" or pub_lc contains "magazine" or pub_lc contains "newspaper" %}
+    {% assign is_blog = true %}
+  {% endif %}
+  {% unless is_review or is_conf or is_blog %}
+  {
+    title:     {{ c.title     | default: "" | jsonify }},
+    authors:   {{ c.authors   | join: ", " | jsonify }},
+    publisher: {{ c.publisher | default: "" | jsonify }},
+    date:      {{ c.date      | default: "" | jsonify }},
+    year:      {{ c.date | slice: 0, 4 | jsonify }},
+    link:      {{ c.link      | default: "" | jsonify }},
+    id:        {{ c.id        | default: "" | jsonify }},
+    doi:       {{ c.doi       | default: c.id | default: "" | jsonify }},
+    abstract:  {{ c.abstract  | default: c.description | default: "" | jsonify }},
+    topics:    {{ c.topics    | default: c.tags | default: "" | jsonify }},
+    keywords:  {{ c.keywords  | default: "" | jsonify }},
+    pdf:       {{ c.pdf       | default: "" | jsonify }},
+    poster:    {{ c.poster    | default: "" | jsonify }},
+    materials: {{ c.materials | default: "" | jsonify }},
+    code:      {{ c.code      | default: "" | jsonify }},
+    bibtex:    {{ c.bibtex    | default: "" | jsonify }},
+    preprint:  {{ c.preprint  | default: false | jsonify }},
+    featured:  {{ c.featured  | default: false | jsonify }}
+  },
+  {% endunless %}
+  {% endif %}
+  {% endfor %}
+  null].filter(Boolean);
+
+var PEER_REVIEW_DATA = [
+  {% comment %} Entries from _data/peer_review.yml {% endcomment %}
+  {% for c in site.data.peer_review %}
+  {
+    title:     {{ c.title     | default: "" | jsonify }},
+    authors:   {{ c.authors   | default: "" | jsonify }},
+    publisher: {{ c.publisher | default: "" | jsonify }},
+    date:      {{ c.date      | default: "" | jsonify }},
+    year:      {{ c.date | slice: 0, 4 | jsonify }},
+    doi:       {{ c.doi       | default: "" | jsonify }},
+    abstract:  {{ c.abstract  | default: "" | jsonify }},
+    pdf:       {{ c.pdf       | default: "" | jsonify }}
+  },
+  {% endfor %}
+  {% comment %} Also include citations.yaml entries marked Under Review / In Press {% endcomment %}
+  {% for c in site.data.citations %}
+  {% if c.title and c.title != "Web of Science" %}
+  {% assign pub_lc = c.publisher | downcase %}
+  {% if pub_lc contains "under review" or pub_lc contains "in press" or pub_lc contains "submitted" %}
+  {
+    title:     {{ c.title     | default: "" | jsonify }},
+    authors:   {{ c.authors   | join: ", " | jsonify }},
+    publisher: {{ c.publisher | default: "" | jsonify }},
+    date:      {{ c.date      | default: "" | jsonify }},
+    year:      {{ c.date | slice: 0, 4 | jsonify }},
+    doi:       {{ c.doi       | default: "" | jsonify }},
+    abstract:  {{ c.abstract  | default: "" | jsonify }},
+    pdf:       {{ c.pdf       | default: "" | jsonify }}
+  },
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+  null].filter(Boolean);
+
+
+
+/* ── NCEL member & PI name lists ── */
+var NCEL_MEMBERS = [
+  "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
+];
+var PI_NAME = "Cycowicz";
+
+var TEAM_FIRST_AUTHORS = [
+  "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
+];
+</script>

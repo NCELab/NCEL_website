@@ -1,0 +1,104 @@
+{% comment %}
+  _includes/presentations-browser.html  (NCEL)
+  ─────────────────────────────────────────────────────────
+  Presentations browser — posters and oral presentations.
+  Data source: site.data.presentations (_data/presentations.yml)
+  Rendering/interaction handled by _scripts/presentations.js
+{% endcomment %}
+
+<div id="pub-browser" role="main" aria-label="Presentations browser">
+
+  <!-- ── Intro note ────────────────────────────────────────────────────── -->
+  <p class="pub-intro-note">
+    This page collects our posters and oral presentations from conferences and other events.
+  </p>
+
+  <!-- ── Section tabs ─────────────────────────────────────────────────── -->
+  <div class="pub-section-tabs" role="tablist" aria-label="Presentation sections">
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="all">All Presentations</button>
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="poster">Posters</button>
+    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="oral">Oral Presentations</button>
+  </div>
+
+  <!-- ── Toolbar (search + sort + year) ───────────────────────────────── -->
+  <div class="pub-toolbar" role="search" aria-label="Filter presentations">
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pres-search">Search</label>
+      <input
+        id="pres-search"
+        class="pub-toolbar__search"
+        type="text"
+        placeholder="title, author, keyword…"
+        autocomplete="off"
+        aria-label="Search presentations"
+      >
+    </div>
+
+    <div class="pub-toolbar__divider" aria-hidden="true"></div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pres-sort">Sort</label>
+      <select id="pres-sort" aria-label="Sort order">
+        <option value="year-desc">Year ↓</option>
+        <option value="year-asc">Year ↑</option>
+        <option value="title-asc">Title A–Z</option>
+      </select>
+    </div>
+
+    <div class="pub-toolbar__group">
+      <label class="pub-toolbar__label" for="pres-year">Year</label>
+      <select id="pres-year" aria-label="Filter by year">
+        <option value="">All years</option>
+        {% assign pres_years = "" | split: "" %}
+        {% for p in site.data.presentations %}
+          {% assign yr = p.date | slice: 0, 4 %}
+          {% if yr and yr != "" %}
+            {% unless pres_years contains yr %}
+              {% assign pres_years = pres_years | push: yr %}
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+        {% assign pres_years = pres_years | sort | reverse %}
+        {% for y in pres_years %}
+          {% if y and y != "" %}
+            <option value="{{ y }}">{{ y }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <!-- ── Status ───────────────────────────────────────────────────────── -->
+  <div id="pres-status" class="pub-status" aria-live="polite"></div>
+
+  <!-- ── Section panels ───────────────────────────────────────────────── -->
+  <div id="pres-panel-all" class="pub-section-panel">
+    <div id="pres-list-all" class="pub-list"></div>
+  </div>
+  <div id="pres-panel-poster" class="pub-section-panel">
+    <div id="pres-list-poster" class="pub-list"></div>
+  </div>
+  <div id="pres-panel-oral" class="pub-section-panel">
+    <div id="pres-list-oral" class="pub-list"></div>
+  </div>
+
+  <!-- ── Data injection ───────────────────────────────────────────────── -->
+  <script>
+    var PRES_DATA = [
+      {% for p in site.data.presentations %}
+      {
+        type:     {{ p.type     | default: "Poster" | jsonify }},
+        title:    {{ p.title    | default: "" | jsonify }},
+        authors:  {{ p.authors  | default: "" | jsonify }},
+        venue:    {{ p.venue    | default: "" | jsonify }},
+        date:     {{ p.date     | default: "" | jsonify }},
+        year:     {{ p.date | slice: 0, 4 | jsonify }},
+        abstract: {{ p.abstract | default: "" | jsonify }},
+        poster:   {{ p.poster   | relative_url | jsonify }},
+        slides:   {{ p.slides   | relative_url | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+  </script>
+
+</div>
