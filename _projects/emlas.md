@@ -7,10 +7,9 @@ image: images/emlas.png
 tags:
   - Trauma
   - Autobiographical Memory
+  - 9/11 Narrative
   - NLP
   - Mental Health
-  - Narrative Analysis
-  - 9/11
 ---
-
-The Episodic Memory and Life Stories Study (EMLAS) examines how traumatic experiences shape autobiographical memory and long-term mental health. Focusing on individuals exposed to the September 11 attacks during adolescence, this project explores how people remember and narrate emotionally significant life events decades later. Using speech analysis and Natural Language Processing (NLP), EMLAS investigates how language, emotional expression, and memory narratives relate to resilience, trauma perception, and current mental health outcomes. By comparing recollections of 9/11 and more recent collective experiences such as COVID-19, the study aims to understand how developmental stage influences the long-term impact of trauma.
+### How do traumatic experiences shape the way we remember and tell our life stories? 
+This study examines autobiographical memory and narrative expression among individuals who experienced 9/11 during adolescence. Using speech analysis and natural language processing (NLP), we examine how language, emotional expression, and narrative characteristics relate to trauma perception, resilience, and mental health. By comparing memories of 9/11 with memories of more recent experiences, including COVID-19, we also examine how developmental stage at the time of a traumatic event may shape memory and long-term psychological outcomes.
