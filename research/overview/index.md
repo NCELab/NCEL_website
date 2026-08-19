@@ -21,5 +21,5 @@ We study how significant experiences, including trauma and stress, can influence
 {: # How can new methods help us understand these processes? }
 We combine behavioral assessments with EEG, fMRI, and computational approaches. We also use natural language processing and other innovative analytic methods to examine cognition and emotion as they unfold in complex, real-world contexts.
 
-Together, these approaches allow us to connect mechanisms of cognition and emotion with individual differences in behavior and mental health.
+### Together, these approaches allow us to connect mechanisms of cognition and emotion with individual differences in behavior and mental health.
 
