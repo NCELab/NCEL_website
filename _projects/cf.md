@@ -1,3 +1,4 @@
+---
 title: CF
 subtitle: Cognitive Functioning Study
 group: memory-trauma
