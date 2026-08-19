@@ -1,125 +1,36 @@
 ---
-hide_header: true
+title: Research
+nav:
+  order: 1
+  tooltip: Overview, Publications, and Presentations
 ---
-<section
-  class="ncel-hero"
-  data-hero-bg="{{ 'images/background.jpeg' | relative_url }}"
-  style="--hero-bg: url('{{ 'images/background.jpeg' | relative_url }}')"
-  aria-label="Lab hero"
->
-  <div class="ncel-hero__content">
+# Our research 
 
-    <!-- 上方：Logo + 三行標題 -->
-    <div class="ncel-hero__header-block">
-      <div class="ncel-hero__logo-col">
-        <img
-          src="{{ 'images/NCEL-logo.png' | relative_url }}"
-          alt="NCEL logo"
-          class="ncel-hero__logo-img"
-        />
-      </div>
-      <div class="ncel-hero__title-col">
-        <h1 class="ncel-hero__title">
-          <span class="ncel-hero__title-line">NEURO-COGNITION</span>
-          <span class="ncel-hero__title-line">AND</span>
-          <span class="ncel-hero__title-line">EMOTION LAB</span>
-        </h1>
-      </div>
-    </div>
+The Neuro-Cognition and Emotion Lab (NCEL) studies how cognitive and emotional processes interact to shape behavior and mental health across development. Our research brings together cognitive neuroscience, clinical science, and computational approaches to understand how these processes develop, adapt, and become disrupted in psychiatric disorders.
 
-    <!-- 下方：副標題 + CTA -->
-    <p class="ncel-hero__subtitle">
-      We investigate how cognition and emotion interact to shape behavior and mental health across the lifespan. Using behavioral methods, EEG, fMRI, and computational approaches, we study how the brain supports attention, memory, decision-making, and emotional regulation, and how these processes change across development and in psychiatric disorders.
-    </p>
-    <div class="ncel-hero__actions">
-      <a href="{{ '/research/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--primary">Research</a>
-      <a href="{{ '/projects/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Projects</a>
-      <a href="{{ '/people/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">People</a>
-      <a href="{{ '/Media/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Media</a>
-      <a href="{{ '/get-involved/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Get Inovlved</a>
-      <a href="{{ '/contact/' | relative_url }}" class="ncel-hero__cta ncel-hero__cta--ghost">Contact</a>
-    </div>
+### How do cognition and emotion interact?
+We study how attention, memory, decision-making, and emotional regulation influence one another. We are particularly interested in how these interactions shape behavior in situations involving uncertainty, stress, reward, and emotionally significant experiences.
+### How do these processes change across development?
+Our research examines changes in cognition and emotion across the lifespan, with a particular focus on neurodevelopment. We investigate how developing cognitive and emotional systems contribute to resilience as well as vulnerability to psychopathology.
+### How does experience shape the brain and behavior?
+We study how significant experiences, including trauma and stress, can influence memory, emotion, and behavior across individuals and generations. This work includes research on trauma-related experiences and the intergenerational transmission of trauma.
+### How can new methods help us understand these processes?
+We combine behavioral assessments with EEG, fMRI, and computational approaches. We also use natural language processing and other innovative analytic methods to examine cognition and emotion as they unfold in complex, real-world contexts.
+### Together, these approaches allow us to connect mechanisms of cognition and emotion with individual differences in behavior and mental health.
 
-  </div>
-
-  <div class="ncel-hero__scroll-cue" aria-hidden="true">
-    <span></span>
-    <p>Scroll</p>
-  </div>
-</section>
-
-
-{% include section.html %}
-
-## Highlights
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 {%
   include button.html
-  link="research/#open"
-  text="See our publications"
+  link="research/publications"
+  text="View publication"
   icon="fa-solid fa-arrow-right"
   flip=true
-  style="bare"
 %}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/mri.jpeg"
-  link="research"
-  title="Our Research"
-  text=text
-%}
-
-{% capture text %}
-
-The Neuro-Cognition and Emotion Lab (NCEL) investigates the fundamental mechanisms underlying attention, memory, decision-making, and emotion regulation. We integrate cognitive neuroscience, clinical science, and computational approaches to understand how these processes interact to shape mental health across development.
 
 {%
   include button.html
-  link="projects"
-  text="Browse our projects"
+  link="research/presentations"
+  text="View presentations"
   icon="fa-solid fa-arrow-right"
   flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/eeg.jpeg"
-  link="projects"
-  title="Our Projects"
-  flip=true
-  style="bare"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="people"
-  text="Meet our team"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="people"
-  title="Our Team"
-  text=text
 %}
