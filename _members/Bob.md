@@ -1,10 +1,11 @@
 ---
-name: BOB
-image: images/photo.jpg
+name: Saskia Haegens
+image: images/Sashae_Headshot.jpg
 role: coi
 order: 2
 description: Collaborator
-affiliation: Columbia University / New York State Psychiatric Institute
+affiliation: Columbia University
+links:
+ home-page: https://www.haegenslab.com/
 ---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Dr. Saskia Haegens has a background in cognitive and systems neuroscience. They obtained their PhD at the Donders Institute in Nijmegen, followed by postdoctoral training at Columbia University in New York. Currently, Dr. Haegens is an associate professor at Columbia and runs the Brain Rhythms lab, using electrophysiology and MEG/EEG to study the role of brain oscillations in the context of perception and cognition.
