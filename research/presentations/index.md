@@ -1,5 +1,5 @@
 ---
-title: Presentations
+title: presentations
 ---
 
 # {% include icon.html icon="fa-solid fa-presentation" %} Presentations
