@@ -2,7 +2,7 @@
 name: Serena Cooper
 image: images/Serena_headshot.JPG
 role: intern
-order: 6
+order: 2
 description: Intern
 affiliation: Columbia University / New York State Psychiatric Institute
 ---
