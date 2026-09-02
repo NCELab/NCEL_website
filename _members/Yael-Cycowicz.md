@@ -5,9 +5,6 @@ role: pi
 order: 1
 description: Lab Director
 affiliation: Columbia University / New York State Psychiatric Institute
-aliases:
-  - Y. Cycowicz
-  - Yael Cycowicz
 links:
   home-page: https://www.columbiapsychiatry.org/profile/yael-cycowicz-phd
 ---
