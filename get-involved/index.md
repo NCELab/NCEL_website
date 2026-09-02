@@ -7,7 +7,7 @@ nav:
 
 # Get Involved
 
-We welcome individuals interested in contributing to our research — whether as a research team member or as a study participant.
+We welcome individuals interested in contributing to our research!
 
 {%
   include button.html
