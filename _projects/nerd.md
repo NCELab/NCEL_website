@@ -1,7 +1,6 @@
 ---
 title: NERD
 subtitle: Neuroeconomic Approach to Risk Behavior in Adolescents with Depression
-group: risk-decision-mental-health
 layout: project
 image: images/nerd.png
 tags:
@@ -13,4 +12,7 @@ tags:
   - Adolescence
 ---
 
-The Neuroeconomic Approach to Risk Behavior in Adolescents with Depression (NERD) study investigates the neural mechanisms underlying risky decision-making in adolescents with depression. While depression is often associated with withdrawal and avoidance, adolescents with depression also exhibit elevated rates of behaviors such as substance use and other forms of risk-taking. Using computational psychiatry approaches, behavioral tasks, and neuroimaging methods, NERD examines how adolescents make decisions under conditions of risk and ambiguity and how these processes relate to brain systems involved in reward, emotion regulation, and cognitive control. By identifying the mechanisms underlying risky behavior, the project aims to improve understanding of adolescent mental health and inform future interventions.
+Adolescence is a period of significant change in decision-making and reward processing, and depression may alter how young people evaluate risk and reward. This study examines the neural and computational mechanisms underlying risky decision-making in adolescents with depression.
+
+Using behavioral decision-making tasks, computational models, and fMRI, we investigate how reward processing, emotion regulation, and cognitive control interact during decisions involving risk. This work aims to clarify mechanisms underlying risk-taking in adolescent depression and identify potential targets for future intervention.
+
