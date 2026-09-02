@@ -2,7 +2,7 @@
 name: Morgan Arma
 image: images/Morgan_Headshot.jpg
 role: intern
-order: 5
+order: 6
 description: Intern
 affiliation: Columbia University / New York State Psychiatric Institute
 ---
