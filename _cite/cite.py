@@ -182,12 +182,29 @@ log()
 log("Saving updated citations")
 
 
-# save new citations
+# save new citations, but refuse to overwrite with a drastically
+# smaller list (guards against upstream API failures wiping out
+# previously collected citations)
 try:
-    save_data(output_file, citations)
-except Exception as e:
-    log(e, level="ERROR")
-    errors.append(e)
+        existing = load_data(output_file) if Path(output_file).exists() else []
+except Exception:
+        existing = []
+
+if existing and len(citations) < len(existing) * 0.5:
+        msg = (
+                    f"Refusing to save: new citation count ({len(citations)}) is far "
+                    f"lower than existing ({len(existing)}). This usually means an "
+                    f"upstream source (e.g. Google Scholar) failed. Aborting without "
+                    f"overwriting {output_file}."
+        )
+        log(msg, level="ERROR")
+        errors.append(msg)
+else:
+        try:
+                    save_data(output_file, citations)
+        except Exception as e:
+                    log(e, level="ERROR")
+                    errors.append(e)
 
 
 # ── DOI Enrichment ──────────────────────────────────────────────────────────
