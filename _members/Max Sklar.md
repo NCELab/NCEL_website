@@ -2,7 +2,7 @@
 name: Max Sklar
 image: images/Max_Headshot.jpg
 role: intern
-order: 3
+order: 5
 description: intern
 affiliation: Columbia University / New York State Psychiatric Institute
 ---
