@@ -8,6 +8,7 @@ Thank you for your interest in participating in research at the Neuro-Cognition 
 By participating, you can contribute to research that helps us better understand attention, memory, decision-making, emotional regulation, trauma, resilience, and mental health.
 
 **What Does Participation Involve?**
+
 Our studies may take place in person, remotely, or in a hybrid format, depending on the study. 
 Participation may involve:
 •	Questionnaires about thoughts, emotions, experiences, and well-being
@@ -18,20 +19,21 @@ Participation may involve:
 Each study has its own eligibility requirements and time commitment. The study information below will provide details about what participation involves, who can participate, and compensation when applicable.
 
 **Your Participation Matters**
+
 Participation in research is completely voluntary. You may choose whether to participate and may stop participating at any time.
 
 All NCEL studies involving human participants are reviewed and approved by the appropriate Institutional Review Board (IRB) to ensure that research is conducted ethically and that participants' rights and well-being are protected.
 
 ---
 
-## Current Studies Recruiting Participants
+### Current Studies Recruiting Participants
 
 We are currently recruiting participants for the studies listed below. Click on a study to learn more about eligibility, what participation involves, and how to express your interest.
 {%
   include button.html
   type="email"
   text="Learn about our projects"
-  link="https://ncelab.github.io/NCEL_website/projects/"
+  link="projects"
 %}
 {%
   include button.html
