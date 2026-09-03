@@ -18,7 +18,7 @@ Participation may involve:
 •	Interviews or other research activities
 Each study has its own eligibility requirements and time commitment. The study information below will provide details about what participation involves, who can participate, and compensation when applicable.
 
-**Your Participation Matters**
+**Your Participation Matters!**
 
 Participation in research is completely voluntary. You may choose whether to participate and may stop participating at any time.
 
