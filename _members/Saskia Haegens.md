@@ -2,7 +2,7 @@
 name: Saskia Haegens
 image: images/Sashae_Headshot.jpg
 role: coi
-order: 2
+order: 1
 description: Collaborator
 affiliation: Columbia University
 links:
