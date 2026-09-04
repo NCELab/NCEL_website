@@ -16,26 +16,11 @@ nav:
     {% assign posts = site.posts | sort: "date" | reverse %}
     {% for post in posts %}
     <article class=" media-card">
-      <a href="{{ post.url | relative_url }}" class="media-card__image-link" aria-label="{{ post.title }}">
-        {% if post.image %}
-          <img
-            src="{{ post.image | relative_url }}"
-            alt="{{ post.title }}"
-            class=" media-card__image"
-            loading="lazy"
-          >
-        {% else %}
-          <div class=" media-card__image  media-card__image--placeholder">
-            <i class="fa-solid fa-newspaper"></i>
-          </div>
-        {% endif %}
-      </a>
-
       <div class=" media-card__body">
         <time class=" media-card__date" datetime="{{ post.date | date_to_xmlschema }}">
           {{ post.date | date: "%d/%m/%Y" }}
         </time>
-
+        
       <h2 class=" media-card__title">
           {% if post.external_url %}
             <a href="{{ post.external_url }}" target="_blank" rel="noopener noreferrer">{{ post.title }}</a>
