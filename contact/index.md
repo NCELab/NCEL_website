@@ -31,17 +31,3 @@ For general inquiries, research opportunities, or collaborations, please feel fr
 %}
 
 ---
-
-### Join the Lab
-
-We welcome students and researchers interested in cognitive neuroscience, emotion, and neuroimaging methods (e.g., EEG, fMRI).
-
-If you are interested in joining the lab, please email us with:
-- A brief description of your interests  
-- Your CV or resume  
-
----
-
-### Collaborations
-
-We are open to collaborations across cognitive neuroscience, clinical science, and computational approaches. Please reach out via email to discuss potential projects.
