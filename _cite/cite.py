@@ -175,8 +175,11 @@ for index, source in enumerate(sources):
 
     # add new citation to list
     citations.append(citation)
-
-
+    # filter
+    title = get_safe(source, "title", "")
+    if "From PTSD to Depression: Longitudinal Shifts in Psychopathology Among 9/11 Responders:
+        log("Skipping unwanted citation", level="WARNING")
+        continue 
 log()
 
 log("Saving updated citations")
