@@ -1,5 +1,6 @@
 ---
 title: When Everything Becomes ‘Trauma,' What Happens to Resilience?
+date: 2026-03-06
 author: Yael M. Cycowicz Ph.D.
 external_url: https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma
 tags:
