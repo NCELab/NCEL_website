@@ -14,21 +14,6 @@
     {% assign title = post.title %}
     {% assign image = post.image | relative_url | uri_escape %}
 
-    {% if image %}
-      <a
-        href="{{ url }}"
-        class="post-excerpt-image"
-        aria-label="{{ title | default: "excerpt link" | regex_strip }}"
-      >
-        <img
-          src="{{ image }}"
-          alt="{{ title | default: "excerpt image" | regex_strip }}"
-          loading="lazy"
-          {% include fallback.html %}
-        >
-      </a>
-    {% endif %}
-
     <div class="post-excerpt-text">
       <a href="{{ url }}">{{ title }}</a>
 
