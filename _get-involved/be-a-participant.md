@@ -31,7 +31,6 @@ All NCEL studies involving human participants are reviewed and approved by the a
 We are currently recruiting participants for the studies listed below. Click on a study to learn more about eligibility, what participation involves, and how to express your interest.
 {%
   include button.html
-  type="email"
   text="Learn about our projects"
   link="projects"
 %}
