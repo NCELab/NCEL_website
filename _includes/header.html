@@ -1,86 +1,196 @@
 {% assign image = page.header | default: site.header %}
 {% assign dark = page.header-dark | is_nil: site.header-dark | is_nil: true %}
-
-{% comment %}
-  FIX: file_exists returns the filename string (truthy) or nil (falsy).
-  Chain with | default: to pick the first existing file.
-  Then prepend the path so relative_url works correctly.
-{% endcomment %}
 {% assign logo_file = "images/NCEL-logo.png" %}
 
 <header
-class="background"
-style="--image: url('{{ image | relative_url }}')"
-{% if dark == true or dark == false %}
-data-dark="{{ dark }}"
-{% endif %}
-{% if page.url == "/" %}
-data-big
-{% endif %}
+  class="site-header"
+  style="--image: url('{{ image | relative_url }}')"
+  {% if dark == true or dark == false %}
+  data-dark="{{ dark }}"
+  {% endif %}
+  {% if page.url == "/" %}
+  data-big
+  {% endif %}
 >
-<a href="{{ "/" | relative_url }}" class="home">
-{% if logo_file %}
-<span class="logo">
-<img src="{{ logo_file | relative_url }}" alt="logo">
-</span>
-{% endif %}
+  <!-- Logo & Site Title -->
+  <a href="{{ "/" | relative_url }}" class="site-logo">
+    {% if logo_file %}
+    <span class="logo-image">
+      <img src="{{ logo_file | relative_url }}" alt="NCEL Lab Logo">
+    </span>
+    {% endif %}
 
-{% if site.logo-text != false %}
-<span class="title-text" data-tooltip="Home">
-{% if site.title and site.show-title != false %}
-<span class="title">{{ site.title }}</span>
-{% endif %}
-{% if site.subtitle and site.show-subtitle != false %}
-<span class="subtitle">{{ site.subtitle }}</span>
-{% endif %}
-</span>
-{% endif %}
-</a>
+    {% if site.logo-text != false %}
+    <span class="logo-text" data-tooltip="Home">
+      {% if site.title and site.show-title != false %}
+      <span class="site-title">{{ site.title }}</span>
+      {% endif %}
+      {% if site.subtitle and site.show-subtitle != false %}
+      <span class="site-subtitle">{{ site.subtitle }}</span>
+      {% endif %}
+    </span>
+    {% endif %}
+  </a>
 
-<input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+  <!-- Mobile Menu Toggle Button -->
+  <button 
+    class="menu-toggle" 
+    type="button"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false"
+    aria-controls="site-navigation"
+  >
+    <span class="menu-toggle-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
 
-<nav>
-{% assign pages = site.pages
-| where_exp: "page", "page.nav"
-| sort: "nav.order"
-%}
-{% for page in pages %}
-{% if page.title == "People" %}
-<div class="nav-dropdown">
-<a href="{{ '/people/' | relative_url }}">People &#9662;</a>
-<div class="nav-dropdown-content">
-<a href="{{ '/people/pi/' | relative_url }}">Directors</a>
-<a href="{{ '/people/our-team/' | relative_url }}">Our Team</a>
-<a href="{{ '/people/collaborators/' | relative_url }}">Collaborators</a>
-<a href="{{ '/people/alumni/' | relative_url }}">Previous Lab Members</a>
-</div>
-</div>
-{% elsif page.title == "Research" %}
-<div class="nav-dropdown">
-<a href="{{ '/research/' | relative_url }}">Research &#9662;</a>
-<div class="nav-dropdown-content">
-<a href="{{ '/research/' | relative_url }}">Overview</a>
-<a href="{{ '/research/publications/' | relative_url }}">Publications</a>
-<a href="{{ '/research/presentations/' | relative_url }}">Presentations</a>
-</div>
-</div>
-{% elsif page.title == "Directors" or page.title == "Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Previous Lab Members" or page.title == "Publications" or page.title == "Presentations" %}
-{%- comment -%}Skip{%- endcomment -%}
-{% elsif page.title == "Projects" %}
-<div class="nav-item">
-  <a href="{{ '/projects/' | relative_url }}">Projects</a>
-</div> 
-{% elsif page.title == "Get Involved" %}
-<div class="nav-dropdown">
-<a href="{{ page.dir | relative_url }}">Get Involved &#9662;</a>
-<div class="nav-dropdown-content">
-<a href="{{ '/get-involved/research-position' | relative_url }}">Research Position</a>
-<a href="{{ '/get-involved/be-a-participant' | relative_url }}">Be a Participant</a>
-</div>
-</div>
-{% else %}
-<a href="{{ page.dir | relative_url | uri_escape }}" data-tooltip="{{ page.nav.tooltip | xml_escape }}">{{ page.title }}</a>
-{% endif %}
-{% endfor %}
-</nav>
+  <!-- Main Navigation -->
+  <nav 
+    class="site-navigation" 
+    id="site-navigation"
+    role="navigation"
+    aria-label="Main navigation"
+  >
+    {% assign pages = site.pages
+    | where_exp: "page", "page.nav"
+    | sort: "nav.order"
+    %}
+    
+    {% for page in pages %}
+      {% if page.title == "People" %}
+        <div class="nav-item nav-dropdown">
+          <button 
+            class="nav-link dropdown-toggle"
+            data-dropdown="people-menu"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="People submenu"
+          >
+            People
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div 
+            class="dropdown-menu" 
+            id="people-menu"
+            role="region"
+            aria-label="People submenu items"
+          >
+            <a href="{{ '/people/pi/' | relative_url }}" class="dropdown-item">Directors</a>
+            <a href="{{ '/people/our-team/' | relative_url }}" class="dropdown-item">Our Team</a>
+            <a href="{{ '/people/collaborators/' | relative_url }}" class="dropdown-item">Collaborators</a>
+            <a href="{{ '/people/alumni/' | relative_url }}" class="dropdown-item">Previous Lab Members</a>
+          </div>
+        </div>
+
+      {% elsif page.title == "Research" %}
+        <div class="nav-item nav-dropdown">
+          <button 
+            class="nav-link dropdown-toggle"
+            data-dropdown="research-menu"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Research submenu"
+          >
+            Research
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div 
+            class="dropdown-menu" 
+            id="research-menu"
+            role="region"
+            aria-label="Research submenu items"
+          >
+            <a href="{{ '/research/' | relative_url }}" class="dropdown-item">Overview</a>
+            <a href="{{ '/research/publications/' | relative_url }}" class="dropdown-item">Publications</a>
+            <a href="{{ '/research/presentations/' | relative_url }}" class="dropdown-item">Presentations</a>
+          </div>
+        </div>
+
+      {% elsif page.title == "Directors" or page.title == "Collaborators" or page.title == "Our Team" or page.title == "Research Interns" or page.title == "Previous Lab Members" or page.title == "Publications" or page.title == "Presentations" %}
+        {%- comment -%}Skip sub-items{%- endcomment -%}
+
+      {% elsif page.title == "Projects" %}
+        <div class="nav-item">
+          <a 
+            href="{{ '/projects/' | relative_url }}" 
+            class="nav-link"
+            data-tooltip="{{ page.nav.tooltip | xml_escape }}"
+          >
+            Projects
+          </a>
+        </div>
+
+      {% elsif page.title == "Get Involved" %}
+        <div class="nav-item nav-dropdown">
+          <button 
+            class="nav-link dropdown-toggle"
+            data-dropdown="get-involved-menu"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Get Involved submenu"
+          >
+            Get Involved
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div 
+            class="dropdown-menu" 
+            id="get-involved-menu"
+            role="region"
+            aria-label="Get Involved submenu items"
+          >
+            <a href="{{ '/get-involved/research-position' | relative_url }}" class="dropdown-item">Research Position</a>
+            <a href="{{ '/get-involved/be-a-participant' | relative_url }}" class="dropdown-item">Be a Participant</a>
+          </div>
+        </div>
+
+      {% else %}
+        <div class="nav-item">
+          <a 
+            href="{{ page.dir | relative_url | uri_escape }}" 
+            class="nav-link"
+            data-tooltip="{{ page.nav.tooltip | xml_escape }}"
+          >
+            {{ page.title }}
+          </a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </nav>
 </header>
+
+<script>
+  // Mark current page in navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    
+    // Mark top-level nav items
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href') || link.getAttribute('data-dropdown');
+      if (href && currentPath.startsWith(href)) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+    
+    // Mark submenu items
+    document.querySelectorAll('.dropdown-item').forEach(link => {
+      if (link.getAttribute('href') === currentPath || 
+          currentPath.startsWith(link.getAttribute('href').replace(/\/$/, ''))) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Also mark parent as active
+        const menu = link.closest('.dropdown-menu');
+        if (menu) {
+          const toggle = document.querySelector(`[data-dropdown="${menu.id}"]`);
+          if (toggle) {
+            toggle.classList.add('is-active');
+          }
+        }
+      }
+    });
+  });
+</script>
