@@ -519,88 +519,91 @@
   
 
   <section class="background" data-size="page">
-    <div class=" media-page">
+    <script>
+function sortArticles() {
+  const container = document.getElementById('media-list');
+  const cards = Array.from(container.getElementsByClassName('media-card'));
+  const sortBy = document.getElementById('sort-select').value;
 
-  <div class=" media-page__header">
-    <h1 class=" media-page__title">News / Articles</h1>
-  </div>
+  cards.sort((a, b) => {
+    const dateA = new Date(a.getAttribute('data-date'));
+    const dateB = new Date(b.getAttribute('data-date'));
+    return sortBy === 'newest' ? dateB - dateA : dateA - dateB;
+  });
 
-  <div class=" media-page__list">
-    
-    
-    <article class=" media-card">
-      <div class=" media-card__body">
-        <time class=" media-card__date" datetime="2026-09-02T00:00:00+00:00">
-          02/09/2026
-        </time>
+  cards.forEach(card => container.appendChild(card));
+}
+</script>
+
+<h1 id="news--articles">News / Articles</h1>
+
+<div class="filter-container" style="margin-bottom: 20px;">
+  <label for="sort-select">Sort by: </label>
+  <select id="sort-select" onchange="sortArticles()">
+    <option value="newest">Date: Newest first</option>
+    <option value="oldest">Date: Oldest first</option>
+  </select>
+</div>
+
+<div id="media-list">
+
+
+  <article class="media-card" data-date="2026-09-02">
+    <div class="media-card__body">
+      <time class="media-card__date" datetime="2026-09-02T00:00:00+00:00">
+        02/09/2026
+      </time>
+      <h2 class="media-card__title">
         
-      <h2 class=" media-card__title">
-          
-            <a href="https://www.newsweek.com/9-11-responders-trauma-may-have-affected-their-children-study-12393826" target="_blank" rel="noopener noreferrer">Newsweek interview: 9/11 Responders’ Trauma May Have Affected Their Children, Study Finds</a>
-          
+          <a href="https://www.newsweek.com/9-11-responders-trauma-may-have-affected-their-children-study-12393826" target="_blank" rel="noopener noreferrer">Newsweek interview: 9/11 Responders’ Trauma May Have Affected Their Children, Study Finds</a>
+        
       </h2>
+      <p class="media-card__excerpt">
+        Twenty-five years after the September 11 attacks, a study has found the children of World Trade Center responders may have been impacted by their parents’ trauma, even though they did...
+      </p>
+      
+        <a href="https://www.newsweek.com/9-11-responders-trauma-may-have-affected-their-children-study-12393826" class="media-card__read-more" target="_blank" rel="noopener noreferrer">Read More →</a>
+      
+    </div>
+  </article>
 
-        <p class=" media-card__excerpt">
-          Twenty-five years after the September 11 attacks, a study has found the children of World Trade Center responders may have been impacted by their parents’ trauma, even though they did...
-        </p>
-
+  <article class="media-card" data-date="2026-08-31">
+    <div class="media-card__body">
+      <time class="media-card__date" datetime="2026-08-31T00:00:00+00:00">
+        31/08/2026
+      </time>
+      <h2 class="media-card__title">
         
-          <a href="https://www.newsweek.com/9-11-responders-trauma-may-have-affected-their-children-study-12393826" class="media-card__read-more" target="_blank" rel="noopener noreferrer">
-          Read More →
-          </a>
+          <a href="https://www.cuimc.columbia.edu/news/9-11-responders-passed-effects-trauma-their-children" target="_blank" rel="noopener noreferrer">9/11 Responders Passed Effects of Trauma to Their Children</a>
         
-      </div>
-    </article>
-    
-    <article class=" media-card">
-      <div class=" media-card__body">
-        <time class=" media-card__date" datetime="2026-08-31T00:00:00+00:00">
-          31/08/2026
-        </time>
-        
-      <h2 class=" media-card__title">
-          
-            <a href="https://www.cuimc.columbia.edu/news/9-11-responders-passed-effects-trauma-their-children" target="_blank" rel="noopener noreferrer">9/11 Responders Passed Effects of Trauma to Their Children</a>
-          
       </h2>
+      <p class="media-card__excerpt">
+        Although it’s been 25 years since the World Trade Center collapsed after terrorists flew commercial airplanes into each of the center’s two towers, the trauma experienced by many first responders...
+      </p>
+      
+        <a href="https://www.cuimc.columbia.edu/news/9-11-responders-passed-effects-trauma-their-children" class="media-card__read-more" target="_blank" rel="noopener noreferrer">Read More →</a>
+      
+    </div>
+  </article>
 
-        <p class=" media-card__excerpt">
-          Although it’s been 25 years since the World Trade Center collapsed after terrorists flew commercial airplanes into each of the center’s two towers, the trauma experienced by many first responders...
-        </p>
-
+  <article class="media-card" data-date="2026-03-06">
+    <div class="media-card__body">
+      <time class="media-card__date" datetime="2026-03-06T00:00:00+00:00">
+        06/03/2026
+      </time>
+      <h2 class="media-card__title">
         
-          <a href="https://www.cuimc.columbia.edu/news/9-11-responders-passed-effects-trauma-their-children" class="media-card__read-more" target="_blank" rel="noopener noreferrer">
-          Read More →
-          </a>
+          <a href="https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma" target="_blank" rel="noopener noreferrer">When Everything Becomes ‘Trauma,' What Happens to Resilience?</a>
         
-      </div>
-    </article>
-    
-    <article class=" media-card">
-      <div class=" media-card__body">
-        <time class=" media-card__date" datetime="2026-03-06T00:00:00+00:00">
-          06/03/2026
-        </time>
-        
-      <h2 class=" media-card__title">
-          
-            <a href="https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma" target="_blank" rel="noopener noreferrer">When Everything Becomes ‘Trauma,' What Happens to Resilience?</a>
-          
       </h2>
-
-        <p class=" media-card__excerpt">
-          The noise of the rotor was deafening as I held my daughter tightly on my lap, terrified that she might slip from my arms and be pulled out through the...
-        </p>
-
-        
-          <a href="https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma" class="media-card__read-more" target="_blank" rel="noopener noreferrer">
-          Read More →
-          </a>
-        
-      </div>
-    </article>
-    
-  </div>
+      <p class="media-card__excerpt">
+        The noise of the rotor was deafening as I held my daughter tightly on my lap, terrified that she might slip from my arms and be pulled out through the...
+      </p>
+      
+        <a href="https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma" class="media-card__read-more" target="_blank" rel="noopener noreferrer">Read More →</a>
+      
+    </div>
+  </article>
 
 </div>
   </section>
