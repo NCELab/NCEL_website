@@ -371,80 +371,145 @@
 
 
 
+<header class="site-header" style="--image: url('/NCEL_website/images/background.jpeg')" data-dark="false">
+  <!-- Logo & Site Title -->
+  <a href="/NCEL_website/" class="site-logo">
+    
+    <span class="logo-image">
+      <img src="/NCEL_website/images/NCEL-logo.png" alt="NCEL Lab Logo">
+    </span>
+    
 
+    
+    <span class="logo-text" data-tooltip="Home">
+      
+      <span class="site-title">Neuro-Cognition and Emotion Lab</span>
+      
+      
+    </span>
+    
+  </a>
 
-<header class="background" style="--image: url('/NCEL_website/images/background.jpeg')" data-dark="false">
-<a href="/NCEL_website/" class="home">
+  <!-- Mobile Menu Toggle Button -->
+  <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-navigation">
+    <span class="menu-toggle-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
 
-<span class="logo">
-<img src="/NCEL_website/images/NCEL-logo.png" alt="logo">
-</span>
+  <!-- Main Navigation -->
+  <nav class="site-navigation" id="site-navigation" role="navigation" aria-label="Main navigation">
+    
+    
+    
+      
+        <div class="nav-item nav-dropdown">
+          <button class="nav-link dropdown-toggle" data-dropdown="research-menu" aria-haspopup="true" aria-expanded="false" aria-label="Research submenu">
+            Research
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown-menu" id="research-menu" role="region" aria-label="Research submenu items">
+            <a href="/NCEL_website/research/" class="dropdown-item">Overview</a>
+            <a href="/NCEL_website/research/publications/" class="dropdown-item">Publications</a>
+            <a href="/NCEL_website/research/presentations/" class="dropdown-item">Presentations</a>
+          </div>
+        </div>
 
+      
+    
+      
+        <div class="nav-item">
+          <a href="/NCEL_website/projects/" class="nav-link" data-tooltip="Research projects">
+            Projects
+          </a>
+        </div>
 
+      
+    
+      
+        <div class="nav-item nav-dropdown">
+          <button class="nav-link dropdown-toggle" data-dropdown="people-menu" aria-haspopup="true" aria-expanded="false" aria-label="People submenu">
+            People
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown-menu" id="people-menu" role="region" aria-label="People submenu items">
+            <a href="/NCEL_website/people/pi/" class="dropdown-item">Directors</a>
+            <a href="/NCEL_website/people/our-team/" class="dropdown-item">Our Team</a>
+            <a href="/NCEL_website/people/collaborators/" class="dropdown-item">Collaborators</a>
+            <a href="/NCEL_website/people/alumni/" class="dropdown-item">Previous Lab Members</a>
+          </div>
+        </div>
 
-<span class="title-text" data-tooltip="Home">
+      
+    
+      
+        <div class="nav-item">
+          <a href="/NCEL_website/media/" class="nav-link" data-tooltip="News and articles">
+            Media
+          </a>
+        </div>
+      
+    
+      
+        <div class="nav-item nav-dropdown">
+          <button class="nav-link dropdown-toggle" data-dropdown="get-involved-menu" aria-haspopup="true" aria-expanded="false" aria-label="Get Involved submenu">
+            Get Involved
+            <span class="dropdown-icon" aria-hidden="true"></span>
+          </button>
+          <div class="dropdown-menu" id="get-involved-menu" role="region" aria-label="Get Involved submenu items">
+            <a href="/NCEL_website/get-involved/research-position" class="dropdown-item">Research Position</a>
+            <a href="/NCEL_website/get-involved/be-a-participant" class="dropdown-item">Be a Participant</a>
+          </div>
+        </div>
 
-<span class="title">Neuro-Cognition and Emotion Lab</span>
-
-
-</span>
-
-</a>
-
-<input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
-
-<nav>
-
-
-
-<div class="nav-dropdown">
-<a href="/NCEL_website/research/">Research ▾</a>
-<div class="nav-dropdown-content">
-<a href="/NCEL_website/research/">Overview</a>
-<a href="/NCEL_website/research/publications/">Publications</a>
-<a href="/NCEL_website/research/presentations/">Presentations</a>
-</div>
-</div>
-
-
-
-<div class="nav-item">
-  <a href="/NCEL_website/projects/">Projects</a>
-</div> 
-
-
-
-<div class="nav-dropdown">
-<a href="/NCEL_website/people/">People ▾</a>
-<div class="nav-dropdown-content">
-<a href="/NCEL_website/people/pi/">Directors</a>
-<a href="/NCEL_website/people/our-team/">Our Team</a>
-<a href="/NCEL_website/people/collaborators/">Collaborators</a>
-<a href="/NCEL_website/people/alumni/">Previous Lab Members</a>
-</div>
-</div>
-
-
-
-<a href="/NCEL_website/media/" data-tooltip="News and articles">Media</a>
-
-
-
-<div class="nav-dropdown">
-<a href="/NCEL_website/get-involved/">Get Involved ▾</a>
-<div class="nav-dropdown-content">
-<a href="/NCEL_website/get-involved/research-position">Research Position</a>
-<a href="/NCEL_website/get-involved/be-a-participant">Be a Participant</a>
-</div>
-</div>
-
-
-
-<a href="/NCEL_website/contact/" data-tooltip="Email, address, and location">Contact</a>
-
-
-</nav>
+      
+    
+      
+        <div class="nav-item">
+          <a href="/NCEL_website/contact/" class="nav-link" data-tooltip="Email, address, and location">
+            Contact
+          </a>
+        </div>
+      
+    
+  </nav>
 </header>
+
+<script>
+  // Mark current page in navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    const currentPath = window.location.pathname;
+    
+    // Mark top-level nav items
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href') || link.getAttribute('data-dropdown');
+      if (href && currentPath.startsWith(href)) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+    
+    // Mark submenu items
+    document.querySelectorAll('.dropdown-item').forEach(link => {
+      if (link.getAttribute('href') === currentPath || 
+          currentPath.startsWith(link.getAttribute('href').replace(/\/$/, ''))) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+        
+        // Also mark parent as active
+        const menu = link.closest('.dropdown-menu');
+        if (menu) {
+          const toggle = document.querySelector(`[data-dropdown="${menu.id}"]`);
+          if (toggle) {
+            toggle.classList.add('is-active');
+          }
+        }
+      }
+    });
+  });
+</script>
 
     
     <main>
