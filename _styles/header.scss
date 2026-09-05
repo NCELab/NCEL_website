@@ -360,7 +360,6 @@ $transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   top: calc(100% + 8px);
   left: 0;
   min-width: 220px;
-  // 使用品牌顏色（藍色）淡化版作為背景，所有下拉菜單保持一致
   background: rgba(202, 181, 217, 0.06);
   backdrop-filter: blur(10px);
   box-shadow: var(--shadow);
@@ -560,7 +559,6 @@ $transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
   }
 
-  // 暗黑模式下下拉菜單背景（品牌顏色加深）
   .dropdown-menu {
     background: rgba(202, 181, 217, 0.12);
     border-color: rgba(202, 181, 217, 0.2);
