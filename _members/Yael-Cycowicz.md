@@ -1,6 +1,6 @@
 ---
 name: Yael M. Cycowicz
-image: images/photo.jpg
+image: images/Yael_headshot.jpeg
 role: pi
 order: 1
 description: Lab Director
