@@ -43,10 +43,10 @@ external:
   text: External Link
   tooltip: External link
 
-home-page:
+learn-more:
   icon: fa-solid fa-house-user
-  text: Home Page
-  tooltip: Home page
+  text: Learn More
+  tooltip: Learn More
 
 email:
   icon: fa-solid fa-envelope
