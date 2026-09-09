@@ -37,7 +37,7 @@ function sortArticles() {
   <article class="media-card" data-date="{{ post.date | date: '%Y-%m-%d' }}">
     <div class="media-card__body">
       <time class="media-card__date" datetime="{{ post.date | date_to_xmlschema }}">
-        {{ post.date | date: "%d/%m/%Y" }}
+        {{ post.date | date: "%b %-d, %Y" }}
       </time>
       <h2 class="media-card__title">
         {% if post.external_url %}
