@@ -1,38 +1,71 @@
 /**
  * NCEL Navbar - Interactive Script
- * 
+ *
  * Features:
- * - Dropdown menu toggle (hover + click)
- * - Keyboard navigation (Tab, Enter, Escape)
- * - Mobile accordion menus
- * - Accessible focus management
- * - 200ms delay before closing submenu on mouse leave
+ * - Dropdown menus: hover (desktop) + click + keyboard
+ * - Forgiving pointer behaviour: short open delay, generous close delay, and
+ *   an invisible CSS "hover bridge" so the menu never disappears while the
+ *   mouse travels from the toggle down to the items
+ * - Menu visibility is driven by ONE source of truth: the `data-expanded`
+ *   attribute on .nav-dropdown (CSS also falls back to :hover / :focus-within)
+ * - Mobile accordion menus + accessible focus management
  */
 
-(function() {
+(function () {
   'use strict';
 
-  const TRANSITION_DELAY = 200; // ms before closing menu on mouse leave
-  const IS_MOBILE = window.innerWidth <= 700;
+  const OPEN_DELAY = 60; // ms of hover intent before opening
+  const CLOSE_DELAY = 280; // ms grace period before closing on mouse leave
+  const DESKTOP_QUERY = '(min-width: 701px)'; // must match $mobile-breakpoint
+
+  const desktopMQ = window.matchMedia(DESKTOP_QUERY);
+  const isDesktop = () => desktopMQ.matches;
+
+  const dropdowns = [];
 
   // ============================================================
   // INITIALIZATION
   // ============================================================
 
-  document.addEventListener('DOMContentLoaded', initNavigation);
-  window.addEventListener('resize', handleResize);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavigation);
+  } else {
+    initNavigation();
+  }
 
   function initNavigation() {
-    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    // Tells the stylesheet that JS controls the menus (see header.scss)
+    document.documentElement.classList.add('js-nav');
+
     const menuToggle = document.querySelector('.menu-toggle');
     const navigation = document.querySelector('.site-navigation');
 
-    if (menuToggle) {
+    if (menuToggle && navigation) {
       setupMobileMenuToggle(menuToggle, navigation);
     }
 
-    dropdowns.forEach(setupDropdown);
+    document.querySelectorAll('.nav-dropdown').forEach(setupDropdown);
     markCurrentPage();
+
+    // Close everything when clicking anywhere outside a dropdown
+    document.addEventListener('click', (e) => {
+      dropdowns.forEach((d) => {
+        if (!d.root.contains(e.target)) closeDropdown(d, true);
+      });
+    });
+
+    // Escape closes the open menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      dropdowns.forEach((d) => {
+        if (isOpen(d)) {
+          closeDropdown(d, true);
+          d.toggle.focus();
+        }
+      });
+    });
+
+    window.addEventListener('resize', handleResize);
   }
 
   // ============================================================
@@ -43,21 +76,18 @@
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      
-      toggle.setAttribute('aria-expanded', !isExpanded);
-      nav.classList.toggle('is-open');
 
-      // Close all dropdowns when opening/closing main menu
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+      nav.classList.toggle('is-open', !isExpanded);
+
       if (isExpanded) {
-        document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-          btn.setAttribute('aria-expanded', 'false');
-        });
+        dropdowns.forEach((d) => closeDropdown(d, true));
       }
     });
 
-    // Close menu when clicking on a nav item
+    // Close the mobile menu after tapping an actual link
     nav.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') {
+      if (e.target.closest('a')) {
         toggle.setAttribute('aria-expanded', 'false');
         nav.classList.remove('is-open');
       }
@@ -68,107 +98,182 @@
   // DROPDOWN SETUP
   // ============================================================
 
-  function setupDropdown(dropdown) {
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-    const menu = dropdown.querySelector('.dropdown-menu');
-    const items = menu?.querySelectorAll('.dropdown-item');
-
+  function setupDropdown(root) {
+    const toggle = root.querySelector('.dropdown-toggle');
+    const menu = root.querySelector('.dropdown-menu');
     if (!toggle || !menu) return;
 
-    let closeTimeout;
+    const items = Array.from(menu.querySelectorAll('.dropdown-item'));
+    const d = {
+      root,
+      toggle,
+      menu,
+      items,
+      openTimer: null,
+      closeTimer: null,
+      lastPointerType: 'mouse',
+      // After closing with a click, don't let the pointer immediately re-open
+      // the menu while it is still sitting on the toggle.
+      suppressHover: false,
+    };
+    dropdowns.push(d);
 
-    // Desktop: Hover to open
-    if (!IS_MOBILE) {
-      dropdown.addEventListener('mouseenter', () => {
-        clearTimeout(closeTimeout);
-        openDropdown(toggle, menu);
-      });
+    // ---------- Pointer (desktop) ----------
+    root.addEventListener('pointerdown', (e) => {
+      d.lastPointerType = e.pointerType;
+    });
 
-      dropdown.addEventListener('mouseleave', () => {
-        // Delay closing to allow mouse movement
-        closeTimeout = setTimeout(() => {
-          closeDropdown(toggle, menu);
-        }, TRANSITION_DELAY);
-      });
-    }
+    root.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'touch' || !isDesktop()) return;
+      clearTimers(d);
+      if (d.suppressHover) return;
+      d.openTimer = setTimeout(() => openDropdown(d), OPEN_DELAY);
+    });
 
-    // Mobile & Desktop: Click to toggle
+    root.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'touch' || !isDesktop()) return;
+      clearTimers(d);
+      d.suppressHover = false;
+      d.closeTimer = setTimeout(() => closeDropdown(d), CLOSE_DELAY);
+    });
+
+    // Moving back inside cancels a pending close (e.g. brief pointer glitches)
+    menu.addEventListener('pointerenter', () => clearTimers(d));
+
+    // ---------- Click ----------
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      e.stopPropagation();
+      clearTimers(d);
 
-      if (isExpanded) {
-        closeDropdown(toggle, menu);
-      } else {
-        // Close other dropdowns on mobile
-        if (IS_MOBILE) {
-          document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-            if (btn !== toggle) {
-              closeDropdown(btn, btn.getAttribute('data-dropdown'));
-            }
-          });
-        }
-        openDropdown(toggle, menu);
-      }
-    });
-
-    // Keyboard navigation
-    if (items) {
-      items.forEach((item, index) => {
-        item.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowDown' && index < items.length - 1) {
-            e.preventDefault();
-            items[index + 1].focus();
-          } else if (e.key === 'ArrowUp' && index > 0) {
-            e.preventDefault();
-            items[index - 1].focus();
-          } else if (e.key === 'Home') {
-            e.preventDefault();
-            items[0].focus();
-          } else if (e.key === 'End') {
-            e.preventDefault();
-            items[items.length - 1].focus();
-          } else if (e.key === 'Escape') {
-            e.preventDefault();
-            closeDropdown(toggle, menu);
-            toggle.focus();
-          }
-        });
+      dropdowns.forEach((other) => {
+        if (other !== d) closeDropdown(other, true);
       });
-    }
 
-    // Close menu when focusing outside
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) {
-        closeDropdown(toggle, menu);
+      // Clicks fired by the keyboard (Enter / Space) report detail === 0
+      const fromKeyboard = e.detail === 0;
+      // With a mouse, a click never closes a menu the pointer is still sitting
+      // on - closing that way is what made the menu feel like it "escaped".
+      // It closes on mouse-out, Escape, or a click elsewhere instead.
+      const usingMouse =
+        !fromKeyboard &&
+        isDesktop() &&
+        d.lastPointerType !== 'touch' &&
+        d.lastPointerType !== 'pen';
+
+      if (isOpen(d) && !usingMouse) {
+        closeDropdown(d, true);
+        d.suppressHover = true; // don't bounce straight back open on hover
+      } else {
+        openDropdown(d);
+        if (fromKeyboard) focusItem(d, 0);
       }
+    });
+
+    // Let a click on an item close the menu immediately
+    menu.addEventListener('click', (e) => {
+      if (e.target.closest('.dropdown-item')) closeDropdown(d, true);
+    });
+
+    // ---------- Keyboard ----------
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Down') {
+        e.preventDefault();
+        openDropdown(d);
+        focusItem(d, 0);
+      } else if (e.key === 'Escape') {
+        closeDropdown(d, true);
+      }
+    });
+
+    items.forEach((item, index) => {
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' && index < items.length - 1) {
+          e.preventDefault();
+          items[index + 1].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (index > 0) items[index - 1].focus();
+          else toggle.focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          items[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          items[items.length - 1].focus();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          closeDropdown(d, true);
+          toggle.focus();
+        } else if (e.key === 'Tab' && !e.shiftKey && index === items.length - 1) {
+          closeDropdown(d, true);
+        }
+      });
+    });
+
+    // Keyboard focus leaving the dropdown closes it
+    root.addEventListener('focusout', (e) => {
+      if (!root.contains(e.relatedTarget)) closeDropdown(d, true);
     });
   }
 
   // ============================================================
-  // DROPDOWN OPEN/CLOSE HELPERS
+  // OPEN / CLOSE HELPERS
   // ============================================================
 
-  function openDropdown(toggle, menu) {
-    toggle.setAttribute('aria-expanded', 'true');
-    menu.setAttribute('aria-expanded', 'true');
-    toggle.classList.add('is-open');
-    
-    // Set data attribute for CSS targeting
-    const menuId = menu.id;
-    if (menuId) {
-      toggle.closest('.nav-dropdown').setAttribute('data-expanded', 'true');
-    }
+  // The menu is `visibility: hidden` until it opens, and a hidden element
+  // cannot take focus - wait one frame so the style has been applied.
+  function focusItem(d, index) {
+    const item = d.items[index];
+    if (!item) return;
+
+    const tryFocus = () => {
+      d.menu.getBoundingClientRect(); // force the new styles to be applied
+      item.focus();
+      return document.activeElement === item;
+    };
+
+    if (tryFocus()) return;
+    requestAnimationFrame(() => {
+      if (!tryFocus()) setTimeout(tryFocus, 80);
+    });
   }
 
-  function closeDropdown(toggle, menu) {
-    toggle.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-expanded', 'false');
-    toggle.classList.remove('is-open');
-    
-    const dropdown = toggle.closest('.nav-dropdown');
-    if (dropdown) {
-      dropdown.removeAttribute('data-expanded');
+  function isOpen(d) {
+    return d.root.getAttribute('data-expanded') === 'true';
+  }
+
+  function clearTimers(d) {
+    clearTimeout(d.openTimer);
+    clearTimeout(d.closeTimer);
+    d.openTimer = null;
+    d.closeTimer = null;
+  }
+
+  function openDropdown(d) {
+    clearTimers(d);
+    d.root.setAttribute('data-expanded', 'true');
+    d.toggle.setAttribute('aria-expanded', 'true');
+    d.menu.setAttribute('aria-expanded', 'true');
+    d.toggle.classList.add('is-open');
+    alignMenu(d);
+  }
+
+  function closeDropdown(d, immediate) {
+    if (immediate) clearTimers(d);
+    d.root.removeAttribute('data-expanded');
+    d.toggle.setAttribute('aria-expanded', 'false');
+    d.menu.setAttribute('aria-expanded', 'false');
+    d.toggle.classList.remove('is-open');
+  }
+
+  // Flip the menu to the right edge if it would overflow the viewport
+  function alignMenu(d) {
+    if (!isDesktop()) return;
+    d.menu.removeAttribute('data-align');
+    const rect = d.menu.getBoundingClientRect();
+    if (rect.right > window.innerWidth - 8) {
+      d.menu.setAttribute('data-align', 'right');
     }
   }
 
@@ -178,95 +283,46 @@
 
   function markCurrentPage() {
     const currentPath = window.location.pathname;
-    
-    // Get all nav links and items
-    const navLinks = document.querySelectorAll('.nav-link, .dropdown-item');
-    
-    navLinks.forEach(link => {
+
+    document.querySelectorAll('.nav-link, .dropdown-item').forEach((link) => {
       const href = link.getAttribute('href');
-      
-      // Check if this is the current page
-      if (isCurrentPage(href, currentPath)) {
-        link.classList.add('is-active');
-        link.setAttribute('aria-current', 'page');
-        
-        // Mark parent dropdown as active if applicable
-        const dropdown = link.closest('.nav-dropdown');
-        if (dropdown) {
-          const parentToggle = dropdown.querySelector('.dropdown-toggle');
-          if (parentToggle && link.classList.contains('dropdown-item')) {
-            parentToggle.classList.add('is-active');
-          }
-        }
+      if (!isCurrentPage(href, currentPath)) return;
+
+      link.classList.add('is-active');
+      link.setAttribute('aria-current', 'page');
+
+      if (link.classList.contains('dropdown-item')) {
+        const parent = link.closest('.nav-dropdown');
+        const parentToggle = parent && parent.querySelector('.dropdown-toggle');
+        if (parentToggle) parentToggle.classList.add('is-active');
       }
     });
   }
 
   function isCurrentPage(href, currentPath) {
     if (!href) return false;
-    
-    // Normalize paths
-    const normalizeUrl = (url) => {
-      return url.replace(/\/$/, '') || '/';
-    };
-    
-    const normalizedHref = normalizeUrl(href);
-    const normalizedPath = normalizeUrl(currentPath);
-    
-    // Exact match
-    if (normalizedHref === normalizedPath) return true;
-    
-    // Parent directory match (e.g., /people/ matches /people/pi/)
-    if (normalizedPath.startsWith(normalizedHref + '/')) return true;
-    
+    const normalize = (url) => url.replace(/\/$/, '') || '/';
+    const a = normalize(href);
+    const b = normalize(currentPath);
+    if (a === b) return true;
+    if (a !== '/' && b.startsWith(a + '/')) return true;
     return false;
   }
 
   // ============================================================
-  // RESPONSIVE RESIZE HANDLER
+  // RESIZE
   // ============================================================
 
   let resizeTimeout;
-  
+
   function handleResize() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      const isMobileNow = window.innerWidth <= 700;
-      
-      // If switching between mobile and desktop, reset menus
-      if (isMobileNow !== IS_MOBILE) {
-        location.reload(); // Or implement sophisticated toggle logic
-      }
-    }, 250);
-  }
-
-  // ============================================================
-  // FOCUS TRAP IN DROPDOWN (OPTIONAL - ENHANCE ACCESSIBILITY)
-  // ============================================================
-
-  function trapFocusInDropdown(menu, toggle) {
-    const items = menu.querySelectorAll('.dropdown-item');
-    if (items.length === 0) return;
-
-    const firstItem = items[0];
-    const lastItem = items[items.length - 1];
-
-    menu.addEventListener('keydown', (e) => {
-      if (e.key !== 'Tab') return;
-
-      if (e.shiftKey) {
-        // Shift+Tab on first item -> focus toggle
-        if (document.activeElement === firstItem) {
-          e.preventDefault();
-          toggle.focus();
-        }
-      } else {
-        // Tab on last item -> loop to first
-        if (document.activeElement === lastItem) {
-          e.preventDefault();
-          firstItem.focus();
-        }
-      }
-    });
+      dropdowns.forEach((d) => {
+        closeDropdown(d, true);
+        d.menu.removeAttribute('data-align');
+        d.suppressHover = false;
+      });
+    }, 150);
   }
 })();
