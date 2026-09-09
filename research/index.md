@@ -10,10 +10,13 @@ The Neuro-Cognition and Emotion Lab (NCEL) studies how cognitive and emotional p
 
 **How do cognition and emotion interact?**
 We study how attention, memory, decision-making, and emotional regulation influence one another. We are particularly interested in how these interactions shape behavior in situations involving uncertainty, stress, reward, and emotionally significant experiences.
+
 **How do these processes change across development?**
 Our research examines changes in cognition and emotion across the lifespan, with a particular focus on neurodevelopment. We investigate how developing cognitive and emotional systems contribute to resilience as well as vulnerability to psychopathology.
+
 **How does experience shape the brain and behavior?**
 We study how significant experiences, including trauma and stress, can influence memory, emotion, and behavior across individuals and generations. This work includes research on trauma-related experiences and the intergenerational transmission of trauma.
+
 **How can new methods help us understand these processes?**
 We combine behavioral assessments with EEG, fMRI, and computational approaches. We also use natural language processing and other innovative analytic methods to examine cognition and emotion as they unfold in complex, real-world contexts.
 
