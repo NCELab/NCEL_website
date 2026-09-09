@@ -353,66 +353,98 @@ $transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 // ============================================================
 // DROPDOWN MENU
 // ============================================================
+// Pointer reliability notes:
+// - The menu keeps a visual gap below the nav item, but that gap is covered by
+//   an invisible "hover bridge" (::before), so the pointer never crosses a
+//   dead zone on its way from the toggle to the items.
+// - Visibility is driven by `data-expanded` (set by navbar.js, with a close
+//   delay), plus :hover / :focus-within as a no-JS + keyboard fallback.
+// - No `display: none` toggling: display can't be transitioned, which is what
+//   made the menu vanish mid-travel before.
+
+$dropdown-gap: 8px; // visual gap between nav item and menu
+$dropdown-bridge: 14px; // invisible bridge height (must be >= $dropdown-gap)
 
 .dropdown-menu {
-  display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
+  margin-top: $dropdown-gap;
   min-width: 220px;
-  background: rgba(202, 181, 217, 0.06);
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(202, 181, 217, 0.12);
+  background: var(--background);
+  box-shadow: var(--shadow), 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(202, 181, 217, 0.35);
   border-radius: 8px;
   padding: 8px 0;
   z-index: 1000;
   text-align: left;
 
-  // Slide-down animation - Desktop
-  @media (hover: hover) {
+  // ---------- Desktop ----------
+  @media (min-width: $mobile-breakpoint + 1) {
+    display: block;
     opacity: 0;
-    transform: translateY(-10px);
+    visibility: hidden;
+    transform: translateY(-6px);
     pointer-events: none;
-    transition: all $transition-duration $transition-easing;
+    transition:
+      opacity $transition-duration $transition-easing,
+      transform $transition-duration $transition-easing,
+      visibility 0s linear $transition-duration;
 
-    .nav-dropdown:hover & {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+    // Invisible hover bridge over the gap (also overlaps the toggle slightly)
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(-1 * #{$dropdown-bridge});
+      height: $dropdown-bridge;
     }
 
-    // Close animation delay on mouse leave
-    .nav-dropdown:not(:hover) & {
-      transition-delay: 200ms;
+    // `.js-nav` is added by navbar.js: when the script is running it owns the
+    // open/close state (with delays), so a click on the toggle can really
+    // close the menu. :hover / :focus-within remain as a no-JS fallback.
+    .nav-dropdown[data-expanded='true'] &,
+    html:not(.js-nav) .nav-dropdown:hover &,
+    html:not(.js-nav) .nav-dropdown:focus-within & {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+      transition-delay: 0s;
+    }
+
+    // Flipped by navbar.js when the menu would run off the right edge
+    &[data-align='right'] {
+      left: auto;
+      right: 0;
     }
   }
 
-  // Mobile - Accordion style
+  // ---------- Mobile: accordion ----------
   @media (max-width: $mobile-breakpoint) {
     position: static;
+    display: block;
     background: transparent;
     backdrop-filter: none;
     box-shadow: none;
+    border: none;
+    margin-top: 0;
     padding: 0;
     max-height: 0;
     overflow: hidden;
     opacity: 1;
+    visibility: visible;
     transform: none;
     border-radius: 0;
     pointer-events: auto;
     transition: max-height 0.3s $transition-easing;
 
-    .nav-dropdown[data-expanded="true"] & {
-      max-height: 500px; // Enough for all items
+    &::before {
+      display: none;
     }
-  }
 
-  &[aria-expanded="true"] {
-    display: block;
-
-    @media (max-width: $mobile-breakpoint) {
+    .nav-dropdown[data-expanded='true'] & {
       max-height: 500px;
     }
   }
@@ -560,8 +592,8 @@ $transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .dropdown-menu {
-    background: rgba(202, 181, 217, 0.12);
-    border-color: rgba(202, 181, 217, 0.2);
+    background: var(--background);
+    border-color: rgba(202, 181, 217, 0.28);
   }
 
   .dropdown-item {
