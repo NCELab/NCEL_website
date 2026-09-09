@@ -3,7 +3,7 @@ title: CF
 subtitle: Cognitive Functioning Study
 group: memory-trauma
 layout: project
-image: images/cf.jpeg
+image: images/CF.jpg
 tags:
   - Trauma
   - Cognitive Aging
