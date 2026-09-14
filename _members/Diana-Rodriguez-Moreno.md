@@ -1,6 +1,6 @@
 ---
 name: Diana V. Rodriguez Moreno
-image: images/photo.jpg
+image: images/Diana_Headshot.png
 role: pi
 order: 2
 description: Associate Director 
