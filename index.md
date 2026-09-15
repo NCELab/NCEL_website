@@ -55,7 +55,7 @@ hide_header: true
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Curious to learn more about our research and insights? Check out interviews and articles written by our lab director to explore the stories and journey behind our research. 
 
 {%
   include button.html
