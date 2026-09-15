@@ -1,0 +1,163 @@
+---
+---
+
+/* =========================================================
+   Mobile compatibility fixes
+   ---------------------------------------------------------
+   Every rule here is scoped to screens 700px and under.
+   Desktop and tablet rendering is completely unchanged, and
+   the design itself is not altered — this only fixes content
+   that gets clipped, overlapped, or pushed off-screen on
+   phones.
+
+   The zz- prefix makes this file load after all other styles,
+   so none of the existing stylesheets need to be modified.
+   ========================================================= */
+
+$bp-sm: 480px; // small phones
+$bp-md: 700px; // phones (matches the 701px in _scripts/navbar.js)
+
+
+@media (max-width: $bp-md) {
+
+  /* -------------------------------------------------------
+     1. Navigation: the menu currently squeezes into the right
+        half of the header and overlaps the site title.
+        Cause: header.scss sets flex-wrap: nowrap in its mobile
+        block, so the nav can never wrap onto its own row.
+     ------------------------------------------------------- */
+  .site-header {
+    flex-wrap: wrap !important; // required: overrides the existing nowrap
+    background-attachment: scroll; // fixed backgrounds are janky on iOS
+  }
+
+  .site-navigation {
+    flex-basis: 100%; // drop to its own full-width row
+  }
+
+  /* Dropdown submenus overflow the right edge (min-width: 220px) */
+  .dropdown-menu {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* The site title wraps onto four lines; shrink it to fit in two */
+  .logo-image {
+    height: 40px;
+  }
+
+  .site-title {
+    font-size: 0.9rem;
+    line-height: 1.25;
+  }
+
+  /* Menu items are currently too small to tap reliably */
+  .nav-link,
+  .dropdown-item {
+    min-height: 44px;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+  }
+
+
+  /* -------------------------------------------------------
+     2. Body text: only 4-5 words fit per line on a phone, so
+        justified text opens up huge gaps between words.
+     ------------------------------------------------------- */
+  p,
+  li {
+    text-align: left;
+  }
+
+  ul,
+  ol {
+    padding-left: 20px; // 40px is too deep an indent on a phone
+  }
+
+  li {
+    padding-left: 6px;
+  }
+
+
+  /* -------------------------------------------------------
+     3. Horizontal padding: 40px each side leaves only 310px
+        of usable width on a 390px screen.
+     ------------------------------------------------------- */
+  section,
+  section[data-size="wide"] {
+    padding: 28px 16px;
+  }
+
+  footer {
+    padding: 28px 16px;
+  }
+
+  .member-grid-page,
+  .people-page,
+  .project-page {
+    padding: 28px 16px 40px;
+  }
+
+
+  /* -------------------------------------------------------
+     4. Projects page: min-height: 100vh leaves a large empty
+        gap below the cards on a phone.
+     ------------------------------------------------------- */
+  .proj-scroll-page {
+    min-height: auto;
+  }
+
+
+  /* -------------------------------------------------------
+     5. Home hero: iOS counts the collapsible URL bar in 100vh,
+        which clips the bottom of the hero.
+     ------------------------------------------------------- */
+  .ncel-hero {
+    min-height: 100svh;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   6. People cards: the photo is hard-coded to 250px wide, which
+      pushes the name and bio off-screen where they get clipped.
+      (people-card.scss has no mobile styles at all.)
+      Affects Our Team, Collaborators, and the other /people/ pages.
+   --------------------------------------------------------- */
+@media (max-width: 600px) {
+  .people-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .people-card-img-wrap {
+    width: 180px;
+    height: 180px;
+  }
+
+  .people-card-img {
+    width: 170px;
+    height: 170px;
+  }
+
+  .people-card-info {
+    flex: none;
+    width: 100%;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   7. People grid: two columns leave only ~170px each on a small
+      phone, which breaks names across several lines.
+   --------------------------------------------------------- */
+@media (max-width: $bp-sm) {
+  .member-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
