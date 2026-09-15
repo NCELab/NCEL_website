@@ -72,7 +72,7 @@ Curious to learn more about our research and insights? Check out interviews and 
   include feature.html
   image="images/mri.jpeg"
   link="media"
-  title="interviews and articles"
+  title="Media"
   text=text
 %}
 
