@@ -59,8 +59,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {%
   include button.html
-  link="research/#open"
-  text="See our publications"
+  link="media/#open"
+  text="learn more"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -71,8 +71,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 {%
   include feature.html
   image="images/mri.jpeg"
-  link="research"
-  title="Our Research"
+  link="media"
+  title="interviews and articles"
   text=text
 %}
 
