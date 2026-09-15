@@ -176,6 +176,13 @@
     \ Lastly, this paper explores a range of clinician perspectives and psychological\
     \ interventions employed in pre-prohibition psychedelic research to inform future\
     \ research directions and best practice guidelines."
+  bibtex: '@article{Kishon_2024, title={A rapid narrative review of the clinical evolution
+    of psychedelic treatment in clinical trials}, volume={3}, ISSN={2731-4251}, url={http://dx.doi.org/10.1038/S44184-024-00068-9},
+    DOI={10.1038/s44184-024-00068-9}, number={1}, journal={npj Mental Health Research},
+    publisher={Springer Science and Business Media LLC}, author={Kishon, Ronit and
+    Modlin, Nadav Liam and Cycowicz, Yael M. and Mourtada, Hania and Wilson, Tayler
+    and Williamson, Victoria and Cleare, Anthony and Rucker, James}, year={2024},
+    month=July }'
 - id: doi:10.3390/CHILDREN11060671
   title: Characteristics of Adolescents with and without a Family History of Substance
     Use Disorder from a Minority Cohort
