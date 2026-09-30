@@ -1,21 +1,6 @@
-{% comment %}
-  _includes/research-browser.html  (NCEL — updated layout)
-  ─────────────────────────────────────────────────────────
-  Three-section publication browser:
-    1. ★ Featured
-    2. Team Innovations
-    3. All Publications (full timeline)
-
-  • Current Projects section removed entirely.
-  • PI name (Cycowicz) bolded.
-  • NCEL team member names underlined + blue + bold.
-  • Intro note about underline convention shown above toolbar.
-{% endcomment %}
-
-{% comment %} ── Known NCEL team members (first + last variants) ───────── {% endcomment %}
-{% assign ncel_members = "Craft,Rodriguez-Moreno,Griggi,Moran,Cheslack-Postava,Amsel,Kishon,Modlin,Mourtada,Wilson,Williamson,Iemi,He,Wang,Stanford,Cuchacovich,Merrin,Vazquez,McReynolds,Musa,Geronazzo-Alman,Bisaga,Nessler,Friedman,de Chastelaine,Duff,Snodgrass,Rothstein,Figner,Rowny,Luber,Spellman,Lisanby,Hoven,Fabiani,Kazmerski,Tait,Schmuel,Freeman,Sohmer,Bersick,Horton,Sun,Tang,Ryan,Xu,Duarte,Wicks,Djalovski,Tadmor,Bresnahan,Fan,Teichman,Dziobek" | split: "," %}
 
 <div id="pub-browser" role="main" aria-label="Publication browser">
+</div>
 
   <!-- ── Section tabs ─────────────────────────────────────────────────── -->
   <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
@@ -128,12 +113,10 @@ var PUB_DATA = [
     topics:    {{ c.topics    | default: c.tags | default: "" | jsonify }},
     keywords:  {{ c.keywords  | default: "" | jsonify }},
     pdf:       {{ c.pdf       | default: "" | jsonify }},
-    poster:    {{ c.poster    | default: "" | jsonify }},
     materials: {{ c.materials | default: "" | jsonify }},
     code:      {{ c.code      | default: "" | jsonify }},
     bibtex:    {{ c.bibtex    | default: "" | jsonify }},
     preprint:  {{ c.preprint  | default: false | jsonify }},
-    featured:  {{ c.featured  | default: false | jsonify }}
   },
   {% endunless %}
   {% endif %}
@@ -181,8 +164,5 @@ var NCEL_MEMBERS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
 var PI_NAME = "Cycowicz";
-
-var TEAM_FIRST_AUTHORS = [
-  "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
 </script>
