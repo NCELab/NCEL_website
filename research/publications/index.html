@@ -606,16 +606,14 @@
 -->
 
 <div id="pub-browser" role="main" aria-label="Publication browser">
-</div>
 
-<p><!-- ── Section tabs ─────────────────────────────────────────────────── --></p>
-<div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
-    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="all">All Publications</button>
-    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="peer-review">Peer Review</button>
+  <!-- ── Section tabs ─────────────────────────────────────────────────── -->
+  <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
+    <button class="pub-section-tab" role="tab" aria-selected="true" data-section="all">All Publications</button>
   </div>
 
-<p><!-- ── Toolbar (search + sort + year — shared) ──────────────────────── --></p>
-<div class="pub-toolbar" role="search" aria-label="Filter publications">
+  <!-- ── Toolbar (search + sort + year) ───────────────────────────────── -->
+  <div class="pub-toolbar" role="search" aria-label="Filter publications">
     <div class="pub-toolbar__group">
       <label class="pub-toolbar__label" for="pub-search">Search</label>
       <input id="pub-search" class="pub-toolbar__search" type="text" placeholder="title, author, journal, keyword…" autocomplete="off" aria-label="Search publications">
@@ -748,34 +746,19 @@
     </div>
   </div>
 
-<p><!-- ── Status ───────────────────────────────────────────────────────── --></p>
-<div id="pub-status" class="pub-status" aria-live="polite"></div>
+  <!-- ── Status ───────────────────────────────────────────────────────── -->
+  <div id="pub-status" class="pub-status" aria-live="polite"></div>
 
-<p><!-- ── Section panels ───────────────────────────────────────────────── --></p>
-
-<p><!-- 3. All Publications --></p>
-<div id="pub-panel-all" class="pub-section-panel" role="tabpanel">
+  <!-- ── All Publications ─────────────────────────────────────────────── -->
+  <div id="pub-panel-all" class="pub-section-panel is-active" role="tabpanel">
     <div id="pub-list-all" class="pub-list"></div>
   </div>
-<p><!-- Peer Review --></p>
-<div id="pub-panel-peer-review" class="pub-section-panel" role="tabpanel">
-  <div id="pub-list-peer-review" class="pub-list"></div>
+
 </div>
 
-<!-- ── Data injection ────────────────────────────────────────────────── -->
+<!-- ── Data injection ─────────────────────────────────────────────────── -->
 <script>
-
-
-
 var PUB_DATA = [
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   {
@@ -794,17 +777,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -824,17 +798,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -854,17 +819,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -884,17 +840,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -914,17 +861,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -944,17 +882,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -974,17 +903,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1004,17 +924,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1034,17 +945,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1064,17 +966,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1094,17 +987,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1124,17 +1008,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1154,17 +1029,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1184,17 +1050,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1214,17 +1071,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1244,17 +1092,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1274,17 +1113,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1304,17 +1134,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1334,17 +1155,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1364,17 +1176,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1394,17 +1197,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1424,17 +1218,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1454,17 +1239,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1484,17 +1260,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1514,17 +1281,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1544,17 +1302,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1574,17 +1323,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1604,17 +1344,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1634,17 +1365,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1664,17 +1386,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1694,17 +1407,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1724,17 +1428,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1754,17 +1449,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1784,17 +1470,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1814,17 +1491,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1844,17 +1512,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1874,17 +1533,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1904,17 +1554,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1934,17 +1575,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1964,17 +1596,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -1994,17 +1617,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2024,17 +1638,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2054,17 +1659,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2084,17 +1680,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2114,17 +1701,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2144,17 +1722,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2174,17 +1743,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2204,17 +1764,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2234,17 +1785,8 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -2264,278 +1806,17 @@ var PUB_DATA = [
     materials: "",
     code:      "",
     bibtex:    "",
-    preprint:  false,
+    preprint:  false
   },
   
   
-  
   null].filter(Boolean);
 
-var PEER_REVIEW_DATA = [
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  null].filter(Boolean);
-
-
-
-/* ── NCEL member & PI name lists ── */
+/* ── NCEL member & PI name lists (used for name highlighting) ── */
 var NCEL_MEMBERS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
 var PI_NAME = "Cycowicz";
-];
 </script>
   </section>
 
