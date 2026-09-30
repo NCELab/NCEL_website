@@ -3,7 +3,6 @@ title: Media
 nav:
   order: 4
   tooltip: News and articles
-  external_url: https://www.psychologytoday.com/us/blog/the-stories-our-brains-tell-us/202603/when-everything-becomes-trauma
 ---
 <script>
 function sortArticles() {
