@@ -1,0 +1,21 @@
+name: on-pull-request
+run-name: on pull request activity
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  # NOTE: publications are maintained by hand in _data/citations.yaml.
+  # The automatic citation pipeline (_cite) has been removed, so there is
+  # no update-citations job here any more — we go straight to the preview.
+  build-preview:
+    uses: ./.github/workflows/build-preview.yaml
