@@ -9,8 +9,7 @@
  * (research/presentations/) — see _scripts/presentations.js.
  *
  * Name styling:
- *   PI (Cycowicz)   → <strong>
- *   NCEL members    → <u><strong class="pub-author-member">
+ *   PI + NCEL members → <strong>
  */
 
 (function () {
@@ -62,7 +61,7 @@
         return last === m || name.indexOf(m) !== -1;
       });
       if (isMember) {
-        return '<u><strong class="pub-author-member">' + esc(name) + '</strong></u>';
+        return '<strong>' + esc(name) + '</strong>';
       }
       return esc(name);
     });
