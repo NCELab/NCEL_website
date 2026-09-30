@@ -1,9 +1,0 @@
----
-name: Sanya Vadhavkar
-image: images/Sanya_headshot.jpg
-role: intern
-order: 4
-description: Intern
-affiliation: Columbia University / New York State Psychiatric Institute
----
-Sanya is a second-year M.A. student in Clinical Psychology at Teachers College, Columbia University. She is interested in contributing to more holistic approaches to healthcare and hopes to work at the intersection of neuroscience and psychology. As she continues exploring her research interests, she is particularly drawn to understanding how brain and behavioral science can inform more integrated approaches to mental health and well-being. 
