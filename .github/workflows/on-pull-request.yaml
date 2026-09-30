@@ -14,10 +14,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-citations:
-    uses: ./.github/workflows/update-citations.yaml
-    secrets: inherit
-
+  # NOTE: publications are maintained by hand in _data/citations.yaml.
+  # The automatic citation pipeline (_cite) has been removed, so there is
+  # no update-citations job here any more — we go straight to the preview.
   build-preview:
-    needs: update-citations
     uses: ./.github/workflows/build-preview.yaml
