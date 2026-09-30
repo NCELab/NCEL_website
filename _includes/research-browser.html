@@ -5,7 +5,6 @@
   <!-- ── Section tabs ─────────────────────────────────────────────────── -->
   <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
     <button class="pub-section-tab"           role="tab" aria-selected="false" data-section="all"     >All Publications</button>
-    <button class="pub-section-tab" role="tab" aria-selected="false" data-section="peer-review">Peer Review</button>
   </div>
 
   <!-- ── Toolbar (search + sort + year — shared) ──────────────────────── -->
@@ -66,10 +65,6 @@
   <div id="pub-panel-all" class="pub-section-panel" role="tabpanel">
     <div id="pub-list-all" class="pub-list"></div>
   </div>
-  <!-- Peer Review -->
-<div id="pub-panel-peer-review" class="pub-section-panel" role="tabpanel">
-  <div id="pub-list-peer-review" class="pub-list"></div>
-</div>
 
 <!-- ── Data injection ────────────────────────────────────────────────── -->
 <script>
@@ -122,20 +117,7 @@ var PUB_DATA = [
   {% endif %}
   {% endfor %}
   null].filter(Boolean);
-
-var PEER_REVIEW_DATA = [
-  {% comment %} Entries from _data/peer_review.yml {% endcomment %}
-  {% for c in site.data.peer_review %}
-  {
-    title:     {{ c.title     | default: "" | jsonify }},
-    authors:   {{ c.authors   | default: "" | jsonify }},
-    publisher: {{ c.publisher | default: "" | jsonify }},
-    date:      {{ c.date      | default: "" | jsonify }},
-    year:      {{ c.date | slice: 0, 4 | jsonify }},
-    doi:       {{ c.doi       | default: "" | jsonify }},
-    abstract:  {{ c.abstract  | default: "" | jsonify }},
-    pdf:       {{ c.pdf       | default: "" | jsonify }}
-  },
+  
   {% endfor %}
   {% comment %} Also include citations.yaml entries marked Under Review / In Press {% endcomment %}
   {% for c in site.data.citations %}
