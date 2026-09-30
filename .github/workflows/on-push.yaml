@@ -14,12 +14,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-citations:
-    # skip first run because nothing enabled or setup yet
-    if: github.run_number != 1
-    uses: ./.github/workflows/update-citations.yaml
-    secrets: inherit
-
+  # NOTE: publications are maintained by hand in _data/citations.yaml.
+  # The automatic citation pipeline (_cite) has been removed, so there is
+  # no update-citations job here any more — we go straight to building.
   build-site:
-    needs: update-citations
     uses: ./.github/workflows/build-site.yaml
