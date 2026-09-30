@@ -25,11 +25,6 @@
   text-align: left;
 }
 
-.pub-member-legend {
-  color: var(--primary);
-  text-decoration: underline;
-  font-weight: var(--semi-bold);
-}
 
 /* ── Section tabs (top-level) ───────────────────────────────────────────── */
 .pub-section-tabs {
@@ -291,14 +286,6 @@
 
 /* PI name: bold only */
 .pub-card__authors strong { font-weight: var(--bold); }
-
-/* NCEL member: underline + primary color + bold */
-.pub-author-member {
-  color: var(--primary);
-  font-weight: var(--bold);
-}
-
-.pub-card__authors u { text-decoration-color: var(--primary); }
 
 /* Meta */
 .pub-card__meta {
