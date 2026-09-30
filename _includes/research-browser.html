@@ -1,13 +1,25 @@
+{% comment %}
+  _includes/research-browser.html  (NCEL)
+  ─────────────────────────────────────────────────────────
+  Publication browser: search + sort + year filter over the
+  hand-maintained list in _data/citations.yaml.
+
+  NOTE: citations.yaml is maintained by hand and already contains
+  only published journal articles, so nothing is filtered out here —
+  every entry in that file shows up on the page.
+
+  Rendering logic lives in _scripts/publications.js, which reads the
+  PUB_DATA / NCEL_MEMBERS / PI_NAME globals defined at the bottom.
+{% endcomment %}
 
 <div id="pub-browser" role="main" aria-label="Publication browser">
-</div>
 
   <!-- ── Section tabs ─────────────────────────────────────────────────── -->
   <div class="pub-section-tabs" role="tablist" aria-label="Publication sections">
-    <button class="pub-section-tab"           role="tab" aria-selected="false" data-section="all"     >All Publications</button>
+    <button class="pub-section-tab" role="tab" aria-selected="true" data-section="all">All Publications</button>
   </div>
 
-  <!-- ── Toolbar (search + sort + year — shared) ──────────────────────── -->
+  <!-- ── Toolbar (search + sort + year) ───────────────────────────────── -->
   <div class="pub-toolbar" role="search" aria-label="Filter publications">
     <div class="pub-toolbar__group">
       <label class="pub-toolbar__label" for="pub-search">Search</label>
@@ -58,43 +70,18 @@
   <!-- ── Status ───────────────────────────────────────────────────────── -->
   <div id="pub-status" class="pub-status" aria-live="polite"></div>
 
-  <!-- ── Section panels ───────────────────────────────────────────────── -->
-
-
-  <!-- 3. All Publications -->
-  <div id="pub-panel-all" class="pub-section-panel" role="tabpanel">
+  <!-- ── All Publications ─────────────────────────────────────────────── -->
+  <div id="pub-panel-all" class="pub-section-panel is-active" role="tabpanel">
     <div id="pub-list-all" class="pub-list"></div>
   </div>
 
-<!-- ── Data injection ────────────────────────────────────────────────── -->
+</div>
+
+<!-- ── Data injection ─────────────────────────────────────────────────── -->
 <script>
-
-{% comment %}
-  Categorise every citation so we can route it to the right section.
-  Rules (checked in order):
-    1. publisher contains "under review / in press / submitted"  → peer_review only
-    2. publisher contains "Abstract" or known conference society  → excluded from all tabs
-    3. publisher is a known non-academic outlet (Psychology Today…) → excluded from all tabs
-    4. everything else → journal (shown in All Publications)
-{% endcomment %}
-
 var PUB_DATA = [
   {% for c in site.data.citations %}
-  {% if c.title and c.title != "Web of Science" %}
-  {% assign pub_lc = c.publisher | downcase %}
-  {% assign is_review = false %}
-  {% assign is_conf   = false %}
-  {% assign is_blog   = false %}
-  {% if pub_lc contains "under review" or pub_lc contains "in press" or pub_lc contains "submitted" %}
-    {% assign is_review = true %}
-  {% endif %}
-  {% if pub_lc contains "abstract" or pub_lc contains "annual meeting" or pub_lc contains "conference" or pub_lc contains "society of" or pub_lc contains "society for" or pub_lc contains "international society" or pub_lc contains "symposium" %}
-    {% assign is_conf = true %}
-  {% endif %}
-  {% if pub_lc contains "psychology today" or pub_lc contains "blog" or pub_lc contains "magazine" or pub_lc contains "newspaper" %}
-    {% assign is_blog = true %}
-  {% endif %}
-  {% unless is_review or is_conf or is_blog %}
+  {% if c.title %}
   {
     title:     {{ c.title     | default: "" | jsonify }},
     authors:   {{ c.authors   | join: ", " | jsonify }},
@@ -111,40 +98,15 @@ var PUB_DATA = [
     materials: {{ c.materials | default: "" | jsonify }},
     code:      {{ c.code      | default: "" | jsonify }},
     bibtex:    {{ c.bibtex    | default: "" | jsonify }},
-    preprint:  {{ c.preprint  | default: false | jsonify }},
+    preprint:  {{ c.preprint  | default: false | jsonify }}
   },
-  {% endunless %}
-  {% endif %}
-  {% endfor %}
-  null].filter(Boolean);
-  
-  {% endfor %}
-  {% comment %} Also include citations.yaml entries marked Under Review / In Press {% endcomment %}
-  {% for c in site.data.citations %}
-  {% if c.title and c.title != "Web of Science" %}
-  {% assign pub_lc = c.publisher | downcase %}
-  {% if pub_lc contains "under review" or pub_lc contains "in press" or pub_lc contains "submitted" %}
-  {
-    title:     {{ c.title     | default: "" | jsonify }},
-    authors:   {{ c.authors   | join: ", " | jsonify }},
-    publisher: {{ c.publisher | default: "" | jsonify }},
-    date:      {{ c.date      | default: "" | jsonify }},
-    year:      {{ c.date | slice: 0, 4 | jsonify }},
-    doi:       {{ c.doi       | default: "" | jsonify }},
-    abstract:  {{ c.abstract  | default: "" | jsonify }},
-    pdf:       {{ c.pdf       | default: "" | jsonify }}
-  },
-  {% endif %}
   {% endif %}
   {% endfor %}
   null].filter(Boolean);
 
-
-
-/* ── NCEL member & PI name lists ── */
+/* ── NCEL member & PI name lists (used for name highlighting) ── */
 var NCEL_MEMBERS = [
   "Craft", "Rodriguez-Moreno", "Cheslack-Postava"
 ];
 var PI_NAME = "Cycowicz";
-];
 </script>
