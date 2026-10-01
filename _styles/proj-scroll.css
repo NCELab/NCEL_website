@@ -9,15 +9,13 @@
 .proj-scroll-page {
   --proj-accent: #7a5b9a; /* text / borders on light cards */
   --proj-accent-light: #c8b5d7; /* logo lavender — used on the dark backdrop */
+  --proj-card-bg: #f8fafc;
 }
 
 [data-dark=true] .proj-scroll-page {
   --proj-accent: #c8b5d7; /* dark cards → use the lighter lavender */
 }
 
-/* The whole Projects section (heading + strip) sits on a soft, blurred
-   pink version of the site background — runs seamlessly from the header
-   down to the footer, no white bands. */
 body main > section:has(.proj-scroll-page) {
   position: relative;
   isolation: isolate;
