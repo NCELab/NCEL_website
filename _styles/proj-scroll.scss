@@ -33,11 +33,10 @@ body main > section:has(.proj-scroll-page)::before {
   position: absolute;
   inset: -80px;                      /* oversize so the blur has no hard edges */
   z-index: -1;
-  background:
-    linear-gradient(rgba(246, 214, 205, 0.35), rgba(240, 214, 222, 0.45)),
-    url("../images/background.jpeg") center / cover no-repeat;
-  filter: blur(36px) saturate(1.15);
-  opacity: 1;
+   background:
+  linear-gradient(rgba(232, 238, 230, 1), rgba(228, 234, 226, 1)),
+  url("../images/background.jpeg") center / cover no-repeat;
+   background-blend-mode: color, normal;
 }
 [data-dark="true"] body main > section:has(.proj-scroll-page) {
   background: #1e1824;
