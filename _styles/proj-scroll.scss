@@ -19,19 +19,32 @@ $proj-gutter: unquote("max(16px, calc(50vw - 500px))");
   --proj-accent: #c8b5d7;        /* dark cards → use the lighter lavender */
 }
 
-/* The whole Projects section (heading + strip) sits on the site's brain-wave
-   image with a light purple veil, so it runs seamlessly from the header down
-   to the footer — no white bands. */
+/* The whole Projects section (heading + strip) sits on a soft, blurred
+   pink version of the site background — runs seamlessly from the header
+   down to the footer, no white bands. */
 body main > section:has(.proj-scroll-page) {
-  background:
-    linear-gradient(rgba(74, 52, 96, 0.16), rgba(74, 52, 96, 0.26)),
-    url("../images/background.jpeg") center / cover no-repeat;
-  background-attachment: scroll;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #f3e3d9;               /* fallback while the image loads */
 }
-[data-dark="true"] body main > section:has(.proj-scroll-page),
-[data-dark="true"] main > section:has(.proj-scroll-page) {
+body main > section:has(.proj-scroll-page)::before {
+  content: "";
+  position: absolute;
+  inset: -80px;                      /* oversize so the blur has no hard edges */
+  z-index: -1;
   background:
-    linear-gradient(rgba(20, 14, 28, 0.62), rgba(20, 14, 28, 0.72)),
+    linear-gradient(rgba(246, 214, 205, 0.35), rgba(240, 214, 222, 0.45)),
+    url("../images/background.jpeg") center / cover no-repeat;
+  filter: blur(36px) saturate(1.15);
+  opacity: 1;
+}
+[data-dark="true"] body main > section:has(.proj-scroll-page) {
+  background: #1e1824;
+}
+[data-dark="true"] body main > section:has(.proj-scroll-page)::before {
+  background:
+    linear-gradient(rgba(20, 14, 28, 0.66), rgba(20, 14, 28, 0.74)),
     url("../images/background.jpeg") center / cover no-repeat;
 }
 
