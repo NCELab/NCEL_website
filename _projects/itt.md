@@ -3,7 +3,7 @@ title: ITT
 subtitle: Intergenerational Transmission of Trauma 
 group: memory-trauma
 layout: project
-image: images/ITT.jpg
+image: images/Across Generations_ Trauma and Resilience.png
 tags:
   - Trauma
   - Intergenerational Transmission
