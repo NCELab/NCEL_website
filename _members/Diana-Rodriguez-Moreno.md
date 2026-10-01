@@ -6,7 +6,7 @@ order: 2
 description: Associate Director 
 affiliation: Columbia University / New York State Psychiatric Institute
 link:
-  google-scholar: https://share.google/9htppBgaYP1nBGG0C
+  google-scholar: https://scholar.google.com/citations?user=h3bWmHAAAAAJ&hl=en
 ---
 Dr. Rodriguez-Moreno obtained her degree in Biology from the University of Buenos Aires, Argentina, and later her Ph.D. in Neurosciences at Weill Cornell Graduate School of Medical Sciences. 
 
