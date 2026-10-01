@@ -6,5 +6,5 @@ order: 3
 description: Collaborator
 affiliation: Columbia University / New York State Psychiatric Institute
 links:
- learn-more: https://www.columbiapsychiatry.org/profile/ronit-kishon-phd#overview
+ home-page: https://www.columbiapsychiatry.org/profile/ronit-kishon-phd#overview
 ---
