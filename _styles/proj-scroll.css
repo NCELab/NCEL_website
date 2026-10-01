@@ -1,171 +1,176 @@
 @charset "UTF-8";
 /* ═══════════════════════════════════════════
-   Horizontal scrolling project gallery
-   Inspired by Over-Stimulated® editorial strip
+   Horizontal scrolling project strip — text cards
+   Native horizontal scroll + scroll-snap:
+   trackpad / touch swipe / mouse drag / arrow buttons / keyboard
    ═══════════════════════════════════════════ */
+/* left edge of the site's 1000px content column (matches section.scss) */
+/* let the strip run edge-to-edge without a horizontal page scrollbar */
+main:has(.proj-scroll-page) {
+  overflow-x: clip;
+}
+
 .proj-scroll-page {
-  min-height: 100vh;
   background: var(--background);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-
-/* ── Header ── */
-.proj-scroll-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 32px 48px 20px;
-  border-bottom: 1px solid var(--light-gray);
-}
-
-.proj-scroll-header__eyebrow {
-  font-family: var(--heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
-
-.proj-scroll-header__title {
-  font-family: var(--heading);
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text);
-  font-weight: 600;
-  margin: 0;
-  border: none;
-  text-align: right;
+  padding: 24px 0 8px;
+  /* break out of the narrow content column → full browser width */
+  margin-inline: calc(50% - 50vw);
+  text-align: left;
 }
 
 /* ── Scrolling track ── */
 .proj-scroll-track-wrapper {
-  flex: 1;
   position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  padding: 60px 0 40px;
+  /* soft fade on the right edge hints there is more to scroll */
+}
+.proj-scroll-track-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 16px;
+  width: 48px;
+  pointer-events: none;
+  background: linear-gradient(to right, transparent, var(--background));
+  transition: opacity 0.2s;
+}
+.proj-scroll-track-wrapper.is-end::after {
+  opacity: 0;
 }
 
 .proj-scroll-track {
   display: flex;
+  align-items: stretch;
   gap: 24px;
-  padding: 0 48px;
-  will-change: transform;
-  align-items: center;
+  padding: 12px max(16px, calc(50vw - 500px)) 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 max(16px, calc(50vw - 500px));
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   cursor: grab;
-  transition: none;
+  outline: none;
+  /* thin visible scrollbar so it's obvious the strip scrolls */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--light-gray);
 }
-
-.proj-scroll-track:active {
+.proj-scroll-track::-webkit-scrollbar {
+  height: 6px;
+}
+.proj-scroll-track::-webkit-scrollbar-track {
+  background: var(--light-gray);
+  border-radius: 999px;
+  margin: 0 max(16px, calc(50vw - 500px));
+}
+.proj-scroll-track::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 999px;
+}
+.proj-scroll-track.is-dragging {
   cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+  user-select: none;
+}
+.proj-scroll-track:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--primary);
+  border-radius: 8px;
 }
 
-/* ── Cards ── */
+/* ── Text cards ── */
 .proj-scroll-card {
-  position: relative;
-  flex-shrink: 0;
-  border-radius: 6px;
-  overflow: hidden;
-  text-decoration: none;
-  color: #fff;
+  flex: 0 0 clamp(320px, 40vw, 520px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 380px;
+  padding: 32px 32px 24px;
+  border: 1px solid var(--light-gray);
+  border-top: 4px solid var(--primary);
+  border-radius: 8px;
   background: var(--background-alt);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
-  /* Staggered heights for editorial feel */
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.proj-scroll-card:nth-child(odd) {
-  width: 280px;
-  height: 380px;
-  margin-top: -30px;
-}
-.proj-scroll-card:nth-child(even) {
-  width: 320px;
-  height: 440px;
-  margin-top: 30px;
-}
-.proj-scroll-card:nth-child(3n) {
-  width: 260px;
-  height: 360px;
-  margin-top: 0;
-}
-.proj-scroll-card:nth-child(4n) {
-  width: 340px;
-  height: 460px;
-  margin-top: -20px;
+.proj-scroll-card:hover, .proj-scroll-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: var(--primary);
+  text-decoration: none;
 }
 
-.proj-scroll-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-}
-
-/* ── Card image ── */
-.proj-scroll-card__img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.proj-scroll-card:hover .proj-scroll-card__img {
-  transform: scale(1.06);
-}
-
-.proj-scroll-card__img--fallback {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-}
-.proj-scroll-card__img--fallback span {
+.proj-scroll-card__group {
   font-family: var(--heading);
-  font-size: 2rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.proj-scroll-card__acronym {
+  font-family: var(--heading);
+  font-size: 2.2rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: -0.02em;
-}
-
-/* ── Dark gradient overlay ── */
-.proj-scroll-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.55) 100%);
-  z-index: 1;
-}
-
-/* ── Text info ── */
-.proj-scroll-card__info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 20px 18px 18px;
-  z-index: 2;
-}
-
-.proj-scroll-card__index {
-  display: block;
-  font-family: var(--heading);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 6px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  color: var(--primary);
 }
 
 .proj-scroll-card__subtitle {
-  font-family: var(--heading);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  font-family: var(--heading);
+  font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.35;
+  color: var(--text);
+}
+
+.proj-scroll-card__summary {
+  margin: 4px 0 0;
+  text-align: left;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+.proj-scroll-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+}
+.proj-scroll-card__tags li {
+  margin: 0;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--light-gray);
+  background: var(--background);
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.proj-scroll-card__link {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--light-gray);
+  font-family: var(--heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
 }
 
 /* ── Nav buttons ── */
@@ -173,66 +178,72 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px 48px 36px;
+  padding: 8px max(16px, calc(50vw - 500px)) 32px;
   justify-content: flex-end;
 }
 
 .proj-scroll-nav button {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   border: 1px solid var(--light-gray);
   background: var(--background);
   color: var(--text);
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.18s, border-color 0.18s;
+  transition: background 0.18s, border-color 0.18s, opacity 0.18s;
 }
-
-.proj-scroll-nav button:hover {
+.proj-scroll-nav button:hover:not(:disabled) {
   background: var(--primary);
   color: #fff;
   border-color: var(--primary);
 }
+.proj-scroll-nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
 
 #proj-counter {
   font-family: var(--heading);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.1em;
   color: var(--gray);
-}
-
-/* Scale is now driven by JS — only keep hover lift on top */
-.proj-scroll-card:hover {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  min-width: 3.5em;
+  text-align: center;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .proj-scroll-header {
-    padding: 20px 24px 16px;
-  }
   .proj-scroll-track {
-    padding: 0 24px;
     gap: 14px;
+    padding: 8px 16px 20px;
+    scroll-padding: 0 16px;
+  }
+  .proj-scroll-track::-webkit-scrollbar-track {
+    margin: 0 16px;
+  }
+  .proj-scroll-card {
+    flex-basis: 86vw; /* one card fills the screen, next one peeks in */
+    min-height: 0;
+    padding: 24px 22px 20px;
+  }
+  .proj-scroll-card__acronym {
+    font-size: 1.8rem;
   }
   .proj-scroll-nav {
-    padding: 16px 24px 28px;
-  }
-  .proj-scroll-card:nth-child(odd), .proj-scroll-card:nth-child(even), .proj-scroll-card:nth-child(3n), .proj-scroll-card:nth-child(4n) {
-    width: 220px;
-    height: 300px;
-    margin-top: 0;
+    padding: 4px 16px 24px;
+    justify-content: center;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .proj-scroll-track,
-  .proj-scroll-card,
-  .proj-scroll-card__img {
-    transition: none !important;
+  .proj-scroll-track {
+    scroll-behavior: auto;
+  }
+  .proj-scroll-card {
+    transition: none;
   }
 }
 
