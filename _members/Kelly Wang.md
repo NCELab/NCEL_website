@@ -1,6 +1,6 @@
 ---
 name: Kelly Wang
-image: images/Kelly_headshot.jpg
+image: images/kelly_headshot.jpg
 role: intern
 order: 1
 description: intern
