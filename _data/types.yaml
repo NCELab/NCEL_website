@@ -77,6 +77,11 @@ search:
 
 # social media
 
+google-scholar:
+  icon: fa-brands fa-google-scholar
+  text: Google Scholar
+  tooltip: Google Scholar
+  
 github:
   icon: fa-brands fa-github
   text: GitHub
