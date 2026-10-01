@@ -6,8 +6,8 @@ order: 1
 description: Lab Director
 affiliation: Columbia University / New York State Psychiatric Institute
 links:
-  learn-more: https://www.columbiapsychiatry.org/profile/yael-cycowicz-phd
-  google-scholar: https://scholar.google.com/citations?user=oD4RH1wAAAAJ
+  home-page: https://www.columbiapsychiatry.org/profile/yael-cycowicz-phd
+  google-scholar: https://scholar.google.com/citations?user=oD4RH1wAAAAJ&hl=en
 ---
 Dr. Cycowicz is a cognitive neuroscientist whose research examines how brain systems support cognition, emotion, and behavior across development and the lifespan. She combines neurophysiological methods, including MEG, EEG, and fMRI, with innovative experimental paradigms and computational approaches to investigate the neural mechanisms underlying attention, memory, decision-making, and emotional regulation.
 
