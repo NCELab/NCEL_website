@@ -1,271 +1,121 @@
----
----
+/**
+ * proj-scroll.js  v4 — text-card strip
+ * Uses the browser's native horizontal scroll (+ CSS scroll-snap), so
+ * trackpad, touch swipe and keyboard all work out of the box.
+ * This script adds: arrow buttons, card counter, mouse drag on desktop,
+ * and vertical mouse-wheel → horizontal scroll while hovering the strip.
+ */
 
-/* ═══════════════════════════════════════════
-   Horizontal scrolling project strip — text cards
-   Native horizontal scroll + scroll-snap:
-   trackpad / touch swipe / mouse drag / arrow buttons / keyboard
-   ═══════════════════════════════════════════ */
+(function () {
+  'use strict';
 
-/* left edge of the site's 1000px content column (matches section.scss) */
-$proj-gutter: unquote("max(16px, calc(50vw - 500px))");
+  function init() {
+    var track   = document.getElementById('proj-track');
+    if (!track) return;
+    var wrapper = track.closest('.proj-scroll-track-wrapper');
+    var prevBtn = document.getElementById('proj-prev');
+    var nextBtn = document.getElementById('proj-next');
+    var counter = document.getElementById('proj-counter');
+    var cards   = Array.from(track.querySelectorAll('.proj-scroll-card'));
+    if (!cards.length) return;
 
-/* NCEL logo purple: light lavender from the logo + a deeper shade for readable text */
-.proj-scroll-page {
-  --proj-accent: #7a5b9a;        /* text / borders on light cards */
-  --proj-accent-light: #c8b5d7;  /* logo lavender — used on the dark backdrop */
-}
-[data-dark="true"] .proj-scroll-page {
-  --proj-accent: #c8b5d7;        /* dark cards → use the lighter lavender */
-}
+    function maxScroll() { return track.scrollWidth - track.clientWidth; }
 
-/* The whole Projects section (heading + strip) sits on the site's brain-wave
-   image with a light purple veil, so it runs seamlessly from the header down
-   to the footer — no white bands. */
-body main > section:has(.proj-scroll-page) {
-  background:
-    linear-gradient(rgba(74, 52, 96, 0.16), rgba(74, 52, 96, 0.26)),
-    url("../images/background.jpeg") center / cover no-repeat;
-  background-attachment: scroll;
-}
-[data-dark="true"] body main > section:has(.proj-scroll-page),
-[data-dark="true"] main > section:has(.proj-scroll-page) {
-  background:
-    linear-gradient(rgba(20, 14, 28, 0.62), rgba(20, 14, 28, 0.72)),
-    url("../images/background.jpeg") center / cover no-repeat;
-}
+    function step() {
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+      return cards[0].offsetWidth + gap;
+    }
 
-/* let the strip run edge-to-edge without a horizontal page scrollbar */
-main:has(.proj-scroll-page) {
-  overflow-x: clip;
-}
+    /* index of the first card that is mostly in view */
+    function currentIndex() {
+      var left = track.scrollLeft;
+      if (left >= maxScroll() - 2) return cards.length - 1;
+      return Math.min(cards.length - 1, Math.round(left / step()));
+    }
 
-.proj-scroll-page {
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  padding: 16px 0 0;
-  /* break out of the narrow content column → full browser width */
-  margin-inline: calc(50% - 50vw);
-  text-align: left;
-}
+    function update() {
+      var left = track.scrollLeft;
+      var atStart = left <= 2;
+      var atEnd = left >= maxScroll() - 2;
+      if (counter) counter.textContent = (currentIndex() + 1) + ' / ' + cards.length;
+      if (prevBtn) prevBtn.disabled = atStart;
+      if (nextBtn) nextBtn.disabled = atEnd;
+      if (wrapper) wrapper.classList.toggle('is-end', atEnd);
+    }
 
-/* ── Scrolling track ── */
-.proj-scroll-track-wrapper {
-  position: relative;
-}
+    function scrollByCard(dir) {
+      track.scrollBy({ left: dir * step(), behavior: 'smooth' });
+    }
 
-.proj-scroll-track {
-  display: flex;
-  align-items: stretch;
-  gap: 24px;
-  padding: 12px $proj-gutter 24px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-padding: 0 $proj-gutter;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
-  cursor: grab;
-  outline: none;
+    if (prevBtn) prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { scrollByCard(1); });
 
-  /* thin visible scrollbar so it's obvious the strip scrolls */
-  scrollbar-width: thin;
-  scrollbar-color: var(--proj-accent) rgba(255, 255, 255, 0.55);
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollByCard(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollByCard(-1); }
+    });
 
-  &::-webkit-scrollbar { height: 6px; }
-  &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
-    margin: 0 $proj-gutter;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: var(--proj-accent);
-    border-radius: 999px;
-  }
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', update);
 
-  &.is-dragging {
-    cursor: grabbing;
-    scroll-snap-type: none;
-    scroll-behavior: auto;
-    user-select: none;
-  }
+    /* vertical mouse wheel scrolls the strip sideways (until it reaches an end) */
+    track.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // trackpad sideways swipe: leave native
+      var left = track.scrollLeft;
+      if ((e.deltaY < 0 && left <= 0) || (e.deltaY > 0 && left >= maxScroll() - 1)) return;
+      e.preventDefault();
+      track.scrollBy({ left: e.deltaY, behavior: 'auto' });
+    }, { passive: false });
 
-  &:focus-visible {
-    box-shadow: inset 0 0 0 2px var(--proj-accent);
-    border-radius: 8px;
-  }
-}
+    /* mouse drag (touch devices already swipe natively) */
+    var startX = null, startLeft = 0, moved = false;
 
-/* ── Text cards ── */
-.proj-scroll-card {
-  flex: 0 0 clamp(320px, 40vw, 520px);
-  scroll-snap-align: start;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 380px;
-  padding: 32px 32px 24px;
-  border: 1px solid var(--light-gray);
-  border-top: 4px solid var(--proj-accent);
-  border-radius: 8px;
-  background: var(--background-alt);
-  color: var(--text);
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(60, 40, 80, 0.16);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      startX = e.clientX;
+      startLeft = track.scrollLeft;
+      moved = false;
+    });
 
-  &:hover,
-  &:focus-visible {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 36px rgba(60, 40, 80, 0.26);
-    border-color: var(--proj-accent);
-    text-decoration: none;
-  }
-}
+    window.addEventListener('pointermove', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      if (moved) track.scrollLeft = startLeft - dx;
+    });
 
-.proj-scroll-card__group {
-  font-family: var(--heading);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-}
+    window.addEventListener('pointerup', function () {
+      if (startX === null) return;
+      startX = null;
+      if (moved) {
+        track.classList.remove('is-dragging');
+        // snap to the nearest card after dragging
+        track.scrollTo({ left: currentIndex() * step(), behavior: 'smooth' });
+      }
+    });
 
-.proj-scroll-card__acronym {
-  font-family: var(--heading);
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  color: var(--proj-accent);
-}
+    /* a drag should not also open the card link */
+    track.addEventListener('click', function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
 
-.proj-scroll-card__subtitle {
-  margin: 0;
-  font-family: var(--heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--text);
-}
+    /* prevent native link/image ghost-drag */
+    track.addEventListener('dragstart', function (e) { e.preventDefault(); });
 
-.proj-scroll-card__summary {
-  margin: 4px 0 0;
-  text-align: left;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--text);
-  opacity: 0.8;
-}
-
-.proj-scroll-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-
-  li {
-    margin: 0;
-    padding: 3px 10px;
-    font-size: 0.7rem;
-    border-radius: 999px;
-    border: 1px solid var(--light-gray);
-    background: var(--background);
-    color: var(--gray);
-    white-space: nowrap;
-  }
-}
-
-.proj-scroll-card__link {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--light-gray);
-  font-family: var(--heading);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--proj-accent);
-}
-
-/* ── Nav buttons ── */
-.proj-scroll-nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 8px $proj-gutter 32px;
-  justify-content: flex-end;
-}
-
-.proj-scroll-nav button {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid var(--proj-accent-light);
-  background: rgba(255, 255, 255, 0.75);
-  color: var(--proj-accent);
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.18s, border-color 0.18s, opacity 0.18s;
-
-  &:hover:not(:disabled) {
-    background: var(--proj-accent);
-    color: #fff;
-    border-color: var(--proj-accent);
+    update();
   }
 
-  &:disabled {
-    opacity: 0.35;
-    cursor: default;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
-}
-
-[data-dark="true"] .proj-scroll-nav button {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-#proj-counter {
-  font-family: var(--heading);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  color: var(--proj-accent);
-  min-width: 3.5em;
-  text-align: center;
-}
-
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .proj-scroll-track {
-    gap: 14px;
-    padding: 8px 16px 20px;
-    scroll-padding: 0 16px;
-
-    &::-webkit-scrollbar-track { margin: 0 16px; }
-  }
-
-  .proj-scroll-card {
-    flex-basis: 86vw;       /* one card fills the screen, next one peeks in */
-    min-height: 0;
-    padding: 24px 22px 20px;
-  }
-
-  .proj-scroll-card__acronym { font-size: 1.8rem; }
-
-  .proj-scroll-nav {
-    padding: 4px 16px 24px;
-    justify-content: center;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .proj-scroll-track { scroll-behavior: auto; }
-  .proj-scroll-card { transition: none; }
-}
+}());
