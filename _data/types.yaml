@@ -50,8 +50,8 @@ learn-more:
   
 home-page:
   icon: fa-solid fa-house
-  text: Columbia Profile
-  tooltip: Columbia Psychiatry Profile
+  text: Home Page
+  tooltip: Home Page
 
 email:
   icon: fa-solid fa-envelope
