@@ -6,5 +6,5 @@ order: 2
 description: Collaborator
 affiliation: Columbia University / New York State Psychiatric Institute
 links:
- learn-more: https://www.columbiapsychiatry.org/profile/keely-cheslack-postava-phd
+ home-page: https://www.columbiapsychiatry.org/profile/keely-cheslack-postava-phd
 ---
