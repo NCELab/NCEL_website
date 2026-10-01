@@ -3,7 +3,7 @@ title: EMLAS
 subtitle: Episodic Memory and Life Stories Study
 group: memory-trauma
 layout: project
-image: images/emlas.jpg
+image: images/EMLAS_ Memories Across Time.png
 tags:
   - Trauma
   - Autobiographical Memory
