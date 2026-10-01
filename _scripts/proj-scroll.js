@@ -1,203 +1,116 @@
 /**
- * proj-scroll.js  v3
- * – Mouse hover: left 40% = scroll left, right 40% = scroll right, centre 20% = stop
- * – Speed accelerates toward edge (quadratic ease)
- * – Centre card is largest; cards shrink symmetrically away from centre
- * – Drag / touch / arrow button support
+ * proj-scroll.js  v4 — text-card strip
+ * Uses the browser's native horizontal scroll (+ CSS scroll-snap), so
+ * trackpad, touch swipe and keyboard all work out of the box.
+ * This script adds: arrow buttons, card counter, mouse drag on desktop,
+ * and vertical mouse-wheel → horizontal scroll while hovering the strip.
  */
 
 (function () {
   'use strict';
 
-  var REDUCED       = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DEAD_ZONE     = 0.20;   // centre ±10% = no scroll (total 20%)
-  var MAX_SPEED     = 28;     // px per frame at edge
-  var LERP          = 0.10;   // smoothing factor
-
-  // Scale range for cards
-  var SCALE_CENTER  = 1.08;
-  var SCALE_EDGE    = 0.78;
-
   function init() {
-    var wrapper = document.querySelector('.proj-scroll-track-wrapper');
     var track   = document.getElementById('proj-track');
+    if (!track) return;
+    var wrapper = track.closest('.proj-scroll-track-wrapper');
     var prevBtn = document.getElementById('proj-prev');
     var nextBtn = document.getElementById('proj-next');
     var counter = document.getElementById('proj-counter');
+    var cards   = Array.from(track.querySelectorAll('.proj-scroll-card'));
+    if (!cards.length) return;
 
-    if (!track || !wrapper) return;
+    function maxScroll() { return track.scrollWidth - track.clientWidth; }
 
-    var cards      = Array.from(track.querySelectorAll('.proj-scroll-card'));
-    var totalCards = cards.length;
-
-    var offset       = 0;
-    var targetOffset = 0;
-    var raf          = null;
-    var isHovering   = false;
-    var mouseNorm    = 0.5;   // normalised 0–1 cursor X within wrapper
-
-    var dragStart = null;
-    var dragBase  = 0;
-
-    /* ── clamp ── */
-    function clampOffset(x) {
-      var maxScroll = -(track.scrollWidth - wrapper.clientWidth + 96);
-      return Math.min(0, Math.max(maxScroll, x));
+    function step() {
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+      return cards[0].offsetWidth + gap;
     }
 
-    function applyOffset(x) {
-      track.style.transform = 'translateX(' + x + 'px)';
+    /* index of the first card that is mostly in view */
+    function currentIndex() {
+      var left = track.scrollLeft;
+      if (left >= maxScroll() - 2) return cards.length - 1;
+      return Math.min(cards.length - 1, Math.round(left / step()));
     }
 
-    /* ── scale cards by distance from centre ── */
-    function updateScales() {
-      var wrapRect = wrapper.getBoundingClientRect();
-      var centre   = wrapRect.left + wrapRect.width / 2;
-
-      // find max possible distance (half of track visible width)
-      var halfW = wrapRect.width / 2;
-
-      cards.forEach(function (card) {
-        var r    = card.getBoundingClientRect();
-        var cX   = r.left + r.width / 2;
-        var dist = Math.abs(cX - centre);
-        // normalise: 0 = at centre, 1 = at or beyond edge
-        var t    = Math.min(dist / halfW, 1);
-        var scale = SCALE_CENTER - (SCALE_CENTER - SCALE_EDGE) * t;
-        card.style.transform = 'scale(' + scale.toFixed(3) + ')';
-        card.style.zIndex    = Math.round((1 - t) * 10);
-      });
+    function update() {
+      var left = track.scrollLeft;
+      var atStart = left <= 2;
+      var atEnd = left >= maxScroll() - 2;
+      if (counter) counter.textContent = (currentIndex() + 1) + ' / ' + cards.length;
+      if (prevBtn) prevBtn.disabled = atStart;
+      if (nextBtn) nextBtn.disabled = atEnd;
+      if (wrapper) wrapper.classList.toggle('is-end', atEnd);
     }
 
-    /* ── counter ── */
-    function updateCounter() {
-      var wrapRect = wrapper.getBoundingClientRect();
-      var centre   = wrapRect.left + wrapRect.width / 2;
-      var best = 0, bestDist = Infinity;
-      cards.forEach(function (card, i) {
-        var r    = card.getBoundingClientRect();
-        var dist = Math.abs((r.left + r.width / 2) - centre);
-        if (dist < bestDist) { bestDist = dist; best = i; }
-      });
-      if (counter) counter.textContent = (best + 1) + ' / ' + totalCards;
-    }
-
-    /* ── animation loop ── */
-    function tick() {
-      if (!REDUCED) {
-        // compute scroll velocity from mouse position
-        if (isHovering && dragStart === null) {
-          var half     = (1 - DEAD_ZONE) / 2;  // = 0.40
-          var deadHalf = DEAD_ZONE / 2;          // = 0.10
-
-          var speed = 0;
-          if (mouseNorm < 0.5 - deadHalf) {
-            // left zone: mouseNorm goes from 0 → (0.5-deadHalf)
-            var t = (0.5 - deadHalf - mouseNorm) / half; // 0 at dead edge, 1 at far left
-            speed = t * t * MAX_SPEED;           // quadratic, scroll RIGHT (positive)
-            targetOffset = clampOffset(targetOffset + speed);
-          } else if (mouseNorm > 0.5 + deadHalf) {
-            // right zone
-            var t2 = (mouseNorm - (0.5 + deadHalf)) / half;
-            speed = t2 * t2 * MAX_SPEED;
-            targetOffset = clampOffset(targetOffset - speed);
-          }
-        }
-
-        offset += (targetOffset - offset) * LERP;
-        if (Math.abs(targetOffset - offset) < 0.3) offset = targetOffset;
-        applyOffset(offset);
-        updateScales();
-        updateCounter();
-      }
-
-      if (isHovering || Math.abs(targetOffset - offset) > 0.3) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        updateScales();
-        updateCounter();
-        raf = null;
-      }
-    }
-
-    function startLoop() {
-      if (!raf) raf = requestAnimationFrame(tick);
-    }
-
-    /* ── hover ── */
-    wrapper.addEventListener('mouseenter', function () {
-      isHovering = true;
-      startLoop();
-    });
-
-    wrapper.addEventListener('mouseleave', function () {
-      isHovering = false;
-    });
-
-    wrapper.addEventListener('mousemove', function (e) {
-      if (dragStart !== null) return;
-      var rect  = wrapper.getBoundingClientRect();
-      mouseNorm = (e.clientX - rect.left) / rect.width;
-    });
-
-    /* ── arrow buttons ── */
     function scrollByCard(dir) {
-      var cardW = cards[0] ? cards[0].offsetWidth + 20 : 300;
-      targetOffset = clampOffset(targetOffset - dir * cardW);
-      startLoop();
+      track.scrollBy({ left: dir * step(), behavior: 'smooth' });
     }
 
     if (prevBtn) prevBtn.addEventListener('click', function () { scrollByCard(-1); });
     if (nextBtn) nextBtn.addEventListener('click', function () { scrollByCard(1); });
 
-    /* ── drag ── */
-    track.addEventListener('mousedown', function (e) {
-      dragStart = e.clientX;
-      dragBase  = targetOffset;
-      track.style.transition = 'none';
-      isHovering = false;
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); scrollByCard(1); }
+      if (e.key === 'ArrowLeft')  { e.preventDefault(); scrollByCard(-1); }
     });
 
-    window.addEventListener('mousemove', function (e) {
-      if (dragStart === null) return;
-      targetOffset = clampOffset(dragBase + (e.clientX - dragStart));
-      offset       = targetOffset;
-      applyOffset(offset);
-      updateScales();
-    });
-
-    window.addEventListener('mouseup', function () {
-      if (dragStart === null) return;
-      track.style.transition = '';
-      dragStart = null;
-      startLoop();
-    });
-
-    /* ── touch ── */
-    track.addEventListener('touchstart', function (e) {
-      dragStart = e.touches[0].clientX;
-      dragBase  = targetOffset;
-      track.style.transition = 'none';
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
     }, { passive: true });
+    window.addEventListener('resize', update);
 
-    track.addEventListener('touchmove', function (e) {
-      if (dragStart === null) return;
-      targetOffset = clampOffset(dragBase + (e.touches[0].clientX - dragStart));
-      offset       = targetOffset;
-      applyOffset(offset);
-      updateScales();
-    }, { passive: true });
+    /* vertical mouse wheel scrolls the strip sideways (until it reaches an end) */
+    track.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // trackpad sideways swipe: leave native
+      var left = track.scrollLeft;
+      if ((e.deltaY < 0 && left <= 0) || (e.deltaY > 0 && left >= maxScroll() - 1)) return;
+      e.preventDefault();
+      track.scrollBy({ left: e.deltaY, behavior: 'auto' });
+    }, { passive: false });
 
-    track.addEventListener('touchend', function () {
-      if (dragStart === null) return;
-      track.style.transition = '';
-      dragStart = null;
-      startLoop();
+    /* mouse drag (touch devices already swipe natively) */
+    var startX = null, startLeft = 0, moved = false;
+
+    track.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      startX = e.clientX;
+      startLeft = track.scrollLeft;
+      moved = false;
     });
 
-    /* initial render */
-    updateScales();
-    updateCounter();
+    window.addEventListener('pointermove', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 5) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      if (moved) track.scrollLeft = startLeft - dx;
+    });
+
+    window.addEventListener('pointerup', function () {
+      if (startX === null) return;
+      startX = null;
+      if (moved) {
+        track.classList.remove('is-dragging');
+        // snap to the nearest card after dragging
+        track.scrollTo({ left: currentIndex() * step(), behavior: 'smooth' });
+      }
+    });
+
+    /* a drag should not also open the card link */
+    track.addEventListener('click', function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
+
+    /* prevent native link/image ghost-drag */
+    track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+    update();
   }
 
   if (document.readyState === 'loading') {
