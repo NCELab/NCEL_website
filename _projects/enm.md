@@ -3,7 +3,7 @@ title: ENM
 subtitle: Emotion & Memory Study
 group: memory-trauma
 layout: project
-image: images/Enm.jpg
+image: images/Emotion and Memory Study Flowchart.png
 tags:
   - Trauma
   - Emotion
