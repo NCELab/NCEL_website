@@ -3,7 +3,7 @@ title: ADR
 subtitle: Attention Dysregulation
 group: attention-neurodevelopment
 layout: project
-image: images/adr.jpg
+image: images/Attention Dysregulation Infographic.png
 tags:
   - ADHD
   - Attention
