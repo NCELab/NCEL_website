@@ -103,7 +103,7 @@ The Neuro-Cognition and Emotion Lab (NCEL) investigates the fundamental mechanis
 
 {% capture text %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Meet our team!
 
 {%
   include button.html
