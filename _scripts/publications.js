@@ -3,6 +3,7 @@
  *
  * Sections:
  *   all         – full year-grouped timeline, all years expanded by default
+ *                 (extra tabs with data-range="FROM-TO" show only those years)
  *   peer-review – from PEER_REVIEW_DATA (_data/peer_review.yml)
  *
  * Posters and oral presentations moved to the dedicated Presentations page
@@ -18,6 +19,7 @@
   /* ── State ────────────────────────────────────────────────────────────── */
   var state = {
     section:    'all',
+    range:      '',      /* "FROM-TO" year range from the active tab; '' = all */
     sort:       'year-desc',
     yearFilter: '',
     query:      ''
@@ -73,9 +75,56 @@
     return rendered.join(', ');
   }
 
+  /* ── Year-range helpers (for the 1996–1999 / 2000–2009 / … tabs) ────── */
+  function parseRange(r) {
+    var parts = String(r || '').split('-');
+    return {
+      from: parts[0] ? parseInt(parts[0], 10) : -Infinity,
+      to:   parts[1] ? parseInt(parts[1], 10) :  Infinity
+    };
+  }
+  function inRange(year, r) {
+    if (!r) return true;
+    var y = parseInt(year, 10);
+    if (isNaN(y)) return false;
+    var b = parseRange(r);
+    return y >= b.from && y <= b.to;
+  }
+
+  /* Add "(n)" counts to each tab and hide year-dropdown options
+     that fall outside the active range. */
+  function updateRangeUI() {
+    var valid = (PUB_DATA || []).filter(function (p) {
+      return p.title && p.title !== 'Web of Science';
+    });
+    qsa('.pub-section-tab[data-range]').forEach(function (t) {
+      var n = valid.filter(function (p) { return inRange(p.year, t.dataset.range); }).length;
+      var c = qs('.pub-section-tab__count', t);
+      if (!c) {
+        c = document.createElement('span');
+        c.className = 'pub-section-tab__count';
+        t.appendChild(c);
+      }
+      c.textContent = ' (' + n + ')';
+    });
+    if (els.year) {
+      Array.from(els.year.options).forEach(function (o) {
+        if (!o.value) return;
+        var ok = inRange(o.value, state.range);
+        o.hidden = !ok;
+        o.disabled = !ok;
+      });
+      if (state.yearFilter && !inRange(state.yearFilter, state.range)) {
+        state.yearFilter = '';
+        els.year.value = '';
+      }
+    }
+  }
+
   /* ── Filter helpers ───────────────────────────────────────────────────── */
   function matchesFilters(p) {
     if (!p.title || p.title === 'Web of Science') return false;
+    if (state.range && !inRange(p.year, state.range)) return false;
     if (state.yearFilter && p.year !== state.yearFilter) return false;
     if (state.query) {
       var words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -114,7 +163,7 @@
   /* ── Status bar ───────────────────────────────────────────────────────── */
   function updateStatus() {
     var total = (PUB_DATA || []).filter(function (p) {
-      return p.title && p.title !== 'Web of Science';
+      return p.title && p.title !== 'Web of Science' && inRange(p.year, state.range);
     }).length;
 
     var hasFilter = state.query || state.yearFilter;
@@ -291,12 +340,15 @@
   };
 
   /* ── Event wiring ─────────────────────────────────────────────────────── */
-  function switchSection(name) {
+  function switchSection(name, range) {
     state.section = name;
+    state.range   = range || '';
     qsa('.pub-section-tab').forEach(function (t) {
-      t.classList.toggle('is-active', t.dataset.section === name);
-      t.setAttribute('aria-selected', t.dataset.section === name);
+      var on = t.dataset.section === name && (t.dataset.range || '') === state.range;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on);
     });
+    updateRangeUI();
     qsa('.pub-section-panel').forEach(function (p) {
       p.classList.toggle('is-active', p.id === 'pub-panel-' + name);
     });
@@ -322,7 +374,9 @@
     if (!els.status) return;
 
     qsa('.pub-section-tab').forEach(function (tab) {
-      tab.addEventListener('click', function () { switchSection(tab.dataset.section); });
+      tab.addEventListener('click', function () {
+        switchSection(tab.dataset.section, tab.dataset.range);
+      });
     });
 
     if (els.sort) els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
