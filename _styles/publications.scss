@@ -497,3 +497,54 @@
   font-weight: normal;
   opacity: 0.7;
 }
+
+/* ── Tab switching feedback ─────────────────────────────────────────────── */
+/* Sliding underline that follows the active tab (positioned by JS). */
+.pub-section-tabs { position: relative; }
+.pub-section-tabs.has-indicator .pub-section-tab.is-active { border-bottom-color: transparent; }
+.pub-section-tabs__indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 3px;
+  width: 0;
+  border-radius: 3px 3px 0 0;
+  background: var(--primary);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+/* Hover / press feedback on each tab */
+.pub-section-tab {
+  border-radius: 6px 6px 0 0;
+  transition: color 0.15s, background-color 0.15s, transform 0.1s;
+}
+.pub-section-tab:hover { background-color: rgba(0, 0, 0, 0.04); }
+.pub-section-tab:active { transform: scale(0.96); }
+.pub-section-tab:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+
+.pub-section-tab__count {
+  display: inline-block;
+  margin-left: 0.3em;
+  transition: opacity 0.15s;
+}
+.pub-section-tab.is-active .pub-section-tab__count { opacity: 1; }
+
+/* List + status fade/slide in after a switch; year groups stagger in. */
+@keyframes pub-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.pub-list.is-entering .pub-year-group {
+  animation: pub-fade-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+.pub-status.is-entering { animation: pub-fade-up 0.25s ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pub-section-tabs__indicator,
+  .pub-section-tab { transition: none; }
+  .pub-list.is-entering .pub-year-group,
+  .pub-status.is-entering { animation: none; }
+}
