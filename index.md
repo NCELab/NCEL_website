@@ -9,7 +9,6 @@ hide_header: true
 >
   <div class="ncel-hero__content">
 
-    <!-- 上方：Logo + 三行標題 -->
     <div class="ncel-hero__header-block">
       <div class="ncel-hero__logo-col">
         <img
@@ -27,7 +26,6 @@ hide_header: true
       </div>
     </div>
 
-    <!-- 下方：副標題 + CTA -->
     <p class="ncel-hero__subtitle">
       We investigate how cognition and emotion interact to shape behavior and mental health across the lifespan. Using behavioral methods, EEG, fMRI, and computational approaches, we study how the brain supports attention, memory, decision-making, and emotional regulation, and how these processes change across development and in psychiatric disorders.
     </p>
