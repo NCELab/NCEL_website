@@ -1,25 +1,19 @@
 /**
- * publications.js  –  NCEL publication browser
+ * presentations.js – NCEL presentations browser (posters + oral presentations)
  *
- * Sections:
- *   all         – full year-grouped timeline, all years expanded by default
- *                 (extra tabs with data-range="FROM-TO" show only those years)
- *   peer-review – from PEER_REVIEW_DATA (_data/peer_review.yml)
+ * Data: PRES_DATA (injected inline by _includes/presentations-browser.html,
+ *       sourced from _data/presentations.yml)
  *
- * Posters and oral presentations moved to the dedicated Presentations page
- * (research/presentations/) — see _scripts/presentations.js.
- *
- * Name styling:
- *   PI + NCEL members → <strong>
+ * Mirrors the interaction pattern of publications.js (search / sort / year
+ * filter / section tabs) but only needs a flat card list per section, since
+ * presentations aren't grouped by year.
  */
 
 (function () {
   'use strict';
 
-  /* ── State ────────────────────────────────────────────────────────────── */
   var state = {
     section:    'all',
-    range:      '',      /* "FROM-TO" year range from the active tab; '' = all */
     sort:       'year-desc',
     yearFilter: '',
     query:      ''
@@ -27,7 +21,6 @@
 
   var els = {};
 
-  /* ── Helpers ──────────────────────────────────────────────────────────── */
   function qs(sel, ctx)  { return (ctx || document).querySelector(sel); }
   function qsa(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
   function esc(s) {
@@ -36,105 +29,21 @@
       .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ── Author name rendering ────────────────────────────────────────────── */
-  function renderAuthors(raw) {
-    if (!raw) return '<span class="pub-card__authors-empty">[no author info]</span>';
-
-    var parts = raw.split(/,\s*/);
-    var names = [];
-    var i = 0;
-    while (i < parts.length) {
-      var p = parts[i];
-      if (i + 1 < parts.length && /^[A-Z][\.\w]{0,3}\.?$/.test(parts[i + 1].trim())) {
-        names.push(p.trim() + ', ' + parts[i + 1].trim());
-        i += 2;
-      } else {
-        names.push(p.trim());
-        i += 1;
-      }
-    }
-
-    var rendered = names.map(function (name) {
-      var last = name.split(',')[0].trim();
-      if (last === PI_NAME || name.indexOf(PI_NAME) !== -1) {
-        return '<strong>' + esc(name) + '</strong>';
-      }
-      var isMember = NCEL_MEMBERS.some(function (m) {
-        return last === m || name.indexOf(m) !== -1;
-      });
-      if (isMember) {
-        return '<strong>' + esc(name) + '</strong>';
-      }
-      return esc(name);
-    });
-
-    if (rendered.length > 6) {
-      rendered = rendered.slice(0, 6).concat(['<em>et al.</em>']);
-    }
-
-    return rendered.join(', ');
-  }
-
-  /* ── Year-range helpers (for the 1996–1999 / 2000–2009 / … tabs) ────── */
-  function parseRange(r) {
-    var parts = String(r || '').split('-');
-    return {
-      from: parts[0] ? parseInt(parts[0], 10) : -Infinity,
-      to:   parts[1] ? parseInt(parts[1], 10) :  Infinity
-    };
-  }
-  function inRange(year, r) {
-    if (!r) return true;
-    var y = parseInt(year, 10);
-    if (isNaN(y)) return false;
-    var b = parseRange(r);
-    return y >= b.from && y <= b.to;
-  }
-
-  /* Add "(n)" counts to each tab and hide year-dropdown options
-     that fall outside the active range. */
-  function updateRangeUI() {
-    var valid = (PUB_DATA || []).filter(function (p) {
-      return p.title && p.title !== 'Web of Science';
-    });
-    qsa('.pub-section-tab[data-range]').forEach(function (t) {
-      var n = valid.filter(function (p) { return inRange(p.year, t.dataset.range); }).length;
-      var c = qs('.pub-section-tab__count', t);
-      if (!c) {
-        c = document.createElement('span');
-        c.className = 'pub-section-tab__count';
-        t.appendChild(c);
-      }
-      c.textContent = '(' + n + ')';
-    });
-    if (els.year) {
-      Array.from(els.year.options).forEach(function (o) {
-        if (!o.value) return;
-        var ok = inRange(o.value, state.range);
-        o.hidden = !ok;
-        o.disabled = !ok;
-      });
-      if (state.yearFilter && !inRange(state.yearFilter, state.range)) {
-        state.yearFilter = '';
-        els.year.value = '';
-      }
-    }
-  }
-
-  /* ── Filter helpers ───────────────────────────────────────────────────── */
   function matchesFilters(p) {
-    if (!p.title || p.title === 'Web of Science') return false;
-    if (state.range && !inRange(p.year, state.range)) return false;
+    if (!p.title) return false;
     if (state.yearFilter && p.year !== state.yearFilter) return false;
     if (state.query) {
       var words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
-      var hay = [p.title, p.authors, p.publisher, p.year,
-                 p.doi, p.abstract,
-                 (p.topics  || []).join(' '),
-                 (p.keywords || []).join(' ')
-                ].join(' ').toLowerCase();
+      var hay = [p.title, p.authors, p.venue, p.year, p.abstract, p.type]
+        .join(' ').toLowerCase();
       if (!words.every(function (w) { return hay.includes(w); })) return false;
     }
+    return true;
+  }
+
+  function bySection(p) {
+    if (state.section === 'poster') return p.type === 'Poster';
+    if (state.section === 'oral')   return p.type === 'Oral Presentation';
     return true;
   }
 
@@ -146,258 +55,64 @@
     });
   }
 
-  /* ── Render dispatcher ────────────────────────────────────────────────── */
-  function render() {
-    var pubs   = (PUB_DATA || []).filter(matchesFilters);
-    var sorted = applySort(pubs);
+  function presentationCard(p) {
+    var excerpt = (p.abstract || '').slice(0, 200);
+    if ((p.abstract || '').length > 200) excerpt += '…';
 
-    if (state.section === 'all') {
-      renderByYear(sorted);
-    } else if (state.section === 'peer-review') {
-      var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
-      renderFlat(applySort(prPubs), 'peer-review');
+    var file  = p.type === 'Oral Presentation' ? (p.slides || p.poster) : (p.poster || p.slides);
+    var label = p.type === 'Oral Presentation' ? 'View Slides →' : 'View Poster →';
+
+    return '<div class="pub-card pub-card--poster">' +
+      '<div class="pub-card__body pub-card__body--centered">' +
+        '<div class="pub-card__chips">' +
+          '<span class="pub-card__chip pub-card__chip--preprint">' + esc(p.type || 'Poster') + '</span>' +
+        '</div>' +
+        '<div class="pub-card__title">' + esc(p.title || '(Untitled)') + '</div>' +
+        '<div class="pub-card__authors">' + esc(p.authors) + '</div>' +
+        '<div class="pub-card__meta">' + esc([p.venue, p.year].filter(Boolean).join(' · ')) + '</div>' +
+        (excerpt ? '<p class="pub-card__excerpt">' + esc(excerpt) + '</p>' : '') +
+        (file
+          ? '<a class="pub-card__learn-more" href="' + esc(file) + '" target="_blank" rel="noopener noreferrer">' + label + '</a>'
+          : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderList(pubs, listId, emptyMsg) {
+    var el = qs('#' + listId);
+    if (!el) return;
+    el.innerHTML = pubs.length
+      ? pubs.map(presentationCard).join('')
+      : '<p class="pub-empty">' + emptyMsg + '</p>';
+  }
+
+  function render() {
+    var filtered = (PRES_DATA || []).filter(matchesFilters).filter(bySection);
+    var sorted = applySort(filtered);
+
+    if (state.section === 'poster') {
+      renderList(sorted, 'pres-list-poster', 'No posters match the current filters.');
+    } else if (state.section === 'oral') {
+      renderList(sorted, 'pres-list-oral', 'No oral presentations match the current filters.');
+    } else {
+      renderList(sorted, 'pres-list-all', 'No presentations match the current filters.');
     }
     updateStatus();
   }
 
-  /* ── Status bar ───────────────────────────────────────────────────────── */
   function updateStatus() {
-    var total = (PUB_DATA || []).filter(function (p) {
-      return p.title && p.title !== 'Web of Science' && inRange(p.year, state.range);
-    }).length;
-
+    var total = (PRES_DATA || []).filter(function (p) { return p.title; }).length;
     var hasFilter = state.query || state.yearFilter;
     if (hasFilter) {
-      var showing = (PUB_DATA || []).filter(matchesFilters).length;
+      var showing = (PRES_DATA || []).filter(matchesFilters).filter(bySection).length;
       els.status.innerHTML =
         'Showing <strong>' + showing + '</strong> of ' + total +
-        ' publications. <a href="#" id="pub-clear-link">Clear filters</a>';
-      var cl = qs('#pub-clear-link');
+        ' presentations. <a href="#" id="pres-clear-link">Clear filters</a>';
+      var cl = qs('#pres-clear-link');
       if (cl) cl.addEventListener('click', function (e) { e.preventDefault(); clearAll(); });
     } else {
-      els.status.innerHTML = '<strong>' + total + '</strong> total publications';
+      els.status.innerHTML = '<strong>' + total + '</strong> total presentations';
     }
-  }
-
-  /* ── Flat list (Peer Review) ──────────────────────────────────────────── */
-  function renderFlat(pubs, listId) {
-    var el = qs('#pub-list-' + listId);
-    if (!el) return;
-    el.innerHTML = pubs.length
-      ? pubs.map(pubCard).join('')
-      : '<p class="pub-empty">No publications match the current filters.</p>';
-  }
-
-  /* ── All Publications: year groups (all expanded by default) ─────────── */
-  function renderByYear(pubs) {
-    var el = qs('#pub-list-all');
-    if (!el) return;
-    if (!pubs.length) {
-      el.innerHTML = '<p class="pub-empty">No publications match. ' +
-        '<a href="#" onclick="NCEL_PUB.clearAll();return false;">Clear filters</a></p>';
-      return;
-    }
-    var groups = {};
-    pubs.forEach(function (p) {
-      var y = p.year || 'Unknown';
-      if (!groups[y]) groups[y] = [];
-      groups[y].push(p);
-    });
-    var years = Object.keys(groups).sort(function (a, b) {
-      return state.sort === 'year-asc' ? a.localeCompare(b) : b.localeCompare(a);
-    });
-    el.innerHTML = years.map(function (year, i) {
-      return yearGroup(year, groups[year], i);
-    }).join('');
-  }
-
-  /* ── Year group — body visible by default (no display:none) ──────────── */
-  function yearGroup(year, pubs, idx) {
-    /* --i drives the staggered fade-in after a tab switch (capped). */
-    return '<div class="pub-year-group" data-year="' + esc(year) + '" style="--i:' + Math.min(idx || 0, 8) + '">' +
-      '<div class="pub-year-heading" onclick="NCEL_PUB.toggleYear(this)">' +
-        '<h2 class="pub-year-heading__label">' + esc(year) + '</h2>' +
-        '<span class="pub-year-heading__count">(' + pubs.length + ')</span>' +
-        '<span class="pub-year-heading__toggle">▼</span>' +
-      '</div>' +
-      '<div class="pub-year-body">' + pubs.map(pubCard).join('') + '</div>' +
-    '</div>';
-  }
-
-  /* ── Publication card ─────────────────────────────────────────────────── */
-  function pubCard(p) {
-    var id = 'pub-' + Math.random().toString(36).slice(2, 9);
-
-    /* Chips */
-    var chips = [];
-    if (p.preprint) chips.push('<span class="pub-card__chip pub-card__chip--preprint">Preprint</span>');
-    var chipsHtml = chips.length ? '<div class="pub-card__chips">' + chips.join('') + '</div>' : '';
-
-    /* Title link */
-    var doiClean = (p.doi || '').replace(/^doi:/, '').replace(/^https?:\/\/doi\.org\//, '');
-    var doiUrl   = p.link || (doiClean ? 'https://doi.org/' + doiClean : '');
-    var titleHtml = doiUrl
-      ? '<a href="' + esc(doiUrl) + '" target="_blank" rel="noopener">' + esc(p.title || '(Untitled)') + '</a>'
-      : esc(p.title || '(Untitled)');
-
-    /* Meta */
-    var meta = [p.publisher, p.year].filter(Boolean).join(' · ');
-
-    /* Links row */
-    var links = [];
-    if (doiUrl)      links.push('<a class="pub-card__link" href="' + esc(doiUrl) + '" target="_blank" rel="noopener">↗ DOI</a>');
-    if (p.pdf)       links.push('<a class="pub-card__link" href="' + esc(p.pdf)  + '" target="_blank" rel="noopener">⬇ PDF</a>');
-    if (p.materials) links.push('<a class="pub-card__link" href="' + esc(p.materials) + '" target="_blank" rel="noopener">📁 Materials</a>');
-    if (p.code)      links.push('<a class="pub-card__link" href="' + esc(p.code) + '" target="_blank" rel="noopener">{ } Code</a>');
-    var linksHtml = links.length
-      ? '<div class="pub-card__links">' + links.join('<span class="pub-card__link-sep">·</span>') + '</div>'
-      : '';
-
-    /* Toggle buttons */
-    var toggles = '';
-    if (p.abstract) {
-      toggles += '<button class="pub-card__toggle-btn" onclick="NCEL_PUB.toggleDrawer(\'' + id + '-abs\',this)" aria-expanded="false">Abstract</button>';
-    }
-    var bibtex = p.bibtex || buildBibtex(p);
-    if (bibtex) {
-      toggles += '<button class="pub-card__toggle-btn" onclick="NCEL_PUB.toggleDrawer(\'' + id + '-bib\',this)" aria-expanded="false">BibTeX</button>';
-    }
-    var togglesHtml = toggles ? '<div class="pub-card__toggles">' + toggles + '</div>' : '';
-
-    /* Drawers */
-    var drawers = '';
-    if (p.abstract) {
-      drawers += '<div id="' + id + '-abs" class="pub-card__drawer">' +
-        '<div class="pub-card__drawer-label">Abstract</div>' +
-        '<p style="margin:0">' + esc(p.abstract) + '</p>' +
-      '</div>';
-    }
-    if (bibtex) {
-      drawers += '<div id="' + id + '-bib" class="pub-card__drawer">' +
-        '<div class="pub-card__bibtex">' +
-          '<button type="button" class="pub-card__copy-btn" onclick="NCEL_PUB.copyBibtex(this)">Copy</button>' +
-          '<div class="pub-card__drawer-label">BibTeX</div>' +
-          '<pre>' + esc(bibtex) + '</pre>' +
-        '</div>' +
-      '</div>';
-    }
-
-    return '<div class="pub-card">' +
-      '<div class="pub-card__main">' +
-        '<div class="pub-card__body">' +
-          chipsHtml +
-          '<div class="pub-card__title">'   + titleHtml + '</div>' +
-          '<div class="pub-card__authors">' + renderAuthors(p.authors) + '</div>' +
-          '<div class="pub-card__meta">'    + esc(meta) + '</div>' +
-          linksHtml +
-        '</div>' +
-        togglesHtml +
-      '</div>' +
-      drawers +
-    '</div>';
-  }
-
-  /* ── BibTeX fallback ──────────────────────────────────────────────────── */
-  function buildBibtex(p) {
-    if (!p.title) return '';
-    var first = (p.authors || 'author').split(',')[0].trim().split(' ').pop().replace(/[^a-zA-Z]/g, '');
-    var key   = first + (p.year || '');
-    var doi   = (p.doi || '').replace(/^doi:/, '').replace(/^https?:\/\/doi\.org\//, '');
-    return '@article{' + key + ',\n  title   = {' + (p.title || '') + '},\n  author  = {' +
-      (p.authors || '') + '},\n  journal = {' + (p.publisher || '') + '},\n  year    = {' +
-      (p.year || '') + '}' + (doi ? ',\n  doi     = {' + doi + '}' : '') + '\n}';
-  }
-
-  /* ── Public API ───────────────────────────────────────────────────────── */
-  window.NCEL_PUB = {
-    /* Toggle a year group open/closed.
-       Body starts visible (no display:none), so first click closes it. */
-    toggleYear: function (heading) {
-      heading.classList.toggle('is-collapsed');
-      var body = heading.nextElementSibling;
-      body.style.display = body.style.display === 'none' ? '' : 'none';
-    },
-    toggleDrawer: function (id, btn) {
-      var drawer = qs('#' + id);
-      if (!drawer) return;
-      var open = drawer.classList.toggle('is-open');
-      btn.classList.toggle('is-open', open);
-      btn.setAttribute('aria-expanded', open);
-    },
-    /* Copy the BibTeX shown in the <pre> next to the button.
-       (The text is read from the page instead of being embedded in the
-       onclick attribute, so quotes or other special characters in the
-       citation can't break the button or inject HTML.) */
-    copyBibtex: function (btn) {
-      var box = btn.closest('.pub-card__bibtex');
-      var pre = box && box.querySelector('pre');
-      var text = pre ? pre.textContent : '';
-      if (!text) return;
-      navigator.clipboard.writeText(text).then(function () {
-        btn.textContent = 'Copied!';
-        btn.classList.add('is-copied');
-        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('is-copied'); }, 2000);
-      }).catch(function () {
-        var ta = document.createElement('textarea');
-        ta.value = text; document.body.appendChild(ta); ta.select();
-        document.execCommand('copy'); document.body.removeChild(ta);
-        btn.textContent = 'Copied!';
-        setTimeout(function () { btn.textContent = 'Copy'; }, 2000);
-      });
-    },
-    clearAll: clearAll
-  };
-
-  /* ── Tab switching feedback ───────────────────────────────────────────── */
-  /* Slide the underline under the active tab. */
-  function moveIndicator(instant) {
-    var bar = qs('.pub-section-tabs');
-    var active = qs('.pub-section-tab.is-active');
-    if (!bar || !active) return;
-    var ind = qs('.pub-section-tabs__indicator', bar);
-    if (!ind) {
-      ind = document.createElement('span');
-      ind.className = 'pub-section-tabs__indicator';
-      ind.setAttribute('aria-hidden', 'true');
-      bar.appendChild(ind);
-      bar.classList.add('has-indicator');
-      instant = true;
-    }
-    if (instant) ind.style.transition = 'none';
-    ind.style.width = active.offsetWidth + 'px';
-    ind.style.transform = 'translateX(' + active.offsetLeft + 'px)';
-    if (instant) { void ind.offsetWidth; ind.style.transition = ''; }
-    /* Keep the active tab visible when the bar scrolls on phones. */
-    if (bar.scrollWidth > bar.clientWidth && active.scrollIntoView) {
-      active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: instant ? 'auto' : 'smooth' });
-    }
-  }
-
-  /* Replay the fade-in on the list + status line. */
-  function playEnter() {
-    [qs('#pub-list-all'), els.status].forEach(function (el) {
-      if (!el) return;
-      el.classList.remove('is-entering');
-      void el.offsetWidth;            /* restart the animation */
-      el.classList.add('is-entering');
-    });
-  }
-
-  /* ── Event wiring ─────────────────────────────────────────────────────── */
-  function switchSection(name, range) {
-    state.section = name;
-    state.range   = range || '';
-    qsa('.pub-section-tab').forEach(function (t) {
-      var on = t.dataset.section === name && (t.dataset.range || '') === state.range;
-      t.classList.toggle('is-active', on);
-      t.setAttribute('aria-selected', on);
-    });
-    updateRangeUI();
-    moveIndicator();
-    qsa('.pub-section-panel').forEach(function (p) {
-      p.classList.toggle('is-active', p.id === 'pub-panel-' + name);
-    });
-    render();
   }
 
   function clearAll() {
@@ -407,24 +122,34 @@
     render();
   }
 
-  /* ── Init ─────────────────────────────────────────────────────────────── */
-  function init() {
-    if (typeof PUB_DATA === 'undefined') return;
+  function switchSection(name) {
+    state.section = name;
+    qsa('.pub-section-tab').forEach(function (t) {
+      if (t.dataset.section !== 'all' && t.dataset.section !== 'poster' && t.dataset.section !== 'oral') return;
+      t.classList.toggle('is-active', t.dataset.section === name);
+      t.setAttribute('aria-selected', t.dataset.section === name);
+    });
+    ['pres-panel-all', 'pres-panel-poster', 'pres-panel-oral'].forEach(function (id) {
+      var panel = qs('#' + id);
+      if (panel) panel.classList.toggle('is-active', id === 'pres-panel-' + name);
+    });
+    render();
+  }
 
-    els.status = qs('#pub-status');
-    els.search = qs('#pub-search');
-    els.sort   = qs('#pub-sort');
-    els.year   = qs('#pub-year');
+  function init() {
+    if (typeof PRES_DATA === 'undefined') return;
+
+    els.status = qs('#pres-status');
+    els.search = qs('#pres-search');
+    els.sort   = qs('#pres-sort');
+    els.year   = qs('#pres-year');
 
     if (!els.status) return;
 
-    qsa('.pub-section-tab').forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        if (tab.classList.contains('is-active')) return;
-        switchSection(tab.dataset.section, tab.dataset.range);
-        playEnter();
+    qsa('.pub-section-tab[data-section="all"], .pub-section-tab[data-section="poster"], .pub-section-tab[data-section="oral"]')
+      .forEach(function (tab) {
+        tab.addEventListener('click', function () { switchSection(tab.dataset.section); });
       });
-    });
 
     if (els.sort) els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
     if (els.year) els.year.addEventListener('change', function () { state.yearFilter = els.year.value; render(); });
@@ -442,10 +167,6 @@
 
     switchSection('all');
     render();
-    moveIndicator(true);
-    window.addEventListener('resize', function () { moveIndicator(true); });
-    /* Web fonts can change tab widths after first paint. */
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveIndicator(true); });
   }
 
   if (document.readyState === 'loading') {
