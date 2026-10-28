@@ -2,8 +2,8 @@
  * publications.js  –  NCEL publication browser
  *
  * Sections:
- *   all         – full year-grouped timeline, all years expanded by default
- *                 (extra tabs with data-range="FROM-TO" show only those years)
+ *   all         – all publications, grouped into time periods
+ *                 (2020–Now / 2010–2019 / 2000–2009 / 1996–1999; see PERIODS)
  *   peer-review – from PEER_REVIEW_DATA (_data/peer_review.yml)
  *
  * Posters and oral presentations moved to the dedicated Presentations page
@@ -19,7 +19,6 @@
   /* ── State ────────────────────────────────────────────────────────────── */
   var state = {
     section:    'all',
-    range:      '',      /* "FROM-TO" year range from the active tab; '' = all */
     sort:       'year-desc',
     yearFilter: '',
     query:      ''
@@ -75,56 +74,30 @@
     return rendered.join(', ');
   }
 
-  /* ── Year-range helpers (for the 1996–1999 / 2000–2009 / … tabs) ────── */
-  function parseRange(r) {
-    var parts = String(r || '').split('-');
-    return {
-      from: parts[0] ? parseInt(parts[0], 10) : -Infinity,
-      to:   parts[1] ? parseInt(parts[1], 10) :  Infinity
-    };
-  }
-  function inRange(year, r) {
-    if (!r) return true;
-    var y = parseInt(year, 10);
-    if (isNaN(y)) return false;
-    var b = parseRange(r);
-    return y >= b.from && y <= b.to;
-  }
+  /* ── Time periods used to group All Publications ──────────────────────
+     Newest first. To add/change a period, edit this list:
+       label – heading shown on the page
+       from / to – inclusive years (null = open-ended)                    */
+  var PERIODS = [
+    { label: '2020–Now',  from: 2020, to: null },
+    { label: '2010–2019', from: 2010, to: 2019 },
+    { label: '2000–2009', from: 2000, to: 2009 },
+    { label: '1996–1999', from: null, to: 1999 }
+  ];
 
-  /* Add "(n)" counts to each tab and hide year-dropdown options
-     that fall outside the active range. */
-  function updateRangeUI() {
-    var valid = (PUB_DATA || []).filter(function (p) {
-      return p.title && p.title !== 'Web of Science';
-    });
-    qsa('.pub-section-tab[data-range]').forEach(function (t) {
-      var n = valid.filter(function (p) { return inRange(p.year, t.dataset.range); }).length;
-      var c = qs('.pub-section-tab__count', t);
-      if (!c) {
-        c = document.createElement('span');
-        c.className = 'pub-section-tab__count';
-        t.appendChild(c);
-      }
-      c.textContent = '(' + n + ')';
-    });
-    if (els.year) {
-      Array.from(els.year.options).forEach(function (o) {
-        if (!o.value) return;
-        var ok = inRange(o.value, state.range);
-        o.hidden = !ok;
-        o.disabled = !ok;
-      });
-      if (state.yearFilter && !inRange(state.yearFilter, state.range)) {
-        state.yearFilter = '';
-        els.year.value = '';
-      }
+  function periodOf(year) {
+    var y = parseInt(year, 10);
+    if (isNaN(y)) return null;
+    for (var i = 0; i < PERIODS.length; i++) {
+      var pr = PERIODS[i];
+      if ((pr.from === null || y >= pr.from) && (pr.to === null || y <= pr.to)) return pr;
     }
+    return null;
   }
 
   /* ── Filter helpers ───────────────────────────────────────────────────── */
   function matchesFilters(p) {
     if (!p.title || p.title === 'Web of Science') return false;
-    if (state.range && !inRange(p.year, state.range)) return false;
     if (state.yearFilter && p.year !== state.yearFilter) return false;
     if (state.query) {
       var words = state.query.toLowerCase().split(/\s+/).filter(Boolean);
@@ -152,7 +125,7 @@
     var sorted = applySort(pubs);
 
     if (state.section === 'all') {
-      renderByYear(sorted);
+      renderByPeriod(sorted);
     } else if (state.section === 'peer-review') {
       var prPubs = (typeof PEER_REVIEW_DATA !== 'undefined' ? PEER_REVIEW_DATA : []).filter(matchesFilters);
       renderFlat(applySort(prPubs), 'peer-review');
@@ -163,7 +136,7 @@
   /* ── Status bar ───────────────────────────────────────────────────────── */
   function updateStatus() {
     var total = (PUB_DATA || []).filter(function (p) {
-      return p.title && p.title !== 'Web of Science' && inRange(p.year, state.range);
+      return p.title && p.title !== 'Web of Science';
     }).length;
 
     var hasFilter = state.query || state.yearFilter;
@@ -188,8 +161,8 @@
       : '<p class="pub-empty">No publications match the current filters.</p>';
   }
 
-  /* ── All Publications: year groups (all expanded by default) ─────────── */
-  function renderByYear(pubs) {
+  /* ── All Publications: grouped by time period (all expanded) ─────────── */
+  function renderByPeriod(pubs) {
     var el = qs('#pub-list-all');
     if (!el) return;
     if (!pubs.length) {
@@ -198,25 +171,25 @@
       return;
     }
     var groups = {};
+    var other = [];
     pubs.forEach(function (p) {
-      var y = p.year || 'Unknown';
-      if (!groups[y]) groups[y] = [];
-      groups[y].push(p);
+      var pr = periodOf(p.year);
+      if (!pr) { other.push(p); return; }
+      (groups[pr.label] = groups[pr.label] || []).push(p);
     });
-    var years = Object.keys(groups).sort(function (a, b) {
-      return state.sort === 'year-asc' ? a.localeCompare(b) : b.localeCompare(a);
-    });
-    el.innerHTML = years.map(function (year, i) {
-      return yearGroup(year, groups[year], i);
-    }).join('');
+    var order = PERIODS.slice();
+    if (state.sort === 'year-asc') order.reverse();
+    var html = order.filter(function (pr) { return groups[pr.label]; })
+      .map(function (pr) { return periodGroup(pr.label, groups[pr.label]); });
+    if (other.length) html.push(periodGroup('Other', other));
+    el.innerHTML = html.join('');
   }
 
-  /* ── Year group — body visible by default (no display:none) ──────────── */
-  function yearGroup(year, pubs, idx) {
-    /* --i drives the staggered fade-in after a tab switch (capped). */
-    return '<div class="pub-year-group" data-year="' + esc(year) + '" style="--i:' + Math.min(idx || 0, 8) + '">' +
+  /* ── Period group — body visible by default; heading click collapses ─── */
+  function periodGroup(label, pubs) {
+    return '<div class="pub-year-group pub-period-group" data-period="' + esc(label) + '">' +
       '<div class="pub-year-heading" onclick="NCEL_PUB.toggleYear(this)">' +
-        '<h2 class="pub-year-heading__label">' + esc(year) + '</h2>' +
+        '<h2 class="pub-year-heading__label">' + esc(label) + '</h2>' +
         '<span class="pub-year-heading__count">(' + pubs.length + ')</span>' +
         '<span class="pub-year-heading__toggle">▼</span>' +
       '</div>' +
@@ -275,7 +248,7 @@
     if (bibtex) {
       drawers += '<div id="' + id + '-bib" class="pub-card__drawer">' +
         '<div class="pub-card__bibtex">' +
-          '<button class="pub-card__copy-btn" onclick="NCEL_PUB.copyBibtex(this,' + JSON.stringify(bibtex) + ')">Copy</button>' +
+          '<button type="button" class="pub-card__copy-btn" onclick="NCEL_PUB.copyBibtex(this)">Copy</button>' +
           '<div class="pub-card__drawer-label">BibTeX</div>' +
           '<pre>' + esc(bibtex) + '</pre>' +
         '</div>' +
@@ -324,7 +297,14 @@
       btn.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open);
     },
-    copyBibtex: function (btn, text) {
+    /* Copy the BibTeX shown in the <pre> next to the button.
+       (Read from the page instead of being embedded in the onclick
+       attribute, so quotes/special characters can't break the button.) */
+    copyBibtex: function (btn) {
+      var box = btn.closest('.pub-card__bibtex');
+      var pre = box && box.querySelector('pre');
+      var text = pre ? pre.textContent : '';
+      if (!text) return;
       navigator.clipboard.writeText(text).then(function () {
         btn.textContent = 'Copied!';
         btn.classList.add('is-copied');
@@ -340,52 +320,13 @@
     clearAll: clearAll
   };
 
-  /* ── Tab switching feedback ───────────────────────────────────────────── */
-  /* Slide the underline under the active tab. */
-  function moveIndicator(instant) {
-    var bar = qs('.pub-section-tabs');
-    var active = qs('.pub-section-tab.is-active');
-    if (!bar || !active) return;
-    var ind = qs('.pub-section-tabs__indicator', bar);
-    if (!ind) {
-      ind = document.createElement('span');
-      ind.className = 'pub-section-tabs__indicator';
-      ind.setAttribute('aria-hidden', 'true');
-      bar.appendChild(ind);
-      bar.classList.add('has-indicator');
-      instant = true;
-    }
-    if (instant) ind.style.transition = 'none';
-    ind.style.width = active.offsetWidth + 'px';
-    ind.style.transform = 'translateX(' + active.offsetLeft + 'px)';
-    if (instant) { void ind.offsetWidth; ind.style.transition = ''; }
-    /* Keep the active tab visible when the bar scrolls on phones. */
-    if (bar.scrollWidth > bar.clientWidth && active.scrollIntoView) {
-      active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: instant ? 'auto' : 'smooth' });
-    }
-  }
-
-  /* Replay the fade-in on the list + status line. */
-  function playEnter() {
-    [qs('#pub-list-all'), els.status].forEach(function (el) {
-      if (!el) return;
-      el.classList.remove('is-entering');
-      void el.offsetWidth;            /* restart the animation */
-      el.classList.add('is-entering');
-    });
-  }
-
   /* ── Event wiring ─────────────────────────────────────────────────────── */
-  function switchSection(name, range) {
+  function switchSection(name) {
     state.section = name;
-    state.range   = range || '';
     qsa('.pub-section-tab').forEach(function (t) {
-      var on = t.dataset.section === name && (t.dataset.range || '') === state.range;
-      t.classList.toggle('is-active', on);
-      t.setAttribute('aria-selected', on);
+      t.classList.toggle('is-active', t.dataset.section === name);
+      t.setAttribute('aria-selected', t.dataset.section === name);
     });
-    updateRangeUI();
-    moveIndicator();
     qsa('.pub-section-panel').forEach(function (p) {
       p.classList.toggle('is-active', p.id === 'pub-panel-' + name);
     });
@@ -411,11 +352,7 @@
     if (!els.status) return;
 
     qsa('.pub-section-tab').forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        if (tab.classList.contains('is-active')) return;
-        switchSection(tab.dataset.section, tab.dataset.range);
-        playEnter();
-      });
+      tab.addEventListener('click', function () { switchSection(tab.dataset.section); });
     });
 
     if (els.sort) els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
@@ -434,10 +371,6 @@
 
     switchSection('all');
     render();
-    moveIndicator(true);
-    window.addEventListener('resize', function () { moveIndicator(true); });
-    /* Web fonts can change tab widths after first paint. */
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveIndicator(true); });
   }
 
   if (document.readyState === 'loading') {
