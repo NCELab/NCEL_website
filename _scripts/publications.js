@@ -105,7 +105,7 @@
         c.className = 'pub-section-tab__count';
         t.appendChild(c);
       }
-      c.textContent = ' (' + n + ')';
+      c.textContent = '(' + n + ')';
     });
     if (els.year) {
       Array.from(els.year.options).forEach(function (o) {
@@ -206,14 +206,15 @@
     var years = Object.keys(groups).sort(function (a, b) {
       return state.sort === 'year-asc' ? a.localeCompare(b) : b.localeCompare(a);
     });
-    el.innerHTML = years.map(function (year) {
-      return yearGroup(year, groups[year]);
+    el.innerHTML = years.map(function (year, i) {
+      return yearGroup(year, groups[year], i);
     }).join('');
   }
 
   /* ── Year group — body visible by default (no display:none) ──────────── */
-  function yearGroup(year, pubs) {
-    return '<div class="pub-year-group" data-year="' + esc(year) + '">' +
+  function yearGroup(year, pubs, idx) {
+    /* --i drives the staggered fade-in after a tab switch (capped). */
+    return '<div class="pub-year-group" data-year="' + esc(year) + '" style="--i:' + Math.min(idx || 0, 8) + '">' +
       '<div class="pub-year-heading" onclick="NCEL_PUB.toggleYear(this)">' +
         '<h2 class="pub-year-heading__label">' + esc(year) + '</h2>' +
         '<span class="pub-year-heading__count">(' + pubs.length + ')</span>' +
@@ -339,6 +340,41 @@
     clearAll: clearAll
   };
 
+  /* ── Tab switching feedback ───────────────────────────────────────────── */
+  /* Slide the underline under the active tab. */
+  function moveIndicator(instant) {
+    var bar = qs('.pub-section-tabs');
+    var active = qs('.pub-section-tab.is-active');
+    if (!bar || !active) return;
+    var ind = qs('.pub-section-tabs__indicator', bar);
+    if (!ind) {
+      ind = document.createElement('span');
+      ind.className = 'pub-section-tabs__indicator';
+      ind.setAttribute('aria-hidden', 'true');
+      bar.appendChild(ind);
+      bar.classList.add('has-indicator');
+      instant = true;
+    }
+    if (instant) ind.style.transition = 'none';
+    ind.style.width = active.offsetWidth + 'px';
+    ind.style.transform = 'translateX(' + active.offsetLeft + 'px)';
+    if (instant) { void ind.offsetWidth; ind.style.transition = ''; }
+    /* Keep the active tab visible when the bar scrolls on phones. */
+    if (bar.scrollWidth > bar.clientWidth && active.scrollIntoView) {
+      active.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: instant ? 'auto' : 'smooth' });
+    }
+  }
+
+  /* Replay the fade-in on the list + status line. */
+  function playEnter() {
+    [qs('#pub-list-all'), els.status].forEach(function (el) {
+      if (!el) return;
+      el.classList.remove('is-entering');
+      void el.offsetWidth;            /* restart the animation */
+      el.classList.add('is-entering');
+    });
+  }
+
   /* ── Event wiring ─────────────────────────────────────────────────────── */
   function switchSection(name, range) {
     state.section = name;
@@ -349,6 +385,7 @@
       t.setAttribute('aria-selected', on);
     });
     updateRangeUI();
+    moveIndicator();
     qsa('.pub-section-panel').forEach(function (p) {
       p.classList.toggle('is-active', p.id === 'pub-panel-' + name);
     });
@@ -375,7 +412,9 @@
 
     qsa('.pub-section-tab').forEach(function (tab) {
       tab.addEventListener('click', function () {
+        if (tab.classList.contains('is-active')) return;
         switchSection(tab.dataset.section, tab.dataset.range);
+        playEnter();
       });
     });
 
@@ -395,6 +434,10 @@
 
     switchSection('all');
     render();
+    moveIndicator(true);
+    window.addEventListener('resize', function () { moveIndicator(true); });
+    /* Web fonts can change tab widths after first paint. */
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { moveIndicator(true); });
   }
 
   if (document.readyState === 'loading') {
