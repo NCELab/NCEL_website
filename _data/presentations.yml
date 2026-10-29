@@ -46,7 +46,7 @@
   poster: "images/ISTSS2024_DanielCraft_ITT_Poster.pdf"
   abstract: Parental Post Traumatic Stress Disorder (PTSD) may lead to adverse mental health outcomes in children, a phenomenon referred to as Intergenerational Transmission of Trauma (ITT) 
   
-  - type: "Poster"
+- type: "Poster"
   title: "Perceived Parental Overprotection is Associated with Internalizing Symptoms Among Children of 9/11 First Responders"
   authors: Daniel Griggi, Daniel Craft, Yael M. Cycowicz, Diana V. Rodriguez-Moreno
   date: 2024
@@ -54,26 +54,26 @@
   abstract: Trauma-exposed parents are at risk of engaging in more maladaptive parenting behaviors than non-exposed parents.
 
   
-  - type: "Poster"
+- type: "Poster"
   title: "Perceived Family Support Negatively Correlates with PTSD Symptomology Among 9/11 Responders"
   authors: Genesis Moran, Daniel Craft, Diana V. Rodriguez-Moreno, Yael M. Cycowicz
   date: 2024
   poster: "images/ISTSS2024_GenesisMoran_ITT.pdf"
-  abstract: Social Support is defined as a deliberate attempt to exhibit support for an individual and can further be explored through the modality of support and nature of an individual’s social network/ relationships. Former research on the relationship between social support and PTSD severity has yielded: Less severe avoidance, arousal, and intrusion symptoms for those reporting greater support. Heightened levels of perceived support from romantic partners negatively associated with overall PTSD severity. A positive correlation between partner involved therapeutic interventions and improvements in PTSD symptoms. 
+  abstract: "Social Support is defined as a deliberate attempt to exhibit support for an individual and can further be explored through the modality of support and nature of an individual’s social network/ relationships. Former research on the relationship between social support and PTSD severity has yielded: Less severe avoidance, arousal, and intrusion symptoms for those reporting greater support. Heightened levels of perceived support from romantic partners negatively associated with overall PTSD severity. A positive correlation between partner involved therapeutic interventions and improvements in PTSD symptoms."
   
-  - type: "Poster"
+- type: "Poster"
   title: "Modulation of Inhibitory Control Across High and Low Energy Food in Healthy Adults"
   authors: Diana V. Rodriguez-Moreno, Angela Rocchi, Surim Kang, Yael M. Cycowicz
   poster: "images/Modulation of Inhibitory Control Across High and Low Energy Food in Healthy Adults.pdf"
   abstract: Maintaining healthy weight requires balancing food consumption and energy expenditure. Unfortunately,increased availability of food, especially high energy (calorie dense) foods, increases appetitive drive and challenges inhibitory control in dietary decision making. Understanding the neural basis of inhibitory control for food cues could inform mechanisms underlying obesity and other food-related disorders. Inhibitory control has been assessed by a variety of tasks which reveal an individual’s ability to suppress prepotent responses. Inhibition is reflected in behavioral outcomes as response accuracy. In a food Go/No-Go task there were more commission errors with shorter RT to food cues compared to nonfood cues. The N2 and P3 of the ERP in Go/No-Go tasks are assumed to represent inhibitory control processes. ERP studies of food Go/No-go tasks varied in their outcomes due to methodological differences. We created a modified food Go/No-Go in which the Go stimuli were 6 repeated animal pictures and the No-Go images were either non-repeated non-food, or non-repeated high and low caloric food images. We hypothesized that No-Go food cues will engage inhibitory control process more than non-food cues that will be reflected in N2 amplitude. We also expect larger N2 amplitude for the high calorie foods compare with low calorie foods.
 
-  - type: "Poster"
+- type: "Poster"
   title: "Neural Activity Based on Reaction Time During Impulsive Decision Making"
   authors: Xiaoxiao Sun, Yael M. Cycowicz, Diana V. Rodriguez-Moreno, Christina W. Hoven, Lawrence V. Amsel
   poster: "images/Neural Activity Based on Reaction Time During Impulsive Decision Making.pdf"
-  abstract: Delay discounting (DD) tasks measure the capacity to postpone gratification. They define reward-impulsivity as a preference for sooner smaller (SS) over larger later (LL) rewards. Choices that are made more quickly also involve reward-impulsivity, i.e., fast responses executed by rapid neural processes, often focused on getting a reward, not maximizing it. Hypotheses: Fast and slow choices indicated by reaction times (RT) reflect more than valuation comparisons, they involve reward-impulsivity or evidence accumulation, and each of these is reflected in unique neural activities.
+  abstract: "Delay discounting (DD) tasks measure the capacity to postpone gratification. They define reward-impulsivity as a preference for sooner smaller (SS) over larger later (LL) rewards. Choices that are made more quickly also involve reward-impulsivity, i.e., fast responses executed by rapid neural processes, often focused on getting a reward, not maximizing it. Hypotheses: Fast and slow choices indicated by reaction times (RT) reflect more than valuation comparisons, they involve reward-impulsivity or evidence accumulation, and each of these is reflected in unique neural activities."
 
-  - type: "Poster"
+- type: "Poster"
   title: "Novelty P3 Amplitude Differentiation for Food and Non-food Stimuli"
   authors: "Yael M. Cycowicz, Ida Jamshidy, Weiru Xu, Diana V. Rodriguez-Moreno"
   poster: "images/Novelty_P3_Amplitude_Differentiation_for_Food_and_Non-food_Stimuli.pdf"
