@@ -1,6 +1,6 @@
 ---
 name: Max Sklar
-image: images/max_headshot.png
+image: images/Max_headshot.png
 role: intern
 order: 5
 description: intern
