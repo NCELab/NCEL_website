@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   build-preview:
-      runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Debug dump
