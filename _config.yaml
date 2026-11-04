@@ -1,7 +1,7 @@
 # site properties and page defaults
 title: Neuro-Cognition and Emotion Lab 
 subtitle: 
-description: An engaging 1-3 sentence description of your lab.
+description: "The Neuro-Cognition and Emotion Lab (NCEL) at Columbia University and the New York State Psychiatric Institute (NYSPI) investigates how emotion, memory, and decision-making interact in the human brain. Using behavioral experiments, EEG, and fMRI, we study how emotional experiences influence cognitive control, learning, and mental health."
 header: images/background.jpeg
 header-dark: false
 footer: images/background.jpeg
