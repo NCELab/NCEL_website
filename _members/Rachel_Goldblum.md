@@ -6,4 +6,5 @@ order: 2
 description: Alumni
 affiliation: Oregon State University
 ---
-PhD candidate at Oregon State University and her email address is Rachel.Goldblum@oregonstate.edu.
+PhD candidate at Oregon State University.
+Her email address is Rachel.Goldblum@oregonstate.edu.
